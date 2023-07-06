@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 include '../super_admin/conn.php';
 
 if (isset($_GET['lms_exam_system_id'])) {

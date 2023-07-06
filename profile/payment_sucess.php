@@ -14,7 +14,9 @@ $ipg_transaction_id = $input['transaction_id'];
 
 
 if ($status == 1000) {
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     $reid = $_SESSION['reid1'];
     $select_payment0 = $_SESSION['select_payment0'];
     $select_payment1 = $_SESSION['select_payment1'];

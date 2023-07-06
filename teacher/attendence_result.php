@@ -3,7 +3,9 @@ $url = $_SERVER['REQUEST_URI'];
 $parts = parse_url($url);
 parse_str($parts['query'], $query);
 $att_res =  $query['att_res'];
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 require_once '../super_admin/includes.php';
 

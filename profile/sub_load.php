@@ -26,7 +26,9 @@
 
 
 
-			session_start();
+			if (!isset($_SESSION)) {
+				session_start();
+			}
 
 			require_once("../super_admin/conn.php");
 
