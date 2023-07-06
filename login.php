@@ -105,6 +105,7 @@ if (isset($_POST['login'])) {
 
             <button name="login" type="submit" class="custom-btn btn-13">Login</button>
             <hr />
+            <a class="areu" href="forgot_password.php">Forgot Password?</a>
             <a class="areu" href="register.php">Don't have an account?</a>
         </form>
     </main>
