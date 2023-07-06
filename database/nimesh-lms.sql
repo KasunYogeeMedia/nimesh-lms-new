@@ -2744,7 +2744,7 @@ CREATE TABLE `lmsdb` (
 -- Dumping data for table `lmsdb`
 --
 INSERT INTO `lmsdb` (`id`, `dbname`, `username`, `password`)
-VALUES (1, 'yogeedev_nimesh_lms', 'root', 'r^3JU}teRuA]');
+VALUES (1, 'yogeedev_nimesh_lms', 'yogeedev_nimesh_lms', 'r^3JU}teRuA]');
 -- --------------------------------------------------------
 --
 -- Table structure for table `lmsebook`
