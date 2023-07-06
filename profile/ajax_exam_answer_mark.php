@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 include '../super_admin/conn.php';
 
 $check_qury = mysqli_query($conn, "SELECT * FROM lms_answer a

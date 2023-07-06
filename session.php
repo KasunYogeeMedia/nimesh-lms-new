@@ -1,7 +1,9 @@
 <?php
 
-session_start();
-if(!isset($_SESSION['reid'])){
+if (!isset($_SESSION)) {
+	session_start();
+}
+if (!isset($_SESSION['reid'])) {
 	header('location:http://yogeemedia.xyz/websites/atlas-lms/');
 	exit();
 }
