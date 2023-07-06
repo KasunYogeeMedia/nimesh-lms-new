@@ -203,116 +203,37 @@ if (isset($_POST['submit_bt'])) {
 	foreach ($_POST['select_payment'] as $select_payment) {
 
 		//echo $select_payment;
-
+		$pay_type = $_POST['paymonth'];
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
-
-		$subject_qury = mysqli_query($conn, "SELECT fees_valid_period FROM lmssubject WHERE sid='$select_payment[1]'");
-
-		$subject_resalt = mysqli_fetch_array($subject_qury);
-
-		if ($subject_resalt['fees_valid_period'] == "EOM") {
-
-			$exp_date = date("Y-m-t", strtotime(date("Y-m-d")));
-		} else if ($subject_resalt['fees_valid_period'] == "150D") {
-
-			$exp_date = date('Y-m-d', strtotime('+150 day'));
-		} else {
-
-			$exp_date = date('Y-m-d', strtotime('+1 month'));
+		if($_POST['paymonth'] == 'half'){
+			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
+		}else{
+			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
 		}
-
-		$year = explode('-', $_POST['paymonth'])[0];
-		$month = explode('-', $_POST['paymonth'])[1];
-		$this_month = date('m', strtotime('now'));
-		$exp_date = date("Y-m-t", strtotime($_POST['paymonth']));
-
-		//------------------------------
-
-		$subject_valid_days = $subject_resalt['fees_valid_period'];
-
-		$paying_month = $_POST['paymonth'];
-
-		if (date("Y-m", strtotime($paying_month)) < date("Y-m")) {
-			echo "Invalid month selected";
-			exit;
-		} else {
-
-			if ($subject_valid_days == 1) {
-
-				if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-					//$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;Bank Payment
-
-					$Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-					$R = mysqli_fetch_array($Q);
-					$fina_date = $R['dd'];
-				}
-			} else if ($subject_valid_days == 30) {
-
-				if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-					$fina_date = date("Y-m-t", strtotime(date($paying_month)));
-				} else {
-
-					//$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;
-					$Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-					$R = mysqli_fetch_array($Q);
-					$fina_date = $R['dd'];
-				}
-			} else if ($subject_valid_days == 40) {
-
-				if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-					//$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-					$Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-					$R = mysqli_fetch_array($Q);
-					$fina_date = $R['dd'];
-				}
-			} else if ($subject_valid_days == 45) {
-
-				if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-					//$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-					$Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-					$R = mysqli_fetch_array($Q);
-					$fina_date = $R['dd'];
-				}
-			} else if ($subject_valid_days == 90) {
-
-				if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-					//$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-					$Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-					$R = mysqli_fetch_array($Q);
-					$fina_date = $R['dd'];
-				}
-			}
-
-			$exp_date = $fina_date;
-		}
-
-		//-----------------------
-
-		$sql = "SELECT * FROM lmspayment WHERE pay_month ='" . $paying_month . "-01' AND userID=" . $_SESSION['reid'] . " AND pay_sub_id = '" . $select_payment[1] . "'";
+		
 
 		$query = mysqli_query($conn, $sql);
-
+		
 		if (mysqli_fetch_array($query)) {
 
 			$R = mysqli_fetch_array($query);
-
+			
 			if ($R['status'] == 1) {
+
 				$error = "ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත!!";
+
 			} else {
+
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
+			
 		}
 
 		if (!isset($error)) {
 
-			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `expiredate`, `session_id`, `status`, `order_status`,`pay_month`)
+			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`,`pay_type`)
 
-				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '$exp_date', '0', '0', '0' , '" . $paying_month . "-01" . "')";
+				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "')";
 
 			//echo $sql;exit;
 
@@ -598,99 +519,97 @@ if (isset($_POST['submit_bt'])) {
 				<div class="section-border">
 					<h2 class="section-border-heading">Free Classes</h2>
 					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Free Live Classes</h2><br>
-									<h5></h5>
-
-									<a href="free_class.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Free Live Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/super_admin/Free Live Class.png" alt="">
+									<i class="fa fa-user fa-2x text-dark"></i>
 								</div>
+								<a href="free_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Download Free Class
-										Tutes</h2><br>
-									<h5></h5> <a href="free_class_tutes.php" class="btn btn-success">View More</a>
-								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Free Class Tute.png" alt=""> </div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
-								<div class="card_dash_left">
-									<h2>Free Exams</h2><br>
-									<h5></h5>
-
-									<a href="exam_list.php?type=0" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Download Free Class Tutes</h2>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/super_admin/Free Exams.png" alt="">
+									<i class="fa fa-user fa-2x text-dark"></i>
 								</div>
+								<a href="free_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Free Exams</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="exam_list.php?type=0" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="section-border">
 					<h2 class="section-border-heading">Paid Classes</h2>
 					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Paid Live Classes</h2><br>
-									<h5></h5> <a href="online_class.php" class="btn btn-success">View More</a>
-								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Paid Live Class.png" alt=""> </div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
-								<div class="card_dash_left">
-									<h2>Download Paid Class
-										Tutes</h2><br>
-									<h5></h5> <a href="online_class_tutes.php" class="btn btn-success">View More</a>
-								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Download Paid Class Tute.png" alt=""> </div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
-								<div class="card_dash_left">
-									<h2>Paid Paper Classes</h2><br>
-									<h5></h5> <a href="paper_class.php" class="btn btn-success">View More</a>
-								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Paid Revision Class.png" alt=""> </div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
-								<div class="card_dash_left">
-									<h2>Download Paid Paper Class
-										Tutes</h2><br>
-									<h5></h5> <a href="paper_class_tutes.php" class="btn btn-success">View More</a>
-								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Download Paid revision class tute.png" alt=""> </div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
-								<div class="card_dash_left">
-									<h2>Paid Exams<h2><br>
-											<h5></h5>
-
-											<a href="exam_list.php?type=1" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Paid Live Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/super_admin/Paid Exams.png" alt="">
+									<i class="fa fa-user fa-2x text-dark"></i>
 								</div>
+								<a href="online_class.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Download Paid Class Tutes</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="online_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Paid Paper Classes</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="paper_class.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Download Paid Paper Class Tutes</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="paper_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Paid Exams<h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="exam_list.php?type=1" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
@@ -698,31 +617,37 @@ if (isset($_POST['submit_bt'])) {
 				<div class="section-border">
 					<h2 class="section-border-heading">Lesson Recordings/Videos</h2>
 					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>This Month's Recordings</h2><br>
-									<h5></h5> <a href="paid_lesson.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">This Month's Recordings</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/This month Recordings.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="paid_lesson.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>All Previous Recordings</h2><br>
-									<h5></h5> <a href="old_video_lessons.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">All Previous Recordings</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/All Previouus recording.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="old_video_lessons.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Free Recorded Classes</h2><br>
-									<h5></h5> <a href="free_lesson.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Free Recorded Classes</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Free Recode Class.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="free_lesson.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
@@ -730,40 +655,48 @@ if (isset($_POST['submit_bt'])) {
 				<div class="section-border">
 					<h2 class="section-border-heading">Profile & Payments</h2>
 					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Your Profile</h2><br>
-									<h5></h5> <a href="edit_profile.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Your Profile</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Your Profile.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="edit_profile.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Bank Payments History</h2><br>
-									<h5></h5> <a href="bank_payment.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Bank Payments History</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Bank Payment History.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="bank_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Card Payments History</h2><br>
-									<h5></h5> <a href="card_payment.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Card Payments History</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Card Payment History.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="card_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Manual Payments History</h2><br>
-									<h5></h5> <a href="manual_payment.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Manual Payments History</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Manual Payment History.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="manual_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
@@ -771,13 +704,15 @@ if (isset($_POST['submit_bt'])) {
 				<div class="section-border">
 					<h2 class="section-border-heading">Feedback</h2>
 					<div class="row">
-						<div class="col-xl-3 col-lg-6 col-md-6">
-							<div class="card_dash">
+						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2>Rate Your Learning Experience</h2><br>
-									<h5></h5> <a href="reviews.php" class="btn btn-success">View More</a>
+									<h2 class="text-dark">Rate Your Learning Experience</h2>
 								</div>
-								<div class="card_dash_right"> <img src="images/super_admin/Rate Your Experince.png" alt=""> </div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-2x text-dark"></i>
+								</div>
+								<a href="reviews.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
@@ -835,7 +770,7 @@ if (isset($_POST['submit_bt'])) {
 							<div class="value_props">
 								<h3>My Details</h3>
 								<h4></h4>
-								<table class="table table-bordered tabl-div">
+								<table class="table table-bordered tabl-div bg-light">
 
 									<tbody>
 										<?php
@@ -856,23 +791,23 @@ if (isset($_POST['submit_bt'])) {
 
 										?>
 												<tr>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">Name</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><?php echo $row['fullname']; ?></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Name</p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['fullname']; ?></p></td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">Student Reg Number</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><?php echo $row['stnumber']; ?></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Student Reg Number</p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['stnumber']; ?></p></td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">Contact</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Contact</p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p></td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">Address </td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><?php echo $row['address']; ?></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Address </p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['address']; ?></p></td>
 												</tr>
 										<?php
 
@@ -888,7 +823,7 @@ if (isset($_POST['submit_bt'])) {
 					<div class="row">
 						<div class="col-lg-6 new-sce-1">
 							<div class="value_props">
-								<h3>පන්ති සඳහා ගෙවීම් කටයුතු සිදුකල යුතු ආකාරය
+								<h3 class="text-dark">පන්ති සඳහා ගෙවීම් කටයුතු සිදුකල යුතු ආකාරය
 								</h3>
 								<div class="value_content">
 									<p>ඔබ යම් කිසි පන්තියක් සඳහා සම්බන්ධ වන්නේ නම් පන්තියට අදාල ගාස්තුව ආයතනයට පැමිණ හෝ පහත ගිණුම් අංකයට ගෙවා ලබා ගන්නා ලද ගෙවීම් පත්‍රිකාව හෝ screen shot එක පහත විස්තර සම්පූර්ණ කර මෙම වෙබ් අඩවියට Upload කළ යුතු ය. (යම් හෙයකින් ගෙවීම් පත්‍රිකාව නොලැබුණහොත් හෝ අස්ථාන ගත වුවහොත් පැය 24 ක් ඇතුලත කාර්යාලයට දැනුම් දී එම ගැටලුව විසදා ගන්න)</p>
@@ -901,7 +836,7 @@ if (isset($_POST['submit_bt'])) {
 						</div>
 						<div class="col-lg-6 new-sce-1">
 							<div class="value_props">
-								<h3>ගෙවීම් කළ හැකි ගිණුම් අංකය</h3>
+								<h3 class="text-dark">ගෙවීම් කළ හැකි ගිණුම් අංකය</h3>
 								<div class="value_content">
 									<p>බැංකුව : <strong>HNB</strong>
 										<br> ගිණුම් අංකය : 002010566367
@@ -931,9 +866,9 @@ if (isset($_POST['submit_bt'])) {
 
 						<div class="col-lg-6 new-sce-1">
 							<div class="value_props">
-								<h3>විෂයක් තෝරා ගන්නා ආකාරය</h3>
+								<h3 class="text-dark">විෂයක් තෝරා ගන්නා ආකාරය</h3>
 								<br>
-								<p>ගුරුවරයා තෝරා ගැනීමට ඔබට නොපෙන්වයි හෝ ඔබට අදාල නොවන විෂයන් පෙන්වන්නේ නම් Your Profile ගොස් වෙන ශ්‍රේණියක් select කර නැවත ඔබට අදාල ශ්‍රේණිය select කරන්න. පසුව ලැබෙන ලැයිස්තුවෙන් ඔබට සම්බන්ධ විය යුතු විෂයන් සහ ගුරුවරුන් තෝරා ගත හැක. එසේ තෝරාගෙන update profile click කරන්න.</p>
+								<p class="text-dark">ගුරුවරයා තෝරා ගැනීමට ඔබට නොපෙන්වයි හෝ ඔබට අදාල නොවන විෂයන් පෙන්වන්නේ නම් Your Profile ගොස් වෙන ශ්‍රේණියක් select කර නැවත ඔබට අදාල ශ්‍රේණිය select කරන්න. පසුව ලැබෙන ලැයිස්තුවෙන් ඔබට සම්බන්ධ විය යුතු විෂයන් සහ ගුරුවරුන් තෝරා ගත හැක. එසේ තෝරාගෙන update profile click කරන්න.</p>
 								<form method="post" enctype="multipart/form-data">
 									<table class="table table-bordered tabl-div">
 										<?php
@@ -958,6 +893,7 @@ if (isset($_POST['submit_bt'])) {
 											<thead>
 												<tr style="background-color: #8b8c90;">
 													<td colspan="6" style="color: #ffffff;border:4px solid #8b8c90;"><?php echo $tea_resalt['fullname']; ?></td>
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -969,19 +905,28 @@ if (isset($_POST['submit_bt'])) {
 
 													//check paid subject
 
-													$check_paid = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$tec_sub_resalt[sid]' and userID='$_SESSION[reid]' and status='1'");
-
-													$paid_resalt = mysqli_fetch_array($check_paid);
-
+													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$tec_sub_resalt[sid]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
+													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$tec_sub_resalt[sid]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
+													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
+													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
+													
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 
 												?>
 														<tr>
 															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-
+															<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
 															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
 															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+															<!--kasun 2021.12.01 change color to black from white-->
+														</tr>
+														<tr>
+															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
 															<!--kasun 2021.12.01 change color to black from white-->
 														</tr>
 											<?php
@@ -997,7 +942,7 @@ if (isset($_POST['submit_bt'])) {
 						</div>
 						<div class="col-lg-6 new-sce-1 paymet-det">
 							<div class="value_props">
-								<h3>Card Payment</h3>
+								<h3 class="text-dark">Card Payment</h3>
 								<?php
 								$today_time = date("Y-m-d");
 								$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Card' and userID='$_SESSION[reid]' and status='1' ORDER BY pid DESC");
@@ -1019,7 +964,7 @@ if (isset($_POST['submit_bt'])) {
 							</div>
 							<hr style="border:2px solid #28a745">
 							<div class="value_props">
-								<h3>Bank Payment</h3>
+								<h3 class="text-dark">Bank Payment</h3>
 								<hr style="border:2px solid #8b8c90">
 								<?php
 								$today_time = date("Y-m-d");
@@ -1034,7 +979,7 @@ if (isset($_POST['submit_bt'])) {
 								<input type="month" class="form-control" name="paymonth" value="<?php echo date("Y-m"); ?>">
 								<br>
 
-								<label class="control-label" for="basicinput">සාමාන්‍ය පන්ති ගාස්තු ගෙවූ දරුවන් පමණක් බැංකු රිසිට් පත මෙතනින් upload කරන්න. පන්ති ගාස්තු සදහා සහන (Discounts/Offers) ලැබූ සිසුන් එම bank receipt පත 0773851246 අංකයට නම , Atlas Learn LMS එකෙහි register වූ දුරකතන අංකය , විෂය සහ ගුරුවරයා , ඒ ඒ විෂයට ගෙවූ ගාස්තුව වෙන වෙනම සදහන් කර WhatsApp කරන්න.සාමාන්‍ය පන්ති ගාස්තු ගෙවන දරුවන් සම්බන්ධ වන විෂයන් ඉදිරියේ හරි ලකුණු යොදා (click on the relevant tick box) මෙහි bank receipt පතෙහි photo එකක් හෝ screenshot එකක් upload කරන්න. (Pdf file upload කල නොහැක)</label>
+								<label class="control-label text-dark" for="basicinput">සාමාන්‍ය පන්ති ගාස්තු ගෙවූ දරුවන් පමණක් බැංකු රිසිට් පත මෙතනින් upload කරන්න. පන්ති ගාස්තු සදහා සහන (Discounts/Offers) ලැබූ සිසුන් එම bank receipt පත 0773851246 අංකයට නම , Atlas Learn LMS එකෙහි register වූ දුරකතන අංකය , විෂය සහ ගුරුවරයා , ඒ ඒ විෂයට ගෙවූ ගාස්තුව වෙන වෙනම සදහන් කර WhatsApp කරන්න.සාමාන්‍ය පන්ති ගාස්තු ගෙවන දරුවන් සම්බන්ධ වන විෂයන් ඉදිරියේ හරි ලකුණු යොදා (click on the relevant tick box) මෙහි bank receipt පතෙහි photo එකක් හෝ screenshot එකක් upload කරන්න. (Pdf file upload කල නොහැක)</label>
 								<label for="fileName"><img src="images/payslip.png" id="yourImgTag" style="width:40%;cursor: pointer;" /></label>
 
 								<input type="file" name="fileName" id="fileName" value="" class="form-control" required onChange="JavaScript:dis_name(this.value);">
@@ -1042,6 +987,7 @@ if (isset($_POST['submit_bt'])) {
 								<ul>
 									<li>
 										<input type="text" name="amount" id="payment_ammount" hidden>
+										<input type="text" name="paymonth" value="half" hidden>
 										<button type="submit" name="submit_bt" id="bank-pay-button" class="btn btn-primary btn-block" disabled="true" style="font-weight:bold;font-size:14px;">බැංකු රිසිට්පතෙන් ගෙවන්න | Rs. <span class="payment_ammount">0.00</span></button>
 									</li>
 								</ul>

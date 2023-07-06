@@ -1,4 +1,4 @@
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon.png">
 
 <!-- <link rel="stylesheet" href="../super_admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css"> -->
 <link rel="stylesheet" href="../super_admin/css/style.css">
