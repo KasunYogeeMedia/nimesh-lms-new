@@ -24,7 +24,9 @@ if (isset($_POST['save'])) {
 
 	$price = $_POST['price'];
 
-	$fvp = $_POST['fees_valid_period'];
+	$start = $_POST['start'];
+
+	$end = $_POST['end'];
 
 	$status = $_POST['status'];
 
@@ -42,7 +44,7 @@ if (isset($_POST['save'])) {
 
 	if (!isset($errMSG)) {
 
-		$stmt = $DB_con->prepare('INSERT INTO lmssubject(class_id,name,price,fees_valid_period,status) VALUES(:class,:name,:price,:fees_valid_period,:status)');
+		$stmt = $DB_con->prepare('INSERT INTO lmssubject(class_id,name,price,start,end,status) VALUES(:class,:name,:price,:start,:end,:status)');
 
 		$stmt->bindParam(':class', $class);
 
@@ -50,7 +52,9 @@ if (isset($_POST['save'])) {
 
 		$stmt->bindParam(':price', $price);
 
-		$stmt->bindParam(':fees_valid_period', $fvp);
+		$stmt->bindParam(':start', $start);
+
+		$stmt->bindParam(':end', $end);
 
 		$stmt->bindParam(':status', $status);
 
@@ -204,7 +208,7 @@ if (isset($_POST['save'])) {
 								?>
 								<form method="POST" enctype="multlmsrt/form-data">
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
 												<select name="class" class="form-control">
@@ -241,16 +245,18 @@ if (isset($_POST['save'])) {
 												<input type="text" class="form-control" name="price" placeholder="Enter Price" required>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Fees Valid Period</label>
-												<select name="fees_valid_period" class="form-control">
-													<option value="1">1 Day</option>
-													<option value="30">30 Days</option>
-													<option value="40">40 Days</option>
-													<option value="45">45 Days</option>
-													<option value="90">90 Days</option>
-												</select>
+												<label class="form-label">Course Start Date</label>
+
+												<input type="date" class="form-control" id="birthday" name="start">
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Course End Date</label>
+
+												<input type="date" class="form-control" id="birthday" name="end">
 											</div>
 										</div>
 										<div class="col-lg-2 col-md-2 col-sm-12">

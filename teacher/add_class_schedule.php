@@ -333,11 +333,13 @@ if (isset($_POST['add_class_bt'])) {
 														<option hidden="lms" value="<?php if (isset($_GET['edit'])) {
 																						echo $edit_resalt['subject'];
 																					} else {
-																					} ?>"><?php if (isset($_GET['edit'])) {
+																					} ?>">
+																					<?php if (isset($_GET['edit'])) {
 																								echo $subject_resalt['name'];
 																							} else {
 																								echo "Course Not Found";
-																							} ?></option>
+																} ?>
+														</option>
 													</select>
 												</span>
 											</div>

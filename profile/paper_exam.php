@@ -366,8 +366,8 @@ if ($image_resalt['image'] == "") {
 
 	<script>
 		// Set the date we're counting down to
-		var countDownDate = new Date("<?php date_default_timezone_set("Asia/Colombo");
-										echo date("M d, Y H:i:s", time() + 60 * $exam_time_duration); ?>").getTime();
+		var countDownDate = new Date('<?php date_default_timezone_set("Asia/Colombo");
+										echo date("M d, Y H:i:s", time() + 60 * $exam_time_duration); ?>').getTime();
 
 		// Update the count down every 1 second
 		var x = setInterval(function() {

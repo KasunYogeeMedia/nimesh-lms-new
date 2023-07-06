@@ -137,7 +137,8 @@ require_once 'dbconfig4.php';
                                                         <th>Batch</th>
                                                         <th>Course</th>
                                                         <th>Price</th>
-                                                        <th>Fees valid period</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
                                                         <th>Date</th>
                                                         <th>Option</th>
                                                         <th>Action</th>
@@ -174,7 +175,8 @@ require_once 'dbconfig4.php';
                                                                                                             ?></strong></a></td>
                                                                 <td><a href="javascript:void(0);"><strong><?php echo $row['name']; ?></strong></a></td>
                                                                 <td><a href="javascript:void(0);"><strong><?php echo $row['price']; ?></strong></a></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['fees_valid_period']; ?></strong></a></td>
+                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['start']; ?></strong></a></td>
+                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['end']; ?></strong></a></td>
                                                                 <td><?php echo $row['add_date']; ?></td>
                                                                 <td>
                                                                     <?php
