@@ -1,5 +1,5 @@
 <?php
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 $userID = mysqli_real_escape_string($conn, $_GET['userID']);
 $register_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$userID'");
 if (mysqli_num_rows($register_qury) > 0) {

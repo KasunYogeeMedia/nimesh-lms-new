@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-require_once '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
@@ -136,7 +136,7 @@ if ($image_resalt['image'] == "") {
 														<?php if ($level_resalt['image'] == "") {
 															$pro_img = "images/hd_dp2.jpg";
 														} else {
-															$pro_img = "../admin/images/class/" . $level_resalt['image'];
+															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
 														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
@@ -186,7 +186,7 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
@@ -243,7 +243,7 @@ if ($image_resalt['image'] == "") {
 														<?php if ($level_resalt['image'] == "") {
 															$pro_img = "images/hd_dp2.jpg";
 														} else {
-															$pro_img = "../admin/images/class/" . $level_resalt['image'];
+															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
 														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
@@ -311,7 +311,7 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>

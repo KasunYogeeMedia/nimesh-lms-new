@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once '../admin/dbconfig4.php';
-require_once("../admin/config.php");
-include '../admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
+require_once("../super_admin/config.php");
+include '../super_admin/conn.php';
 
 if (!isset($_SESSION['reid'])) {
 	header('location:../login.php');

@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-require_once '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 
 //print_r($_POST);
 

@@ -1,19 +1,17 @@
 <?php
 
-	require_once '../admin/dbconfig4.php';
-	
-	if(isset($_GET['leid']))
-	{
+require_once '../super_admin/dbconfig4.php';
 
-		$stmt_select = $DB_con->prepare('SELECT cover FROM lmslesson WHERE lid =:leid');
-		$stmt_select->execute(array(':leid'=>$_GET['leid']));
-		$imgRow=$stmt_select->fetch(PDO::FETCH_ASSOC);
-		unlink("../admin/images/lesson/cover/".$imgRow['cover']);
+if (isset($_GET['leid'])) {
 
-		$stmt_delete = $DB_con->prepare('DELETE FROM lmslesson WHERE lid =:leid');
-		$stmt_delete->bindParam(':leid',$_GET['leid']);
-		$stmt_delete->execute();
+	$stmt_select = $DB_con->prepare('SELECT cover FROM lmslesson WHERE lid =:leid');
+	$stmt_select->execute(array(':leid' => $_GET['leid']));
+	$imgRow = $stmt_select->fetch(PDO::FETCH_ASSOC);
+	unlink("../super_admin/images/lesson/cover/" . $imgRow['cover']);
 
-		echo"<script type='text/javascript'>window.location.href = 'video_lessons.php';</script>";
-		
-	}
+	$stmt_delete = $DB_con->prepare('DELETE FROM lmslesson WHERE lid =:leid');
+	$stmt_delete->bindParam(':leid', $_GET['leid']);
+	$stmt_delete->execute();
+
+	echo "<script type='text/javascript'>window.location.href = 'video_lessons.php';</script>";
+}

@@ -1,14 +1,12 @@
 <?php
 
-	require_once '../admin/dbconfig4.php';
-	
-	if(isset($_GET['rvid']))
-	{
+require_once '../super_admin/dbconfig4.php';
 
-		$stmt_delete = $DB_con->prepare('DELETE FROM lmscomments WHERE id =:rvid');
-		$stmt_delete->bindParam(':rvid',$_GET['rvid']);
-		$stmt_delete->execute();
+if (isset($_GET['rvid'])) {
 
-		echo"<script type='text/javascript'>window.location.href = 'reviews.php';</script>";
-		
-	}
+	$stmt_delete = $DB_con->prepare('DELETE FROM lmscomments WHERE id =:rvid');
+	$stmt_delete->bindParam(':rvid', $_GET['rvid']);
+	$stmt_delete->execute();
+
+	echo "<script type='text/javascript'>window.location.href = 'reviews.php';</script>";
+}

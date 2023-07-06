@@ -2,11 +2,11 @@
 
 session_start();
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-require_once("../admin/config.php");
+require_once("../super_admin/config.php");
 
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 if (!isset($_SESSION['reid'])) {
 

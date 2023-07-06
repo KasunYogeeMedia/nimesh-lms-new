@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 $check_qury = mysqli_query($conn, "SELECT * FROM lms_answer a
 WHERE a.lms_answer_user='$_SESSION[reid]' AND a.lms_answer_paper='$_GET[paper]' AND a.lms_answer_q='$_GET[q]'");

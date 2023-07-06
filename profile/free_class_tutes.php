@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-require_once '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
@@ -175,13 +175,13 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
 																<p class="user-status-tag online">Teacher</p>
 																<br>
-																<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
+																<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
 															</div>
 														</div>
 
@@ -256,13 +256,13 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
 																<p class="user-status-tag online">Teacher</p>
 																<br>
-																<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
+																<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
 															</div>
 														</div>
 

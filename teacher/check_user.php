@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
 
 
@@ -19,7 +19,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "https://laksiripremanath.com/maths/admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "https://laksiripremanath.com/maths/super_admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 

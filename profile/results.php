@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-include '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+include '../super_admin/dbconfig4.php';
 
 if (isset($_GET['view'])) {
 	$_SESSION['exam_id'] = $_GET['view'];

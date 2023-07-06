@@ -1,23 +1,23 @@
 	<!-- Required vendors -->
-	<script src="../admin/vendor/global/global.min.js"></script>
-	<script src="../admin/js/deznav-init.js"></script>
-	<script src="../admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	<script src="../admin/js/custom.min.js"></script>
+	<script src="../super_admin/vendor/global/global.min.js"></script>
+	<script src="../super_admin/js/deznav-init.js"></script>
+	<script src="../super_admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="../super_admin/js/custom.min.js"></script>
 
 	<!-- Chart Morris plugin files -->
-	<script src="../admin/vendor/raphael/raphael.min.js"></script>
-	<script src="../admin/vendor/morris/morris.min.js"></script>
+	<script src="../super_admin/vendor/raphael/raphael.min.js"></script>
+	<script src="../super_admin/vendor/morris/morris.min.js"></script>
 
 
 	<!-- Chart piety plugin files -->
-	<script src="../admin/vendor/peity/jquery.peity.min.js"></script>
+	<script src="../super_admin/vendor/peity/jquery.peity.min.js"></script>
 
 	<!-- Demo scripts -->
-	<script src="../admin/js/admin/dashboard-2.js"></script>
+	<script src="../super_admin/js/super_admin/dashboard-2.js"></script>
 
 	<!-- Svganimation scripts -->
-	<script src="../admin/vendor/svganimation/vivus.min.js"></script>
-	<script src="../admin/vendor/svganimation/svg.animation.js"></script>
+	<script src="../super_admin/vendor/svganimation/vivus.min.js"></script>
+	<script src="../super_admin/vendor/svganimation/svg.animation.js"></script>
 
 
 

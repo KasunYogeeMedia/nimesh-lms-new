@@ -12,5 +12,3 @@
 		//header("Location: admin.php");
 		echo"<script type='text/javascript'>window.location.href = 'admin.php';</script>";
 	}
-
-?>

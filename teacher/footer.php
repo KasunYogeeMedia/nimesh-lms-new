@@ -1,5 +1,5 @@
 <?php
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 ?>
 

@@ -16304,19 +16304,19 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     padding: 1.25rem;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings>div {
+.sidebar-right .tab-content .tab-pane .super_admin-settings>div {
     margin-bottom: 10px;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings p {
+.sidebar-right .tab-content .tab-pane .super_admin-settings p {
     margin-bottom: 0.125rem;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"] {
+.sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"] {
     display: none;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"]+label {
+.sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"]+label {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -16327,11 +16327,11 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     margin-bottom: 3px;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"]:checked+label {
+.sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"]:checked+label {
     position: relative;
 }
 
-.sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"]:checked+label::after {
+.sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"]:checked+label::after {
     height: 33px;
     width: 33px;
     left: -4px;

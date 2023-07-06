@@ -1,6 +1,6 @@
-<?php	
-							
-require_once '../admin/dbconfig4.php';
+<?php
+
+require_once '../super_admin/dbconfig4.php';
 
 $stmt = $DB_con->prepare('SELECT COUNT(*) AS user_count FROM lmsusers');
 $stmt->execute();

@@ -2661,20 +2661,20 @@ a {
           border-top: none; }
   .sidebar-right .tab-content {
     padding: 1.25rem; }
-    .sidebar-right .tab-content .tab-pane .admin-settings p {
+    .sidebar-right .tab-content .tab-pane .super_admin-settings p {
       margin-bottom: 0.3125rem; }
-    .sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"] {
+    .sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"] {
       display: none; }
-      .sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"] + label {
+      .sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"] + label {
         display: inline-block;
         width: 20px;
         height: 20px;
         cursor: pointer;
         margin: 3px 8px;
         transition: all .1s ease; }
-      .sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"]:checked + label {
+      .sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"]:checked + label {
         position: relative; }
-        .sidebar-right .tab-content .tab-pane .admin-settings input[type="radio"]:checked + label::after {
+        .sidebar-right .tab-content .tab-pane .super_admin-settings input[type="radio"]:checked + label::after {
           height: 12px;
           width: 12px;
           left: 50%;

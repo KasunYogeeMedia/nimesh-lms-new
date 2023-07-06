@@ -1,5 +1,5 @@
 <div class="main_logo mb-4" id="logo">
-	<a href="<?php echo $url; ?>super_admin/home.php"><img class="w-100 p-3" src="../admin/settings/logo/<?php echo $main_logo; ?>" alt=""></a>
+	<a href="<?php echo $url; ?>admin/home.php"><img class="w-100 p-3" src="../admin/settings/logo/<?php echo $main_logo; ?>" alt=""></a>
 </div>
 <div class="nav-control text-end">
 	<div class="hamburger pe-1">

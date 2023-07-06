@@ -4,9 +4,9 @@ session_start();
 
 require_once 'includes.php';
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_SESSION['tid'])) {
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
 	}
 }
 
@@ -69,7 +69,7 @@ if (isset($_POST['update'])) {
 
 	if ($imgFile) {
 
-		$upload_dir = '../admin/images/lesson/cover/'; // upload directory	
+		$upload_dir = '../super_admin/images/lesson/cover/'; // upload directory	
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 

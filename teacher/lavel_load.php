@@ -1,6 +1,6 @@
 <select name="level" id="class_val" onChange="JavaScript:select_subject(this.value);" class="form-control simple course" required="" style="color:000000;">
     <?php
-    require_once("../admin/conn.php");
+    require_once("../super_admin/conn.php");
 
     $class_qury = mysqli_query($conn, "SELECT * FROM lmsclass WHERE course='$_GET[id]' ORDER BY name");
     if (mysqli_num_rows($class_qury) > 0) {

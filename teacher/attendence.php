@@ -4,9 +4,9 @@ session_start();
 
 require_once 'includes.php';
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
 if (isset($_SESSION['tid'])) {
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 
@@ -206,7 +206,7 @@ if (isset($_GET['remove'])) {
 																<?php if ($subject_resalt['image'] == "") {
 																	$pro_img = "../profile/images/hd_dp.jpg";
 																} else {
-																	$pro_img = "../admin/images/class/" . $subject_resalt['image'];
+																	$pro_img = "../super_admin/images/class/" . $subject_resalt['image'];
 																} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 															</div>
 															<h3 class="mt-4 mb-1"><strong><?php echo $list_resalt['lesson']; ?></strong></h3>

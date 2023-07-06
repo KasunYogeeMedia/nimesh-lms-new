@@ -4,9 +4,9 @@ session_start();
 
 require_once 'includes.php';
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
 
 
@@ -23,7 +23,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 
@@ -204,7 +204,7 @@ if (isset($_SESSION['tid'])) {
 																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
-																<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" class="badge badge-primary" target="_blank">View Tute</a></td>
+																<td><a href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" class="badge badge-primary" target="_blank">View Tute</a></td>
 																<td><span class="badge badge-secondary" style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
@@ -238,7 +238,7 @@ if (isset($_SESSION['tid'])) {
 														<div class="card-body">
 															<div class="text-center">
 																<div class="profile-photo">
-																	<a class="btn btn-success btn-rounded mt-3 px-4" href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a>
+																	<a class="btn btn-success btn-rounded mt-3 px-4" href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a>
 																</div>
 																<h3 class="mt-4 mb-1"><strong><?php echo $row['title']; ?></strong></h3>
 																<p class="text-muted"><strong>Month : <?php echo $row['month']; ?></strong></p>

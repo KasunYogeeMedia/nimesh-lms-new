@@ -1,5 +1,5 @@
 <?php
-admin/
+super_admin/
 require_onceadmin/oard/dbconfig4.php';
 
 include '../dashboard/conn.php';

@@ -4,7 +4,7 @@ session_start();
 
 require_once 'includes.php';
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 require_once("check_user.php");
 
@@ -71,7 +71,7 @@ require_once("check_user.php");
                                     <img src="../profile/images/hd_dp.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="admin.php" class="dropdown-item ai-icon">
+                                    <a href="super_admin.php" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                         <span class="ml-2"><?php echo $username;?></span>
                                     </a>
@@ -164,7 +164,8 @@ require_once 'sidebarmenu.php';
 												<tbody>
 								<?php
 
-								$stmt = $DB_con->prepare('SELECT * FROM lmsclasstute where tid='".$_SESSION['tid']."' ORDER BY ctuid');
+								$stmt = $DB_con->prepare('SELECT * FROM lmsclasstute where tid="' . $_SESSION['tid'] . '" ORDER BY ctuid');
+
 
 								$stmt->execute();
 
@@ -241,7 +242,7 @@ require_once 'sidebarmenu.php';
 						<td><?php echo $row['month']; ?></td>
 						<td><?php echo $row['ctype']; ?></td>
 						<td><?php echo $row['title']; ?></td>
-						<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
+						<td><a href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
 						<td><?php echo $row['add_date']; ?></td>										
 													</tr>
 								<?php } 
@@ -279,7 +280,7 @@ require_once 'sidebarmenu.php';
 											<div class="card-body">
 												<div class="text-center">
 													<div class="profile-photo">
-													<a class="btn btn-success btn-rounded mt-3 px-4" href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a>
+													<a class="btn btn-success btn-rounded mt-3 px-4" href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a>
 													</div>
 													<h3 class="mt-4 mb-1"><strong><?php echo $row['title']; ?></strong></h3>
 													<p class="text-muted"><strong>Month : <?php echo $row['month']; ?></strong></p>

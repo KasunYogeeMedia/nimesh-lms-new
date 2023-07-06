@@ -3,9 +3,9 @@
 session_start();
 error_reporting(0);
 
-require_once 'admin/conn.php';
-require_once 'admin/config.php';
-require_once 'admin/dbconfig4.php';
+require_once 'super_admin/conn.php';
+require_once 'super_admin/config.php';
+require_once 'super_admin/dbconfig4.php';
 
 
 

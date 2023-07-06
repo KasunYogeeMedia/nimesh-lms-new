@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 if (isset($_GET['lms_exam_system_id'])) {
 	$lms_exam_system_id = mysqli_real_escape_string($conn, $_GET['lms_exam_system_id']);

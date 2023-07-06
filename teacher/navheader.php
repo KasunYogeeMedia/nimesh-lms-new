@@ -4,7 +4,7 @@
 
 <div class="nav-header">
     <a href="index.php" class="brand-logo">
-        <img class="w-100 px-2" src="../admin/settings/logo/<?php echo $main_logo; ?>" alt="">
+        <img class="w-100 px-2" src="../super_admin/settings/logo/<?php echo $main_logo; ?>" alt="">
 
     </a>
 

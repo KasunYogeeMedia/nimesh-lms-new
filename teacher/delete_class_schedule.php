@@ -1,14 +1,12 @@
 <?php
 
-	require_once '../admin/dbconfig4.php';
-	
-	if(isset($_GET['csid']))
-	{
+require_once '../super_admin/dbconfig4.php';
 
-		$stmt_delete = $DB_con->prepare('DELETE FROM lmsclass_schlmsle WHERE classid =:csid');
-		$stmt_delete->bindParam(':csid',$_GET['csid']);
-		$stmt_delete->execute();
+if (isset($_GET['csid'])) {
 
-		echo"<script type='text/javascript'>window.location.href = 'class_schedule.php';</script>";
-		
-	}
+	$stmt_delete = $DB_con->prepare('DELETE FROM lmsclass_schlmsle WHERE classid =:csid');
+	$stmt_delete->bindParam(':csid', $_GET['csid']);
+	$stmt_delete->execute();
+
+	echo "<script type='text/javascript'>window.location.href = 'class_schedule.php';</script>";
+}

@@ -1,6 +1,6 @@
 <?php
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
 if (isset($_GET['pi_id'])) {
 	mysqli_query($conn, "DELETE FROM paper_image WHERE pi_id='$_GET[pi_id]'");
@@ -23,7 +23,7 @@ if (isset($_POST['upload_btn'])) {
 }
 ?>
 <form method="post" enctype="multipart/form-data" style="width: 100px; display: inline-block; vertical-align: top; margin: 5px;" onSubmit="change_name();">
-	<label style="cursor: pointer;"><img src="<?php echo $url; ?>/lms/admin/images/img_upload.png" id="yourImgTag" style="width: 100px; height: 100px; object-fit: cover;">
+	<label style="cursor: pointer;"><img src="<?php echo $url; ?>/lms/super_admin/images/img_upload.png" id="yourImgTag" style="width: 100px; height: 100px; object-fit: cover;">
 		<input name="fileName" type="file" required="required" id="fileName" style="display: none;" onChange="dis_name();" accept="image/jpeg"></label>
 	<button name="upload_btn" type="submit" style="display: block; width: 100%; margin-top: 5px;" id="sub_btn">Upload</button>
 </form>
@@ -82,8 +82,8 @@ while ($img_resalt = mysqli_fetch_assoc($img_qury)) {
 ?>
 	<div class="img-div">
 		<a href="image_upload.php?pi_id=<?php echo $img_resalt['pi_id']; ?>&exam_id=<?php echo $_GET['exam_id']; ?>" onClick="return confirm('Image Remove?');"><span>&times;</span></a>
-		<img src="<?php echo $url; ?>/lms/admin/paper_img/<?php echo $img_resalt['pi_image']; ?>">
-		<textarea readonly="readonly" onClick="this.select();"><?php echo "$url/lms/admin/paper_img/" . $img_resalt['pi_image']; ?></textarea>
+		<img src="<?php echo $url; ?>/lms/super_admin/paper_img/<?php echo $img_resalt['pi_image']; ?>">
+		<textarea readonly="readonly" onClick="this.select();"><?php echo "$url/lms/super_admin/paper_img/" . $img_resalt['pi_image']; ?></textarea>
 	</div>
 <?php } ?>
 

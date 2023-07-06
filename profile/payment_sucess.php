@@ -1,12 +1,12 @@
 <?php
 
 
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 $a = time() + 60 * 60 * 24 * 30;
 
 $exp_date = date("Y-m-d", $a);
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE);
 $status = $input['status'];

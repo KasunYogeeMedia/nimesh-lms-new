@@ -2,7 +2,7 @@
 
     <?php
 
-    require_once("admin/conn.php");
+    require_once("super_admin/conn.php");
 
     $subject_qury = mysqli_query($conn, "SELECT * FROM lmssubject WHERE class_id='$_GET[cid]' ORDER BY name");
     if (!mysqli_num_rows($subject_qury) > 0) {

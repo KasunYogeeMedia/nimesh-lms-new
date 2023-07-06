@@ -9,11 +9,11 @@ $a = time() + 60 * 60 * 24 * 30;
 
 $exp_date = date("Y-m-d", $a);
 
-require_once("../admin/config.php");
+require_once("../super_admin/config.php");
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 if (!isset($_SESSION['reid'])) {
 
@@ -605,7 +605,7 @@ if (isset($_POST['submit_bt'])) {
 									<a href="free_class.php" class="btn btn-success">View More</a>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/admin/Free Live Class.png" alt="">
+									<img src="images/super_admin/Free Live Class.png" alt="">
 								</div>
 							</div>
 						</div>
@@ -616,7 +616,7 @@ if (isset($_POST['submit_bt'])) {
 										Tutes</h2><br>
 									<h5></h5> <a href="free_class_tutes.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Free Class Tute.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Free Class Tute.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -628,7 +628,7 @@ if (isset($_POST['submit_bt'])) {
 									<a href="exam_list.php?type=0" class="btn btn-success">View More</a>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/admin/Free Exams.png" alt="">
+									<img src="images/super_admin/Free Exams.png" alt="">
 								</div>
 							</div>
 						</div>
@@ -644,7 +644,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Paid Live Classes</h2><br>
 									<h5></h5> <a href="online_class.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Paid Live Class.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Paid Live Class.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -654,7 +654,7 @@ if (isset($_POST['submit_bt'])) {
 										Tutes</h2><br>
 									<h5></h5> <a href="online_class_tutes.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Download Paid Class Tute.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Download Paid Class Tute.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -663,7 +663,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Paid Paper Classes</h2><br>
 									<h5></h5> <a href="paper_class.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Paid Revision Class.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Paid Revision Class.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -673,7 +673,7 @@ if (isset($_POST['submit_bt'])) {
 										Tutes</h2><br>
 									<h5></h5> <a href="paper_class_tutes.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Download Paid revision class tute.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Download Paid revision class tute.png" alt=""> </div>
 							</div>
 						</div>
 					</div>
@@ -687,7 +687,7 @@ if (isset($_POST['submit_bt'])) {
 											<a href="exam_list.php?type=1" class="btn btn-success">View More</a>
 								</div>
 								<div class="card_dash_right">
-									<img src="images/admin/Paid Exams.png" alt="">
+									<img src="images/super_admin/Paid Exams.png" alt="">
 								</div>
 							</div>
 						</div>
@@ -702,7 +702,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>This Month's Recordings</h2><br>
 									<h5></h5> <a href="paid_lesson.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/This month Recordings.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/This month Recordings.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -711,7 +711,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>All Previous Recordings</h2><br>
 									<h5></h5> <a href="old_video_lessons.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/All Previouus recording.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/All Previouus recording.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -720,7 +720,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Free Recorded Classes</h2><br>
 									<h5></h5> <a href="free_lesson.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Free Recode Class.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Free Recode Class.png" alt=""> </div>
 							</div>
 						</div>
 					</div>
@@ -734,7 +734,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Your Profile</h2><br>
 									<h5></h5> <a href="edit_profile.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Your Profile.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Your Profile.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -743,7 +743,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Bank Payments History</h2><br>
 									<h5></h5> <a href="bank_payment.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Bank Payment History.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Bank Payment History.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -752,7 +752,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Card Payments History</h2><br>
 									<h5></h5> <a href="card_payment.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Card Payment History.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Card Payment History.png" alt=""> </div>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-6 col-md-6">
@@ -761,7 +761,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Manual Payments History</h2><br>
 									<h5></h5> <a href="manual_payment.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Manual Payment History.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Manual Payment History.png" alt=""> </div>
 							</div>
 						</div>
 					</div>
@@ -775,7 +775,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2>Rate Your Learning Experience</h2><br>
 									<h5></h5> <a href="reviews.php" class="btn btn-success">View More</a>
 								</div>
-								<div class="card_dash_right"> <img src="images/admin/Rate Your Experince.png" alt=""> </div>
+								<div class="card_dash_right"> <img src="images/super_admin/Rate Your Experince.png" alt=""> </div>
 							</div>
 						</div>
 					</div>

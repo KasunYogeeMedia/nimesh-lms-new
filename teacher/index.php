@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 if (isset($_SESSION['tid'])) {
 
@@ -75,7 +75,7 @@ if (isset($_POST['login_bt'])) {
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <p>
-                                        <center><img src="../admin/settings/logo/<?php echo $main_logo; ?>"></center>
+                                        <center><img src="../super_admin/settings/logo/<?php echo $main_logo; ?>"></center>
                                     </p>
                                     <h4 class="text-center mb-4">Log In | Teacher</h4>
                                     <hr>

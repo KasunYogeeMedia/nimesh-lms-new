@@ -4,9 +4,9 @@ session_start();
 
 require_once 'includes.php';
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_SESSION['tid'])) {
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['tid'])) {
         $image_path = "../profile/images/hd_dp.jpg";
     } else {
 
-        $image_path = "../admin/images/teacher/" . $user_resalt['image'];
+        $image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
     }
 }
 
@@ -70,7 +70,7 @@ if (isset($_SESSION['tid'])) {
                                     <img src="../profile/images/hd_dp.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="admin.php" class="dropdown-item ai-icon">
+                                    <a href="super_admin.php" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
@@ -240,7 +240,7 @@ if (isset($_SESSION['tid'])) {
                                                                     <?php if ($row['cover'] == "") {
                                                                         $pro_img = "../profile/images/hd_dp.jpg";
                                                                     } else {
-                                                                        $pro_img = "../admin/images/lesson/cover/" . $row['cover'];
+                                                                        $pro_img = "../super_admin/images/lesson/cover/" . $row['cover'];
                                                                     } ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
                                                                 </td>
                                                                 <td><span class="badge badge-secondary" style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>

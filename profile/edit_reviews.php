@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-require_once("../admin/config.php");
-require_once '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+require_once("../super_admin/config.php");
+require_once '../super_admin/dbconfig4.php';
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister INNER JOIN lmsclass ON lmsregister.level=lmsclass.cid WHERE reid='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
@@ -187,7 +187,7 @@ if (isset($_POST['update'])) {
 																			?></option>
 														<?php
 
-														require_once '../admin/dbconfig4.php';
+														require_once '../super_admin/dbconfig4.php';
 
 														$stmt = $DB_con->prepare('SELECT * FROM lmstealmsr ORDER BY tid');
 

@@ -28,7 +28,7 @@
 
 			session_start();
 
-			require_once("../admin/conn.php");
+			require_once("../super_admin/conn.php");
 
 
 

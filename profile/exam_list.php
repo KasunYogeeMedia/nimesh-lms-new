@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-include '../admin/conn.php';
-require_once '../admin/dbconfig4.php';
+include '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 //require '../class/timer.php';
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);

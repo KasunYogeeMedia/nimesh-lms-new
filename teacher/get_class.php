@@ -1,5 +1,5 @@
 <?php
-require_once("../admin/config.php");
+require_once("../super_admin/config.php");
 if (!empty($_POST["cid"])) {
     $query = mysqli_query($con, "SELECT * FROM lmsclass WHERE course = '" . $_POST["cid"] . "'");
 ?>

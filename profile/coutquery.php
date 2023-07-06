@@ -1,8 +1,8 @@
-<?php	
+<?php
 
-							
 
-require_once '../admin/dbconfig4.php';
+
+require_once '../super_admin/dbconfig4.php';
 
 
 

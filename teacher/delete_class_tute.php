@@ -1,19 +1,17 @@
 <?php
 
-	require_once '../admin/dbconfig4.php';
-	
-	if(isset($_GET['cttid']))
-	{
+require_once '../super_admin/dbconfig4.php';
 
-		$stmt_select = $DB_con->prepare('SELECT tdocument FROM lmsclasstute WHERE ctuid =:cttid');
-		$stmt_select->execute(array(':cttid'=>$_GET['cttid']));
-		$imgRow=$stmt_select->fetch(PDO::FETCH_ASSOC);
-		unlink("../admin/images/classtute/".$imgRow['tdocument']);
+if (isset($_GET['cttid'])) {
 
-		$stmt_delete = $DB_con->prepare('DELETE FROM lmsclasstute WHERE ctuid =:cttid');
-		$stmt_delete->bindParam(':cttid',$_GET['cttid']);
-		$stmt_delete->execute();
+	$stmt_select = $DB_con->prepare('SELECT tdocument FROM lmsclasstute WHERE ctuid =:cttid');
+	$stmt_select->execute(array(':cttid' => $_GET['cttid']));
+	$imgRow = $stmt_select->fetch(PDO::FETCH_ASSOC);
+	unlink("../super_admin/images/classtute/" . $imgRow['tdocument']);
 
-		echo"<script type='text/javascript'>window.location.href = 'class_tute.php';</script>";
-		
-	}
+	$stmt_delete = $DB_con->prepare('DELETE FROM lmsclasstute WHERE ctuid =:cttid');
+	$stmt_delete->bindParam(':cttid', $_GET['cttid']);
+	$stmt_delete->execute();
+
+	echo "<script type='text/javascript'>window.location.href = 'class_tute.php';</script>";
+}

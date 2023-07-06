@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../admin/conn.php';
+include '../super_admin/conn.php';
 
 date_default_timezone_set("Asia/Colombo");
 

@@ -4,9 +4,9 @@ session_start();
 
 require_once 'includes.php';
 
-require_once '../admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-require_once("../admin/conn.php");
+require_once("../super_admin/conn.php");
 
 if (isset($_SESSION['tid'])) {
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 
@@ -62,13 +62,13 @@ if (isset($_POST['update_class_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
+			$target = "../super_admin/images/class/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "../admin/images/class/" . $imagepath; //This is the new file you saving
-			$file = "../admin/images/class/" . $imagepath; //This is the original file
+			$save = "../super_admin/images/class/" . $imagepath; //This is the new file you saving
+			$file = "../super_admin/images/class/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
@@ -117,13 +117,13 @@ if (isset($_POST['add_class_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
+			$target = "../super_admin/images/class/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "../admin/images/class/" . $imagepath; //This is the new file you saving
-			$file = "../admin/images/class/" . $imagepath; //This is the original file
+			$save = "../super_admin/images/class/" . $imagepath; //This is the new file you saving
+			$file = "../super_admin/images/class/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
