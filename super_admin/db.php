@@ -66,7 +66,6 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-
 if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	$reid = $_SESSION['reid'];
 	$current_user = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid = $reid LIMIT 1");

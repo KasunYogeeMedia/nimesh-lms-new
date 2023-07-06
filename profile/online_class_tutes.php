@@ -45,9 +45,6 @@ if ($image_resalt['image'] == "") {
 </head>
 
 <body>
-
-
-
 	<?php
 	require_once 'sidebarmenu.php';
 	?>
