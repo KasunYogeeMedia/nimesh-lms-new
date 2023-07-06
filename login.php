@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 error_reporting(0);
 
 require_once 'super_admin/conn.php';

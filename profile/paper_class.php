@@ -1,6 +1,8 @@
 ﻿<?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 require_once '../super_admin/dbconfig4.php';
 

@@ -1,6 +1,8 @@
 <?php
 require_once 'super_admin/conn.php';
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 session_unset();
 session_destroy();
 setcookie("reid", "", time() - 60, "/");

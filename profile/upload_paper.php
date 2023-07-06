@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 if (isset($_GET['clear'])) {
 	unset($_SESSION['up_image_view']);

@@ -1,4 +1,4 @@
-<link rel="icon" type="image/png" href="images/fav.png">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
 
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
 

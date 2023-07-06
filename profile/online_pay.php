@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 include '../super_admin/conn.php';
 
@@ -215,7 +217,9 @@ if (isset($_GET['select_payment'])) {
                     fclose($myfile);
                     $re_url = $result['data']['gateway']['redirect_url'];
                     header('Location: ' . $re_url, true, $permanent ? 301 : 302);
-                    session_start();
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
                     $_SESSION['reid1'] = $_SESSION['reid'];
                     $_SESSION['select_payment0'] = $select_payment[0];
                     $_SESSION['select_payment1'] = $select_payment[1];
@@ -242,7 +246,9 @@ if (isset($_GET['select_payment'])) {
             die();
         }
     }
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     $_SESSION['pay_list_data'] = $pay_list;
 }
 

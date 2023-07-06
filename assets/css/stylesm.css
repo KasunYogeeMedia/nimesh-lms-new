@@ -1,0 +1,35 @@
+.dash_card{
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.section-border {
+  border: solid 3px #2f528f42;
+}
+
+.card_dash_left h2 {
+  position: relative;
+  text-align: center;
+}
+
+.card_dash .btn.btn-success.dash_card_a {
+  display: block;
+  margin: 0 auto;
+  width: 90px;
+}
+
+.card_dash_left {
+  float: none;
+}
+
+.card_dash_right {
+  float: none;
+  padding: 0;
+}
+
+.card_dash_right .fa-2x {
+  text-align: center;
+  display: block;
+  padding: 10px;
+}
