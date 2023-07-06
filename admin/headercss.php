@@ -1,5 +1,5 @@
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon.png">
 
 <link rel="stylesheet" href="css/style.css">
 

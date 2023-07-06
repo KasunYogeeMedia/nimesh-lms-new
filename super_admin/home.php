@@ -347,7 +347,7 @@ require_once("conn.php");
 													<i class="la la-users"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Students</p>
+													<p class="mb-1 text-light">Total Students</p>
 													<h3 class="text-white"><?php echo $total_register ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 80%"></div>
@@ -365,7 +365,7 @@ require_once("conn.php");
 													<i class="la la-black-tie"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Teachers</p>
+													<p class="mb-1 text-light">Total Teachers</p>
 													<h3 class="text-white"><?php echo $total_teacher ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 50%"></div>
@@ -383,7 +383,7 @@ require_once("conn.php");
 													<i class="la la-calendar-o"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Batch</p>
+													<p class="mb-1 text-light">Total Batch</p>
 													<h3 class="text-white"><?php echo $total_class ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 76%"></div>
@@ -401,7 +401,7 @@ require_once("conn.php");
 													<i class="la la-buysellads"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Courses</p>
+													<p class="mb-1 text-light">Total Courses</p>
 													<h3 class="text-white"><?php echo $total_subject ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
@@ -419,7 +419,7 @@ require_once("conn.php");
 													<i class="la la-play-circle-o"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Video Lessons</p>
+													<p class="mb-1 text-light">Total Video Lessons</p>
 													<h3 class="text-white"><?php echo $total_lesson ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
@@ -437,7 +437,7 @@ require_once("conn.php");
 													<i class="la la-slideshare"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Class Schedule</p>
+													<p class="mb-1 text-light">Total Class Schedule</p>
 													<h3 class="text-white"><?php echo $total_class_schedule ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
@@ -455,7 +455,7 @@ require_once("conn.php");
 													<i class="la la-money"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Payment</p>
+													<p class="mb-1 text-light">Total Payment</p>
 													<h3 class="text-white"><?php echo $total_payment ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
@@ -473,7 +473,7 @@ require_once("conn.php");
 													<i class="la la-user-secret"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Admin Users</p>
+													<p class="mb-1 text-light">Total Admin Users</p>
 													<h3 class="text-white"><?php echo $total_users ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
@@ -491,7 +491,7 @@ require_once("conn.php");
 													<i class="fa fa-university"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Revenue</p>
+													<p class="mb-1 text-light">Total Revenue</p>
 													<h3 class="text-white"><?php
 																			$c_date = date("Y-01-01");
 
@@ -544,7 +544,7 @@ require_once("conn.php");
 															<i class="la la-users"></i>
 														</span>
 														<div class="media-body text-white">
-															<p class="mb-1"><?php echo $sub_resalt['name']; ?></p>
+															<p class="mb-1 text-light"><?php echo $sub_resalt['name']; ?></p>
 															<h3 class="text-white">Total Students - <?php
 																									$stmt = $DB_con->prepare('SELECT COUNT(*) AS  register_count1 FROM lmsregister where level="' . $sub_resalt['cid'] . '"');
 																									$stmt->execute();
