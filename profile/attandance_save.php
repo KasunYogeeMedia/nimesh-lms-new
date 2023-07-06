@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","r^3JU}teRuA]","yogeedev_nimesh_lms");
+$con = mysqli_connect("localhost","yogeedev_nimesh_lms","r^3JU}teRuA]","yogeedev_nimesh_lms");
 $uid = $_GET['uid'];
 $sid = $_GET['sid'];
 $lid = $_GET['lid'];
