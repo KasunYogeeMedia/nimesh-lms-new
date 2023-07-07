@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2023 at 10:43 AM
+-- Generation Time: Jul 07, 2023 at 02:23 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `nimesh-lms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `certificate`
+--
+
+CREATE TABLE `certificate` (
+  `id` int NOT NULL,
+  `userId` int NOT NULL,
+  `certificate_status` int NOT NULL DEFAULT '1',
+  `issue_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `certificate`
+--
+
+INSERT INTO `certificate` (`id`, `userId`, `certificate_status`, `issue_date`) VALUES
+(2, 1732, 1, '2023-07-07 14:22:57');
 
 -- --------------------------------------------------------
 
@@ -1063,7 +1083,7 @@ CREATE TABLE `lmspayment` (
 --
 
 INSERT INTO `lmspayment` (`pid`, `fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`, `pay_type`) VALUES
-(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 1, 1, 'half'),
+(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 0, 1, 'half'),
 (2, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-08 18:42:18', '0', 1, 1, 'half');
 
 -- --------------------------------------------------------
@@ -4315,18 +4335,19 @@ CREATE TABLE `lms_exam_report` (
   `exam_report_faced` int NOT NULL,
   `exam_report_corect` int NOT NULL,
   `exam_report_percent` int NOT NULL,
-  `exam_report_complet_time` datetime NOT NULL
+  `exam_report_complet_time` datetime NOT NULL,
+  `status` int NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lms_exam_report`
 --
 
-INSERT INTO `lms_exam_report` (`lms_report_id`, `exam_report_user`, `exam_report_paper`, `exam_report_faced`, `exam_report_corect`, `exam_report_percent`, `exam_report_complet_time`) VALUES
-(7, 1545, 10, 5, 0, 0, '2021-12-29 23:12:44'),
-(6, 1322, 10, 5, 0, 0, '2021-12-29 09:46:53'),
-(5, 1609, 9, 2, 1, 5, '2021-12-26 10:37:11'),
-(8, 1303, 10, 1, 0, 0, '2022-01-04 09:11:44');
+INSERT INTO `lms_exam_report` (`lms_report_id`, `exam_report_user`, `exam_report_paper`, `exam_report_faced`, `exam_report_corect`, `exam_report_percent`, `exam_report_complet_time`, `status`) VALUES
+(7, 1545, 10, 5, 0, 0, '2021-12-29 23:12:44', 1),
+(6, 1322, 10, 5, 0, 0, '2021-12-29 09:46:53', 1),
+(5, 1609, 9, 2, 1, 5, '2021-12-26 10:37:11', 1),
+(8, 1303, 10, 1, 0, 0, '2022-01-04 09:11:44', 1);
 
 -- --------------------------------------------------------
 
@@ -4554,19 +4575,26 @@ CREATE TABLE `verbal_exam` (
   `id` int NOT NULL,
   `userId` bigint NOT NULL,
   `marks` bigint NOT NULL,
-  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `verbal_exam`
 --
 
-INSERT INTO `verbal_exam` (`id`, `userId`, `marks`, `document`) VALUES
-(9, 1732, 5000, NULL);
+INSERT INTO `verbal_exam` (`id`, `userId`, `marks`, `document`, `status`) VALUES
+(9, 1732, 5000, NULL, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `certificate`
+--
+ALTER TABLE `certificate`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chats`
@@ -4801,6 +4829,12 @@ ALTER TABLE `verbal_exam`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `certificate`
+--
+ALTER TABLE `certificate`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chats`
