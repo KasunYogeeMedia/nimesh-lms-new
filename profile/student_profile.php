@@ -902,17 +902,17 @@ if (isset($_POST['submit_bt'])) {
 												<?php
 
 												 $tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
-												 
+											
 												 while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
-
+													
 													//check paid subject
-
+													
 													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
 													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
 													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
 													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-													var_dump($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury));
-													if (in_array($current_user_data['level'], $selected_subjects)) {
+													
+													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 														
 												?>
 														<tr>
@@ -955,7 +955,7 @@ if (isset($_POST['submit_bt'])) {
 								}
 								?>
 								<h4>Select Month</h4>
-								<input id="select_month" class="form-control" type="month" name="paymonth" value="<?php echo date("Y-m"); ?>">
+								
 								<br>
 								<label for="fileName1"><img src="images/card payment.png" id="yourImgTag1" style="width:20%;cursor: pointer;" /></label>
 								<ul>
@@ -973,12 +973,12 @@ if (isset($_POST['submit_bt'])) {
 								$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' and userID='$_SESSION[reid]' and status='1' ORDER BY pid DESC");
 								while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
 								?>
-									<span class="badge badge-success" style="font-size:14px;color:#000000;">Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span>
+									
 								<?php
 								}
 								?>
 								<h4>Select Month</h4>
-								<input type="month" class="form-control" name="paymonth" value="<?php echo date("Y-m"); ?>">
+								
 								<br>
 
 								<label class="control-label text-dark" for="basicinput">සාමාන්‍ය පන්ති ගාස්තු ගෙවූ දරුවන් පමණක් බැංකු රිසිට් පත මෙතනින් upload කරන්න. පන්ති ගාස්තු සදහා සහන (Discounts/Offers) ලැබූ සිසුන් එම bank receipt පත 0773851246 අංකයට නම , Atlas Learn LMS එකෙහි register වූ දුරකතන අංකය , විෂය සහ ගුරුවරයා , ඒ ඒ විෂයට ගෙවූ ගාස්තුව වෙන වෙනම සදහන් කර WhatsApp කරන්න.සාමාන්‍ය පන්ති ගාස්තු ගෙවන දරුවන් සම්බන්ධ වන විෂයන් ඉදිරියේ හරි ලකුණු යොදා (click on the relevant tick box) මෙහි bank receipt පතෙහි photo එකක් හෝ screenshot එකක් upload කරන්න. (Pdf file upload කල නොහැක)</label>

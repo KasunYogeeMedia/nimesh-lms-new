@@ -52,7 +52,7 @@
 
 						<li class="menu--item">
 							<a href="paid_lesson.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">This Month's Recordings</span> </a>
-						</li> -->
+						</li> 
 						<!-- <li class="menu--item">
 							<a href="old_video_lessons.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">All Previous Recordings</span> </a>
 						</li> -->
