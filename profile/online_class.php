@@ -141,10 +141,8 @@ if ($image_resalt['image'] == "") {
 															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
 														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
 														<div class="course-overlay">
-															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
-															<div class="crse_reviews">
-																<i class="fa fa-check-circle"></i> <?php echo date_format(date_create($level_resalt['add_date']), "F"); ?>
-															</div>
+
+
 
 															<div class="crse_timer">
 																<?php
@@ -248,10 +246,8 @@ if ($image_resalt['image'] == "") {
 															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
 														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
 														<div class="course-overlay">
-															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
-															<div class="crse_reviews">
-																<i class="fa fa-check-circle"></i> <?php echo date_format(date_create($level_resalt['add_date']), "F"); ?>
-															</div>
+
+
 
 															<div class="crse_timer">
 																<?php
@@ -292,19 +288,55 @@ if ($image_resalt['image'] == "") {
 														$vmonth = date_format(date_create($level_resalt['add_date']), "Y-m-01");
 														date_default_timezone_set("Asia/Colombo");
 														$lmsck_date = date('Y-m-d', time());
-														$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1' and pay_month='$vmonth' and expiredate>'$lmsck_date'");
-														if (mysqli_num_rows($lmsck_payment) > 0) {
+														$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1' ");
+														$row = mysqli_fetch_assoc($lmsck_payment);
+														if (mysqli_num_rows($lmsck_payment) == 1) {
+
+															if ($row['pay_type'] == 'full') {
+
+
+
 														?>
-															<h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
+																<h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
+
+
+
+
+																<?php
+															} else {
+																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
+																$subject_data = mysqli_fetch_assoc($subject_validate);
+																$start_date = $subject_data['start'];
+																$end_date = $subject_data['end'];
+
+																$start_timestamp = strtotime($start_date);
+																$end_timestamp = strtotime($end_date);
+
+																$mid_timestamp = ($start_timestamp + $end_timestamp) / 2;
+																$mid_date = date("Y-m-d", $mid_timestamp);
+
+																if ($lmsck_date <= $mid_date) { ?>
+																	<h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
+																<?php } else { ?>
+
+															<?php
+																}
+															}
+															?>
 
 														<?php
+
 														} else {
+
+
+
 
 														?>
 
 														<?php
 														}
 														?>
+
 
 														<div class="auth1lnkprce">
 															<p class="cr1fot">
@@ -322,31 +354,85 @@ if ($image_resalt['image'] == "") {
 																<?php
 																$vmonth = date_format(date_create($level_resalt['add_date']), "Y-m-01");
 																date_default_timezone_set("Asia/Colombo");
-																$lmsck_date = date('Y-m-d', time());
-																$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1' and pay_month='$vmonth' and expiredate>'$lmsck_date'");
-																if (mysqli_num_rows($lmsck_payment) > 0) {
+																$lmsck_date = date('Y-m-d');
+																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1'");
+																$row = mysqli_fetch_assoc($lmsck_payment);
+																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
+																$subject_data = mysqli_fetch_assoc($subject_validate);
+
+																$userID = $_SESSION['reid'];
+																$subjectID =  $level_resalt['subject'];
+																$lID =  $level_resalt['classid'];
+																if (mysqli_num_rows($lmsck_payments) == 1) {
+
+																	if ($row['pay_type'] == 'full') {
+
+
+
 																?>
+																		<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
+																		<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
+																		<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
+
+
+																		<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
+
+
+																		<div>
+																			<p id="showCounts"></p>
+																		</div>
+
+																		<?php
+																	} else {
+
+
+																		$start_date = $subject_data['start'];
+																		$end_date = $subject_data['end'];
+
+																		$start_timestamp = strtotime($start_date);
+																		$end_timestamp = strtotime($end_date);
+
+																		$mid_timestamp = ($start_timestamp + $end_timestamp) / 2;
+																		$mid_date = date("Y-m-d", $mid_timestamp);
+
+																		if ($lmsck_date <= $mid_date) { ?>
+																			<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
+																			<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
+																			<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
+																			<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
+																		<?php } else { ?>
+																			<a href="student_profile.php" class="save_btn btn-block">Pay here to other half payment</a>
 																	<?php
-																	$userID = $_SESSION['reid'];
-																	$subjectID =  $level_resalt['subject'];
-																	$lID =  $level_resalt['classid'];
+																		}
+																	}
+																	?>
+
+																	<?php
+
+																} else if (mysqli_num_rows($lmsck_payments) == 2) {
+																	$sum = 0;
+
+																	while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
+																		$sum += $row2['amount'];
+																		
+																	}
+																	
+																	
+
+																	if ($sum == $subject_data['price']) { ?>
+																		<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
+																		<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
+																		<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
+																		<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
+																	<?php } else { ?>
+																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+																	<?php 	}
+
 
 																	?>
-																	<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
-																	<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
-																	<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
 
-
-																	<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
-
-
-																	<div>
-																		<p id="showCounts"></p>
-																	</div>
 																<?php
-																} else {
-
-																?>
+																} else { ?>
 																	<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
 																<?php
 																}

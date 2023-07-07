@@ -37,7 +37,8 @@ if (isset($_POST['update'])) {
 			SET class_id=:class_id,
 				name=:name,
 				price=:price,
-                fees_valid_period=:fees_valid_period,
+                start=:start,
+				end=:end,
 				status=:status
 			WHERE sid=:sbid');
 		$stmt->bindParam(':class_id', $class_id);
