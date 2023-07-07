@@ -4,11 +4,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-    require_once 'includes.php';
+require_once 'includes.php';
 
-    require_once '../super_admin/dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
-    require_once("../super_admin/conn.php");
+require_once("../super_admin/conn.php");
 
 date_default_timezone_set("Asia/Colombo");
 
@@ -460,40 +460,18 @@ if (isset($_POST['add_class_bt'])) {
                                         <div class="col-lg-3 col-md-3 col-sm-12">
 
                                             <div class="form-group">
-
                                                 <label class="form-label">Teacher</label>
 
-                                                <select name="tealmsr" class="form-control" required>
 
-                                                    <option value="<?php if (isset($_GET['edit'])) {
-                                                                        echo $edit_resalt['tealmsr'];
-                                                                    } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
-                                                                                        echo $tealmsr_resalt['fullname'];
-                                                                                    } else {
-                                                                                        echo "Select";
-                                                                                    } ?></option>
-
-                                                    <?php
-
-                                                    $tealmsr = mysqli_query($conn, "SELECT * FROM lmstealmsr where status='1' ORDER BY fullname");
-
-                                                    while ($tealmsr_resalt = mysqli_fetch_array($tealmsr)) {
-
-                                                    ?>
-
-                                                        <option value="<?php echo $tealmsr_resalt['tid']; ?>"><?php echo $tealmsr_resalt['fullname']; ?></option>
-
-                                                    <?php
-
-                                                    }
-
-                                                    ?>
-
-                                                </select>
-
-
-
-
+                                                <?php
+                                                $tealmsr = mysqli_query($conn, "SELECT * FROM lmstealmsr where tid='" . $_SESSION['tid'] . "' ORDER BY fullname");
+                                                while ($tealmsr_resalt = mysqli_fetch_array($tealmsr)) {
+                                                ?>
+                                                    <input type="hidden" class="form-control" name="tealmsr" value="<?php echo $tealmsr_resalt['tid']; ?>" required>
+                                                    <input type="text" class="form-control" name="tealmsr" value="<?php echo $tealmsr_resalt['fullname']; ?>" readonly>
+                                                <?php
+                                                }
+                                                ?>
 
                                             </div>
 
@@ -524,10 +502,10 @@ if (isset($_POST['add_class_bt'])) {
                                                     <option value="<?php if (isset($_GET['edit'])) {
                                                                         echo $edit_resalt['level'];
                                                                     } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
-                                                                                        echo $edit_resalt['name'];
-                                                                                    } else {
-                                                                                        echo "Select";
-                                                                                    } ?></option>
+                                                                                            echo $edit_resalt['name'];
+                                                                                        } else {
+                                                                                            echo "Select";
+                                                                                        } ?></option>
 
                                                     <?php
 
@@ -591,10 +569,10 @@ if (isset($_POST['add_class_bt'])) {
                                                                                         echo $edit_resalt['subject'];
                                                                                     } else {
                                                                                     } ?>"><?php if (isset($_GET['edit'])) {
-                                                                                            echo $subject_resalt['name'];
-                                                                                        } else {
-                                                                                            echo "Course Not Found";
-                                                                                        } ?></option>
+                                                                                                echo $subject_resalt['name'];
+                                                                                            } else {
+                                                                                                echo "Course Not Found";
+                                                                                            } ?></option>
 
                                                     </select>
 
@@ -690,8 +668,8 @@ if (isset($_POST['add_class_bt'])) {
                                                     <option value="<?php if (isset($_GET['edit'])) {
                                                                         echo $edit_resalt['classstatus'];
                                                                     } ?>"><?php if (isset($_GET['edit'])) {
-                                                                            echo $edit_resalt['classstatus'];
-                                                                        } ?></option>
+                                                                                echo $edit_resalt['classstatus'];
+                                                                            } ?></option>
 
                                                     <option value="0">Upublished</option>
 
