@@ -25,12 +25,12 @@
 			<span class="nav-text">Class Tute</span>
 		</a>
 	</li>
-	<li>
+	<!-- <li>
 		<a href="video_lessons.php" aria-expanded="false">
 			<i class="la la-play-circle-o"></i>
 			<span class="nav-text">Video Lessons</span>
 		</a>
-	</li>
+	</li> -->
 	<li>
 		<a href="attendence.php" aria-expanded="false">
 			<i class="la la-file-text"></i>

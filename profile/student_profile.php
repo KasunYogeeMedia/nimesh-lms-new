@@ -798,30 +798,18 @@ if (isset($_POST['submit_bt'])) {
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark">Student Reg Number</p>
-													</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark"><?php echo $row['stnumber']; ?></p>
-													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Student Reg Number</p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['stnumber']; ?></p></td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark">Contact</p>
-													</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p>
-													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Contact</p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p></td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark">Address </p>
-													</td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark"><?php echo $row['address']; ?></p>
-													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Address </p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['address']; ?></p></td>
 												</tr>
 										<?php
 

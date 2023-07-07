@@ -13,7 +13,7 @@ require_once '../super_admin/dbconfig4.php';
 		<div class="col-auto my-auto">
 			<i class="fa fa-bell" aria-hidden="true"></i>
 		</div>
-		<div class="col-auto my-auto">
+		<div class="col-auto my-auto d-none">
 			<div class="form-check form-switch text-center p-0">
 				<label class="form-check-label" for="lightSwitch">
 					<i class="fa fa-moon-o" aria-hidden="true"></i>
@@ -21,7 +21,7 @@ require_once '../super_admin/dbconfig4.php';
 				<input class="form-check-input d-none" type="checkbox" id="lightSwitch" />
 			</div>
 
-			<script>
+			<!-- <script>
 				(function() {
 					let lightSwitch = document.getElementById('lightSwitch');
 					if (!lightSwitch) {
@@ -139,7 +139,7 @@ require_once '../super_admin/dbconfig4.php';
 
 					setup();
 				})();
-			</script>
+			</script> -->
 
 			<!-- //////////////////////////////////// -->
 		</div>
@@ -305,7 +305,7 @@ require_once '../super_admin/dbconfig4.php';
 				</div>
 			</div>
 			<?php
-			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");			
+			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
 			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
 				$lesson_date = $lesson_datas['classdate'];
 				$day = date("d", strtotime($lesson_date));
@@ -336,88 +336,88 @@ require_once '../super_admin/dbconfig4.php';
 
 		</div>
 	</div>
+</div>
+<script>
+	// Calender section script
+	document.addEventListener("DOMContentLoaded", function() {
+		var calendar = document.getElementById("calendar");
 
-	<script>
-		// Calender section script
-		document.addEventListener("DOMContentLoaded", function() {
-			var calendar = document.getElementById("calendar");
+		// Get current date
+		var currentDate = new Date();
 
-			// Get current date
-			var currentDate = new Date();
+		// Render calendar
+		renderCalendar(currentDate);
 
-			// Render calendar
-			renderCalendar(currentDate);
+		function renderCalendar(date) {
+			var year = date.getFullYear();
+			var month = date.getMonth();
+			var firstDay = new Date(year, month, 1);
+			var lastDay = new Date(year, month + 1, 0);
+			var daysInMonth = lastDay.getDate();
 
-			function renderCalendar(date) {
-				var year = date.getFullYear();
-				var month = date.getMonth();
-				var firstDay = new Date(year, month, 1);
-				var lastDay = new Date(year, month + 1, 0);
-				var daysInMonth = lastDay.getDate();
+			// Clear calendar
+			calendar.innerHTML = "";
 
-				// Clear calendar
-				calendar.innerHTML = "";
+			// Render header
+			var header = document.createElement("div");
+			header.classList.add("header");
 
-				// Render header
-				var header = document.createElement("div");
-				header.classList.add("header");
+			var prevBtn = document.createElement("span");
+			prevBtn.classList.add("prev");
+			prevBtn.textContent = "<";
+			prevBtn.addEventListener("click", function() {
+				renderCalendar(new Date(year, month - 1, 1));
+			});
+			header.appendChild(prevBtn);
 
-				var prevBtn = document.createElement("span");
-				prevBtn.classList.add("prev");
-				prevBtn.textContent = "<";
-				prevBtn.addEventListener("click", function() {
-					renderCalendar(new Date(year, month - 1, 1));
-				});
-				header.appendChild(prevBtn);
+			var monthLabel = document.createElement("span");
+			monthLabel.classList.add("month");
+			monthLabel.textContent = new Intl.DateTimeFormat("en-US", {
+				month: "long",
+				year: "numeric"
+			}).format(date);
+			header.appendChild(monthLabel);
 
-				var monthLabel = document.createElement("span");
-				monthLabel.classList.add("month");
-				monthLabel.textContent = new Intl.DateTimeFormat("en-US", {
-					month: "long",
-					year: "numeric"
-				}).format(date);
-				header.appendChild(monthLabel);
+			var nextBtn = document.createElement("span");
+			nextBtn.classList.add("next");
+			nextBtn.textContent = ">";
+			nextBtn.addEventListener("click", function() {
+				renderCalendar(new Date(year, month + 1, 1));
+			});
+			header.appendChild(nextBtn);
 
-				var nextBtn = document.createElement("span");
-				nextBtn.classList.add("next");
-				nextBtn.textContent = ">";
-				nextBtn.addEventListener("click", function() {
-					renderCalendar(new Date(year, month + 1, 1));
-				});
-				header.appendChild(nextBtn);
+			calendar.appendChild(header);
 
-				calendar.appendChild(header);
-
-				// Render weekdays
-				var weekdays = document.createElement("div");
-				weekdays.classList.add("weekdays");
-				var weekdaysArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-				for (var i = 0; i < weekdaysArray.length; i++) {
-					var weekday = document.createElement("div");
-					weekday.classList.add("weekday");
-					weekday.textContent = weekdaysArray[i];
-					weekdays.appendChild(weekday);
-				}
-				calendar.appendChild(weekdays);
-
-				// Render days
-				var days = document.createElement("div");
-				days.classList.add("days");
-				var day = 1;
-				var firstDayIndex = firstDay.getDay();
-				for (var i = 0; i < 42; i++) {
-					var dayCell = document.createElement("div");
-					dayCell.classList.add("day");
-					if (i >= firstDayIndex && day <= daysInMonth) {
-						dayCell.textContent = day;
-						if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
-							dayCell.classList.add("current-month");
-						}
-						day++;
-					}
-					days.appendChild(dayCell);
-				}
-				calendar.appendChild(days);
+			// Render weekdays
+			var weekdays = document.createElement("div");
+			weekdays.classList.add("weekdays");
+			var weekdaysArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+			for (var i = 0; i < weekdaysArray.length; i++) {
+				var weekday = document.createElement("div");
+				weekday.classList.add("weekday");
+				weekday.textContent = weekdaysArray[i];
+				weekdays.appendChild(weekday);
 			}
-		});
-	</script>
+			calendar.appendChild(weekdays);
+
+			// Render days
+			var days = document.createElement("div");
+			days.classList.add("days");
+			var day = 1;
+			var firstDayIndex = firstDay.getDay();
+			for (var i = 0; i < 42; i++) {
+				var dayCell = document.createElement("div");
+				dayCell.classList.add("day");
+				if (i >= firstDayIndex && day <= daysInMonth) {
+					dayCell.textContent = day;
+					if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
+						dayCell.classList.add("current-month");
+					}
+					day++;
+				}
+				days.appendChild(dayCell);
+			}
+			calendar.appendChild(days);
+		}
+	});
+</script>

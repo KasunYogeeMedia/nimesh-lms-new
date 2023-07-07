@@ -20,12 +20,11 @@ require_once 'dbconfig4.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Teacher Payments | Online Learning Platforms | Dashboard</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <link rel="stylesheet" href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
-    <!-- Datatable -->
-    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+
+    require_once 'headercss.php';
+
+    ?>
     <style type="text/css">
         .multi-select {
             height: 300px;
