@@ -49,7 +49,9 @@
 							<a href="exam_list.php?type=1" class="menu--link"> <i class='uil uil-star menu--icon'></i> <span class="menu--label">Paid Exams</span> </a>
 						</li>
 
-
+						<li class="menu--item">
+							<a href="online_verbal_exam.php" class="menu--link"> <i class='uil uil-star menu--icon'></i> <span class="menu--label">Verbal Exams</span> </a>
+						</li>
 						<li class="menu--item">
 							<a href="paid_lesson.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">This Month's Recordings</span> </a>
 						</li>

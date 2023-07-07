@@ -48,6 +48,15 @@
 		</ul>
 	</li>
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Verbal Exams</span>
+		</a>
+		<ul aria-expanded="false">
+			<li><a href="verbal.php">Verbal Exams Details</a></li>
+			
+		</ul>
+	</li>
+	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-money"></i>
 			<span class="nav-text">Payments</span>
 		</a>
