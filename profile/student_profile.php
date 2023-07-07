@@ -425,9 +425,7 @@ if (isset($_POST['submit_bt'])) {
 											<div class="profile-img">
 												<img src="<?php echo $pro_img; ?>" alt="" class="d-block mx-auto w-50 h-auto">
 											</div>
-											<a href="#" class="profile-edit-btn text-center d-block m-auto text-decoration-none">
-												edit
-											</a>
+											
 										</div>
 										<div class="col-9">
 											<div class="about">
