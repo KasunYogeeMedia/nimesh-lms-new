@@ -295,11 +295,9 @@ if ($image_resalt['image'] == "") {
 				?>
 			</div>
 		</div>
-	</div>
-
-
-
-
+		<?php
+		require_once 'footer.php';
+		?>
 	</div>
 	<?php
 	require_once 'footer.php';

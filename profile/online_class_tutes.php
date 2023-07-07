@@ -330,6 +330,9 @@ if ($image_resalt['image'] == "") {
 				?>
 			</div>
 		</div>
+		<?php
+		require_once 'footer.php';
+		?>
 	</div>
 	<!-- Body End -->
 	<?php

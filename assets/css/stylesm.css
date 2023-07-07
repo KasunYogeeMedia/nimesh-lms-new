@@ -34,7 +34,8 @@
   padding: 10px;
 }
 
-.authincation.dash-up {
+.authincation.dash-up,
+.authincation {
   width: 100%;
   height: 850px;
   background-image: url(../img/sign1.png), url(../img/sign2.png),

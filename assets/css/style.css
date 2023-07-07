@@ -7,14 +7,14 @@
 .custom-theme.bg-dark {
     background-color: #000 !important;
 }
+
 .custom-theme.bg-dark h2,
 .custom-theme.bg-dark h3,
 .custom-theme.bg-dark h4,
 .custom-theme.bg-dark h5,
 .custom-theme.bg-dark h6,
 .custom-theme.bg-dark label,
-.custom-theme.bg-dark p
-.custom-theme.bg-dark .btn{
+.custom-theme.bg-dark p .custom-theme.bg-dark .btn {
     color: #fff;
 }
 
@@ -449,7 +449,8 @@ footer {
 .chat_sec .chat_sec_footer textarea::placeholder {
     color: #ddd;
 }
-#rsbtnon{
+
+#rsbtnon {
     display: none;
     position: fixed;
     right: 5px;
@@ -458,20 +459,25 @@ footer {
 }
 
 .menu--item.active {
-	background-color: #e0ebfb;
+    background-color: #e0ebfb;
 }
+
+.row.m-0 {
+    min-height: calc(100vh - 65px);
+}
+
 @media screen and (max-width: 991px) {
     .rg-sb {
         position: fixed;
         right: 0;
         transition: 0.5s;
     }
-    .r-sb-sec{
+
+    .r-sb-sec {
         height: 90vh;
         overflow: hidden;
         overflow-y: auto;
     }
 }
-@media screen and (max-width: 768px) {
 
-}
+@media screen and (max-width: 768px) {}
