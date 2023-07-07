@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$username = "yogeedev_nimesh_lms";
-$pass = "r^3JU}teRuA]";
-$db = "yogeedev_nimesh_lms";
+$username = "root";
+$pass = "";
+$db = "nimesh-lms";
 
 //create connection 
 
@@ -65,7 +65,6 @@ $url = $lmsurl_resalt['url'];
 if (!isset($_SESSION)) {
 	session_start();
 }
-
 
 if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	$reid = $_SESSION['reid'];

@@ -493,8 +493,8 @@ require_once("conn.php");
 													<i class="fa fa-university"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1 text-light">Total Revenue</p>
-													<h3 class="text-white"><?php
+													<p class="mb-1">Total Revenue</p>
+													<h3 class="text-white"><?php /*
 																			$c_date = date("Y-01-01");
 
 																			$income_qury = mysqli_query($conn, "SELECT SUM(amount) as total_income FROM lmspayment WHERE pay_month = '$c_date' AND status='1'");
@@ -511,9 +511,9 @@ require_once("conn.php");
 																			$payment_count = mysqli_query($conn, "SELECT SUM(amount) amount FROM lmspayment WHERE status=1");
 																			$payment_resalt = mysqli_fetch_assoc($payment_count);
 
-																			/*echo 'Rs '.number_format((float)$icome_resalt['amount'],2);*/
-																			?></h3>
-													<h3><?php echo number_format($payment_resalt['amount'], 2) ?></h3>
+																			
+																			*/ ?> </h3> 
+													<h3><?php //echo number_format($payment_resalt['amount'], 2) ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
 													</div>

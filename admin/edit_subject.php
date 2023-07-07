@@ -26,7 +26,8 @@ if (isset($_POST['update'])) {
 	$class_id = $_POST['class_id'];
 	$name = $_POST['name'];
 	$price = $_POST['price'];
-	$fvp = $_POST['fees_valid_period'];
+	$start = $_POST['start'];
+	$end = $_POST['end'];
 	$status = $_POST['status'];
 
 	$sbid = $_GET['sbid'];
@@ -36,13 +37,15 @@ if (isset($_POST['update'])) {
 			SET class_id=:class_id,
 				name=:name,
 				price=:price,
-                fees_valid_period=:fees_valid_period,
+                start=:start,
+				end=:end,
 				status=:status
 			WHERE sid=:sbid');
 		$stmt->bindParam(':class_id', $class_id);
 		$stmt->bindParam(':name', $name);
 		$stmt->bindParam(':price', $price);
-		$stmt->bindParam(':fees_valid_period', $fvp);
+		$stmt->bindParam(':start', $start);
+		$stmt->bindParam(':end', $end);
 		$stmt->bindParam(':status', $status);
 		$stmt->bindParam(':sbid', $sbid);
 		if ($stmt->execute()) {
@@ -201,7 +204,7 @@ if (isset($_POST['update'])) {
 								?>
 								<form action="" method="POST" enctype="multlmsrt/form-data">
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
 												<select name="class_id" class="form-control">
@@ -216,7 +219,7 @@ if (isset($_POST['update'])) {
 												</select>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Course Name</label>
 												<input type="text" class="form-control" name="name" value="<?php echo $view_result['name']; ?>" required>
@@ -228,35 +231,21 @@ if (isset($_POST['update'])) {
 												<input type="text" class="form-control" name="price" value="<?php echo $view_result['price']; ?>" required>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Fees Valid Period</label>
-												<select name="fees_valid_period" class="form-control">
+												<label class="form-label">Course Start Date</label>
 
-													<option value=''></option>
-													<?php
-
-													$days_a = array(1, 30, 40, 45, 90, 180);
-													$days_a_txt = array(1 => "1 Day", 30 => "30 Days", 40 => "40 Days Month", 45 => "45 Days Month", 90 => "90 Days");
-
-
-													foreach ($days_a as $d) {
-
-														if ($view_result['fees_valid_period'] == $d) {
-
-															echo "<option selected='selected' value='" . $d . "'>" . $days_a_txt[$d] . "</option>";
-														} else {
-															echo "<option value='" . $d . "'>" . $days_a_txt[$d] . "</option>";
-														}
-													}
-
-
-													?>
-
-												</select>
+												<input type="date" class="form-control" value="<?php echo $view_result['start']; ?>" name="start">
 											</div>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Course End Date</label>
+
+												<input type="date" class="form-control" value="<?php echo $view_result['end']; ?>" name="end">
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group fallback w-100">
 												<label class="form-label">Status</label>
 												<select class="form-control" id="input-6" name="status" required>

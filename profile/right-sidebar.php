@@ -1,9 +1,13 @@
+<?php
+include '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
+?>
 <div class="right-sidebar">
 	<div class="row">
 		<div class="col-2 d-sm-none"></div>
 		<div class="col-auto my-auto">
 			<button class="btn btn-light" type="button" onclick="rightsboff()">
-			<i class="fa fa-bars" aria-hidden="true"></i>
+				<i class="fa fa-bars" aria-hidden="true"></i>
 			</button>
 		</div>
 		<div class="col-auto my-auto">
@@ -12,7 +16,7 @@
 		<div class="col-auto my-auto">
 			<div class="form-check form-switch text-center p-0">
 				<label class="form-check-label" for="lightSwitch">
-				<i class="fa fa-moon-o" aria-hidden="true"></i>
+					<i class="fa fa-moon-o" aria-hidden="true"></i>
 				</label>
 				<input class="form-check-input d-none" type="checkbox" id="lightSwitch" />
 			</div>
@@ -208,10 +212,10 @@
 	</div>
 
 	<div class="r-sb-sec">
-	<div class="cal-sec py-3">
-		<div class="card bg-light border-0">
-			<div class="card-body px-0">
-				<!-- <div class="row">
+		<div class="cal-sec py-3">
+			<div class="card bg-light border-0">
+				<div class="card-body px-0">
+					<!-- <div class="row">
 					<div class="col-5 my-auto">
 						
 					</div>
@@ -282,181 +286,138 @@
 					</table>
 
 				</div> -->
-				<p class="fw-bold position-absolute mt-2 ms-3 d-md-none d-lg-none d-xl-block">My Progress</p>
-				<div id="calendar" class="calendar"></div>
-			</div>
-		</div>
-	</div>
-	<div class="upc-act">
-		<div class="card bg-light border-0">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-8">
-						<p class="h6">Upcomig Activities</p>
-					</div>
-					<div class="col-4 text-end">
-						<a class="" href="">See all</a>
-					</div>
+					<p class="fw-bold position-absolute mt-2 ms-3 d-md-none d-lg-none d-xl-block">My Progress</p>
+					<div id="calendar" class="calendar"></div>
 				</div>
 			</div>
 		</div>
-		<div class="card border-0 mb-4 bg-primary bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-primary rounded-circle text-center text-light sq-box">
-							<h2>8</h2>
+		<div class="upc-act">
+			<div class="card bg-light border-0">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-8">
+							<p class="h6">Upcomig Activities</p>
+						</div>
+						<div class="col-4 text-end">
+
 						</div>
 					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card border-0 mb-4 bg-danger bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-danger rounded-circle text-center text-light sq-box">
-							<h2>13</h2>
+			<?php
+			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");			
+			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+				$lesson_date = $lesson_datas['classdate'];
+				$day = date("d", strtotime($lesson_date));
+			?>
+
+				<div class="card border-0 mb-4 bg-primary bg-opacity-10">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-auto my-auto">
+								<div class="bg-primary rounded-circle text-center text-light sq-box">
+									<h2><?php echo $day; ?></h2>
+								</div>
+							</div>
+							<div class="col">
+								<a href="">
+									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
+									</p>
+								</a>
+								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . $lesson_datas['classtype']; ?></p>
+							</div>
 						</div>
 					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
 				</div>
-			</div>
-		</div>
-		<div class="card border-0 mb-4 bg-success bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-success rounded-circle text-center text-light sq-box">
-							<h2>18</h2>
-						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card border-0 mb-4 bg-warning bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-warning rounded-circle text-center text-light sq-box">
-							<h2>23</h2>
-						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
 
-<script>
-	// Calender section script
-	document.addEventListener("DOMContentLoaded", function() {
-		var calendar = document.getElementById("calendar");
-
-		// Get current date
-		var currentDate = new Date();
-
-		// Render calendar
-		renderCalendar(currentDate);
-
-		function renderCalendar(date) {
-			var year = date.getFullYear();
-			var month = date.getMonth();
-			var firstDay = new Date(year, month, 1);
-			var lastDay = new Date(year, month + 1, 0);
-			var daysInMonth = lastDay.getDate();
-
-			// Clear calendar
-			calendar.innerHTML = "";
-
-			// Render header
-			var header = document.createElement("div");
-			header.classList.add("header");
-
-			var prevBtn = document.createElement("span");
-			prevBtn.classList.add("prev");
-			prevBtn.textContent = "<";
-			prevBtn.addEventListener("click", function() {
-				renderCalendar(new Date(year, month - 1, 1));
-			});
-			header.appendChild(prevBtn);
-
-			var monthLabel = document.createElement("span");
-			monthLabel.classList.add("month");
-			monthLabel.textContent = new Intl.DateTimeFormat("en-US", {
-				month: "long",
-				year: "numeric"
-			}).format(date);
-			header.appendChild(monthLabel);
-
-			var nextBtn = document.createElement("span");
-			nextBtn.classList.add("next");
-			nextBtn.textContent = ">";
-			nextBtn.addEventListener("click", function() {
-				renderCalendar(new Date(year, month + 1, 1));
-			});
-			header.appendChild(nextBtn);
-
-			calendar.appendChild(header);
-
-			// Render weekdays
-			var weekdays = document.createElement("div");
-			weekdays.classList.add("weekdays");
-			var weekdaysArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-			for (var i = 0; i < weekdaysArray.length; i++) {
-				var weekday = document.createElement("div");
-				weekday.classList.add("weekday");
-				weekday.textContent = weekdaysArray[i];
-				weekdays.appendChild(weekday);
+			<?php
 			}
-			calendar.appendChild(weekdays);
+			?>
 
-			// Render days
-			var days = document.createElement("div");
-			days.classList.add("days");
-			var day = 1;
-			var firstDayIndex = firstDay.getDay();
-			for (var i = 0; i < 42; i++) {
-				var dayCell = document.createElement("div");
-				dayCell.classList.add("day");
-				if (i >= firstDayIndex && day <= daysInMonth) {
-					dayCell.textContent = day;
-					if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
-						dayCell.classList.add("current-month");
-					}
-					day++;
+		</div>
+	</div>
+
+	<script>
+		// Calender section script
+		document.addEventListener("DOMContentLoaded", function() {
+			var calendar = document.getElementById("calendar");
+
+			// Get current date
+			var currentDate = new Date();
+
+			// Render calendar
+			renderCalendar(currentDate);
+
+			function renderCalendar(date) {
+				var year = date.getFullYear();
+				var month = date.getMonth();
+				var firstDay = new Date(year, month, 1);
+				var lastDay = new Date(year, month + 1, 0);
+				var daysInMonth = lastDay.getDate();
+
+				// Clear calendar
+				calendar.innerHTML = "";
+
+				// Render header
+				var header = document.createElement("div");
+				header.classList.add("header");
+
+				var prevBtn = document.createElement("span");
+				prevBtn.classList.add("prev");
+				prevBtn.textContent = "<";
+				prevBtn.addEventListener("click", function() {
+					renderCalendar(new Date(year, month - 1, 1));
+				});
+				header.appendChild(prevBtn);
+
+				var monthLabel = document.createElement("span");
+				monthLabel.classList.add("month");
+				monthLabel.textContent = new Intl.DateTimeFormat("en-US", {
+					month: "long",
+					year: "numeric"
+				}).format(date);
+				header.appendChild(monthLabel);
+
+				var nextBtn = document.createElement("span");
+				nextBtn.classList.add("next");
+				nextBtn.textContent = ">";
+				nextBtn.addEventListener("click", function() {
+					renderCalendar(new Date(year, month + 1, 1));
+				});
+				header.appendChild(nextBtn);
+
+				calendar.appendChild(header);
+
+				// Render weekdays
+				var weekdays = document.createElement("div");
+				weekdays.classList.add("weekdays");
+				var weekdaysArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+				for (var i = 0; i < weekdaysArray.length; i++) {
+					var weekday = document.createElement("div");
+					weekday.classList.add("weekday");
+					weekday.textContent = weekdaysArray[i];
+					weekdays.appendChild(weekday);
 				}
-				days.appendChild(dayCell);
+				calendar.appendChild(weekdays);
+
+				// Render days
+				var days = document.createElement("div");
+				days.classList.add("days");
+				var day = 1;
+				var firstDayIndex = firstDay.getDay();
+				for (var i = 0; i < 42; i++) {
+					var dayCell = document.createElement("div");
+					dayCell.classList.add("day");
+					if (i >= firstDayIndex && day <= daysInMonth) {
+						dayCell.textContent = day;
+						if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
+							dayCell.classList.add("current-month");
+						}
+						day++;
+					}
+					days.appendChild(dayCell);
+				}
+				calendar.appendChild(days);
 			}
-			calendar.appendChild(days);
-		}
-	});
-</script>
+		});
+	</script>
