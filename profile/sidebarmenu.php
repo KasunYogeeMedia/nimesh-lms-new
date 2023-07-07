@@ -46,7 +46,7 @@
 							<a href="paper_class_tutes.php" class="menu--link"> <i class='uil uil-bell menu--icon'></i> <span class="menu--label">Paid Paper Class Tutes</span> </a>
 						</li> -->
 						<li class="menu--item">
-							<a href="exam_list.php?type=1" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Exams</span> </a>
+							<a href="exam_list.php?type=1" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label"> MCQ Exams</span> </a>
 						</li>
 						<li class="menu--item">
 							<a href="online_verbal_exam.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Verbal Exams</span> </a>
@@ -62,9 +62,9 @@
 							<a href="free_lesson.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">Free Recorded Classes</span> </a>
 						</li> -->
 
-						<!-- <li class="menu--item">
+						<li class="menu--item">
 							<a href="paper_exam_list.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Paper Exams</span> </a>
-						</li> -->
+						</li>
 
 						<!-- <li class="menu--item">
 							<a href="reviews.php" class="menu--link"> <i class='uil uil-star menu--icon'></i> <span class="menu--label">Rate Your Experience</span> </a>
