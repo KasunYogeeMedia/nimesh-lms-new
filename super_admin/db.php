@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$username = "yogeedev_nimesh_lms";
-$pass = "r^3JU}teRuA]";
-$db = "yogeedev_nimesh_lms";
+$username = "root";
+$pass = "";
+$db = "nimesh-lms";
 
 //create connection 
 
@@ -73,10 +73,10 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	$current_user_sid = mysqli_query($conn, "SELECT * FROM lmssubject where class_id = $current_user_data[level] LIMIT 1");
 	$current_user_level = mysqli_fetch_array($current_user_sid);
 	$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$reid' and pay_sub_id='$current_user_level[sid]' and status='1'");
-
+	
 
 	if (mysqli_num_rows($lmsck_payments) == 1) {
-		if ($row['pay_type'] == 'full') {
+		if (mysqli_fetch_assoc($lmsck_payments)['pay_type'] == 'full') {
 
 			$full_pay = 1;
 			return $full_pay;
