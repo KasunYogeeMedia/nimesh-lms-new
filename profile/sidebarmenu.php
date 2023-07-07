@@ -2,7 +2,7 @@
 <nav class="vertical_nav pt-4">
 	<div class="sedebar-sec bg-light w-100">
 		<div class="position-inherit h-100 p-0 m-0">
-			<div class="main_logo mb-2 w-100 text-center" id="logo">
+			<div class="main_logo w-100 text-center" id="logo">
 				<a href="<?php echo $url; ?>/profile/student_profile.php"><img class="w-100 p-2" src="../super_admin/settings/logo/<?php echo $main_logo; ?>" alt=""></a>
 			</div>
 			<div class="w-100 text-end">

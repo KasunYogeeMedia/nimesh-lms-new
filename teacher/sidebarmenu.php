@@ -1,4 +1,4 @@
-<div class="main_logo mb-4" id="logo">
+<div class="main_logo w-100 text-center" id="logo">
 	<a href="<?php echo $url; ?>teacher/home.php"><img class="w-100 p-3" src="../super_admin/settings/logo/<?php echo $main_logo; ?>" alt=""></a>
 </div>
 <div class="nav-control text-end">
