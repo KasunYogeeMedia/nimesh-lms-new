@@ -418,10 +418,10 @@ if (isset($_POST['submit_bt'])) {
 									<div class="row">
 										<div class="col-3">
 											<?php if ($row['image'] == "") {
-												$pro_img = "../assets/img/prof.png";
-											} else {
-												$pro_img = "uploadImg/" . $row['image'];
-											} ?>
+												$pro_img = "images/hd_dp.jpg";
+												} else {
+													$pro_img = "uploadImg/" . $row['image'];
+												} ?>
 											<div class="profile-img">
 												<img src="<?php echo $pro_img; ?>" alt="" class="d-block mx-auto w-50 h-auto">
 											</div>

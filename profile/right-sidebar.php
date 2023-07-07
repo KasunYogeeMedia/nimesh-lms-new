@@ -333,7 +333,35 @@ require_once '../super_admin/dbconfig4.php';
 			<?php
 			}
 			?>
+			<?php
+			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
+			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+				$lesson_date = $lesson_datas['classdate'];
+				$day = date("d", strtotime($lesson_date));
+			?>
 
+				<div class="card border-0 mb-4 bg-success bg-opacity-10">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-auto my-auto">
+								<div class="bg-success rounded-circle text-center text-light sq-box">
+									<h2><?php echo $day; ?></h2>
+								</div>
+							</div>
+							<div class="col">
+								<a href="">
+									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
+									</p>
+								</a>
+								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . "Verbal Exam"; ?></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<?php
+			}
+			?>
 		</div>
 	</div>
 </div>
