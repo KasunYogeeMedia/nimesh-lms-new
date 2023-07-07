@@ -89,7 +89,6 @@ if ($image_resalt['image'] == "") {
 											<th scope="col">Batch/Course</th>
 											<th scope="col">Slip</th>
 											<th scope="col">Amount</th>
-											<th scope="col">Valid Date - Paid Month</th>
 											<th scope="col">Pay Date</th>
 										</tr>
 									</thead>
@@ -137,9 +136,7 @@ if ($image_resalt['image'] == "") {
 												<td>
 													<span class="badge badge-primary">Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
 												</td>
-												<td>
-													<a href="#"><span class="badge badge-success" style="font-size:14px;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></a>
-												</td>
+												
 												<td>
 													<?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?>
 												</td>
