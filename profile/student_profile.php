@@ -470,7 +470,7 @@ if (isset($_POST['submit_bt'])) {
 				</div>
 				<!-- profile section end -->
 				<!-- Password section -->
-				<div class="profile mb-3">
+				<!-- <div class="profile mb-3">
 					<div class="card border-0 bg-light py-3">
 						<div class="card-body">
 							<p class="h6 mb-3 fw-bold">Update Your Password</p>
@@ -509,7 +509,7 @@ if (isset($_POST['submit_bt'])) {
 							</form>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- Password section -->
 
 
