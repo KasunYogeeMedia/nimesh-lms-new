@@ -73,7 +73,7 @@ if (isset($_POST['log'])) {
 
 
 
-<body class="h-100">
+<body class="">
 	<div class="authincation h-100 dash-up">
 		<div class="container h-100">
 			<div class="row justify-content-center h-100 align-items-center">

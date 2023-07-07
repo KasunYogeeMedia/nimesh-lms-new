@@ -54,7 +54,9 @@ require_once 'dbconfig4.php';
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -118,7 +120,7 @@ require_once 'dbconfig4.php';
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body bg-lblue">
+        <div class="content-body bg-light">
             <!-- row -->
             <div class="container-fluid">
 

@@ -127,7 +127,7 @@ require_once("conn.php");
 					<div class="scroll-sec">
 						<div class="row">
 							<div class="col-sm-12 col-md-4">
-								<div class="card border-0">
+								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Profile & Payments</p>
 										<div class="h-scroll">
@@ -181,7 +181,7 @@ require_once("conn.php");
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-8">
-								<div class="card border-0">
+								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Lectures</p>
 										<div class="h-scroll">
@@ -257,7 +257,7 @@ require_once("conn.php");
 					</div>
 
 					<div class="fdb-sec my-3">
-						<div class="card border-0">
+						<div class="card border-0 bg-light">
 							<div class="card-body">
 								<div class="h-scroll">
 									<p class="h6 mb-3 fw-bold">Feedbacks</p>
@@ -493,7 +493,7 @@ require_once("conn.php");
 													<i class="fa fa-university"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1 text-light">Total Revenue</p>
+													<p class="mb-1">Total Revenue</p>
 													<h3 class="text-white"><?php /*
 																			$c_date = date("Y-01-01");
 
@@ -511,9 +511,10 @@ require_once("conn.php");
 																			$payment_count = mysqli_query($conn, "SELECT SUM(amount) amount FROM lmspayment WHERE status=1");
 																			$payment_resalt = mysqli_fetch_assoc($payment_count);
 
-																			//echo 'Rs '.number_format((float)$icome_resalt['amount'],2);
-																			*/ ?></h3>
-													<h3><?php echo number_format($payment_resalt['amount'], 2) ?></h3>
+																			
+																			*/ ?> </h3>
+													<h3><?php //echo number_format($payment_resalt['amount'], 2) 
+														?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
 													</div>

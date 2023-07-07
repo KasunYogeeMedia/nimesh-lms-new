@@ -177,7 +177,9 @@ if (isset($_POST['update'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -262,7 +264,7 @@ if (isset($_POST['update'])) {
 
                 <div class="row">
                     <div class="col-xl-12 col-xxl-12 col-sm-12">
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h5 class="card-title">Edit Gallery</h5>
                             </div>

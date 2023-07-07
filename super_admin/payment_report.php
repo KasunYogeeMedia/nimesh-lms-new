@@ -53,7 +53,9 @@ require_once 'dbconfig4.php';
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start

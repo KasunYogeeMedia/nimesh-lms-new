@@ -40,7 +40,9 @@ $total = $row[0];
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php require_once 'navheader.php'; ?>
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 		<!--**********************************
             Header start
@@ -121,7 +123,7 @@ $total = $row[0];
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
-								<div class="card border-0">
+								<div class="card border-0 bg-light">
 
 									<div class="card-body">
 										<div class="table-responsive">
@@ -174,7 +176,7 @@ $total = $row[0];
 											$subject_resalt = mysqli_fetch_array($subject_qury);
 										?>
 											<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-												<div class="card border-0">
+												<div class="card border-0 bg-light">
 													<div class="card-body">
 														<div class="text-center">
 															<div class="profile-photo">

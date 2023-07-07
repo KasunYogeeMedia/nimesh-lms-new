@@ -53,7 +53,9 @@ if (isset($_GET['id'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -146,7 +148,7 @@ if (isset($_GET['id'])) {
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
-                                <div class="card border-0">
+                                <div class="card border-0 bg-light">
                                     <div class="card-header">
                                         <h4 class="card-title">Paid Bank Payments</h4>
                                     </div>
@@ -243,7 +245,7 @@ if (isset($_GET['id'])) {
                                             $user_resalt = mysqli_fetch_array($user_qury);
                                         ?>
                                             <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                                <div class="card border-0">
+                                                <div class="card border-0 bg-light">
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <div class="profile-photo">

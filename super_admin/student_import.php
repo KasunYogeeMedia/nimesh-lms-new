@@ -54,7 +54,9 @@ if (!empty($_GET['status'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start

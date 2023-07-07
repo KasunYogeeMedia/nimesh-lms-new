@@ -40,7 +40,9 @@ if (isset($_GET['exid'])) {
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php require_once 'navheader.php'; ?>
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 		<!--**********************************
             Header start
@@ -133,7 +135,7 @@ if (isset($_GET['exid'])) {
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
-								<div class="card border-0">
+								<div class="card border-0 bg-light">
 									<div class="card-header">
 										<h4 class="card-title">All Online Exams</h4>
 										<a href="add_online_exams.php" class="btn btn-square btn-secondary">+ Add Online Exams</a>
@@ -252,7 +254,7 @@ if (isset($_GET['exid'])) {
 
 										?>
 												<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-													<div class="card border-0">
+													<div class="card border-0 bg-light">
 														<div class="card-body">
 															<div class="text-center">
 																<div class="profile-photo">

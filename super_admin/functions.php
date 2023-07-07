@@ -81,7 +81,7 @@ if(isset($_POST["Pending"])){
      header('Content-Type: text/csv; charset=utf-8');  
      header('Content-Disposition: attachment; filename=pending_bank_payments.csv');  
      $output = fopen("php://output", "w");  
-     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Course', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
+     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Subject', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
      $query = "SELECT yp.fileName,yp.status,yr.fullname,yr.contactnumber,ys.name,yp.amount,yp.expiredate,yp.created_at,yp.pay_month
      FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
      INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid
@@ -101,7 +101,7 @@ if(isset($_POST["Paid"])){
      header('Content-Type: text/csv; charset=utf-8');  
      header('Content-Disposition: attachment; filename=paid_bank_payments.csv');  
      $output = fopen("php://output", "w");  
-     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Course', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
+     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Subject', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
      $query = "SELECT yp.fileName,yp.status,yr.fullname,yr.contactnumber,ys.name,yp.amount,yp.expiredate,yp.created_at,yp.pay_month
      FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
      INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid
@@ -121,7 +121,7 @@ if(isset($_POST["Rejected"])){
      header('Content-Type: text/csv; charset=utf-8');  
      header('Content-Disposition: attachment; filename=rejected_bank_payments.csv');  
      $output = fopen("php://output", "w");  
-     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Course', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
+     fputcsv($output, array('Slip','Status', 'Student Name','Student Contact','Subject', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
      $query = "SELECT yp.fileName,yp.status,yr.fullname,yr.contactnumber,ys.name,yp.amount,yp.expiredate,yp.created_at,yp.pay_month
      FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
      INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid
@@ -141,7 +141,7 @@ if(isset($_POST["Online"])){
      header('Content-Type: text/csv; charset=utf-8');  
      header('Content-Disposition: attachment; filename=online_payments.csv');  
      $output = fopen("php://output", "w");  
-     fputcsv($output, array('Status', 'Student Name','Student Contact','Course', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
+     fputcsv($output, array('Status', 'Student Name','Student Contact','Subject', 'Class Fee', 'Valid-Paid Month', 'Pay Date','Pay Month'));  
      $query = "SELECT yp.status,yr.fullname,yr.contactnumber,ys.name,yp.amount,yp.expiredate,yp.created_at,yp.pay_month
      FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
      INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid
@@ -172,3 +172,5 @@ if(isset($_POST["Teacher_Payments"])){
      }  
      fclose($output);  
 }
+
+?>

@@ -6,14 +6,49 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+?>
+<?php
+
+require("conn.php");
 
 require_once 'dbconfig4.php';
 
-if (isset($_GET['remove'])) {
-    $remove = mysqli_real_escape_string($conn, $_GET['remove']);
-    mysqli_query($conn, "DELETE FROM lmsclass_schlmsle WHERE classid='$remove'");
-    echo "<script>window.location='class_schedule.php';</script>";
+if (isset($_GET['clid'])) {
+    $clid = mysqli_real_escape_string($conn, $_GET['clid']);
+    $view_qury = mysqli_query($conn, "SELECT * FROM lmsexpense WHERE id='$clid'");
+    $view_result = mysqli_fetch_array($view_qury);
+} else {
+    echo "<script>window.location='grade.php';</script>";
+}
+
+
+if (isset($_POST['update'])) {
+
+    $id = $_GET['clid'];
+    $name = $_POST['name'];
+    $cost = $_POST['cost'];
+    $date = $_POST['date'];
+
+    if (!isset($errMSG)) {
+        $stmt = $DB_con->prepare('UPDATE lmsexpense
+        SET name=:name,
+        cost=:cost,
+        date=:date
+        WHERE id=:id');
+
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':cost', $cost);
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':id', $id);
+
+        if ($stmt->execute()) {
+            $successMSG = "Expense Successfully Updated ...";
+            header("refresh:2;expense.php"); // redirects image view page after 5 seconds.
+        } else {
+            $errMSG = "Sorry Data Could Not Be Updated!";
+        }
+
+    }
 }
 ?>
 
@@ -25,15 +60,13 @@ if (isset($_GET['remove'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Settings | Online Learning Platforms | Dashboard</title>
+    <title>Edit Expense | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
-
 </head>
 
 <body>
-
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -112,65 +145,77 @@ if (isset($_GET['remove'])) {
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Settings</h4>
+                            <h4>Edit Expense</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Settings</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="grade.php">Expense</a></li>
+                            <li class="breadcrumb-item active"><a href="edit_admin.php">Edit Expense</a></li>
                         </ol>
                     </div>
                 </div>
 
                 <div class="row">
-
-                    <div class="col-lg-12">
-                        <?php if (isset($_GET['added'])) { ?>
-
-                            <div class="alert alert-success alert-dismissible alert-alt solid fade show">
-
-                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
-
-                                <strong>Success!</strong> New Added Successfully.
-
+                    <div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card border-0 bg-light">
+                            <div class="card-header">
+                                <h5 class="card-title">Edit Expense</h5>
                             </div>
-
-                        <?php } ?>
-
-                        <?php if (isset($_GET['update'])) { ?>
-
-                            <div class="alert alert-success alert-dismissible alert-alt solid fade show">
-
-                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
-
-                                <strong>Success!</strong> Updated Successfully,
-
-                            </div>
-
-                        <?php } ?>
-                        <div class="row tab-content">
                             <div class="card-body">
-                                <form action="settings_save.php" method="POST" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label>Reg Name Prefix</label>
-                                        <input type="text" name="rgname_prefix" class="form-control" placeholder="<?php echo $reg_prefix; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Application Name</label>
-                                        <input type="text" name="ap_name" class="form-control" placeholder="<?php echo $application_name; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Main Logo</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <img src="./settings/logo/<?php echo $main_logo; ?>" class="img-responsive" alt="LMS">
+                                <?php
 
+                                if (isset($errMSG)) {
+
+                                ?>
+
+                                    <div class="alert alert-danger alert-dismissible alert-alt solid fade show">
+                                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+                                        <strong>Error!</strong> <?php echo $errMSG; ?>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="file" name="main_logo" class="form-control" />
+
+                                <?php
+
+                                } else if (isset($successMSG)) {
+
+                                ?>
+
+                                    <div class="alert alert-success alert-dismissible alert-alt solid fade show">
+                                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+                                        <strong>Success!</strong> <?php echo $successMSG; ?>.
                                     </div>
-                                    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+
+                                <?php
+
+                                }
+
+                                ?>
+                                <form action="" method="POST" enctype="multlmsrt/form-data">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Expense</label>
+                                                <input type="text" class="form-control" name="name" value="<?php echo $view_result['name']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Cost</label>
+                                                <input type="number" step="0.01" min="0" class="form-control" name="cost" value="<?php echo $view_result['cost']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Date</label>
+                                                <input type="date" class="form-control" name="date" value="<?php echo $view_result['date']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <input type="submit" name="update" class="btn btn-primary" value="Update">
+                                            <a class="btn btn-light" href="grade.php"><i class="fa fa-times"></i> Close</a>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -205,7 +250,6 @@ if (isset($_GET['remove'])) {
     <?php
     require_once 'footerjs.php';
     ?>
-
 
 </body>
 

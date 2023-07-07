@@ -45,7 +45,7 @@ if (isset($_POST['save'])) {
     }
 }
 
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +68,9 @@ if (isset($_POST['save'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -146,7 +148,7 @@ if (isset($_POST['save'])) {
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h4 class="card-title">Add Batch</h4>
                             </div>

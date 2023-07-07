@@ -81,7 +81,9 @@ if (isset($_GET['lms_exam_id'])) {
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php require_once 'navheader.php'; ?>
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 		<!--**********************************
             Header start
@@ -166,7 +168,7 @@ if (isset($_GET['lms_exam_id'])) {
 
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card border-0">
+						<div class="card border-0 bg-light">
 							<div class="card-header">
 								<h4 class="card-title">Add New Exam</h4>
 							</div>

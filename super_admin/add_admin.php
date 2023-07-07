@@ -195,7 +195,7 @@ if (isset($_POST['save'])) {
 
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card border-0">
+						<div class="card border-0 bg-light">
 							<div class="card-header">
 								<h4 class="card-title">Add Admin Users Account</h4>
 							</div>

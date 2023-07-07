@@ -142,7 +142,9 @@ if ($edit == 1) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -220,7 +222,7 @@ if ($edit == 1) {
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h4 class="card-title">Add questions</h4>
                             </div>

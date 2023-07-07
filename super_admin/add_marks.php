@@ -99,7 +99,9 @@ if (isset($_POST['submit_btn'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -178,7 +180,7 @@ if (isset($_POST['submit_btn'])) {
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h4 class="card-title">View Answers Sheet</h4>
                             </div>
@@ -204,7 +206,7 @@ if (isset($_POST['submit_btn'])) {
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h4 class="card-title">Marks Paper</h4>
                                 <hr>

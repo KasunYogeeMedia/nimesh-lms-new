@@ -39,7 +39,9 @@ if (isset($_GET['remove'])) {
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -121,7 +123,7 @@ if (isset($_GET['remove'])) {
                         <div class="col-lg-12">
                             <div class="row tab-content">
                                 <div id="list-view" class="tab-pane fade active show col-lg-12">
-                                    <div class="card border-0">
+                                    <div class="card border-0 bg-light">
 
                                         <div class="card-body">
                                             <div class="table-responsive">

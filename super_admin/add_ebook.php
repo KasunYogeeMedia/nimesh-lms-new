@@ -116,7 +116,9 @@ if (isset($_POST['add_classtute'])) {
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php require_once 'navheader.php'; ?>
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 		<!--**********************************
             Header start
@@ -194,7 +196,7 @@ if (isset($_POST['add_classtute'])) {
 
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card border-0">
+						<div class="card border-0 bg-light">
 							<div class="card-header">
 								<h4 class="card-title">Add Ebook</h4>
 							</div>

@@ -6,6 +6,8 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
+include 'conn.php';
+
 require_once 'dbconfig4.php';
 
 ?>
@@ -17,7 +19,7 @@ require_once 'dbconfig4.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Course | Online Learning Platforms | Dashboard</title>
+    <title>Batch | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -104,14 +106,14 @@ require_once 'dbconfig4.php';
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Course</h4>
+                            <h4>All Batches</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Course</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Course</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Batches</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Batches</a></li>
                         </ol>
                     </div>
                 </div>
@@ -119,7 +121,8 @@ require_once 'dbconfig4.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="nav nav-pills mb-3">
-                            <li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn btn-square btn-secondary mr-1 show active">List View</a></li>
+                            <li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
+                            <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-12">
@@ -127,87 +130,55 @@ require_once 'dbconfig4.php';
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
                                 <div class="card border-0 bg-light">
                                     <div class="card-header">
-                                        <h4 class="card-title">All Course </h4>
-                                        <a href="add_subject.php" class="btn btn-square btn-secondary">+ Add Course</a>
+                                        <h4 class="card-title">All Batches </h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
+                                            <div>
+                                                <form class="form-horizontal" action="functions.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 col-md-offset-4" style="text-align:right;">
+                                                            <input type="submit" name="Export" class="btn btn-success" value="export to excel" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                             <table id="dataTable" class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
+
                                                         <th>Batch</th>
-                                                        <th>Course</th>
-                                                        <th>Price</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
-                                                        <th>Date</th>
-                                                        <th>Option</th>
-                                                        <th>Action</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+
+
                                                     <?php
 
-                                                    $stmt = $DB_con->prepare('SELECT * FROM lmssubject ORDER BY sid');
+                                                    $query = "SELECT * FROM lmsclass";
+                                                    $results = mysqli_query($conn, $query);
+                                                    $row_count = mysqli_num_rows($results);
 
-                                                    $stmt->execute();
 
-                                                    if ($stmt->rowCount() > 0) {
-
-                                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                                                            extract($row);
-
-                                                    ?>
-                                                            <tr>
-                                                                <td><?php echo $row['sid']; ?></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php
-
-                                                                                                            $id = $class_id;
-
-                                                                                                            $query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
-
-                                                                                                            $query->execute();
-
-                                                                                                            $result = $query->fetch();
-
-                                                                                                            echo $result['name'];
-
-                                                                                                            ?></strong></a></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['name']; ?></strong></a></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['price']; ?></strong></a></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['start']; ?></strong></a></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['end']; ?></strong></a></td>
-                                                                <td><?php echo $row['add_date']; ?></td>
-                                                                <td>
-                                                                    <?php
-
-                                                                    if ($row['status'] == "Unpublish") {
-
-                                                                        echo '<a class="badge badge-warning">Pending</a>';
-                                                                    } else if ($row['status'] == "Publish") {
-
-                                                                        echo '<a class="badge badge-success">Success</a>';
-                                                                    }
-
-                                                                    ?>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="edit_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                    <?php
-                                                        }
+                                                    while ($row = mysqli_fetch_array($results)) {
+                                                        echo "<tr><td><a href='certificate_batch_view.php?gid=" . ($row['cid']) . "'>" . ($row['name']) . "</a></td></tr>";
                                                     }
+
+
+                                                    mysqli_query($conn, $query);
+
+
                                                     ?>
+
+
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -217,7 +188,6 @@ require_once 'dbconfig4.php';
         <!--**********************************
             Content body end
         ***********************************-->
-
 
         <?php
         require_once 'footer.php';
@@ -241,6 +211,101 @@ require_once 'dbconfig4.php';
     require_once 'footerjs.php';
     ?>
 
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            loadGallery(true, 'a.thumbnail');
+
+            //This function disables buttons when needed
+            function disableButtons(counter_max, counter_current) {
+                $('#lmsow-previous-image, #lmsow-next-image').lmsow();
+                if (counter_max == counter_current) {
+                    $('#lmsow-next-image').hide();
+                } else if (counter_current == 1) {
+                    $('#lmsow-previous-image').hide();
+                }
+            }
+
+            /**
+             *
+             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+             * @param setClickAttr  Sets the attribute for the click handler.
+             */
+
+            function loadGallery(setIDs, setClickAttr) {
+                var current_image,
+                    selector,
+                    counter = 0;
+
+                $('#lmsow-next-image, #lmsow-previous-image').click(function() {
+                    if ($(this).attr('id') == 'lmsow-previous-image') {
+                        current_image--;
+                    } else {
+                        current_image++;
+                    }
+
+                    selector = $('[data-image-id="' + current_image + '"]');
+                    updateGallery(selector);
+                });
+
+                function updateGallery(selector) {
+                    var $sel = selector;
+                    current_image = $sel.data('image-id');
+                    $('#image-gallery-caption').text($sel.data('caption'));
+                    $('#image-gallery-title').text($sel.data('title'));
+                    $('#image-gallery-image').attr('src', $sel.data('image'));
+                    disableButtons(counter, $sel.data('image-id'));
+                }
+
+                if (setIDs == true) {
+                    $('[data-image-id]').each(function() {
+                        counter++;
+                        $(this).attr('data-image-id', counter);
+                    });
+                }
+                $(setClickAttr).on('click', function() {
+                    updateGallery($(this));
+                });
+            }
+        });
+    </script>
+
+    <script>
+        function Publilmsed_tealmsrs(id) {
+
+            $.ajax({
+                url: 'publilmsed_tealmsrs.php',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    location.reload();
+
+                }
+            });
+
+        }
+
+        function Reject_ads(id) {
+            alert(id);
+            $.ajax({
+                url: 'reject_tealmsrs.php',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    location.reload();
+
+                }
+            });
+
+        }
+    </script>
 
 </body>
 

@@ -6,17 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
-
 require_once 'dbconfig4.php';
 
-if (isset($_GET['remove'])) {
-    $remove = mysqli_real_escape_string($conn, $_GET['remove']);
-    mysqli_query($conn, "DELETE FROM lmsclass_schlmsle WHERE classid='$remove'");
-    echo "<script>window.location='class_schedule.php';</script>";
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +17,7 @@ if (isset($_GET['remove'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Settings | Online Learning Platforms | Dashboard</title>
+    <title>Expense | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -112,66 +104,77 @@ if (isset($_GET['remove'])) {
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Settings</h4>
+                            <h4>All Expense</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Settings</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Expense</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Expense</a></li>
                         </ol>
                     </div>
                 </div>
 
                 <div class="row">
-
                     <div class="col-lg-12">
-                        <?php if (isset($_GET['added'])) { ?>
-
-                            <div class="alert alert-success alert-dismissible alert-alt solid fade show">
-
-                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
-
-                                <strong>Success!</strong> New Added Successfully.
-
-                            </div>
-
-                        <?php } ?>
-
-                        <?php if (isset($_GET['update'])) { ?>
-
-                            <div class="alert alert-success alert-dismissible alert-alt solid fade show">
-
-                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
-
-                                <strong>Success!</strong> Updated Successfully,
-
-                            </div>
-
-                        <?php } ?>
+                        <ul class="nav nav-pills mb-3">
+                            <li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn btn-square btn-secondary mr-1 show active">List View</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12">
                         <div class="row tab-content">
-                            <div class="card-body">
-                                <form action="settings_save.php" method="POST" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label>Reg Name Prefix</label>
-                                        <input type="text" name="rgname_prefix" class="form-control" placeholder="<?php echo $reg_prefix; ?>">
+                            <div id="list-view" class="tab-pane fade active show col-lg-12">
+                                <div class="card border-0 bg-light">
+                                    <div class="card-header">
+                                        <h4 class="card-title">All Expense </h4>
+                                        <a href="add_expense.php" class="btn btn-square btn-secondary">+ Add Expense</a>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Application Name</label>
-                                        <input type="text" name="ap_name" class="form-control" placeholder="<?php echo $application_name; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Main Logo</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <img src="./settings/logo/<?php echo $main_logo; ?>" class="img-responsive" alt="LMS">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="dataTable" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Expense Title</th>
+                                                        <th>cost</th>
+                                                        <th>Date</th>
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
 
+                                                    $stmt = $DB_con->prepare('SELECT * FROM lmsexpense ORDER BY id');
+
+                                                    $stmt->execute();
+
+                                                    if ($stmt->rowCount() > 0) {
+
+                                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                                                            extract($row);
+
+                                                    ?>
+                                                            <tr>
+                                                                <td><?php echo $row['id']; ?></td>
+                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['name']; ?></strong></a></td>
+                                                                <td><?php echo $row['cost']; ?></td>
+                                                                <td><?php echo $row['date']; ?></td>
+                                                                <td>
+                                                                    <a href="edit_expense.php?clid=<?php echo $row["id"]; ?>" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                                    <a href="delete_expense.php?clid=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="file" name="main_logo" class="form-control" />
-                                    </div>
-                                    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -205,7 +208,6 @@ if (isset($_GET['remove'])) {
     <?php
     require_once 'footerjs.php';
     ?>
-
 
 </body>
 

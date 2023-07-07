@@ -410,7 +410,7 @@ if (isset($_POST['add_class_bt'])) {
 
 					<div class="col-lg-12">
 
-						<div class="card border-0">
+						<div class="card border-0 bg-light">
 
 							<div class="card-header">
 

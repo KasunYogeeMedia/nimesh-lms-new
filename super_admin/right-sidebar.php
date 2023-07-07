@@ -117,7 +117,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="upc-act">
+	<!-- <div class="upc-act">
 		<div class="card bg-light border-0">
 			<div class="card-body">
 				<div class="row">
@@ -202,7 +202,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <script>

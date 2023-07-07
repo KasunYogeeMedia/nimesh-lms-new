@@ -45,7 +45,9 @@ $mcq_resalt = mysqli_fetch_assoc($mcq_qury);
     ***********************************-->
     <div id="main-wrapper">
 
-        <?php require_once 'navheader.php'; ?>
+        <?php
+        // require_once 'navheader.php'; 
+        ?>
 
         <!--**********************************
             Header start
@@ -130,7 +132,7 @@ $mcq_resalt = mysqli_fetch_assoc($mcq_qury);
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card border-0">
+                        <div class="card border-0 bg-light">
                             <div class="card-header">
                                 <h4 class="card-title">Questions List</h4>
                                 <?php if ($q_resalt['lms_exam_question'] <= $mcq_resalt['total_mcq']) {

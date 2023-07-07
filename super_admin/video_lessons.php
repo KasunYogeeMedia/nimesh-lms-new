@@ -33,7 +33,9 @@ require_once 'dbconfig4.php';
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php require_once 'navheader.php'; ?>
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 		<!--**********************************
             Header start
@@ -126,7 +128,7 @@ require_once 'dbconfig4.php';
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
-								<div class="card border-0">
+								<div class="card border-0 bg-light">
 									<div class="card-header">
 										<h4 class="card-title">All Video Lessons</h4>
 										<a href="add_video_lessons.php" class="btn btn-square btn-secondary">+ Add Video Lessons</a>
