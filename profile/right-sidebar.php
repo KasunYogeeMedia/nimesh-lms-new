@@ -320,10 +320,9 @@ require_once '../super_admin/dbconfig4.php';
 								</div>
 							</div>
 							<div class="col">
-								<a href="">
-									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-									</p>
-								</a>
+								
+									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+								
 								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . $lesson_datas['classtype']; ?></p>
 							</div>
 						</div>
@@ -349,10 +348,9 @@ require_once '../super_admin/dbconfig4.php';
 								</div>
 							</div>
 							<div class="col">
-								<a href="">
-									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-									</p>
-								</a>
+								
+									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+								
 								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . "Verbal Exam"; ?></p>
 							</div>
 						</div>
