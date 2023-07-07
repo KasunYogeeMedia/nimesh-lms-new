@@ -470,7 +470,7 @@ if (isset($_POST['submit_bt'])) {
 				</div>
 				<!-- profile section end -->
 				<!-- Password section -->
-				<div class="profile mb-3">
+				<!-- <div class="profile mb-3">
 					<div class="card border-0 bg-light py-3">
 						<div class="card-body">
 							<p class="h6 mb-3 fw-bold">Update Your Password</p>
@@ -509,212 +509,224 @@ if (isset($_POST['submit_bt'])) {
 							</form>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- Password section -->
 
 
 				<!-- Old sec -->
 				<div class="section-border">
-					<h2 class="section-border-heading">Free Classes</h2>
+					<h2 class="section-border-heading">Classes</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Free Live Classes</h2>
+									<h2 class="text-dark">Free Workshop</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-leanpub fa-3x text-dark"></i>
 								</div>
 								<a href="free_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Download Free Class Tutes</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
-								</div>
-								<a href="free_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Free Exams</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
-								</div>
-								<a href="exam_list.php?type=0" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="section-border">
-					<h2 class="section-border-heading">Paid Classes</h2>
-					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Paid Live Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
 								<a href="online_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Verbal Exams<h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-file-text fa-3x text-dark"></i>
+								</div>
+								<a href="online_verbal_exam.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div>
+						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Download Free Class Tutes</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-3x text-dark"></i>
+								</div>
+								<a href="free_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div> -->
+						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+							<div class="card_dash h-100">
+								<div class="card_dash_left">
+									<h2 class="text-dark">Free Exams</h2>
+								</div>
+								<div class="card_dash_right">
+									<i class="fa fa-user fa-3x text-dark"></i>
+								</div>
+								<a href="exam_list.php?type=0" class="btn btn-success dash_card_a">View More</a>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- <div class="section-border">
+					<h2 class="section-border-heading">Paid Classes</h2>
+					<div class="row">
+						
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Download Paid Class Tutes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="online_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Paid Paper Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="paper_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Download Paid Paper Class Tutes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="paper_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Paid Exams<h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="exam_list.php?type=1" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="section-border">
+				</div> -->
+				<!-- <div class="section-border">
 					<h2 class="section-border-heading">Lesson Recordings/Videos</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">This Month's Recordings</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="paid_lesson.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">All Previous Recordings</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="old_video_lessons.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Free Recorded Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="free_lesson.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="section-border">
 					<h2 class="section-border-heading">Profile & Payments</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Your Profile</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="edit_profile.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Bank Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-university fa-3x text-dark"></i>
 								</div>
 								<a href="bank_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Card Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-credit-card-alt fa-3x text-dark"></i>
 								</div>
 								<a href="card_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Manual Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-money fa-3x text-dark"></i>
 								</div>
 								<a href="manual_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="section-border">
+				<!-- <div class="section-border">
 					<h2 class="section-border-heading">Feedback</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 dash_card">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Rate Your Learning Experience</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-2x text-dark"></i>
+									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
 								<a href="reviews.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="card_dash">
 					<a href="edit_profile.php" class="btn btn-success btn-block">Select and Update Your Course/Courses</a>
 				</div>
@@ -790,26 +802,38 @@ if (isset($_POST['submit_bt'])) {
 										?>
 												<tr>
 													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark">Name</p>
+														<p class="bg-light">Name</p>
 													</td>
 													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-dark"><?php echo $row['fullname']; ?></p>
+														<p class="bg-light"><?php echo $row['fullname']; ?></p>
 													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Student Reg Number</p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['stnumber']; ?></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light">Student Reg Number</p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light"><?php echo $row['stnumber']; ?></p>
+													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Contact</p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light">Contact</p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p>
+													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Address </p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['address']; ?></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light">Address </p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-light"><?php echo $row['address']; ?></p>
+													</td>
 												</tr>
 										<?php
 
@@ -841,28 +865,13 @@ if (isset($_POST['submit_bt'])) {
 								<h3 class="text-dark">ගෙවීම් කළ හැකි ගිණුම් අංකය</h3>
 								<div class="value_content">
 									<p>බැංකුව : <strong>HNB</strong>
-										<br> ගිණුම් අංකය : 002010566367
-										<br> ශාඛාව : <strong>City Office</strong>
-										<br> ගිණුමේ නම : Atlas Axillia Company. (Private) Limited
+										<br> ගිණුම් අංකය : 123456789
+										<br> ශාඛාව : <strong>Branch</strong>
+										<br> ගිණුමේ නම : Account Name
 									</p>
 								</div>
 
-								<br>
-								<div class="value_content">
-									<p>බැංකුව : <strong>Sampath Bank</strong>
-										<br> ගිණුම් අංකය : 013610002360
-										<br> ශාඛාව : <strong>Peliyagoda Branch</strong>
-										<br> ගිණුමේ නම : ATLAS AXILLIA COMPANY
-									</p>
-								</div>
-								<br>
-								<div class="value_content">
-									<p>බැංකුව : <strong>People’s Bank</strong>
-										<br> ගිණුම් අංකය : 004100110001637
-										<br> ශාඛාව : <strong>D R Wijewardena Mawatha Branch</strong>
-										<br> ගිණුමේ නම : ATLAS AXILLIA COMPANY
-									</p>
-								</div>
+
 							</div>
 						</div>
 
@@ -892,53 +901,53 @@ if (isset($_POST['submit_bt'])) {
 
 										?>
 
-											<thead>
-												<!-- <tr style="background-color: #8b8c90;">
+										<thead>
+											<!-- <tr style="background-color: #8b8c90;">
 													<td colspan="6" style="color: #ffffff;border:4px solid #8b8c90;"><?php echo $tea_resalt['fullname']; ?></td>
 
 												</tr> -->
-											</thead>
-											<tbody>
-												<?php
-
-												 $tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
-											
-												 while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
-													
-													//check paid subject
-													
-													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
-													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
-													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-													
-													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-														
-												?>
-														<tr>
-															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
-															<!--kasun 2021.12.01 change color to black from white-->
-														</tr>
-														<tr>
-															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-															<!--kasun 2021.12.01 change color to black from white-->
-														</tr>
+										</thead>
+										<tbody>
 											<?php
 
-													}
-											 	}
+											$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
+
+											while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
+
+												//check paid subject
+
+												$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
+												$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
+												$paid_resalt_full = mysqli_fetch_array($check_paid_full);
+												$paid_resalt_half = mysqli_fetch_array($check_paid_half);
+
+												if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
+
+											?>
+													<tr>
+														<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+														<!--kasun 2021.12.01 change color to black from white-->
+													</tr>
+													<tr>
+														<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+														<!--kasun 2021.12.01 change color to black from white-->
+													</tr>
+											<?php
+
+												}
+											}
 											// }
 
 											?>
-											</tbody>
+										</tbody>
 									</table>
 							</div>
 						</div>
@@ -955,7 +964,7 @@ if (isset($_POST['submit_bt'])) {
 								}
 								?>
 								<h4>Select Month</h4>
-								
+
 								<br>
 								<label for="fileName1"><img src="images/card payment.png" id="yourImgTag1" style="width:20%;cursor: pointer;" /></label>
 								<ul>
@@ -973,12 +982,12 @@ if (isset($_POST['submit_bt'])) {
 								$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' and userID='$_SESSION[reid]' and status='1' ORDER BY pid DESC");
 								while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
 								?>
-									
+
 								<?php
 								}
 								?>
 								<h4>Select Month</h4>
-								
+
 								<br>
 
 								<label class="control-label text-dark" for="basicinput">සාමාන්‍ය පන්ති ගාස්තු ගෙවූ දරුවන් පමණක් බැංකු රිසිට් පත මෙතනින් upload කරන්න. පන්ති ගාස්තු සදහා සහන (Discounts/Offers) ලැබූ සිසුන් එම bank receipt පත 0773851246 අංකයට නම , Atlas Learn LMS එකෙහි register වූ දුරකතන අංකය , විෂය සහ ගුරුවරයා , ඒ ඒ විෂයට ගෙවූ ගාස්තුව වෙන වෙනම සදහන් කර WhatsApp කරන්න.සාමාන්‍ය පන්ති ගාස්තු ගෙවන දරුවන් සම්බන්ධ වන විෂයන් ඉදිරියේ හරි ලකුණු යොදා (click on the relevant tick box) මෙහි bank receipt පතෙහි photo එකක් හෝ screenshot එකක් upload කරන්න. (Pdf file upload කල නොහැක)</label>

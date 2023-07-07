@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$username = "root";
-$pass = "";
-$db = "nimesh-lms";
+$username = "yogeedev_nimesh_lms";
+$pass = "r^3JU}teRuA]";
+$db = "yogeedev_nimesh_lms";
 
 //create connection 
 
