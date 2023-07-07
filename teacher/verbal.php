@@ -46,7 +46,7 @@ if (isset($_GET['remove'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Class Schedule | Teacher Panel | Online Learning Platforms </title>
+    <title>Verbal Exam | Teacher Panel | Online Learning Platforms </title>
 
     <?php
     require_once 'headercss.php';
@@ -92,14 +92,14 @@ if (isset($_GET['remove'])) {
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Class Schedule</h4>
+                            <h4>All Verbal Exam</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Class Schedule</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Class Schedule</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Verbal Exam</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Verbal Exam</a></li>
                         </ol>
                     </div>
                 </div>
@@ -116,8 +116,8 @@ if (isset($_GET['remove'])) {
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
                                 <div class="card border-0 bg-light">
                                     <div class="card-header">
-                                        <h4 class="card-title">All Class Schedule </h4>
-                                        <a href="add_class_schedule.php" class="btn btn-square btn-secondary">+ Add Class Schedule</a>
+                                        <h4 class="card-title">All Verbal Exam </h4>
+                                        <a href="add_online_verbal_exams.php" class="btn btn-square btn-secondary">+ Add Verbal Exam</a>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -133,6 +133,7 @@ if (isset($_GET['remove'])) {
                                                         <th>Lesson</th>
                                                         <th>Batch</th>
                                                         <th>Course</th>
+                                                        <th>Month</th>
                                                         <th>Date</th>
                                                         <th>Start</th>
                                                         <th>End</th>
@@ -157,8 +158,9 @@ if (isset($_GET['remove'])) {
                                                             <td><?php echo number_format($count, 0); ?></td>
                                                             <td align="center">
                                                                 <a href="<?php echo $list_resalt['classlink']; ?>" target="_blank" class="btn btn-sm btn-secondary"><i class="fa fa-lg fa-video-camera"></i></a>
-                                                                <a href="add_class_schedule.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-lg fa-edit"></i></a>
+                                                                <a href="add_online_verbal_exams.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-lg fa-edit"></i></a>
                                                                 <a href="class_schedule.php?remove=<?php echo $list_resalt['classid']; ?>" onClick="JavaScript:return confirm('Are your sure delete lesson?');" class="btn btn-sm btn-danger"><i class="fa fa-lg fa-trash"></i></a>
+                                                                <a href="verbal_exam.php?exam=<?php echo $list_resalt['level']; ?>" target="_blank" class="btn btn-sm btn-secondary"><i class="fa fa-lg fa-pencil "></i></a>
                                                             </td>
                                                             <td><?php if ($subject_resalt['image'] == "") {
                                                                     $pro_img = "../profile/images/hd_dp.jpg";
@@ -181,7 +183,9 @@ if (isset($_GET['remove'])) {
                                                                     echo '<button class="btn btn-danger btn-sm">Cancel</button>';
                                                                 }
                                                                 ?></td>
-                                                           
+                                                            <td>
+                                                                <h5 class="badge badge-primary"><?php echo $list_resalt['classtype']; ?></h5>
+                                                            </td>
                                                             <td style="text-transform: capitalize;"><?php echo $list_resalt['fullname']; ?></td>
                                                             <td style="text-transform: capitalize;"><?php echo $list_resalt['lesson']; ?></td>
                                                             <td style="text-transform: capitalize;"><?php echo $level_resalt['name']; ?></td>
