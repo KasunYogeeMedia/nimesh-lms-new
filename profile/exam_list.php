@@ -69,20 +69,6 @@ unset($_SESSION['exam_id']);
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
-							<ul class="more_options_tt">
-								<li>
-									<div class="explore_search">
-										<div class="ui search focus">
-											<div class="ui left icon input swdh11 swdh15">
-												<input class="prompt srch_explore" type="text" placeholder="Month">
-												<i class="uil uil-search-alt icon icon8"></i>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="col-lg-12 col-md-12">
 							<?php if ($full_pay == 1) { ?>
 								<div class="table-responsive mt-30">
 									<table id="dataTable" class="table table-bordered" style="margin-top: 10px;">
