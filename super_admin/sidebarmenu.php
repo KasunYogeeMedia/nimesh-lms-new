@@ -156,7 +156,7 @@
 		?>
 	</li>
 
-	<li>
+	<!-- <li>
 		<?php
 		if ($lesson == 'True') {
 
@@ -169,7 +169,7 @@
 			echo '';
 		}
 		?>
-	</li>
+	</li> -->
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-money"></i>
 			<span class="nav-text">Payments</span>
@@ -202,7 +202,7 @@
 			<li><a href="submissions.php">Student Submitted</a></li>
 		</ul>
 	</li>
-	<li><a href="reviews.php" aria-expanded="false">
+	<!-- <li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
 		</a>
@@ -211,7 +211,7 @@
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Gallery</span>
 		</a>
-	</li>
+	</li> -->
 	<li>
 		<?php
 		if ($mail == 'True') {
