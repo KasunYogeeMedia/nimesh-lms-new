@@ -5,5 +5,5 @@ if (!isset($_SESSION)) {
 }
 session_destroy();
 unset($_SESSION['user_id']);
-header('location:index.php');
+header('location:super_admin/index.php');
 exit();
