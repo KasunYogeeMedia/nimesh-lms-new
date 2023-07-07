@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2023 at 02:42 AM
+-- Generation Time: Jul 07, 2023 at 10:43 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.0
 
@@ -115,7 +115,7 @@ CREATE TABLE `lmsclass` (
 INSERT INTO `lmsclass` (`cid`, `name`, `add_date`, `status`) VALUES
 (44, '2021 O/L Revision', '2021-11-22 11:27:17', 'Publish'),
 (43, 'Grade 11', '2021-11-15 17:23:11', 'Publish'),
-(35, 'Grade 3', '2021-11-15 17:20:54', 'Publish'),
+(35, '2023', '2023-07-07 03:50:02', 'Publish'),
 (42, 'Grade 10', '2021-11-15 17:22:43', 'Publish'),
 (41, 'Grade 9', '2021-11-15 17:22:19', 'Publish'),
 (40, 'Grade 8', '2021-11-15 17:22:08', 'Publish'),
@@ -328,7 +328,6 @@ INSERT INTO `lmsclass_schlmsle` (`classid`, `level`, `subject`, `tealmsr`, `less
 (1003, 39, 433, '48', 'Revision', '2022-01-24', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-24 17:48:38', '1', '2022-01-24 12:18:38'),
 (1009, 36, 324, '77', 'Painting', '2022-01-25', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/86826421443?pwd=N2tRbmVra09YSHB3anpxVU5JWTlxdz09', '478', 'Online Class', '', '2022-01-25 16:21:16', '1', '2022-01-25 10:51:16'),
 (1010, 42, 678, '70', 'Grade 10 paper class_January_Week 03', '2022-01-25', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Paper Class', '1643113081unnamed.jpg', '2022-01-25 17:48:01', '1', '2022-01-25 12:18:01'),
-(1011, 35, 297, '41', 'Lesson 4', '2022-01-26', '15:00:00', '18:00:00', 'https://us05web.zoom.us/j/86100689375?pwd=bmdBRHd4ZjdFaFh5U21OSjE5cG9vZz09', '1234', 'Online Class', '1643122004à·à·’à·‚à·Šâ€à¶ºà¶­à·Šà·€à¶º.jpeg', '-25 20:21:00', '1', '2022-01-25 14:51:00'),
 (1099, 39, 369, '68', 'Unit 02 - Static Electricity', '2022-02-01', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/84737937201?pwd=eGdIY21BVk1VSjZxZDJjcjFvTzZmZz09', '850827', 'Free Class', '1643699523Abhiman_Wallpaper.jpg', '2022-02-01 12:42:03', '1', '2022-02-01 07:12:03'),
 (987, 43, 364, '70', 'à¶à¶« à·€à·ƒà·Šà¶­à·”à·€à¶½ à¶´à·˜à·‚à·Šà¶¨ à·€à¶»à·Šà¶œà¶µà¶½à¶º ', '2022-01-23', '13:00:00', '15:30:00', 'https://us05web.zoom.us/j/4329265285?', 'abc', 'Online Class', '', '2022-01-23 12:06:24', '1', '2022-01-23 06:36:24'),
 (988, 42, 360, '70', 'à·€à¶»à·Šà¶œà¶µà¶½à¶º ', '2022-01-23', '15:30:00', '17:30:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '', '2022-01-23 12:08:43', '1', '2022-01-23 06:38:43'),
@@ -414,6 +413,26 @@ CREATE TABLE `lmsebook` (
 INSERT INTO `lmsebook` (`ctuid`, `tid`, `class`, `subject`, `month`, `ctype`, `title`, `tdocument`, `add_date`, `status`) VALUES
 (130, 37, 42, 590, 'January', 'Online Class', 'test', '972634.pdf', '2022-02-09 07:32:24', 1),
 (131, 68, 43, 387, 'February', 'Ebook', 'test', '525339.pdf', '2022-02-09 07:53:31', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lmsexpense`
+--
+
+CREATE TABLE `lmsexpense` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `cost` bigint NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `lmsexpense`
+--
+
+INSERT INTO `lmsexpense` (`id`, `name`, `cost`, `date`) VALUES
+(2, 'mac', 1500, '2023-07-07');
 
 -- --------------------------------------------------------
 
@@ -1044,7 +1063,8 @@ CREATE TABLE `lmspayment` (
 --
 
 INSERT INTO `lmspayment` (`pid`, `fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`, `pay_type`) VALUES
-(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 1, 0, 'half');
+(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 1, 1, 'half'),
+(2, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-08 18:42:18', '0', 1, 1, 'half');
 
 -- --------------------------------------------------------
 
@@ -3021,7 +3041,7 @@ INSERT INTO `lmsreq_subject` (`sub_req_id`, `sub_req_reg_no`, `sub_req_sub_id`) 
 (9541, '773627303', 431),
 (9548, '773842820', 607),
 (9549, '773842820', 618),
-(9550, '787200877', 1);
+(9551, '787200877', 1);
 
 -- --------------------------------------------------------
 
@@ -3091,7 +3111,7 @@ CREATE TABLE `lmssubject` (
 --
 
 INSERT INTO `lmssubject` (`sid`, `class_id`, `name`, `price`, `add_date`, `status`, `start`, `end`) VALUES
-(1, 35, '2023', 12000, '2023-07-06 12:15:59', 'Publish', '2023-07-06', '2023-07-06');
+(1, 35, 'Bsc IT', 12000, '2023-07-07 03:53:49', 'Publish', '2023-07-06', '2023-08-06');
 
 -- --------------------------------------------------------
 
@@ -3132,7 +3152,8 @@ CREATE TABLE `lmstealmsr` (
 --
 
 INSERT INTO `lmstealmsr` (`tid`, `systemid`, `fullname`, `address`, `contactnumber`, `subdetails`, `qualification`, `username`, `password`, `image`, `Percentage`, `add_date`, `status`) VALUES
-(95, 1654706436, 'Test', 'test', '773405650', 'Grade 5 ', 'Test', 'sumudupramuditha@gmail.com', '7ac4987e5a84dbaf689eb677d4cc67ba', '', 40, '2023-07-06 12:59:16', 1);
+(95, 1654706436, 'Test', 'test', '773405650', 'Grade 5 ', 'Test', 'sumudupramuditha@gmail.com', '7ac4987e5a84dbaf689eb677d4cc67ba', '', 40, '2023-07-06 12:59:16', 1),
+(96, 1688717175, 'ashan', 'teacher@gmail.com', '787200877', 'test', 'test', 'teacher@teacher.com', '25f9e794323b453885f5181f1b624d0b', '', 0, '2023-07-07 08:22:40', 1);
 
 -- --------------------------------------------------------
 
@@ -4136,7 +4157,9 @@ INSERT INTO `lmstealmsr_multiple` (`tealmsr_id`, `tealmsr_system_id`, `tealmsr_t
 (6005, 1637003145, 3, 284),
 (6006, 1637003145, 3, 269),
 (6011, 1654706436, 2, 35),
-(6012, 1654706436, 3, 1);
+(6012, 1654706436, 3, 1),
+(6013, 1688717175, 2, 35),
+(6014, 1688717175, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -4187,6 +4210,36 @@ CREATE TABLE `lmsusers` (
 
 INSERT INTO `lmsusers` (`user_id`, `user_name`, `user_email`, `user_pass`, `admintype`, `admin`, `students`, `teachers`, `class`, `subject`, `lesson`, `payments`, `class_schedule`, `mail`, `joining_date`, `status`) VALUES
 (1, 'admin', 'admin@gmail.com', '$2y$10$PO1NRNtexDZlefvtOw/ELe6T/uwDBkpt7JUnMoaS9O1QkDkDJILBa', 'Super Admin', 'True', 'True', 'True', 'True', 'True', 'True', 'True', 'True', 'True', '2022-02-09 03:43:58', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lmsverbal_exam`
+--
+
+CREATE TABLE `lmsverbal_exam` (
+  `classid` int NOT NULL,
+  `level` int NOT NULL,
+  `subject` int NOT NULL,
+  `tealmsr` varchar(50) NOT NULL,
+  `lesson` varchar(1000) NOT NULL,
+  `classdate` date NOT NULL,
+  `class_start_time` time NOT NULL,
+  `class_end_time` time NOT NULL,
+  `classlink` text NOT NULL,
+  `cpassword` varchar(100) NOT NULL,
+  `classtype` varchar(20) NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `classstatus` varchar(20) NOT NULL,
+  `add_date2` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lmsverbal_exam`
+--
+
+INSERT INTO `lmsverbal_exam` (`classid`, `level`, `subject`, `tealmsr`, `lesson`, `classdate`, `class_start_time`, `class_end_time`, `classlink`, `cpassword`, `classtype`, `image`, `classstatus`, `add_date2`) VALUES
+(1, 35, 1, '96', 'test', '2023-07-08', '11:00:00', '11:00:00', 'asdad', 'asdasd', 'Online Class', '', '1', '2023-07-07 09:21:39');
 
 -- --------------------------------------------------------
 
@@ -4468,7 +4521,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `reg_prefix`, `application_name`, `main_logo`) VALUES
-(1, 'ATL', 'Atlas Learn', 'logo-text-white.png');
+(1, 'ATL', 'Yogee', 'logo-text-white.png');
 
 -- --------------------------------------------------------
 
@@ -4490,6 +4543,26 @@ CREATE TABLE `user_attandance` (
 
 INSERT INTO `user_attandance` (`id`, `userid`, `subjectid`, `lid`, `date`) VALUES
 (10, 1360, 387, 1116, '2022-02-05 09:03:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `verbal_exam`
+--
+
+CREATE TABLE `verbal_exam` (
+  `id` int NOT NULL,
+  `userId` bigint NOT NULL,
+  `marks` bigint NOT NULL,
+  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `verbal_exam`
+--
+
+INSERT INTO `verbal_exam` (`id`, `userId`, `marks`, `document`) VALUES
+(9, 1732, 5000, NULL);
 
 --
 -- Indexes for dumped tables
@@ -4542,6 +4615,12 @@ ALTER TABLE `lmsdb`
 --
 ALTER TABLE `lmsebook`
   ADD PRIMARY KEY (`ctuid`);
+
+--
+-- Indexes for table `lmsexpense`
+--
+ALTER TABLE `lmsexpense`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lmsgallery`
@@ -4654,6 +4733,12 @@ ALTER TABLE `lmsusers`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `lmsverbal_exam`
+--
+ALTER TABLE `lmsverbal_exam`
+  ADD PRIMARY KEY (`classid`);
+
+--
 -- Indexes for table `lms_answer`
 --
 ALTER TABLE `lms_answer`
@@ -4705,6 +4790,12 @@ ALTER TABLE `settings`
 -- Indexes for table `user_attandance`
 --
 ALTER TABLE `user_attandance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `verbal_exam`
+--
+ALTER TABLE `verbal_exam`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4760,6 +4851,12 @@ ALTER TABLE `lmsebook`
   MODIFY `ctuid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
+-- AUTO_INCREMENT for table `lmsexpense`
+--
+ALTER TABLE `lmsexpense`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `lmsgallery`
 --
 ALTER TABLE `lmsgallery`
@@ -4793,7 +4890,7 @@ ALTER TABLE `lmsonlineexams`
 -- AUTO_INCREMENT for table `lmspayment`
 --
 ALTER TABLE `lmspayment`
-  MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lmsregister`
@@ -4811,7 +4908,7 @@ ALTER TABLE `lmsrequest_relogin`
 -- AUTO_INCREMENT for table `lmsreq_subject`
 --
 ALTER TABLE `lmsreq_subject`
-  MODIFY `sub_req_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9551;
+  MODIFY `sub_req_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9552;
 
 --
 -- AUTO_INCREMENT for table `lmssms`
@@ -4847,13 +4944,13 @@ ALTER TABLE `lmssubject_tealmsr`
 -- AUTO_INCREMENT for table `lmstealmsr`
 --
 ALTER TABLE `lmstealmsr`
-  MODIFY `tid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `tid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `lmstealmsr_multiple`
 --
 ALTER TABLE `lmstealmsr_multiple`
-  MODIFY `tealmsr_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6013;
+  MODIFY `tealmsr_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6015;
 
 --
 -- AUTO_INCREMENT for table `lmsurl`
@@ -4866,6 +4963,12 @@ ALTER TABLE `lmsurl`
 --
 ALTER TABLE `lmsusers`
   MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lmsverbal_exam`
+--
+ALTER TABLE `lmsverbal_exam`
+  MODIFY `classid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lms_answer`
@@ -4920,6 +5023,12 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `user_attandance`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `verbal_exam`
+--
+ALTER TABLE `verbal_exam`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
