@@ -139,7 +139,7 @@ if (!isset($_GET['type'])) {
                                                     <?php
                                                     $count = 0;
                                                     $total = 0;
-                                                    $list_qury = mysqli_query($conn, "SELECT yp.status,yr.contactnumber,yr.fullname,yc.name ycname,ys.name ysname,yp.amount,yp.accountnumber,yp.fileName,yp.bank,yp.branch,yp.created_at,yp.expiredate,yp.pay_month FROM lmspayment yp INNER JOIN lmsregister yr ON yp.userID=yr.reid INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid INNER JOIN lmsclass yc ON ys.class_id=yc.cid WHERE yp.feeID='$_SESSION[tid]' and yp.paymentMethod='$_GET[type]' and yp.status = '1' ORDER BY yp.pid DESC");
+                                                    $list_qury = mysqli_query($conn, "SELECT yp.status,yr.contactnumber,yr.fullname,yc.name ycname,ys.name ysname,yp.amount,yp.accountnumber,yp.fileName,yp.bank,yp.branch,yp.created_at FROM lmspayment yp INNER JOIN lmsregister yr ON yp.userID=yr.reid INNER JOIN lmssubject ys ON yp.pay_sub_id=ys.sid INNER JOIN lmsclass yc ON ys.class_id=yc.cid WHERE yp.feeID='$_SESSION[tid]' and yp.paymentMethod='$_GET[type]' and yp.status = '1' ORDER BY yp.pid DESC");
 
                                                     while ($list_resalt = mysqli_fetch_assoc($list_qury)) {
                                                         $count++;

@@ -83,85 +83,90 @@ unset($_SESSION['exam_id']);
 							</ul>
 						</div>
 						<div class="col-lg-12 col-md-12">
-							<div class="table-responsive mt-30">
-								<table id="dataTable" class="table table-bordered" style="margin-top: 10px;">
-									<thead>
-										<tr>
-											<th>Take</th>
-											<th>Exam Name</th>
-											<th>Course/Course/Class</th>
-											<th>Questions</th>
-											<th>Time Details</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-										$sub_arrey = array();
+							<?php if ($full_pay == 1) { ?>
+								<div class="table-responsive mt-30">
+									<table id="dataTable" class="table table-bordered" style="margin-top: 10px;">
+										<thead>
+											<tr>
+												<th>Take</th>
+												<th>Exam Name</th>
+												<th>Course/Course/Class</th>
+												<th>Questions</th>
+												<th>Time Details</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+											$sub_arrey = array();
 
-										//print_r($_SESSION);
-										$reg_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
-										$reg_resalt = mysqli_fetch_array($reg_qury);
+											//print_r($_SESSION);
+											$reg_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
+											$reg_resalt = mysqli_fetch_array($reg_qury);
 
-										$sub_qury = mysqli_query($conn, "SELECT * FROM lmsreq_subject WHERE sub_req_reg_no='$reg_resalt[contactnumber]'");
-										while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-											array_push($sub_arrey, '"' . $sub_resalt['sub_req_sub_id'] . '"');
-										}
+											$sub_qury = mysqli_query($conn, "SELECT * FROM lmsreq_subject WHERE sub_req_reg_no='$reg_resalt[contactnumber]'");
+											while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
+												array_push($sub_arrey, '"' . $sub_resalt['sub_req_sub_id'] . '"');
+											}
 
-										$sub_filter = join(",", $sub_arrey);
+											$sub_filter = join(",", $sub_arrey);
 
-										if ($_GET['type'] == 1) {
-											$check_payment = mysqli_query($conn, "SELECT * FROM lmspayment p WHERE p.userID='$_SESSION[reid]' AND p.pay_sub_id IN ($sub_filter)");
-											if (mysqli_num_rows($check_payment) > 0) {
-												$display = 1;
+											if ($_GET['type'] == 1) {
+												$check_payment = mysqli_query($conn, "SELECT * FROM lmspayment p WHERE p.userID='$_SESSION[reid]' AND p.pay_sub_id IN ($sub_filter)");
+												if (mysqli_num_rows($check_payment) > 0) {
+													$display = 1;
+												} else {
+													$display = 0;
+												}
 											} else {
-												$display = 0;
+												$display = 1;
 											}
-										} else {
-											$display = 1;
-										}
 
-										$join_str = "lms_exam_details INNER JOIN lmssubject ON lms_exam_details.lms_exam_subject=lmssubject.sid";
-										$exam_qury = mysqli_query($conn, "SELECT * FROM $join_str WHERE lms_exam_subject IN ($sub_filter) AND lms_exam_pay_type='$_GET[type]' ORDER BY lms_exam_id DESC");
-										while ($exam_resalt = mysqli_fetch_array($exam_qury)) {
-											if ($display == 1) {
-										?>
+											$join_str = "lms_exam_details INNER JOIN lmssubject ON lms_exam_details.lms_exam_subject=lmssubject.sid";
+											$exam_qury = mysqli_query($conn, "SELECT * FROM $join_str WHERE lms_exam_subject IN ($sub_filter) AND lms_exam_pay_type='$_GET[type]' ORDER BY lms_exam_id DESC");
+											while ($exam_resalt = mysqli_fetch_array($exam_qury)) {
+												if ($display == 1) {
+											?>
 
-												<tr style="text-transform: capitalize;">
-													<td style="white-space: nowrap;">
-														<?php
-														$check_exam = mysqli_query($conn, "SELECT * FROM lms_exam_report r WHERE r.exam_report_user='$_SESSION[reid]' AND r.exam_report_paper='$exam_resalt[lms_exam_id]'");
-														if (mysqli_num_rows($check_exam) > 0) {
-														?>
-															<a href="#" class="btn btn-success btn-sm">Already Taken</a>
+													<tr style="text-transform: capitalize;">
+														<td style="white-space: nowrap;">
+															<?php
+															$check_exam = mysqli_query($conn, "SELECT * FROM lms_exam_report r WHERE r.exam_report_user='$_SESSION[reid]' AND r.exam_report_paper='$exam_resalt[lms_exam_id]'");
+															if (mysqli_num_rows($check_exam) > 0) {
+															?>
+																<a href="#" class="btn btn-success btn-sm">Already Taken</a>
 
-															<?php if ($exam_resalt['lms_exam_end_time'] < date("Y-m-d H:i:s")) { ?>
-																<a href="results.php?view=<?php echo $exam_resalt['lms_exam_id']; ?>" style="color: white;" class="btn btn-success btn-sm">View</a>
+																<?php if ($exam_resalt['lms_exam_end_time'] < date("Y-m-d H:i:s")) { ?>
+																	<a href="results.php?view=<?php echo $exam_resalt['lms_exam_id']; ?>" style="color: white;" class="btn btn-success btn-sm">View</a>
+																<?php } else { ?>
+																	<a href="" style="color: white;" class="btn btn-success btn-sm">Waiting...</a>
+																<?php } ?>
+
 															<?php } else { ?>
-																<a href="" style="color: white;" class="btn btn-success btn-sm">Waiting...</a>
+																<a href="exam.php?exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-success btn-sm">Take Exam</a>
 															<?php } ?>
-
-														<?php } else { ?>
-															<a href="exam.php?exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-success btn-sm">Take Exam</a>
-														<?php } ?>
-													</td>
+														</td>
 
 
-													<td><?php echo $exam_resalt['lms_exam_name']; ?></td>
-													<td><?php echo $exam_resalt['name']; ?></td>
-													<td><?php echo $exam_resalt['lms_exam_question']; ?></td>
-													<td style="white-space: nowrap; font-weight: normal;">
-														Added: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_add_time'])); ?><br>
-														Start: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_start_time'])); ?><br>
-														End: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_end_time'])); ?>
-													</td>
-												</tr>
-										<?php
+														<td><?php echo $exam_resalt['lms_exam_name']; ?></td>
+														<td><?php echo $exam_resalt['name']; ?></td>
+														<td><?php echo $exam_resalt['lms_exam_question']; ?></td>
+														<td style="white-space: nowrap; font-weight: normal;">
+															Added: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_add_time'])); ?><br>
+															Start: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_start_time'])); ?><br>
+															End: <?php echo date("Y-m-d h:i:s A", strtotime($exam_resalt['lms_exam_end_time'])); ?>
+														</td>
+													</tr>
+											<?php
+												}
 											}
-										}
-										?>
-									</tbody>
-								</table>
-							</div>
+											?>
+										</tbody>
+									</table>
+								</div>
+							<?php } else { ?>
+								<h3>You are not pay the course full payment</h3>
+							<?php } ?>
+
 						</div>
 
 					</div>
