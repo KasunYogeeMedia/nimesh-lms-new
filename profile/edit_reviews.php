@@ -265,7 +265,9 @@ if (isset($_POST['update'])) {
 				</div>
 			</div>
 		</div>
-	</div>
+		<?php
+		require_once 'footer.php';
+		?>
 	</div>
 	<?php
 	require_once 'footer.php';

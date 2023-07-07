@@ -34980,14 +34980,14 @@ table.dataTable tfoot th {
     color: #1c00a9 !important;
 }
 
-.dataTables_wrapper input[type="search"],
+/* .dataTables_wrapper input[type="search"],
 .dataTables_wrapper input[type="text"],
 .dataTables_wrapper select {
     border: 1px solid #e2e2e2;
     padding: .3rem 0.5rem;
     color: #715d5d;
     border-radius: 5px;
-}
+} */
 
 [data-theme-version="dark"] .dataTables_wrapper input[type="search"],
 [data-theme-version="dark"] .dataTables_wrapper input[type="text"],

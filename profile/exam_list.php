@@ -173,11 +173,11 @@ unset($_SESSION['exam_id']);
 				?>
 			</div>
 		</div>
+		<?php
+		require_once 'footer.php';
+		?>
 	</div>
-	<?php
-	require_once 'footer.php';
-	?>
-	</div>
+
 	<!-- Body End -->
 	<?php
 	require_once 'footerjs.php';

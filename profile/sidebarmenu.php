@@ -45,9 +45,9 @@
 						<!-- <li class="menu--item">
 							<a href="paper_class_tutes.php" class="menu--link"> <i class='uil uil-bell menu--icon'></i> <span class="menu--label">Paid Paper Class Tutes</span> </a>
 						</li> -->
-						<!-- <li class="menu--item">
+						<li class="menu--item">
 							<a href="exam_list.php?type=1" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Exams</span> </a>
-						</li> -->
+						</li>
 						<li class="menu--item">
 							<a href="online_verbal_exam.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Verbal Exams</span> </a>
 						</li>

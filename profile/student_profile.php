@@ -1036,10 +1036,9 @@ if (isset($_POST['submit_bt'])) {
 			</div>
 			<!-- Body End -->
 		</div>
-	</div>
-	<?php
-	require_once 'footer.php';
-	?>
+		<?php
+		require_once 'footer.php';
+		?>
 	</div>
 	<?php
 	require_once 'footerjs.php';
