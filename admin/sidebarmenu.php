@@ -202,7 +202,7 @@
 			<li><a href="submissions.php">Student Submitted</a></li>
 		</ul>
 	</li>
-	<li><a href="reviews.php" aria-expanded="false">
+	<!-- <li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
 		</a>
