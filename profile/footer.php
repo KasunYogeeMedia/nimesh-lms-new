@@ -1,6 +1,5 @@
 <?php
 include '../super_admin/conn.php';
-
 ?>
 
 <footer class="footer bg-secondary">

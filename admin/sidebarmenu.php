@@ -13,7 +13,7 @@
 			<span class="nav-text">Dashboard</span>
 		</a>
 	</li>
-	<li>
+	<!-- <li>
 		<?php
 		if ($admin == 'True') {
 			echo '<a class="ai-icon" href="admin.php" aria-expanded="false">
@@ -25,7 +25,7 @@
 			echo '';
 		}
 		?>
-	</li>
+	</li> -->
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-th-list"></i>
 			<span class="nav-text">Filters</span>
@@ -156,7 +156,7 @@
 		?>
 	</li>
 
-	<li>
+	<!-- <li>
 		<?php
 		if ($lesson == 'True') {
 
@@ -169,7 +169,7 @@
 			echo '';
 		}
 		?>
-	</li>
+	</li> -->
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-money"></i>
 			<span class="nav-text">Payments</span>
@@ -202,17 +202,37 @@
 			<li><a href="submissions.php">Student Submitted</a></li>
 		</ul>
 	</li>
+	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Online Verbal Exams</span>
+		</a>
+		<ul aria-expanded="false">
+			<li><a href="online_verbal.php">Verbal Exams</a></li>
+
+		</ul>
+	</li>
 	<li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
 		</a>
 	</li>
-	<li><a href="gallery.php" aria-expanded="false">
+	<!-- <li><a href="gallery.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Gallery</span>
 		</a>
 	</li>
-	<li>
+	<li>-->
+		<li><a href="expense.php" aria-expanded="false">
+			<i class="la la-camera-retro"></i>
+			<span class="nav-text">Expenses</span>
+		</a>
+	</li>
+	<li><a href="certificate.php" aria-expanded="false">
+			<i class="la la-camera-retro"></i>
+			<span class="nav-text">Certificate</span>
+		</a>
+	</li>
+	<!--
 		<?php
 		if ($mail == 'True') {
 
@@ -225,8 +245,8 @@
 			echo '';
 		}
 		?>
-	</li>
-	<li>
+	</li> -->
+	<!-- <li>
 		<?php
 		if ($mail == 'True') {
 
@@ -239,7 +259,7 @@
 			echo '';
 		}
 		?>
-	</li>
+	</li> -->
 	<li>
 		<?php
 		if ($mail == 'True') {

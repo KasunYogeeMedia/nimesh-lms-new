@@ -180,12 +180,12 @@ if (isset($_POST['pay_bt'])) {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>Company Rate<br><input type="text" readonly name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
+                                                    <td>Company Rate<br><input type="text"  name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
                                                     <td></td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Payment<br><input type="text" readonly name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
+                                                    <td>Payment<br><input type="text"  name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
                                                     <td><br><button type="submit" name="pay_bt" class="btn btn-success">Pay</button></td>
                                                 </tr>
                                             </tbody>
