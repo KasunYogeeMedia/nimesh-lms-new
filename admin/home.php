@@ -185,7 +185,7 @@ require_once("conn.php");
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Lectures</p>
 										<div class="h-scroll">
-											<div class="card border-0 rounded-0">
+											<div class="card border-0 rounded-0 p-3">
 												<div class="row">
 													<div class="col-auto">
 														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
@@ -201,7 +201,7 @@ require_once("conn.php");
 													</div>
 												</div>
 											</div>
-											<div class="card border-0 rounded-0">
+											<div class="card border-0 rounded-0 p-3">
 												<div class="row">
 													<div class="col-auto">
 														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
@@ -217,7 +217,7 @@ require_once("conn.php");
 													</div>
 												</div>
 											</div>
-											<div class="card border-0 rounded-0">
+											<div class="card border-0 rounded-0 p-3">
 												<div class="row">
 													<div class="col-auto">
 														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
@@ -233,7 +233,7 @@ require_once("conn.php");
 													</div>
 												</div>
 											</div>
-											<div class="card border-0 rounded-0">
+											<div class="card border-0 rounded-0 p-3">
 												<div class="row">
 													<div class="col-auto">
 														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
@@ -512,8 +512,9 @@ require_once("conn.php");
 																			$payment_resalt = mysqli_fetch_assoc($payment_count);
 
 																			
-																			*/ ?> </h3> 
-													<h3><?php //echo number_format($payment_resalt['amount'], 2) ?></h3>
+																			*/ ?> </h3>
+													<h3><?php //echo number_format($payment_resalt['amount'], 2) 
+														?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
 													</div>

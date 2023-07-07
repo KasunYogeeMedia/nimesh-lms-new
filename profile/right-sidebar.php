@@ -13,7 +13,7 @@ require_once '../super_admin/dbconfig4.php';
 		<div class="col-auto my-auto">
 			<i class="fa fa-bell" aria-hidden="true"></i>
 		</div>
-		<div class="col-auto my-auto">
+		<div class="col-auto my-auto d-none">
 			<div class="form-check form-switch text-center p-0">
 				<label class="form-check-label" for="lightSwitch">
 					<i class="fa fa-moon-o" aria-hidden="true"></i>
