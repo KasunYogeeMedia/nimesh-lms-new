@@ -1,4 +1,4 @@
-.dash_card{
+.dash_card {
   display: block;
   margin: 0 auto;
   padding: 10px;
@@ -32,4 +32,18 @@
   text-align: center;
   display: block;
   padding: 10px;
+}
+
+.authincation.dash-up {
+  width: 100%;
+  height: 850px;
+  background-image: url(../img/sign1.png), url(../img/sign2.png),
+  url(../img/sign3.png), url(../img/sign4.png) !important;
+  background-position: left top, right top, left bottom, bottom right !important;
+  background-repeat: no-repeat !important;
+  background-size: 40%, 40%, 40%, 40% !important;
+}
+
+.auth-form {
+  padding: 0 50px;
 }
