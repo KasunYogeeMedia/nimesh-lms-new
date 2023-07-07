@@ -260,11 +260,7 @@ if (isset($_SESSION['tid'])) {
 										</span>
 										<div class="media-body text-white">
 											<p class="mb-1">Total Student</p>
-											<h3 class="text-white"><?php
-																	$student_count = mysqli_query($conn, "SELECT COUNT(feeID) count FROM lmspayment WHERE feeID='$_SESSION[tid]' GROUP BY feeID");
-																	$student_resalt = mysqli_fetch_assoc($student_count);
-																	echo $student_resalt['count'];
-																	?></h3>
+											<h3 class="text-white"></h3>
 										</div>
 									</div>
 								</div>
@@ -279,13 +275,7 @@ if (isset($_SESSION['tid'])) {
 										</span>
 										<div class="media-body text-white">
 											<p class="mb-1">Time Period : <?php echo date("Y-m-01"); ?> to <?php echo date("Y-m-t", strtotime(date("Y-m-d"))); ?></p>
-											<h3 class="text-white">Current Income : <?php
-																					$start = date("Y-m-01");
-																					$end = date("Y-m-t", strtotime(date("Y-m-d")));
-																					$payment_count = mysqli_query($conn, "SELECT SUM(amount) amount FROM lmspayment WHERE feeID='$_SESSION[tid]' AND status=1 AND created_at BETWEEN '$start' AND '$end' GROUP BY feeID");
-																					$payment_resalt = mysqli_fetch_assoc($payment_count);
-																					echo 'Rs ' . number_format((float)$payment_resalt['amount'], 2);
-																					?></h3>
+											<h3 class="text-white">Current Income : </h3>
 										</div>
 									</div>
 								</div>
