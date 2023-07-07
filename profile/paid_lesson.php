@@ -306,8 +306,10 @@ if ($image_resalt['image'] == "") {
 																$vmonth = date_format(date_create($lesson_resalt['add_date']), "Y-m-01");
 																date_default_timezone_set("Asia/Colombo");
 																$lmsck_date = date('Y-m-d', time());
-																$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$lesson_resalt[subject]' and status='1' and pay_month='$vmonth' and expiredate>'$lmsck_date'");
+																$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$lesson_resalt[subject]' and status='1' ");
 																if (mysqli_num_rows($lmsck_payment) > 0) {
+
+																	
 																?>
 
 																	<a href="paid_video_view.php?video=<?php echo $lesson_resalt['lid']; ?>" class="save_btn btn-block" style="background-color:#151fc1;">Watch Lesson</a>

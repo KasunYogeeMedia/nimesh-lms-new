@@ -205,28 +205,26 @@ if (isset($_POST['submit_bt'])) {
 		//echo $select_payment;
 		$pay_type = $_POST['paymonth'];
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
-		if($_POST['paymonth'] == 'half'){
+		if ($_POST['paymonth'] == 'half') {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
-		}else{
+		} else {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
 		}
-		
+
 
 		$query = mysqli_query($conn, $sql);
-		
+
 		if (mysqli_fetch_array($query)) {
 
 			$R = mysqli_fetch_array($query);
-			
+
 			if ($R['status'] == 1) {
 
 				$error = "ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත!!";
-
 			} else {
 
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
-			
 		}
 
 		if (!isset($error)) {
@@ -791,23 +789,39 @@ if (isset($_POST['submit_bt'])) {
 
 										?>
 												<tr>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Name</p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['fullname']; ?></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark">Name</p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark"><?php echo $row['fullname']; ?></p>
+													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Student Reg Number</p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['stnumber']; ?></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark">Student Reg Number</p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark"><?php echo $row['stnumber']; ?></p>
+													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Contact</p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark">Contact</p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark"><?php echo "0" . (int)$row['contactnumber']; ?> <i class="text-danger">(User Name)</i></p>
+													</td>
 												</tr>
 												<tr>
 
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark">Address </p></td>
-													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;"><p class="bg-dark"><?php echo $row['address']; ?></p></td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark">Address </p>
+													</td>
+													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
+														<p class="bg-dark"><?php echo $row['address']; ?></p>
+													</td>
 												</tr>
 										<?php
 
@@ -893,7 +907,7 @@ if (isset($_POST['submit_bt'])) {
 											<thead>
 												<tr style="background-color: #8b8c90;">
 													<td colspan="6" style="color: #ffffff;border:4px solid #8b8c90;"><?php echo $tea_resalt['fullname']; ?></td>
-													
+
 												</tr>
 											</thead>
 											<tbody>
@@ -909,7 +923,7 @@ if (isset($_POST['submit_bt'])) {
 													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$tec_sub_resalt[sid]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
 													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
 													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-													
+
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 
 												?>
@@ -1025,9 +1039,10 @@ if (isset($_POST['submit_bt'])) {
 			</div>
 			<!-- Body End -->
 		</div>
-		<?php
-		require_once 'footer.php';
-		?>
+	</div>
+	<?php
+	require_once 'footer.php';
+	?>
 	</div>
 	<?php
 	require_once 'footerjs.php';
