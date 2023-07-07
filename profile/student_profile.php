@@ -542,12 +542,12 @@ if (isset($_POST['submit_bt'])) {
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Exams<h2>
+									<h2 class="text-dark">Verbal Exams<h2>
 								</div>
 								<div class="card_dash_right">
 									<i class="fa fa-user fa-3x text-dark"></i>
 								</div>
-								<a href="exam_list.php?type=1" class="btn btn-success dash_card_a">View More</a>
+								<a href="online_verbal_exam.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
