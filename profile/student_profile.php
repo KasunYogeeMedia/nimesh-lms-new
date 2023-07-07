@@ -523,7 +523,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Free Workshop</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-leanpub fa-3x text-dark"></i>
 								</div>
 								<a href="free_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -534,7 +534,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Paid Live Classes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
 								<a href="online_class.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -545,7 +545,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Verbal Exams<h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-file-text fa-3x text-dark"></i>
 								</div>
 								<a href="online_verbal_exam.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -682,7 +682,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Bank Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-university fa-3x text-dark"></i>
 								</div>
 								<a href="bank_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -693,7 +693,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Card Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-credit-card-alt fa-3x text-dark"></i>
 								</div>
 								<a href="card_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -704,7 +704,7 @@ if (isset($_POST['submit_bt'])) {
 									<h2 class="text-dark">Manual Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-money fa-3x text-dark"></i>
 								</div>
 								<a href="manual_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -910,24 +910,24 @@ if (isset($_POST['submit_bt'])) {
 										<tbody>
 											<?php
 
-												 $tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
-											
-												 while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
-													
-													//check paid subject
-													
-													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
-													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
-													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-													
-													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-														
-												?>
-														<tr>
-															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+											$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
+
+											while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
+
+												//check paid subject
+
+												$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
+												$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
+												$paid_resalt_full = mysqli_fetch_array($check_paid_full);
+												$paid_resalt_half = mysqli_fetch_array($check_paid_half);
+
+												if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
+
+											?>
+													<tr>
+														<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
 														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
 														<!--kasun 2021.12.01 change color to black from white-->
@@ -964,7 +964,7 @@ if (isset($_POST['submit_bt'])) {
 								}
 								?>
 								<h4>Select Month</h4>
-								
+
 								<br>
 								<label for="fileName1"><img src="images/card payment.png" id="yourImgTag1" style="width:20%;cursor: pointer;" /></label>
 								<ul>
@@ -982,12 +982,12 @@ if (isset($_POST['submit_bt'])) {
 								$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' and userID='$_SESSION[reid]' and status='1' ORDER BY pid DESC");
 								while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
 								?>
-									
+
 								<?php
 								}
 								?>
 								<h4>Select Month</h4>
-								
+
 								<br>
 
 								<label class="control-label text-dark" for="basicinput">සාමාන්‍ය පන්ති ගාස්තු ගෙවූ දරුවන් පමණක් බැංකු රිසිට් පත මෙතනින් upload කරන්න. පන්ති ගාස්තු සදහා සහන (Discounts/Offers) ලැබූ සිසුන් එම bank receipt පත 0773851246 අංකයට නම , Atlas Learn LMS එකෙහි register වූ දුරකතන අංකය , විෂය සහ ගුරුවරයා , ඒ ඒ විෂයට ගෙවූ ගාස්තුව වෙන වෙනම සදහන් කර WhatsApp කරන්න.සාමාන්‍ය පන්ති ගාස්තු ගෙවන දරුවන් සම්බන්ධ වන විෂයන් ඉදිරියේ හරි ලකුණු යොදා (click on the relevant tick box) මෙහි bank receipt පතෙහි photo එකක් හෝ screenshot එකක් upload කරන්න. (Pdf file upload කල නොහැක)</label>
