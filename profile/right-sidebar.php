@@ -332,12 +332,18 @@ require_once '../super_admin/dbconfig4.php';
 			<?php
 			}
 			?>
-			<?php
-			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
-			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
-				$lesson_date = $lesson_datas['classdate'];
-				$day = date("d", strtotime($lesson_date));
-			?>
+		<?php
+$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
+if (!$lesson_data) {
+    die('Query failed: ' . mysqli_error($conn));
+}
+
+while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+    $lesson_date = $lesson_datas['classdate'];
+    $day = date("d", strtotime($lesson_date));
+}
+?>
+
 
 				<div class="card border-0 mb-4 bg-success bg-opacity-10">
 					<div class="card-body">
