@@ -57,7 +57,6 @@ if ($image_resalt['image'] == "") {
 							<div class="_14d25">
 								<div class="row">
 									<?php 
-									$full_pay = 0; //temp
 									if ($full_pay == 1) { ?>
 										<?php
 										$exams_qury = mysqli_query($conn, "SELECT * FROM lmsonlineexams WHERE status='1' ORDER BY exid DESC");

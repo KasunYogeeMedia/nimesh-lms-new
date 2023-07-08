@@ -55,7 +55,6 @@ if ($image_resalt['image'] == "") {
 
                         </div>
                         <?php
-                        $full_pay = 0; //temp
                         if ($full_pay == 1) { ?>
                             <div class="col-lg-12">
                                 <div class="widget-box bg-light mb-2 p-3">
