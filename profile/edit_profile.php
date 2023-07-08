@@ -192,7 +192,7 @@ if (isset($_POST['update_picture'])) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="st_title">Edit My Profile</h2>
+							<h2 class="st_title mb-4">Edit My Profile</h2>
 							<div class="basic_profile bg-light p-3">
 								<form method="post">
 									<div class="basic_ptitle">

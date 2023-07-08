@@ -51,7 +51,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Free Live Classes</h4>
+							<h4 class="item_title mb-4">Free Live Classes</h4>
 							<br>
 							<a href="online_class.php" class="see150">See all</a>
 						</div>

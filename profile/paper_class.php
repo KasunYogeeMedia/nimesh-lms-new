@@ -1,7 +1,8 @@
 ﻿<?php
 
-session_start();
-
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 require_once '../super_admin/dbconfig4.php';
 
@@ -62,7 +63,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Paid Paper Classes</h4>
+							<h4 class="item_title mb-4">Paid Paper Classes</h4>
 							<a href="online_class.php" class="see150">See all</a>
 						</div>
 						<div class="col-lg-12">

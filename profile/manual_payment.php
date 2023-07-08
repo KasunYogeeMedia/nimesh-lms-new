@@ -60,7 +60,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="st_title"> Manual Payments History</h2>
+							<h2 class="st_title mb-4"> Manual Payments History</h2>
 						</div>
 					</div>
 					<div class="row">

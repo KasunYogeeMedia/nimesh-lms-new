@@ -60,7 +60,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="st_title"> Bank Payments History</h2>
+							<h2 class="st_title mb-4"> Bank Payments History</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -136,7 +136,7 @@ if ($image_resalt['image'] == "") {
 												<td>
 													<span class="badge badge-primary">Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
 												</td>
-												
+
 												<td>
 													<?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?>
 												</td>

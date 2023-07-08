@@ -178,7 +178,7 @@ if (isset($_POST['submit'])) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="st_title"><i class="uil uil-file-alt"></i>My Exam Submissions</h2>
+							<h2 class="st_title mb-4"><i class="uil uil-file-alt"></i>My Exam Submissions</h2>
 						</div>
 					</div>
 					<div class="row">

@@ -51,11 +51,10 @@ if ($image_resalt['image'] == "") {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="item_title">Paid Live Classes</h4>
+                            <h4 class="item_title mb-4">Paid Live Classes</h4>
 
                         </div>
                         <?php
-                        $full_pay = 0; //temp
                         if ($full_pay == 1) { ?>
                             <div class="col-lg-12">
                                 <div class="widget-box bg-light mb-2 p-3">
