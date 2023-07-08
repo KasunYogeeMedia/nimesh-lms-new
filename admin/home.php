@@ -338,7 +338,7 @@ require_once("conn.php");
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-xl-12 col-xxl-12 col-sm-12">
 							<div class="row">
 								<div class="col-xl-4 col-xxl-4 col-sm-6">
@@ -494,7 +494,7 @@ require_once("conn.php");
 												</span>
 												<div class="media-body text-white">
 													<p class="mb-1">Total Revenue</p>
-													<h3 class="text-white"><?php /*
+													<h3 class="text-white"><?php
 																			$c_date = date("Y-01-01");
 
 																			$income_qury = mysqli_query($conn, "SELECT SUM(amount) as total_income FROM lmspayment WHERE pay_month = '$c_date' AND status='1'");
@@ -511,8 +511,8 @@ require_once("conn.php");
 																			$payment_count = mysqli_query($conn, "SELECT SUM(amount) amount FROM lmspayment WHERE status=1");
 																			$payment_resalt = mysqli_fetch_assoc($payment_count);
 
-																			
-																			*/ ?> </h3>
+
+																			?> </h3>
 													<h3><?php //echo number_format($payment_resalt['amount'], 2) 
 														?></h3>
 													<div class="progress mb-2 bg-white">
@@ -530,7 +530,7 @@ require_once("conn.php");
 								<div class="row">
 									<div class="col-xl-12 col-lg-12 col-xxl-12 col-md-12">
 										<div class="card-header">
-											<h2 style="font-weight:bold;text-align:center;">Batch Wise Total Student Couting</h2>
+											<h2 style="font-weight:bold;text-align:center;">Batch Wise Total Student Counting</h2>
 											<hr>
 										</div>
 									</div>
@@ -565,7 +565,7 @@ require_once("conn.php");
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
 					<?php
