@@ -161,17 +161,17 @@ if ($image_resalt['image'] == "") {
 
                                                                     ?> - <?php
 
-                                                                        $id = $level_resalt['subject'];
+                                                                            $id = $level_resalt['subject'];
 
-                                                                        $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
+                                                                            $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 
-                                                                        $query->execute();
+                                                                            $query->execute();
 
-                                                                        $result = $query->fetch();
+                                                                            $result = $query->fetch();
 
-                                                                        echo $result['name'];
+                                                                            echo $result['name'];
 
-                                                                        ?>
+                                                                            ?>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -266,17 +266,17 @@ if ($image_resalt['image'] == "") {
 
                                                                     ?> - <?php
 
-                                                                        $id = $level_resalt['subject'];
+                                                                            $id = $level_resalt['subject'];
 
-                                                                        $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
+                                                                            $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 
-                                                                        $query->execute();
+                                                                            $query->execute();
 
-                                                                        $result = $query->fetch();
+                                                                            $result = $query->fetch();
 
-                                                                        echo $result['name'];
+                                                                            echo $result['name'];
 
-                                                                        ?>
+                                                                            ?>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -470,7 +470,9 @@ if ($image_resalt['image'] == "") {
                                 </div>
                             </div>
                         <?php } else { ?>
-                            <h3>You are not pay the course full payment</h3>
+                            <div class="alert alert-warning" role="alert">
+                                You are not pay the course full payment!
+                            </div>
                         <?php } ?>
                     </div>
                 </div>

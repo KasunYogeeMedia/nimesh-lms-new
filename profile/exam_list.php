@@ -150,7 +150,9 @@ unset($_SESSION['exam_id']);
 									</table>
 								</div>
 							<?php } else { ?>
-								<h3>You are not pay the course full payment</h3>
+								<div class="alert alert-warning" role="alert">
+									You are not pay the course full payment!
+								</div>
 							<?php } ?>
 
 						</div>
