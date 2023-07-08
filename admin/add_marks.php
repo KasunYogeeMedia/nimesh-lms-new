@@ -219,7 +219,7 @@ if (isset($_POST['submit_btn'])) {
                                             <strong>Exam Details</strong><br>
                                             Name <strong><?php echo $view_resalt['examname']; ?></strong><br>
                                             Total Quiz <strong><?php echo $view_resalt['quizcount']; ?></strong><br>
-                                            Marks/Batch <span class="badge badge-secondary text-white"><?php echo $view_resalt['marks']; ?>%</span>
+                                            Marks/Batch <span><?php echo $view_resalt['marks']; ?>%</span>
 
                                             <p class="mt-2 text-success"><em>Put a check mark for the wrong question</em></p>
 

@@ -233,7 +233,7 @@ if (isset($_GET['exam_id'])) {
                                                                 echo '<td><button class="btn btn-success">Submited</span></td>';
                                                             } else {
 
-                                                                echo '<td><span class="badge badge-danger">Late submitted</span></td>';
+                                                                echo '<td><span>Late submitted</span></td>';
                                                             }
 
                                                             ?>

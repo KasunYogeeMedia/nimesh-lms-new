@@ -104,21 +104,21 @@ if ($image_resalt['image'] == "") {
 													<?php
 													if ($payment_resalt['status'] == 0) {
 													?>
-														<span class="badge badge-warning">Pending</span>
+														<span>Pending</span>
 													<?php
 													} elseif ($payment_resalt['status'] == 1) {
 													?>
-														<span class="badge badge-success">Active</span>
+														<span>Active</span>
 													<?php
 													} elseif ($payment_resalt['status'] == 2) {
 													?>
-														<span class="badge badge-danger">Reject</span>
+														<span>Reject</span>
 													<?php
 													}
 													?>
 												</td>
 												<td>
-													<span class="badge badge-warning">
+													<span>
 														<?php
 														// Assuming $payment_result['pay_sub_id'] is already sanitized or prepared safely.
 														$sub_qury = mysqli_query($conn, "SELECT s.name AS subject_name, c.name AS class_name FROM lmssubject s INNER JOIN lmsclass c ON s.class_id = c.cid WHERE s.sid = '$payment_resalt[pay_sub_id]'");
@@ -131,10 +131,10 @@ if ($image_resalt['image'] == "") {
 
 												</td>
 												<td>
-													<a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="badge badge-primary">View Slip</a>
+													<a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
 												</td>
 												<td>
-													<span class="badge badge-primary">Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
+													<span>Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
 												</td>
 
 												<td>

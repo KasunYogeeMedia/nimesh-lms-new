@@ -151,17 +151,17 @@ if (!isset($_GET['type'])) {
                                                         <td><a href="<?php echo "$url/profile/uploadslip/" . $list_resalt['fileName']; ?>" target="_blank" class="btn btn-sm btn-dark"><i class="fa fa-print"></i></a></td>
                                                         <td>
                                                             <?php if ($list_resalt['status'] == 0) { ?>
-                                                                <span class="badge badge-danger text-white">Not Approval</span>
+                                                                <span>Not Approval</span>
                                                             <?php } ?>
                                                             <?php if ($list_resalt['status'] == 1) { ?>
-                                                                <span class="badge badge-success text-white">Approval</span>
+                                                                <span>Approval</span>
                                                             <?php } ?>
                                                         </td>
                                                         <td><?php echo $list_resalt['contactnumber']; ?><br><?php echo $list_resalt['fullname']; ?></td>
                                                         <td><?php echo $list_resalt['ycname']; ?><br><?php echo $list_resalt['ysname']; ?></td>
                                                         <td align="right"><?php echo number_format((float)$list_resalt['amount'], 2); ?></td>
                                                         <td><?php echo date_format(date_create($list_resalt['created_at']), "Y-m-d h:i:s A"); ?></td>
-                                                        <td><span class="badge badge-secondary" style="font-size:14px;"> <?php echo date_format(date_create($list_resalt['pay_month']), "F"); ?></span></td>
+                                                        <td><span style="font-size:14px;"> <?php echo date_format(date_create($list_resalt['pay_month']), "F"); ?></span></td>
                                                         </tr>
                                                     <?php
                                                     }
@@ -203,7 +203,7 @@ if (!isset($_GET['type'])) {
                                                         <div class="text-center">
                                                             <div class="profile-photo">
 
-                                                                <a href="<?php echo "https://guruniwasa.lk/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="badge badge-primary">View Slip</a>
+                                                                <a href="<?php echo "https://guruniwasa.lk/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
                                                             </div>
                                                             <h3 class="mt-4 mb-1"><strong><?php echo $user_resalt['fullname']; ?></strong></h3>
                                                             <p class="text-muted"><strong>Course/Batch : <?php
@@ -236,19 +236,19 @@ if (!isset($_GET['type'])) {
                                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                                     <span class="mb-0">Status : </span><strong>
                                                                         <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                            <span class="badge badge-warning">Not Approval</span>
+                                                                            <span>Not Approval</span>
                                                                         <?php } ?>
                                                                         <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                            <span class="badge badge-success">Approval</span>
+                                                                            <span>Approval</span>
                                                                         <?php } ?></strong>
                                                                 </li>
 
                                                             </ul>
                                                             <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="badge badge-success btn-rounded mt-3 px-4"><i class="fa fa-check"></i> Approval</a>
+                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success btn-rounded mt-3 px-4"><i class="fa fa-check"></i> Approval</a>
                                                             <?php } ?>
                                                             <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=0" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="badge badge-danger btn-rounded mt-3 px-4"><i class="la la-trash-o"></i> Reject</a>
+                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=0" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger btn-rounded mt-3 px-4"><i class="la la-trash-o"></i> Reject</a>
                                                             <?php } ?>
                                                         </div>
                                                     </div>

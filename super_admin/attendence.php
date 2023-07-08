@@ -178,7 +178,7 @@ if (isset($_GET['remove'])) {
 
                                                                     ?>
                                                                 </td>
-                                                                <td><span class="badge badge-primary" style="font-size:14px;"> <?php echo date_format(date_create($list_resalt['add_date2']), "F"); ?></span></td>
+                                                                <td><span> style="font-size:14px;"> <?php echo date_format(date_create($list_resalt['add_date2']), "F"); ?></span></td>
                                                                 <td><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></td>
                                                                 <td><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></td>
                                                                 <td><?php echo date_format(date_create($list_resalt['class_end_time']), "h:i:s A"); ?></td>

@@ -218,7 +218,7 @@ require_once '../super_admin/dbconfig4.php';
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
 																<td><a href="images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
-																<td><span class="badge badge-primary" style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
+																<td><span> style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
 													<?php }
@@ -310,7 +310,7 @@ require_once '../super_admin/dbconfig4.php';
 																			?></strong>
 																	</li>
 																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Upload Month :</span><strong><span class="badge badge-success" style="font-size:14px;"> <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></strong>
+																		<span class="mb-0">Upload Month :</span><strong><span style="font-size:14px;"> <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></strong>
 																	</li>
 
 																	<li class="list-group-item px-0 d-flex justify-content-between">

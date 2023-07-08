@@ -185,10 +185,10 @@ require_once 'dbconfig4.php';
 
                                                                     if ($row['status'] == "Unpublish") {
 
-                                                                        echo '<a class="badge badge-warning">Pending</a>';
+                                                                        echo '<a class="btn btn-warning">Pending</a>';
                                                                     } else if ($row['status'] == "Publish") {
 
-                                                                        echo '<a class="badge badge-success">Success</a>';
+                                                                        echo '<a class="btn btn-success">Success</a>';
                                                                     }
 
                                                                     ?>

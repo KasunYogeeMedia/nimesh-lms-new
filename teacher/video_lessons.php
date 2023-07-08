@@ -245,7 +245,7 @@ if (isset($_SESSION['tid'])) {
                                                                         $pro_img = "../super_admin/images/lesson/cover/" . $row['cover'];
                                                                     } ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
                                                                 </td>
-                                                                <td><span class="badge badge-secondary" style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
+                                                                <td><span style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
                                                                 <td><?php echo $row['add_date']; ?></td>
                                                                 <td>
                                                                     <?php

@@ -225,7 +225,7 @@ $total = $row[0];
 																	<span class="mb-0">Class Date : </span><strong><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></strong>
 																</li>
 																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Month :</span><strong><span class="badge badge-success" style="font-size:14px;"> <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($list_resalt['add_date']), "F"); ?></span></strong>
+																	<span class="mb-0">Month :</span><strong><span style="font-size:14px;"> <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($list_resalt['add_date']), "F"); ?></span></strong>
 																</li>
 																<li class="list-group-item px-0 d-flex justify-content-between">
 																	<span class="mb-0">Added Date : </span><strong><?php echo date_format(date_create($list_resalt['add_date2']), "M d, Y - h:i:s A"); ?></strong>

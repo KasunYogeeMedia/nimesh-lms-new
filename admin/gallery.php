@@ -162,7 +162,7 @@ require_once '../super_admin/dbconfig4.php';
 																<td><?php echo $row['id']; ?></td>
 																<td><img src="images/gallery/<?php echo $row['image']; ?>" alt="" width="100" height="60"></td>
 																<td><?php echo $row['add_date']; ?></td>
-																<td><span class="badge badge-success"><?php echo $row['status']; ?></span></td>
+																<td><span><?php echo $row['status']; ?></span></td>
 																<td><a class="btn btn-primary" href="edit_gallery.php?glid=<?php echo $row["id"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
@@ -206,7 +206,7 @@ require_once '../super_admin/dbconfig4.php';
 																</div>
 																<ul class="list-group mb-3 list-group-flush">
 																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Status : </span><strong><span class="badge badge-success"><?php echo $row['status']; ?></span></strong>
+																		<span class="mb-0">Status : </span><strong><span><?php echo $row['status']; ?></span></strong>
 																	</li>
 																	<li class="list-group-item px-0 d-flex justify-content-between">
 																		<span class="mb-0">Added Date : </span><strong><?php echo $row['add_date']; ?></strong>

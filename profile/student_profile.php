@@ -419,13 +419,13 @@ if (isset($_POST['submit_bt'])) {
 										<div class="col-3">
 											<?php if ($row['image'] == "") {
 												$pro_img = "images/hd_dp.jpg";
-												} else {
-													$pro_img = "uploadImg/" . $row['image'];
-												} ?>
+											} else {
+												$pro_img = "uploadImg/" . $row['image'];
+											} ?>
 											<div class="profile-img">
 												<img src="<?php echo $pro_img; ?>" alt="" class="d-block mx-auto w-50 h-auto">
 											</div>
-											
+
 										</div>
 										<div class="col-9">
 											<div class="about">
@@ -916,14 +916,14 @@ if (isset($_POST['submit_bt'])) {
 
 												$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
 												$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-												if($check_paid_full){
+												if ($check_paid_full) {
 													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
 												}
-												if($check_paid_half){
+												if ($check_paid_half) {
 													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
 												}
-												
-												
+
+
 
 												if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 
@@ -963,7 +963,7 @@ if (isset($_POST['submit_bt'])) {
 								$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Card' and userID='$_SESSION[reid]' and status='1' ORDER BY pid DESC");
 								while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
 								?>
-									<span class="badge badge-success" style="font-size:14px;color:#000000;">Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span>
+									<span style="font-size:14px;color:#000000;">Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span>
 								<?php
 								}
 								?>

@@ -372,7 +372,7 @@ if (isset($_POST['update_picture'])) {
 															<div class="col-md-12 text-sec">
 																<br>
 																<hr>
-																<span class="badge badge-success" style="font-weight:bold;font-size:16px;color:#ffffff;">
+																<span style="font-weight:bold;font-size:16px;color:#ffffff;">
 																	<label class="col-form-label">Current Course :</label>
 																	<hr style="background-color:#ffffff;">
 																	<?php

@@ -92,34 +92,34 @@ if ($image_resalt['image'] == "") {
 												<td><?php
 													if ($payment_resalt['status'] == 0) {
 													?>
-														<span class="badge badge-warning">Pending</span>
+														<span>Pending</span>
 													<?php
 													} elseif ($payment_resalt['status'] == 1) {
 													?>
-														<span class="badge badge-success">Active</span>
+														<span>Active</span>
 													<?php
 													} elseif ($payment_resalt['status'] == 2) {
 													?>
-														<span class="badge badge-danger">Reject</span>
+														<span>Reject</span>
 													<?php
 													}
 													?>
 												</td>
-												<td><span class="badge badge-warning"><?php
-																						$sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$payment_resalt[pay_sub_id]'");
-																						while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-																						?> <?php echo $sub_resalt['name']; ?>
+												<td><span><?php
+															$sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$payment_resalt[pay_sub_id]'");
+															while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
+															?> <?php echo $sub_resalt['name']; ?>
 
 															-
 
 															<?php
-																							$cl_qury = mysqli_query($conn, "SELECT * FROM lmsclass WHERE cid='$sub_resalt[class_id]'");
-																							while ($cl_resalt = mysqli_fetch_array($cl_qury)) {
+																$cl_qury = mysqli_query($conn, "SELECT * FROM lmsclass WHERE cid='$sub_resalt[class_id]'");
+																while ($cl_resalt = mysqli_fetch_array($cl_qury)) {
 															?> <?php echo $cl_resalt['name']; ?> <?php }
 																							} ?>
 													</span></td>
-												<td><span class="badge badge-primary">Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span></td>
-												<td><a href="#"><span class="badge badge-success" style="font-size:14px;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></a></td>
+												<td><span>Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span></td>
+												<td><a href="#"><span style="font-size:14px;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></a></td>
 												<td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?></td>
 											</tr>
 										<?php

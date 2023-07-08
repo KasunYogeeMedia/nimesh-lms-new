@@ -198,20 +198,20 @@ if (isset($_GET['id'])) {
                                                         <tr>
                                                             <td><?php echo number_format($count, 0); ?></td>
                                                             <td>
-                                                                <a href="reject_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="badge badge-success"><i class="fa fa-check"></i> Approval</a>
+                                                                <a href="reject_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success"><i class="fa fa-check"></i> Approval</a>
                                                             </td>
                                                             <td>
-                                                                <a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="badge badge-primary">View Slip</a>
+                                                                <a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
                                                             </td>
                                                             <td>
                                                                 <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                    <span class="badge badge-warning">Pending</span>
+                                                                    <span>Pending</span>
                                                                 <?php } ?>
                                                                 <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                    <span class="badge badge-success">Approval</span>
+                                                                    <span>Approval</span>
                                                                 <?php } ?>
                                                                 <?php if ($payment_resalt['status'] == 2) { ?>
-                                                                    <span class="badge badge-danger">Regected</span>
+                                                                    <span>Regected</span>
                                                                 <?php } ?>
                                                             </td>
                                                             <td><?php echo $user_resalt['fullname']; ?><br><?php echo "0" . (int)$user_resalt['contactnumber']; ?></td>
@@ -229,9 +229,9 @@ if (isset($_GET['id'])) {
                                                                                                     } ?>
                                                             </td>
                                                             <td>
-                                                                <span class="badge badge-secondary">Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
+                                                                <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
                                                             </td>
-                                                            <td><span class="badge badge-success" style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></td>
+                                                            <td><span style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
                                                         </tr>
                                                     <?php
@@ -260,7 +260,7 @@ if (isset($_GET['id'])) {
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <div class="profile-photo">
-                                                                <a href="<?php echo "$url/lms/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="badge badge-primary">View Slip</a>
+                                                                <a href="<?php echo "$url/lms/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
                                                             </div>
                                                             <h3 class="mt-4 mb-1"><strong><?php echo $user_resalt['fullname']; ?><br><?php echo $user_resalt['address']; ?><br><?php echo "0" . (int)$user_resalt['contactnumber']; ?></strong></h3>
                                                             <p class="text-muted"><strong>Course/Batch :
@@ -286,23 +286,23 @@ if (isset($_GET['id'])) {
                                                                     <span class="mb-0">Pay Date : </span><strong><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></strong>
                                                                 </li>
                                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Valid Date - Paid Month : </span><strong><span class="badge badge-success" style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></strong>
+                                                                    <span class="mb-0">Valid Date - Paid Month : </span><strong><span style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></strong>
                                                                 </li>
                                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                                     <span class="mb-0">Status : </span><strong>
                                                                         <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                            <span class="badge badge-warning">Pending</span>
+                                                                            <span>Pending</span>
                                                                         <?php } ?>
                                                                         <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                            <span class="badge badge-success">Approval</span>
+                                                                            <span>Approval</span>
                                                                         <?php } ?>
                                                                         <?php if ($payment_resalt['status'] == 2) { ?>
-                                                                            <span class="badge badge-danger">Regected</span>
+                                                                            <span>Regected</span>
                                                                         <?php } ?></strong>
                                                                 </li>
 
                                                             </ul>
-                                                            <a href="reject_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="badge badge-success"><i class="fa fa-check"></i> Approval</a>
+                                                            <a href="reject_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success"><i class="fa fa-check"></i> Approval</a>
                                                         </div>
                                                     </div>
                                                 </div>
