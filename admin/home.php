@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 ?>
 

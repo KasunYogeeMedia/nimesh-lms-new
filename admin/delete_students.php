@@ -1,6 +1,6 @@
 <?php
 
-	require_once 'dbconfig4.php';
+	require_once '../super_admin/dbconfig4.php';
 	
 	if(isset($_GET['stid']))
 	{
@@ -23,5 +23,3 @@
 		echo"<script type='text/javascript'>window.location.href = 'students.php';</script>";
 		
 	}
-
-?>

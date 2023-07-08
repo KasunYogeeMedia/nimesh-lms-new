@@ -1,5 +1,5 @@
 <?php
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
 if (isset($_GET['pi_id'])) {
 	mysqli_query($conn, "DELETE FROM paper_image WHERE pi_id='$_GET[pi_id]'");

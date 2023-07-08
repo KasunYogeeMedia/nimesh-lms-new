@@ -1,6 +1,7 @@
 <?php
 include '../super_admin/conn.php';
 require_once '../super_admin/dbconfig4.php';
+
 ?>
 <div class="right-sidebar">
 	<div class="row">
@@ -306,6 +307,8 @@ require_once '../super_admin/dbconfig4.php';
 			</div>
 			<?php
 			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
+			$row_count_lesson = mysqli_num_rows($lesson_data);
+			if ($row_count_lesson > 0) {
 			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
 				$lesson_date = $lesson_datas['classdate'];
 				$day = date("d", strtotime($lesson_date));
@@ -331,9 +334,12 @@ require_once '../super_admin/dbconfig4.php';
 
 			<?php
 			}
+		  }
 			?>
 			<?php
 			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
+			$row_count = mysqli_num_rows($lesson_data);
+			if($row_count > 0){
 			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
 				$lesson_date = $lesson_datas['classdate'];
 				$day = date("d", strtotime($lesson_date));
@@ -359,6 +365,7 @@ require_once '../super_admin/dbconfig4.php';
 
 			<?php
 			}
+		 }
 			?>
 		</div>
 	</div>

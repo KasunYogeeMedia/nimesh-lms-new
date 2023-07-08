@@ -9,9 +9,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $count_att = mysqli_query($conn, "SELECT COUNT(*) FROM user_attandance WHERE lid = $att_res");
 $row = mysqli_fetch_array($count_att);
@@ -205,7 +205,7 @@ $total = $row[0];
 
 																												$id = $subject_resalt['subject'];
 
-																												require_once 'dbconfig4.php';
+																												require_once '../super_admin/dbconfig4.php';
 
 																												$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 

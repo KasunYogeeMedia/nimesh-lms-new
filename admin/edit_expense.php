@@ -9,9 +9,9 @@ require_once 'includes.php';
 ?>
 <?php
 
-require("conn.php");
+require '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['clid'])) {
     $clid = mysqli_real_escape_string($conn, $_GET['clid']);
@@ -47,7 +47,6 @@ if (isset($_POST['update'])) {
         } else {
             $errMSG = "Sorry Data Could Not Be Updated!";
         }
-
     }
 }
 ?>

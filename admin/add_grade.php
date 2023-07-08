@@ -10,7 +10,7 @@ require_once 'includes.php';
 
 <?php
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg = '';
 
@@ -45,7 +45,7 @@ if (isset($_POST['save'])) {
     }
 }
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

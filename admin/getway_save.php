@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once '../super_admin/db.php';;
 
 $conn = mysqli_connect("localhost","$udbname","$dbpassword","$dbname");
 $app_id = $_POST['app_id'];
@@ -68,4 +68,3 @@ if($total > 0){
 
 
  }
-?>
