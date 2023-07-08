@@ -1,9 +1,9 @@
 <?php
 
 $server = "localhost";
-$username = "yogeedev_nimesh_lms";
-$pass = "r^3JU}teRuA]";
-$db = "yogeedev_nimesh_lms";
+$username = "root";
+$pass = "";
+$db = "nimesh-lms";
 
 //create connection 
 
@@ -100,5 +100,8 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 			$full_pay = 0;
 			return $full_pay;
 		}
+	}else{
+		$full_pay = 0;
+		return $full_pay;
 	}
 }
