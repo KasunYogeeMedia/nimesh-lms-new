@@ -916,10 +916,10 @@ if (isset($_POST['submit_bt'])) {
 
 												$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
 												$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-												if($paid_resalt_full){
+												if($check_paid_full){
 													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
 												}
-												if($paid_resalt_half){
+												if($check_paid_half){
 													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
 												}
 												
