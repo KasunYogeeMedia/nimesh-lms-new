@@ -89,7 +89,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Watch Your Video Lesson</h4>
+							<h4 class="item_title mb-4">Watch Your Video Lesson</h4>
 							<a href="paid_lesson.php" class="see150">See all</a>
 						</div>
 						<div class="col-xl-12 col-lg-12">

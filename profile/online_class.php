@@ -51,7 +51,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Paid Live Classes</h4>
+							<h4 class="item_title mb-4">Paid Live Classes</h4>
 
 						</div>
 						<div class="col-lg-12">
@@ -414,10 +414,9 @@ if ($image_resalt['image'] == "") {
 
 																	while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
 																		$sum += $row2['amount'];
-																		
 																	}
-																	
-																	
+
+
 
 																	if ($sum == $subject_data['price']) { ?>
 																		<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">

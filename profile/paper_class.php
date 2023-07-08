@@ -10,12 +10,12 @@ require_once("../super_admin/config.php");
 
 include '../super_admin/conn.php';
 
-// if (!isset($_SESSION['reid'])) {
+if (!isset($_SESSION['reid'])) {
 
-// 	header('location:../login.php');
+	header('location:../login.php');
 
-// 	die();
-// }
+	die();
+}
 
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister INNER JOIN lmsclass ON lmsregister.level=lmsclass.cid WHERE reid='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
@@ -63,7 +63,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Paid Paper Classes</h4>
+							<h4 class="item_title mb-4">Paid Paper Classes</h4>
 							<a href="online_class.php" class="see150">See all</a>
 						</div>
 						<div class="col-lg-12">

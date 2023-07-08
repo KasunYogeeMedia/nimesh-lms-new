@@ -64,12 +64,12 @@ unset($_SESSION['exam_id']);
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="st_title"><i class="uil uil-file-alt"></i><?php echo $type; ?> Exam List</h2>
+							<h2 class="st_title mb-4"><i class="uil uil-file-alt"></i><?php echo $type; ?> Exam List</h2>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
-							<?php 
+							<?php
 							if ($full_pay == 1) { ?>
 								<div class="table-responsive mt-30">
 									<table id="dataTable" class="table table-bordered" style="margin-top: 10px;">

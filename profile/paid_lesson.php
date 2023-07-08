@@ -60,7 +60,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">This Month's Recordings</h4>
+							<h4 class="item_title mb-4">This Month's Recordings</h4>
 
 						</div>
 						<div class="col-lg-12">
@@ -309,7 +309,7 @@ if ($image_resalt['image'] == "") {
 																$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$lesson_resalt[subject]' and status='1' ");
 																if (mysqli_num_rows($lmsck_payment) > 0) {
 
-																	
+
 																?>
 
 																	<a href="paid_video_view.php?video=<?php echo $lesson_resalt['lid']; ?>" class="save_btn btn-block" style="background-color:#151fc1;">Watch Lesson</a>

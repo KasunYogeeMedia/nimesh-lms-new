@@ -213,7 +213,7 @@ if (!isset($_SESSION['exam_id'])) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title">Exam Details</h4>
+							<h4 class="item_title mb-4">Exam Details</h4>
 
 							<div class="Time_dis">
 								<div id="demo">Time: 0:0:0</div>
