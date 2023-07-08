@@ -218,7 +218,7 @@ require_once 'dbconfig4.php';
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
 																<td><a href="images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
-																<td><span> style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
+																<td><span style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
 													<?php }
