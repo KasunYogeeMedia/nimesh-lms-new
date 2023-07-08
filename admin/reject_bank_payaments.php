@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);

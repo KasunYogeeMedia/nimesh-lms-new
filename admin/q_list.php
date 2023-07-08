@@ -5,9 +5,9 @@ if (!isset($_SESSION)) {
 }
 
 require_once 'includes.php';
-require_once 'conn.php';
-require_once("config.php");
-require_once 'dbconfig4.php';
+require_once '../super_admin/conn.php';
+require_once '../super_admin/config.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['remove'])) {
     $id = mysqli_real_escape_string($conn, $_GET['remove']);

@@ -227,7 +227,7 @@ require_once("check_user.php");
 																<td>
 																	<?php
 																	$id = $row['class'];
-																	require_once 'dbconfig4.php';
+																	require_once '../super_admin/dbconfig4.php';
 																	$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
 																	$query->execute();
 																	$result = $query->fetch();
@@ -236,7 +236,7 @@ require_once("check_user.php");
 																<td>
 																	<?php
 																	$id = $row['subject'];
-																	require_once 'dbconfig4.php';
+																	require_once '../super_admin/dbconfig4.php';
 																	$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 																	$query->execute();
 																	$result = $query->fetch();
@@ -291,7 +291,7 @@ require_once("check_user.php");
 																		<span class="mb-0">AL Year :</span><strong>
 																			<?php
 																			$id = $row['class'];
-																			require_once 'dbconfig4.php';
+																			require_once '../super_admin/dbconfig4.php';
 																			$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
 																			$query->execute();
 																			$result = $query->fetch();
@@ -302,7 +302,7 @@ require_once("check_user.php");
 																		<span class="mb-0">Class :</span><strong>
 																			<?php
 																			$id = $row['subject'];
-																			require_once 'dbconfig4.php';
+																			require_once '../super_admin/dbconfig4.php';
 																			$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 																			$query->execute();
 																			$result = $query->fetch();

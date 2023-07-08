@@ -1,5 +1,5 @@
 <?php
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 ?>
 <select name="subject" id="" required class="form-control">
     <?php

@@ -5,8 +5,8 @@ if (!isset($_SESSION)) {
 }
 
 require_once 'includes.php';
-require_once 'conn.php';
-require_once 'dbconfig4.php';
+require_once '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 
 date_default_timezone_set("Asia/Colombo");
 

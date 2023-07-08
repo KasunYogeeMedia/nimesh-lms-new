@@ -11,7 +11,7 @@ require_once 'includes.php';
 
 error_reporting(~E_NOTICE);
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['adid']) && !empty($_GET['adid'])) {
 

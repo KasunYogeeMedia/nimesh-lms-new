@@ -1,6 +1,6 @@
 <?php	
 							
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $stmt = $DB_con->prepare('SELECT COUNT(*) AS user_count FROM lmsusers');
 $stmt->execute();
@@ -41,5 +41,3 @@ $stmt = $DB_con->prepare('SELECT COUNT(*) AS payment_count FROM lmspayment');
 $stmt->execute();
 $result = $stmt->fetch();
 $total_payment = $result['payment_count'];
-
-?>

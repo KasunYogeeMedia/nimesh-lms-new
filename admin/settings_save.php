@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once '../super_admin/db.php';;
 
 $conn = mysqli_connect("localhost","$udbname","$dbpassword","$dbname");
 $rgname_prefix = $_POST['rgname_prefix'];
@@ -98,4 +98,3 @@ if($total > 0){
 
 
  }
-?>

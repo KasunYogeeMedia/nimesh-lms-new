@@ -3,13 +3,13 @@
 //error_reporting(0);
 //if (!isset($_SESSION)) {
 	session_start();
-}
+//}
 
 
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once'../super_admin/conn.php';
 
 if(isset($_GET['pid'])){
 
@@ -21,5 +21,3 @@ if(isset($_GET['pid'])){
     if ($_GET['inti_loca'] == "bank_payment"){ header("Location:bank_payaments.php"); }
 
 }
-
-?>

@@ -10,9 +10,9 @@ require_once 'includes.php';
 
 <?php
 
-require_once("config.php");
+require_once '../super_admin/config.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg = '';
 

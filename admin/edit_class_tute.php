@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['cttid']) && !empty($_GET['cttid'])) {
 
@@ -285,7 +285,7 @@ if (isset($_POST['update'])) {
 
 																		?></option>
 													<?php
-													require_once 'dbconfig4.php';
+													require_once '../super_admin/dbconfig4.php';
 
 													$stmt = $DB_con->prepare('SELECT * FROM lmstealmsr where status="1" ORDER BY tid');
 
@@ -324,7 +324,7 @@ if (isset($_POST['update'])) {
 																						?>
 													</option>
 													<?php
-													require_once 'dbconfig4.php';
+													require_once '../super_admin/dbconfig4.php';
 													$stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');
 													$stmt->execute();
 													if ($stmt->rowCount() > 0) {

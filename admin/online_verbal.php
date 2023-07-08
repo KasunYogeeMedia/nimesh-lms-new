@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['remove'])) {
     $remove = mysqli_real_escape_string($conn, $_GET['remove']);
@@ -141,13 +141,13 @@ if (isset($_GET['remove'])) {
                                                         <th>Action</th>
                                                         <th>Cover</th>
                                                         <th>Status</th>
-                                                     
+
                                                         <th>Password</th>
                                                         <th>Teacher</th>
                                                         <th>Lesson</th>
                                                         <th>Batch</th>
                                                         <th>Course</th>
-                                                    
+
                                                         <th>Date</th>
                                                         <th>Start</th>
                                                         <th>End</th>
@@ -180,7 +180,7 @@ if (isset($_GET['remove'])) {
                                                                 } else {
                                                                     $pro_img = "images/class/" . $subject_resalt['image'];
                                                                 } ?><img src="<?php echo $pro_img; ?>" class="pro_pick"></td>
-                                                          
+
                                                             <td>
                                                                 <h5 class="badge badge-primary"><?php echo $list_resalt['classtype']; ?></h5>
                                                             </td>
@@ -195,7 +195,7 @@ if (isset($_GET['remove'])) {
 
                                                                 $id = $subject_resalt['subject'];
 
-                                                                require_once 'dbconfig4.php';
+                                                                require_once '../super_admin/dbconfig4.php';
 
                                                                 $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 
@@ -207,7 +207,7 @@ if (isset($_GET['remove'])) {
 
                                                                 ?>
                                                             </td>
-                                                           
+
                                                             <td><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></td>
                                                             <td><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></td>
                                                             <td><?php echo date_format(date_create($list_resalt['class_end_time']), "h:i:s A"); ?></td>
@@ -269,7 +269,7 @@ if (isset($_GET['remove'])) {
 
                                                                                                                 $id = $subject_resalt['subject'];
 
-                                                                                                                require_once 'dbconfig4.php';
+                                                                                                                require_once '../super_admin/dbconfig4.php';
 
                                                                                                                 $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 

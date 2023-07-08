@@ -6,11 +6,11 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once("config.php");
+require_once '../super_admin/config.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 date_default_timezone_set("Asia/Colombo");
 $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -180,12 +180,12 @@ if (isset($_POST['pay_bt'])) {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>Company Rate<br><input type="text"  name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
+                                                    <td>Company Rate<br><input type="text" name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
                                                     <td></td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Payment<br><input type="text"  name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
+                                                    <td>Payment<br><input type="text" name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
                                                     <td><br><button type="submit" name="pay_bt" class="btn btn-success">Pay</button></td>
                                                 </tr>
                                             </tbody>

@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-include 'conn.php';
+include '../super_admin/conn.php';
 
 
 if (isset($_SESSION['admin'])) {
@@ -14,7 +14,7 @@ if (isset($_SESSION['admin'])) {
 
 if (isset($_POST['log'])) {
 
-	include 'dbconfig4.php';
+	include '../super_admin/dbconfig4.php';
 
 	$username = $_POST['username'];
 	$password =  $_POST['pass'];
