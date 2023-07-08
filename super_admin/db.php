@@ -62,9 +62,9 @@ $lmsurl = mysqli_query($conn, "SELECT * FROM lmsurl WHERE id=1");
 $lmsurl_resalt = mysqli_fetch_array($lmsurl);
 $url = $lmsurl_resalt['url'];
 
-
+if (!isset($_SESSION)) {
 	session_start();
-
+}
 
 
 if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
