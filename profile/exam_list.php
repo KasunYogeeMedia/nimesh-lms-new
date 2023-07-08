@@ -69,7 +69,9 @@ unset($_SESSION['exam_id']);
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
-							<?php if ($full_pay == 1) { ?>
+							<?php 
+							$full_pay = 0; //temp
+							if ($full_pay == 1) { ?>
 								<div class="table-responsive mt-30">
 									<table id="dataTable" class="table table-bordered" style="margin-top: 10px;">
 										<thead>
