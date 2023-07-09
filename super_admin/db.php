@@ -70,10 +70,17 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	$reid = $_SESSION['reid'];
 	$current_user = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid = $reid LIMIT 1");
-	$current_user_data = mysqli_fetch_array($current_user);
+	if($current_user){
+		$current_user_data = mysqli_fetch_array($current_user);
+	}
+	
 	$current_user_sid = mysqli_query($conn, "SELECT * FROM lmssubject where class_id = $current_user_data[level] LIMIT 1");
-	$current_user_level = mysqli_fetch_array($current_user_sid);
+	if($current_user_sid){
+		$current_user_level = mysqli_fetch_array($current_user_sid);
+	}
+	
 	$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$reid' and pay_sub_id='$current_user_level[sid]' and status='1'");
+
 
 
 	if (mysqli_num_rows($lmsck_payments) == 1) {
@@ -104,4 +111,6 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 		$full_pay = 0;
 		return $full_pay;
 	}
+
+
 }
