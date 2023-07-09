@@ -52,12 +52,16 @@ if (isset($_POST['submit'])) {
         $conn,
         $_REQUEST['msg']
     );
+    $sub_id = mysqli_real_escape_string(
+        $conn,
+        $_REQUEST['sub_id']
+    );
     date_default_timezone_set('Asia/Kolkata');
     $ts = date('y-m-d h:ia');
 
     // Attempt insert query execution
-    $sql = "INSERT INTO chats (uname, msg, dt)
-		VALUES ('$un', '$m', '$ts')";
+    $sql = "INSERT INTO chats (uname, msg, sub_id,dt)
+		VALUES ('$un', '$m', '$sub_id','$ts')";
     if (mysqli_query($conn, $sql)) {;
     } else {
         echo "ERROR: Message not sent!!!";
@@ -111,7 +115,7 @@ if (isset($_POST['submit'])) {
                     <form id="myform" action="Group_chat.php" method="POST">
                         <div class="inner_div" id="chathist">
                             <?php
-                            $query = "SELECT * FROM chats";
+                            $query = "SELECT * FROM chats where sub_id = $current_user_data[level]";
                             $run = $conn->query($query);
                             $i = 0;
 
@@ -175,7 +179,8 @@ if (isset($_POST['submit'])) {
 
                             <div class="form-group row">
                                 <input class="form-control" type="hidden" id="uname" name="uname" value="<?php echo $current_user_data['fullname']; ?>">
-                                <div class="col">
+                                <input class="form-control" type="hidden" id="sub_id" name="sub_id" value="<?php echo $current_user_data['level']; ?>">
+                                <div class=" col">
                                     <textarea class="form-control w-100" id="msg" name="msg" rows='3' placeholder="Type your message"></textarea>
                                 </div>
                                 <div class="col-auto my-auto">

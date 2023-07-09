@@ -65,6 +65,14 @@
 			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
 		</ul>
 	</li>
+	<li>
+		<a href="student_grade.php" aria-expanded="false">
+			<i class="la la-file-text"></i>
+			<span class="nav-text">Group Chats</span>
+		</a>
+
+	</li>
+
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-money"></i>
 			<span class="nav-text">Payments</span>

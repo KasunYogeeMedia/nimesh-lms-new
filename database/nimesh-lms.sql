@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2023 at 02:23 PM
+-- Generation Time: Jul 09, 2023 at 07:07 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nimesh-lms`
+-- Database: `yogeedev_nimesh_lms`
 --
 
 -- --------------------------------------------------------
@@ -51,6 +51,7 @@ CREATE TABLE `chats` (
   `id` int NOT NULL,
   `uname` varchar(255) NOT NULL,
   `msg` varchar(255) NOT NULL,
+  `sub_id` bigint NOT NULL,
   `dt` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -58,13 +59,48 @@ CREATE TABLE `chats` (
 -- Dumping data for table `chats`
 --
 
-INSERT INTO `chats` (`id`, `uname`, `msg`, `dt`) VALUES
-(8, 'mac wolf', 'Hi\r\n', '23-06-30 09:35am'),
-(9, 'mac', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem. ', '23-06-30 09:35am'),
-(10, 'mac wolf', '			', '23-06-30 09:58am'),
-(11, 'mac wolf', '			', '23-06-30 09:59am'),
-(12, 'mac wolf', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.			', '23-06-30 10:03am'),
-(13, 'mac wolf', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.			', '23-06-30 10:13am');
+INSERT INTO `chats` (`id`, `uname`, `msg`, `sub_id`, `dt`) VALUES
+(14, 'mac wolf', 'hi', 35, '23-07-09 11:44am'),
+(15, 'Test', 'hi', 35, '23-07-09 12:19pm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_work_marks`
+--
+
+CREATE TABLE `course_work_marks` (
+  `mid` int NOT NULL,
+  `exam_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `marks` tinyint(1) NOT NULL,
+  `add_date` datetime NOT NULL,
+  `status` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_work_submissions`
+--
+
+CREATE TABLE `course_work_submissions` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `exam_id` int NOT NULL,
+  `filename` text NOT NULL,
+  `time` datetime NOT NULL,
+  `marks` int NOT NULL,
+  `remark` text NOT NULL,
+  `status` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course_work_submissions`
+--
+
+INSERT INTO `course_work_submissions` (`id`, `user_id`, `exam_id`, `filename`, `time`, `marks`, `remark`, `status`) VALUES
+(2, 1732, 4, '[\"168887889817321384350.jpg\"]', '2023-07-09 10:31:38', 100, '', 1);
 
 -- --------------------------------------------------------
 
@@ -82,6 +118,13 @@ CREATE TABLE `exam_submissions` (
   `remark` text NOT NULL,
   `status` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exam_submissions`
+--
+
+INSERT INTO `exam_submissions` (`id`, `user_id`, `exam_id`, `filename`, `time`, `marks`, `remark`, `status`) VALUES
+(1, 1732, 4, '[\"168887704617321384350.jpg\"]', '2023-07-09 10:00:46', 100, '', 1);
 
 -- --------------------------------------------------------
 
@@ -258,107 +301,7 @@ CREATE TABLE `lmsclass_schlmsle` (
 --
 
 INSERT INTO `lmsclass_schlmsle` (`classid`, `level`, `subject`, `tealmsr`, `lesson`, `classdate`, `class_start_time`, `class_end_time`, `classlink`, `cpassword`, `classtype`, `image`, `add_date`, `classstatus`, `add_date2`) VALUES
-(1105, 40, 376, '69', 'Unite 01 exam ', '2022-02-01', '19:30:00', '21:30:00', 'Nayomi Perera is inviting you to a scheduled Zoom meeting.  Topic: Science grade 8 sinhala medium - Iresha teacher  Time: Feb 1, 2022 07:30 PM Colombo  Join Zoom Meeting https://us02web.zoom.us/j/82850726018?pwd=aEFraDVZQnM2WFhORmZwdlZYcGsrUT09  Meeting ID: 828 5072 6018 Passcode: 407828 One tap mobile +16699006833,,82850726018#,,,,*407828# US (San Jose) +19292056099,,82850726018#,,,,*407828# US (New York)  Dial by your location         +1 669 900 6833 US (San Jose)         +1 929 205 6099 US (New York)         +1 253 215 8782 US (Tacoma)         +1 301 715 8592 US (Washington DC)         +1 312 626 6799 US (Chicago)         +1 346 248 7799 US (Houston) Meeting ID: 828 5072 6018 Passcode: 407828 Find your local number: https://us02web.zoom.us/u/krpZro3lF', '407828', 'Free Class', '', '2022-02-01 15:40:57', '1', '2022-02-01 10:10:57'),
-(1069, 40, 350, '43', 'GRADE 8 MATHS JAN W4', '2022-01-29', '17:30:00', '19:30:00', 'https://us02web.zoom.us/j/83009022092?pwd=Vk5CWmlDc0lONHFtUlJ4ZExaRUpDdz09', '760796', 'Online Class', '', 'JANUARY-29 17:16:29', '1', '2022-01-29 11:46:29'),
-(897, 42, 678, '70', 'Grade 10 Paper class Week 02', '2022-01-18', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', 'abc', 'Paper Class', '1642498956royalty-free-boy-clipart-illustration-1364731tn.jpg', '2022-01-18 15:12:36', '1', '2022-01-18 09:42:36'),
-(1107, 39, 559, '62', 'Music', '2022-02-02', '18:00:00', '20:00:00', 'https://zoom.us/j/91958138854?pwd=U3VpS2pOUmZ4N1U2RWZUZFRacWkvdz09            Meeting ID: 919 5813 8854', 'RyKp1u', 'Online Class', '', '2022-02-02 01:03:55', '1', '2022-02-01 19:33:55'),
-(1097, 42, 488, '53', 'paper 02', '2022-01-31', '19:00:00', '21:00:00', 'https://us05web.zoom.us/j/85858451577?pwd=bWxKVXFCNS9aZzRWUEgvYzE5OFVyQT09', 'df72dr', 'Online Class', '1643633811download.jpg', '2022-01-31 18:26:51', '1', '2022-01-31 12:56:51'),
-(884, 40, 352, '70', 'à·€à·“à¶¢à·“à¶º à¶´à·Šâ€à¶»à¶šà·à·à¶± ', '2022-01-17', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1642386052binomial-definition-examples-quiz_115354.jpg', '2022-01-17 07:50:52', '1', '2022-01-17 02:20:52'),
-(885, 40, 496, '55', '3', '2022-01-17', '08:00:00', '08:30:00', 'https://zoom.us/j/97485850093?pwd=aE1aYVhveGMrNGxIaW1xWGx4VlRhUT09', ' sp8nBt', 'Online Class', '16423864376.jpg', '2022-01-17 07:57:17', '1', '2022-01-17 02:27:17'),
-(1082, 41, 780, '92', 'Hiragana', '2022-01-30', '16:30:00', '18:30:00', 'https://us05web.zoom.us/j/84290224560?pwd=L3E5TTM4U2VRNEd4NXhZaHl1ZlNFQT09 ', '1234', 'Online Class', '16435356482021.7.18.16h51m32s.jpg', '2022-01-30 15:10:48', '1', '2022-01-30 09:40:48'),
-(954, 39, 348, '70', 'à·ƒà·à¶°à¶š à·„à· à¶œà·”à¶«à·à¶šà·à¶» -2 (à¶…à·€à·ƒà¶±à·Š à¶šà·œà¶§à·ƒ )', '2022-01-21', '20:00:00', '22:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1642774003unnamed.jpg', '2022-01-21 19:36:43', '1', '2022-01-21 14:06:43'),
-(1071, 43, 364, '70', 'à¶à¶« à·€à·ƒà·Šà¶­à·”à·€à¶½ à¶´à¶»à·’à¶¸à·à·€ ', '2022-01-30', '13:00:00', '15:30:00', 'https://us05web.zoom.us/j/4329265285?pwd=ekp5bElRZU5MOGpDekhnUEJ6U3hUUT09', 'chami', 'Online Class', '1643521020Geometry.jpg', '2022-01-30 11:07:00', '1', '2022-01-30 05:37:01'),
-(1065, 41, 407, '43', 'GRADE 9 MATHS JAN W4', '2022-01-29', '13:30:00', '15:30:00', 'https://us02web.zoom.us/j/81265514967?pwd=U1FtdWdHNEs5ajZ3KzZ1OHhoRlI2QT09', '639663', 'Online Class', '', 'JANUARY-29 13:26:56', '1', '2022-01-29 07:56:56'),
-(1100, 42, 668, '68', 'Paper Revision', '2022-02-01', '20:00:00', '22:00:00', 'https://us02web.zoom.us/j/87500738664?pwd=VDUwN213ZTRBTVFqOFc4Y1VLcmd0dz09', '191616', 'Free Class', '1643699649Abhiman_Wallpaper.jpg', '2022-02-01 12:44:09', '1', '2022-02-01 07:14:09'),
-(998, 41, 396, '50', 'LESSON3', '2022-01-24', '18:00:00', '20:00:00', ' https://us05web.zoom.us/j/86574573551?pwd=ZUFnbnRqcU5oSWZnNmMwS1hlR0l2dz09  ', 'Z9z7eF', 'Online Class', '1643010821WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-24 13:23:41', '1', '2022-01-24 07:53:41'),
-(961, 42, 398, '50', 'LESSON 4', '2022-01-23', '09:30:00', '11:30:00', ' https://us05web.zoom.us/j/81930827091?pwd=MDNzZTFOUGEwUjlYekxnSkhyUEg3Zz09  ', 'zasg0B', 'Online Class', '1642791372WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-22 00:26:12', '1', '2022-01-21 18:56:12'),
-(992, 40, 496, '55', '4', '2022-01-23', '17:30:00', '19:30:00', 'https://zoom.us/j/98458525939?pwd=OXpFcDJacVNjSEIyL0tDOWRXLzNFZz09', 'DNfW3K', 'Online Class', '16429393966.jpg', '2022-01-23 17:33:16', '1', '2022-01-23 12:03:16'),
-(1001, 40, 352, '70', 'à·€à·“à¶¢à·“à¶º à¶´à·Šâ€à¶»à¶šà·à·à¶± -2à¶šà·œà¶§à·ƒ ', '2022-01-24', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?pwd=Nld4L09Ya3R0QU9wcGdHM0xRYUEvZz09', '123', 'Online Class', '1643017681binomial-definition-examples-quiz_115354.jpg', '2022-01-24 15:18:01', '1', '2022-01-24 09:48:01'),
-(973, 39, 493, '55', '1', '2022-01-22', '19:45:00', '20:45:00', ' https://zoom.us/j/94674558542?pwd=UWp0MEhDUEJ1YjJZNkF6WkhkWTZMdz09', 'pT8qFb', 'Online Class', '16428608936.jpg', '2022-01-22 19:44:53', '1', '2022-01-22 14:14:53'),
-(1060, 42, 429, '55', '2', '2022-01-29', '11:30:00', '13:30:00', 'https://zoom.us/j/92347085898?pwd=ZFlBQ0RHY1J2c1hIdHhoc3RJUEp6Zz09', 'HCRN3V', 'Online Class', '1643423481213.jpg', '2022-01-29 08:01:21', '1', '2022-01-29 02:31:21'),
-(980, 41, 498, '55', '2', '2022-01-23', '13:30:00', '15:30:00', 'https://zoom.us/j/98782081291?pwd=Mk51OE43NDEvN3FXMVM0YlRWVG1MUT09', 'AAw0E4', 'Online Class', '16429025396.jpg', '2022-01-23 07:18:59', '1', '2022-01-23 01:48:59'),
-(829, 42, 439, '48', 'History ', '2022-01-14', '20:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-14 17:46:28', '1', '2022-01-14 12:16:28'),
-(830, 42, 398, '50', 'lesson 3', '2022-01-15', '09:30:00', '11:30:00', ' https://us05web.zoom.us/j/89885683673?pwd=eTNBajlxejh3YmNta2RvSCtjWjZTQT09  Meeting ID: 898 8568 3673 Passcode: 8zVGhc', '8zVGhc', 'Online Class', '1642176078WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-14 21:31:18', '1', '2022-01-14 16:01:18'),
-(330, 43, 490, '54', 'Natural Resources Grade 11', '2021-12-13', '18:00:00', '20:00:00', 'https://us04web.zoom.us/j/77315376882?pwd=bXZyVXVLVUtVTVhLY1F1Y0NuV1lMUT09', '123', 'Online Class', '', '2021-12-12 21:52:51', '1', '2021-12-12 16:22:51'),
-(831, 41, 587, '76', 'korawakgala', '2022-01-15', '07:30:00', '21:55:00', 'https://us02web.zoom.us/j/86478911718?pwd=RU1CSGFhYm9vSXVuQUNGZ1JVbzRiQT09', '595037', 'Online Class', '', '2022-01-14 22:57:37', '1', '2022-01-14 17:27:37'),
-(832, 40, 585, '76', 'prakashana chithra', '2022-01-15', '11:29:00', '13:30:00', 'https://us02web.zoom.us/j/81605186503?pwd=UE1zR0FEUDljV2VWZUVyWUlxdmwrUT09', '805667', 'Online Class', '', '2022-01-14 23:00:28', '0', '2022-01-14 17:30:28'),
-(898, 41, 356, '70', 'à¶´à·Šâ€à¶»à¶­à·’à·à¶­ -à¶…à·€à·ƒà¶±à·Š à¶šà·œà¶§à·ƒ (à·€à¶§à·Šà¶§à¶¸à·Š à·„à· à¶šà·œà¶¸à·’à·ƒà·Š )', '2022-01-18', '20:00:00', '22:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1642499119vector-cartoon-illustration-man-businessman-holding-one-percent-sign-stick-figure-drawing-conceptual-192874013.jpg', '2022-01-18 15:15:19', '1', '2022-01-18 09:45:19'),
-(1067, 38, 342, '43', 'GARDE 6 MATHS JAN W4 CLASS 1', '2022-01-29', '15:30:00', '17:30:00', 'https://us02web.zoom.us/j/87215044012?pwd=ZGZBMFRiR2xhOVJwMFptaXhxdERBQT09', '197664', 'Online Class', '', 'JANUARY-29 15:25:20', '1', '2022-01-29 09:55:20'),
-(1030, 44, 742, '48', 'Revision', '2022-01-27', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-27 17:35:52', '1', '2022-01-27 12:05:52'),
-(1091, 39, 392, '50', 'lesson 5', '2022-01-31', '16:00:00', '18:00:00', 'https://us05web.zoom.us/j/82446591409?pwd=MkVKTlluRHh2RUluZ1Nnem9mYjhCQT09   ', 'r4XfGs', 'Online Class', '1643611753WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-31 12:19:13', '1', '2022-01-31 06:49:13'),
-(1108, 43, 567, '62', 'Music', '2022-02-02', '20:00:00', '22:00:00', 'https://zoom.us/j/91958138854?pwd=U3VpS2pOUmZ4N1U2RWZUZFRacWkvdz09                                Meeting ID: 919 5813 8854', ' RyKp1u', 'Online Class', '', '2022-02-02 01:11:39', '1', '2022-02-01 19:41:39'),
-(1102, 41, 377, '68', 'Unit 02 - Eye and Ear', '2022-02-02', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/81928350679?pwd=bXB4Y1lUTTBVdTZGSmNkMTk3cGJEZz09', '380780', 'Free Class', '1643699751Abhiman_Wallpaper.jpg', '2022-02-01 12:45:51', '1', '2022-02-01 07:15:51'),
-(923, 44, 742, '48', 'Paper', '2022-01-20', '18:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-20 17:50:29', '1', '2022-01-20 12:20:29'),
-(1094, 40, 352, '70', 'à·€à·“à¶¢à·“à¶º à¶´à·Šâ€à¶»à¶šà·à·à¶± -à¶…à·€à·ƒà¶±à·Š à¶šà·œà¶§à·ƒ ', '2022-01-31', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', 'chami', 'Online Class', '1643623529binomial-definition-examples-quiz_115354.jpg', '2022-01-31 15:35:29', '1', '2022-01-31 10:05:29'),
-(915, 41, 498, '55', '1', '2022-01-19', '19:00:00', '21:00:00', 'https://zoom.us/j/96301981818?pwd=TkgzbTlNT0Q0M1hzTzlGWnhkWmhyUT09', ' KT77BT', 'Online Class', '16425982166.jpg', '2022-01-19 18:46:56', '1', '2022-01-19 13:16:56'),
-(916, 41, 437, '48', 'Grade 10', '2022-01-19', '20:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-19 19:30:53', '1', '2022-01-19 14:00:53'),
-(1104, 42, 698, '50', ' 2ND PAPER ', '2022-02-01', '16:00:00', '18:00:00', ' https://us05web.zoom.us/j/81260145827?pwd=Q0lQSHl1M2lVRlRRWEUrUFBDVjhhQT09 ', '7JWQdX', 'Free Class', '1643701694WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-02-01 13:18:14', '1', '2022-02-01 07:48:14'),
-(1106, 42, 678, '70', 'Grade 10 paper class -W1', '2022-02-01', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', 'chami', 'Free Class', '1643716546vector-illustration-student-showing-diploma-260nw-1087682480.jpg', '2022-02-01 17:25:46', '1', '2022-02-01 11:55:46'),
-(1036, 39, 348, '70', 'à¶¯à¶»à·Šà·à¶š', '2022-01-28', '20:00:00', '22:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1643356163Picture1.jpg', '2022-01-28 13:19:23', '1', '2022-01-28 07:49:23'),
-(883, 42, 360, '70', 'à¶­à·Šâ€à¶»à·’à¶šà·à¶« à¶…à¶‚à¶œà·ƒà·à¶¸à·Šâ€à¶º -à¶…à·€à·ƒà¶±à·Š à¶šà·œà¶§à·ƒ ', '2022-01-17', '15:00:00', '17:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1642385786275-2750187_royalty-free-geometry-triangle-cartoon-face-math-clip-types-of-triangles-clipart.png', '2022-01-17 07:46:26', '1', '2022-01-17 02:16:26'),
-(1034, 44, 751, '57', 'Week 4', '2022-01-28', '18:00:00', '22:00:00', 'https://zoom.us/j/97701259657?pwd=bnZHOEpJTld5WitJb2JzcTExTHFGdz09', '5GHBTW', 'Paper Class', '', '2022-01-28 00:49:19', '1', '2022-01-27 19:19:19'),
-(1098, 44, 732, '68', 'Speed Revision', '2022-02-01', '15:00:00', '18:00:00', 'https://us02web.zoom.us/j/86971882920?pwd=NG5rbUNpcUk4cXcyRDJneWlseGY3UT09', '988163', 'Free Class', '1643699421Abhiman_Wallpaper.jpg', '2022-02-01 12:40:21', '1', '2022-02-01 07:10:21'),
-(1037, 42, 538, '59', 'Chapter 3 Business Organizations Day 1', '2022-01-28', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/86531358183?pwd=RldEdjVmVHBjS0hmbkpsNkFQOWxnUT09', '536201', 'Online Class', '16433577211.jpg', '2022-01-28 13:45:21', '1', '2022-01-28 08:15:21'),
-(318, 37, 648, '84', 'Unit 01', '2021-12-12', '14:00:00', '16:00:00', 'https://us05web.zoom.us/j/86751227767?pwd=dEZnY2pnY1NBc09udFJVZ0doTVNDZz09', 'JN5qDA', 'Free Class', '1639281476unnamed.jpg', '2021-12-12 09:27:56', '2', '2021-12-12 03:57:56'),
-(828, 41, 437, '48', 'Grade 9', '2022-01-14', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-14 17:44:45', '1', '2022-01-14 12:14:45'),
-(317, 38, 649, '84', 'Unit 01', '2021-12-12', '16:00:00', '18:00:00', 'https://us05web.zoom.us/j/83887077866?pwd=bWVuY2pJZlFtTnpCWE5rQkEzeXhnQT09', 'n9Ujy8', 'Free Class', '1639281383unnamed.jpg', '2021-12-12 09:26:23', '2', '2021-12-12 03:56:23'),
-(887, 39, 392, '50', 'LESSON 3', '2022-01-17', '16:00:00', '18:00:00', ' https://us05web.zoom.us/j/85373277689?pwd=L3ZTMm5wek8zOFEwM0dzdHNIYlN4UT09 ', 'z3cXA2', 'Online Class', '1642403815WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-17 12:46:55', '1', '2022-01-17 07:16:55'),
-(810, 41, 498, '55', '1', '2022-01-14', '08:30:00', '09:30:00', 'https://zoom.us/j/97041938264?pwd=MW1zeDlwWW1XenlGSDdlL0RkYmxSUT09', 'yYf1Wi', 'Online Class', '16421207786.jpg', '2022-01-14 06:09:38', '1', '2022-01-14 00:39:38'),
-(811, 39, 493, '55', '1', '2022-01-14', '11:00:00', '13:00:00', 'https://zoom.us/j/94860552711?pwd=OHErTmJUQmVQa1owSUxvNTI2R3BzQT09', 'hg030J', 'Online Class', '16421216576.jpg', '2022-01-14 06:24:17', '1', '2022-01-14 00:54:18'),
-(1025, 42, 439, '48', 'Grade 10', '2022-01-26', '20:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-26 16:45:48', '1', '2022-01-26 11:15:48'),
-(1084, 40, 496, '55', '3', '2022-01-30', '17:30:00', '19:30:00', 'https://zoom.us/j/98881438477?pwd=RVpKWWM5SGlMSHpBUE5KeTN5RVBGUT09', 'm69Bji', 'Online Class', '', '2022-01-30 17:45:18', '1', '2022-01-30 12:15:18'),
-(924, 42, 439, '48', '2 lesson', '2022-01-20', '20:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-20 17:51:52', '1', '2022-01-20 12:21:52'),
-(912, 40, 435, '48', 'Grade 8', '2022-01-19', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-19 17:44:52', '1', '2022-01-19 12:14:52'),
-(999, 40, 394, '50', 'LESSON4', '2022-01-24', '20:00:00', '22:00:00', ' https://us05web.zoom.us/j/84715896670?pwd=V1QvWXc2L0RYRVlDaWJ3S0hPYzNCQT09 ', 'Lz3R5s', 'Online Class', '1643011460WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-24 13:34:20', '1', '2022-01-24 08:04:20'),
-(1112, 40, 517, '56', 'Lesson 2 - Workbook', '2022-02-03', '18:00:00', '21:00:00', 'https://us02web.zoom.us/j/87542724455?pwd=MXJKL0xCM3BqLzhwZWJyOTY0N2R0UT09', '888', 'Free Class', '1643775610Lesson1_logo.JPG', '2022-02-02 09:50:10', '1', '2022-02-02 04:20:10'),
-(1113, 41, 519, '56', 'Lesson 1 - Activity', '2022-02-03', '20:00:00', '22:00:00', 'https://us02web.zoom.us/j/87542724455?pwd=MXJKL0xCM3BqLzhwZWJyOTY0N2R0UT09', '999', 'Free Class', '1643775795Lsson_1.JPG', '2022-02-02 09:53:15', '1', '2022-02-02 04:23:15'),
-(1114, 39, 515, '56', 'Lesson 2 - Actiity', '2022-02-04', '20:00:00', '22:00:00', 'https://us02web.zoom.us/j/89411066927?pwd=NXN5cHpBVTljSE1YQVhlamduNk1qdz09', '777', 'Free Class', '16437759752L_OS.JPG', '2022-02-02 09:56:15', '1', '2022-02-02 04:26:15'),
-(1115, 42, 521, '56', 'Lesson 2 - Devices', '2022-02-05', '13:30:00', '15:30:00', 'https://us02web.zoom.us/j/87368580346?pwd=RDBsK0tMR0pZQ2U0V2RwbHVrK0xUdz09', '101010', 'Free Class', '1643776164L2_Fundamental.jpg', '2022-02-02 09:59:24', '1', '2022-02-02 04:29:24'),
-(1075, 42, 398, '50', 'lesson5', '2022-01-30', '12:30:00', '14:30:00', ' https://us05web.zoom.us/j/87875563321?pwd=VjJMZTFQaThCd0MyL25EWlluWWREUT09   ', 'A1MukG', 'Online Class', '1643522256WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-30 11:27:36', '1', '2022-01-30 05:57:36'),
-(1092, 41, 396, '50', 'LESSON4', '2022-01-31', '18:00:00', '20:00:00', ' https://us05web.zoom.us/j/88095790081?pwd=cTlNREx0RUxsM0MvUGpaQUJhRWkwUT09  ', 'BPh4X3', 'Online Class', '1643612115WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-31 12:25:15', '1', '2022-01-31 06:55:15'),
-(1093, 40, 394, '50', 'lesson 5', '2022-01-31', '20:00:00', '22:00:00', ' https://us05web.zoom.us/j/88194126291?pwd=alYrWDJZTFQxWUc1K0ZXbDJoVHNLZz09   ', '34i80z', 'Online Class', '1643612390WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-31 12:29:50', '1', '2022-01-31 06:59:50'),
-(1078, 39, 434, '73', 'chapter 1', '2022-01-30', '13:30:00', '15:30:00', 'https://us05web.zoom.us/j/89942976470?pwd=V1Mzb3RKMjU1bFp2Y2NrTXV3RzhYdz09', 'p0jWJy', 'Online Class', '', '2022-01-30 13:06:00', '1', '2022-01-30 07:36:00'),
-(1066, 41, 354, '43', 'GRADE 9 MATHS JAN W4', '2022-01-29', '13:30:00', '15:30:00', 'https://us02web.zoom.us/j/81265514967?pwd=U1FtdWdHNEs5ajZ3KzZ1OHhoRlI2QT09', '639663', 'Online Class', '', 'JANUARY-29 13:28:11', '1', '2022-01-29 07:58:11'),
-(1024, 40, 435, '48', 'Grade 08', '2022-01-26', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-26 16:44:37', '1', '2022-01-26 11:14:37'),
-(1040, 41, 437, '48', 'Papers', '2022-01-28', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-28 17:07:52', '1', '2022-01-28 11:37:52'),
-(1095, 39, 469, '52', 'Lesson 1', '2022-01-31', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/88247284521?pwd=cC8vdXNTQjduWnpFZ2FRREdlQklLZz09', 'https://us02web.zoom.us/j/88247284521?pwd=cC8vdXNTQjduWnpFZ2FRREdlQklLZz09', 'Online Class', '', '2022-01-31 17:22:21', '1', '2022-01-31 11:52:21'),
-(934, 41, 437, '48', 'grade 9', '2022-01-21', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-21 17:43:45', '1', '2022-01-21 12:13:45'),
-(822, 42, 499, '55', '2', '2022-01-14', '16:00:00', '18:00:00', 'https://zoom.us/j/91849672003?pwd=aFZZWE9hVHFET3RvT1NZcm1TRkVuUT09', ' ZT580B', 'Online Class', '16421541056.jpg', '2022-01-14 15:25:05', '1', '2022-01-14 09:55:05'),
-(1103, 42, 666, '68', 'Paper Revision', '2022-02-02', '20:00:00', '22:00:00', 'https://us02web.zoom.us/j/82699965765?pwd=VWZ1cjhpYXRad3BjOFM1ekt3VEQrZz09', '957446', 'Free Class', '1643699840Abhiman_Wallpaper.jpg', '2022-02-01 12:47:20', '1', '2022-02-01 07:17:20'),
-(1070, 40, 460, '51', 'Grade 8 2nd lesson', '2022-01-30', '09:07:00', '11:07:00', 'https://us02web.zoom.us/j/8623542672?pwd=SmZkL1A4d09rVFJVV3QzL0NpRmdPZz09', '88888', 'Online Class', '', '2022-01-30 09:03:34', '1', '2022-01-30 03:33:34'),
-(1072, 42, 360, '70', 'à·€à·“à¶¢à·“à¶º à¶´à·Šâ€à¶»à¶šà·à·à¶±à·€à¶½ à·ƒà·à¶°à¶š ', '2022-01-30', '15:30:00', '17:30:00', 'https://us05web.zoom.us/j/4329265285?pwd=ekp5bElRZU5MOGpDekhnUEJ6U3hUUT09', 'chami', 'Online Class', '1643521139binomial-definition-examples-quiz_115354.jpg', '2022-01-30 11:08:59', '1', '2022-01-30 05:38:59'),
-(827, 39, 495, '55', '1', '2022-01-14', '18:00:00', '20:00:00', 'https://zoom.us/j/95674262371?pwd=T2JJc2NBUGZ5bEtDb05NNXcxVHV1Zz09', ' 7WWU18', 'Online Class', '16421545856.jpg', '2022-01-14 18:16:08', '1', '2022-01-14 12:46:08'),
-(888, 41, 396, '50', 'LESSON 3', '2022-01-17', '18:00:00', '20:00:00', ' https://us05web.zoom.us/j/88912117898?pwd=ajhZbkoySTA2VDhtNTJvbWt2anFkZz09', 'REtyS2', 'Online Class', '1642404226WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-17 12:53:46', '1', '2022-01-17 07:23:46'),
-(838, 39, 493, '55', '2', '2022-01-15', '07:00:00', '09:00:00', 'https://zoom.us/j/92242696459?pwd=WGFDNTl6MEpIbW1sd2FhbGNRZXhndz09', 'VgQpX2', 'Online Class', '16422083426.jpg', '2022-01-15 06:29:02', '1', '2022-01-15 00:59:02'),
-(889, 40, 394, '50', 'LESSON 3', '2022-01-17', '20:00:00', '22:00:00', ' https://us05web.zoom.us/j/84145509027?pwd=ei9kOGcvVWxaRHZVWGlYWGhEQUhMZz09', 'WnpUx1', 'Online Class', '', '2022-01-17 13:03:38', '1', '2022-01-17 07:33:38'),
-(862, 40, 496, '55', '3', '2022-01-16', '17:30:00', '19:30:00', 'https://zoom.us/j/96269906466?pwd=ejRRL1hWV1phZnV5Y3pPMThZcFk4dz09', ' 5upGDc', 'Online Class', '16422928196.jpg', '2022-01-16 05:56:59', '1', '2022-01-16 00:26:59'),
-(863, 40, 494, '55', '3', '2022-01-16', '19:30:00', '21:30:00', 'https://zoom.us/j/98534696816?pwd=c1QxUGtXU0M0aklaeExWN29rMTM0Zz09', '6bY93n', 'Online Class', '16422931556.jpg', '2022-01-16 06:02:35', '1', '2022-01-16 00:32:35'),
-(1006, 42, 698, '50', 'paper1 part 2', '2022-01-25', '16:00:00', '18:00:00', ' https://us05web.zoom.us/j/82948850129?pwd=c29TeFhVMHJxNmpHRlhDL1ZkSVRMdz09   ', '0wYuzZ', 'Paper Class', '1643087651WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-25 10:44:11', '1', '2022-01-25 05:14:11'),
-(997, 39, 392, '50', 'lesson 4', '2022-01-24', '16:00:00', '18:00:00', ' https://us05web.zoom.us/j/83273888205?pwd=UkpITVRGWHZzOFJjQzR0Y1RkdkE5Zz09  ', '4Fq0Cf', 'Online Class', '1643010556WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-24 13:19:16', '1', '2022-01-24 07:49:16'),
-(896, 42, 698, '50', 'PAPAER1 PART 2', '2022-01-18', '16:00:00', '18:00:00', ' https://us05web.zoom.us/j/86961853701?pwd=clV4WndGWjZQeGo2aHgvZWtNRWROQT09  ', '29UkNQ', 'Paper Class', '1642489528WhatsApp_Image_2022-01-02_at_21.54.54.jpeg', '2022-01-18 12:35:28', '1', '2022-01-18 07:05:28'),
-(1031, 42, 439, '48', 'Maps', '2022-01-27', '20:00:00', '22:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-27 17:36:59', '1', '2022-01-27 12:06:59'),
-(848, 39, 493, '55', '1', '2022-01-15', '15:30:00', '17:30:00', 'https://zoom.us/j/95896881604?pwd=bUhaWGE2VG9hdE5RamNUR0JvM1Ivdz09', 'q9esDs', 'Online Class', '16422403816.jpg', '2022-01-15 15:23:01', '1', '2022-01-15 09:53:01'),
-(1073, 43, 679, '70', 'Grade 11 Paper class -January 4th week', '2022-01-30', '17:30:00', '19:30:00', 'https://us05web.zoom.us/j/4329265285?pwd=ekp5bElRZU5MOGpDekhnUEJ6U3hUUT09', 'chami', 'Paper Class', '1643521238unnamed.jpg', '2022-01-30 11:10:38', '1', '2022-01-30 05:40:38'),
-(935, 39, 495, '55', '1', '2022-01-21', '18:15:00', '20:15:00', 'https://zoom.us/j/93537587089?pwd=bE5hUTR6ZitNT08wamJzS25kNzc3dz09', 'HmbL6L', 'Online Class', '16427689306.jpg', '2022-01-21 18:12:10', '1', '2022-01-21 12:42:10'),
-(1087, 38, 546, '64', 'Western Music Grade 6', '2022-01-31', '18:30:00', '19:30:00', 'https://us02web.zoom.us/j/87413078371?pwd=WDRWZHorR2VxbG85S1Z6NjRzZWFVUT09', '5678', 'Online Class', '', '2022-01-31 09:08:40', '1', '2022-01-31 03:38:40'),
-(1088, 42, 554, '64', 'Western Music Grade 10', '2022-01-31', '20:00:00', '21:30:00', 'https://us02web.zoom.us/j/82586964577?pwd=d0FqMFM2czVPSUl1cnhDdFRFd2V1Zz09', '5678', 'Online Class', '', '2022-01-31 09:11:16', '1', '2022-01-31 03:41:16'),
-(1089, 39, 548, '64', 'Western Music Grade 7', '2022-02-02', '18:30:00', '20:00:00', 'https://us02web.zoom.us/j/85783790625?pwd=aklucy9HM2lKQ1lSMWNXTFlGRWFsUT09', '5678', 'Free Class', '', '-31 09:14:49', '1', '2022-01-31 03:44:49'),
-(1090, 43, 556, '64', 'Western Music', '2022-02-02', '20:00:00', '21:31:00', 'https://us02web.zoom.us/j/81540526291?pwd=dGZWMUgxcGtkWDZWd3NOcVVvRGtCdz09', '5678', 'Free Class', '', '2022-02-31 09:14:07', '1', '2022-01-31 03:44:07'),
-(882, 43, 364, '70', 'à¶¯à¶»à·Šà·à¶š à·„à· à¶½à¶à·”à¶œà¶«à¶š -à¶…à·€à·ƒà¶±à·Š à¶šà·œà¶§à·ƒ ', '2022-01-17', '12:15:00', '14:45:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '1642385526logarithm-on-blackboard-mathematics-about-260nw-1985834219.jpg', '2022-01-17 07:42:06', '1', '2022-01-17 02:12:06'),
-(1003, 39, 433, '48', 'Revision', '2022-01-24', '18:00:00', '20:00:00', 'https://zoom.us/j/9866197870?pwd=V1k2ZkxDekFQWWlXZUtpUitQOHBsUT09', 'j6y8Wk', 'Online Class', '', '2022-01-24 17:48:38', '1', '2022-01-24 12:18:38'),
-(1009, 36, 324, '77', 'Painting', '2022-01-25', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/86826421443?pwd=N2tRbmVra09YSHB3anpxVU5JWTlxdz09', '478', 'Online Class', '', '2022-01-25 16:21:16', '1', '2022-01-25 10:51:16'),
-(1010, 42, 678, '70', 'Grade 10 paper class_January_Week 03', '2022-01-25', '18:00:00', '20:00:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Paper Class', '1643113081unnamed.jpg', '2022-01-25 17:48:01', '1', '2022-01-25 12:18:01'),
-(1099, 39, 369, '68', 'Unit 02 - Static Electricity', '2022-02-01', '18:00:00', '20:00:00', 'https://us02web.zoom.us/j/84737937201?pwd=eGdIY21BVk1VSjZxZDJjcjFvTzZmZz09', '850827', 'Free Class', '1643699523Abhiman_Wallpaper.jpg', '2022-02-01 12:42:03', '1', '2022-02-01 07:12:03'),
-(987, 43, 364, '70', 'à¶à¶« à·€à·ƒà·Šà¶­à·”à·€à¶½ à¶´à·˜à·‚à·Šà¶¨ à·€à¶»à·Šà¶œà¶µà¶½à¶º ', '2022-01-23', '13:00:00', '15:30:00', 'https://us05web.zoom.us/j/4329265285?', 'abc', 'Online Class', '', '2022-01-23 12:06:24', '1', '2022-01-23 06:36:24'),
-(988, 42, 360, '70', 'à·€à¶»à·Šà¶œà¶µà¶½à¶º ', '2022-01-23', '15:30:00', '17:30:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Online Class', '', '2022-01-23 12:08:43', '1', '2022-01-23 06:38:43'),
-(989, 43, 679, '70', 'Grade 11 Paper class', '2022-01-23', '17:30:00', '19:30:00', 'https://us05web.zoom.us/j/4329265285?', '123', 'Paper Class', '', '2022-01-23 12:10:32', '1', '2022-01-23 06:40:32'),
-(1061, 39, 493, '55', '2', '2022-01-29', '19:45:00', '21:45:00', 'https://zoom.us/j/92670038700?pwd=U1kvMVpWOVFHSm5LVElmaVRvWFR0UT09', 'Jt0J2a', 'Online Class', '1643424256213.jpg', '2022-01-29 08:14:16', '1', '2022-01-29 02:44:16'),
-(1012, 36, 312, '41', 'Lesson 4', '2022-01-28', '15:00:00', '18:00:00', 'https://us05web.zoom.us/j/82607829532?pwd=NkVYdWc5V25nNmhvbEFnM3EyQ3RYZz09', '1234', 'Online Class', '1643122181à·à·’à·‚à·Šâ€à¶ºà¶­à·Šà·€à¶º.jpeg', '-25 20:20:25', '1', '2022-01-25 14:50:25'),
-(1110, 39, 527, '56', 'Lesson 3. - Workbook activity', '2022-02-02', '16:00:00', '18:00:00', 'https://us02web.zoom.us/j/85846310328?pwd=eEMyb05UeFB1SU1GR2lHQXBscmJ5QT09', '777', 'Free Class', '16437742753L_ComputerSecurity.jpg', '2022-02-02 09:27:55', '1', '2022-02-02 03:57:55'),
-(1111, 41, 531, '56', 'Lesson 1 - Activities', '2022-02-02', '20:00:00', '22:00:00', 'https://us02web.zoom.us/j/87805057255?pwd=RkFzN1hHdXhjSjIrYmtZYTAxZFRqZz09', '999', 'Free Class', '1643774397Lsson_1.JPG', '2022-02-02 09:29:57', '1', '2022-02-02 03:59:57'),
-(1116, 43, 387, '68', 'test', '2022-02-03', '10:00:00', '11:00:00', '147', '147', 'Online Class', '', '2022-02-03 15:37:03', '1', '2022-02-03 10:07:03'),
-(1117, 42, 590, '94', 'asd', '2022-02-09', '10:00:00', '11:00:00', 'asd', 'asd', 'Online Class', '', '-09 12:29:36', '1', '2022-02-09 06:59:36'),
-(1118, 35, 1, '95', 'Test 01', '2023-07-30', '18:00:00', '20:00:00', 'https://youtu.be/jNekkX16RNg', '12345', 'Online Class', '', '2021-11-06 18:26:57', '1', '2023-07-06 12:56:57');
+(1, 35, 1, '95', 'test', '2023-07-09', '10:00:00', '12:00:00', 'asdad', 'asdsd', 'Online Class', '', '-09 08:48:11', '1', '2023-07-09 03:18:11');
 
 -- --------------------------------------------------------
 
@@ -390,6 +333,35 @@ INSERT INTO `lmscomments` (`id`, `uid`, `tealmsr`, `title`, `rate`, `review`, `a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lmscourse_work`
+--
+
+CREATE TABLE `lmscourse_work` (
+  `exid` int NOT NULL,
+  `tid` int NOT NULL,
+  `class` varchar(400) NOT NULL,
+  `subject` int NOT NULL,
+  `examname` varchar(200) NOT NULL,
+  `edate` datetime NOT NULL,
+  `exam_end_date` datetime NOT NULL,
+  `starttime` time DEFAULT NULL,
+  `endtime` time DEFAULT NULL,
+  `edocument` varchar(500) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lmscourse_work`
+--
+
+INSERT INTO `lmscourse_work` (`exid`, `tid`, `class`, `subject`, `examname`, `edate`, `exam_end_date`, `starttime`, `endtime`, `edocument`, `description`, `add_date`, `status`) VALUES
+(4, 96, '35', 1, 'test', '2023-07-09 10:00:00', '2023-07-11 12:00:00', NULL, NULL, '592017.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.', '2023-07-09 05:47:23', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lmsdb`
 --
 
@@ -405,7 +377,7 @@ CREATE TABLE `lmsdb` (
 --
 
 INSERT INTO `lmsdb` (`id`, `dbname`, `username`, `password`) VALUES
-(1, 'nimesh-lms', 'root', '');
+(1, 'yogeedev_nimesh_lms', 'yogeedev_nimesh_lms', 'r^3JU}teRuA]');
 
 -- --------------------------------------------------------
 
@@ -1054,6 +1026,13 @@ CREATE TABLE `lmsonlineexams` (
   `status` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lmsonlineexams`
+--
+
+INSERT INTO `lmsonlineexams` (`exid`, `tid`, `class`, `subject`, `examname`, `edate`, `exam_end_date`, `starttime`, `endtime`, `edocument`, `quizcount`, `add_date`, `status`) VALUES
+(4, 95, '35', 1, 'test', '2023-07-08 10:00:00', '2023-07-11 12:00:00', NULL, NULL, '201542.jpg', 14, '2023-07-09 04:08:37', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1083,7 +1062,7 @@ CREATE TABLE `lmspayment` (
 --
 
 INSERT INTO `lmspayment` (`pid`, `fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`, `pay_type`) VALUES
-(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 0, 1, 'half'),
+(1, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-06 18:42:18', '0', 1, 1, 'half'),
 (2, 'DKC6DaKml5.jpg', 1732, 95, 1, 6000, '0', 'Pay Bank', 'Online Class', 'Bank', '2023-07-08 18:42:18', '0', 1, 1, 'half');
 
 -- --------------------------------------------------------
@@ -3173,7 +3152,7 @@ CREATE TABLE `lmstealmsr` (
 
 INSERT INTO `lmstealmsr` (`tid`, `systemid`, `fullname`, `address`, `contactnumber`, `subdetails`, `qualification`, `username`, `password`, `image`, `Percentage`, `add_date`, `status`) VALUES
 (95, 1654706436, 'Test', 'test', '773405650', 'Grade 5 ', 'Test', 'sumudupramuditha@gmail.com', '7ac4987e5a84dbaf689eb677d4cc67ba', '', 40, '2023-07-06 12:59:16', 1),
-(96, 1688717175, 'ashan', 'teacher@gmail.com', '787200877', 'test', 'test', 'teacher@teacher.com', '25f9e794323b453885f5181f1b624d0b', '', 0, '2023-07-07 08:22:40', 1);
+(96, 1688717175, 'ashan', 'teacher@gmail.com', '787200877', 'test', 'test', 'teacher@teacher.com', '25f9e794323b453885f5181f1b624d0b', '', 0, '2023-07-09 06:39:12', 1);
 
 -- --------------------------------------------------------
 
@@ -4178,8 +4157,8 @@ INSERT INTO `lmstealmsr_multiple` (`tealmsr_id`, `tealmsr_system_id`, `tealmsr_t
 (6006, 1637003145, 3, 269),
 (6011, 1654706436, 2, 35),
 (6012, 1654706436, 3, 1),
-(6013, 1688717175, 2, 35),
-(6014, 1688717175, 3, 1);
+(6017, 1688717175, 2, 35),
+(6018, 1688717175, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -4253,13 +4232,6 @@ CREATE TABLE `lmsverbal_exam` (
   `classstatus` varchar(20) NOT NULL,
   `add_date2` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `lmsverbal_exam`
---
-
-INSERT INTO `lmsverbal_exam` (`classid`, `level`, `subject`, `tealmsr`, `lesson`, `classdate`, `class_start_time`, `class_end_time`, `classlink`, `cpassword`, `classtype`, `image`, `classstatus`, `add_date2`) VALUES
-(1, 35, 1, '96', 'test', '2023-07-08', '11:00:00', '11:00:00', 'asdad', 'asdasd', 'Online Class', '', '1', '2023-07-07 09:21:39');
 
 -- --------------------------------------------------------
 
@@ -4524,6 +4496,26 @@ CREATE TABLE `paper_marks` (
   `status` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `paper_marks`
+--
+
+INSERT INTO `paper_marks` (`mid`, `exam_id`, `user_id`, `quizno`, `answerstatus`, `add_date`, `status`) VALUES
+(1, 1, 1732, 1, 1, '2023-07-09 10:01:06', 1),
+(2, 1, 1732, 2, 1, '2023-07-09 10:01:06', 1),
+(3, 1, 1732, 3, 1, '2023-07-09 10:01:06', 1),
+(4, 1, 1732, 4, 1, '2023-07-09 10:01:06', 1),
+(5, 1, 1732, 5, 1, '2023-07-09 10:01:06', 1),
+(6, 1, 1732, 6, 1, '2023-07-09 10:01:06', 1),
+(7, 1, 1732, 7, 1, '2023-07-09 10:01:06', 1),
+(8, 1, 1732, 8, 1, '2023-07-09 10:01:06', 1),
+(9, 1, 1732, 9, 1, '2023-07-09 10:01:06', 1),
+(10, 1, 1732, 10, 1, '2023-07-09 10:01:06', 1),
+(11, 1, 1732, 11, 1, '2023-07-09 10:01:06', 1),
+(12, 1, 1732, 12, 1, '2023-07-09 10:01:06', 1),
+(13, 1, 1732, 13, 1, '2023-07-09 10:01:06', 1),
+(14, 1, 1732, 14, 1, '2023-07-09 10:01:06', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -4563,7 +4555,7 @@ CREATE TABLE `user_attandance` (
 --
 
 INSERT INTO `user_attandance` (`id`, `userid`, `subjectid`, `lid`, `date`) VALUES
-(10, 1360, 387, 1116, '2022-02-05 09:03:50');
+(10, 1732, 35, 1, '2022-02-05 09:03:50');
 
 -- --------------------------------------------------------
 
@@ -4603,6 +4595,18 @@ ALTER TABLE `chats`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `course_work_marks`
+--
+ALTER TABLE `course_work_marks`
+  ADD PRIMARY KEY (`mid`);
+
+--
+-- Indexes for table `course_work_submissions`
+--
+ALTER TABLE `course_work_submissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `exam_submissions`
 --
 ALTER TABLE `exam_submissions`
@@ -4631,6 +4635,12 @@ ALTER TABLE `lmsclass_schlmsle`
 --
 ALTER TABLE `lmscomments`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lmscourse_work`
+--
+ALTER TABLE `lmscourse_work`
+  ADD PRIMARY KEY (`exid`);
 
 --
 -- Indexes for table `lmsdb`
@@ -4840,13 +4850,25 @@ ALTER TABLE `certificate`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `course_work_marks`
+--
+ALTER TABLE `course_work_marks`
+  MODIFY `mid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `course_work_submissions`
+--
+ALTER TABLE `course_work_submissions`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `exam_submissions`
 --
 ALTER TABLE `exam_submissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsclass`
@@ -4864,13 +4886,19 @@ ALTER TABLE `lmsclasstute`
 -- AUTO_INCREMENT for table `lmsclass_schlmsle`
 --
 ALTER TABLE `lmsclass_schlmsle`
-  MODIFY `classid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1119;
+  MODIFY `classid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmscomments`
 --
 ALTER TABLE `lmscomments`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `lmscourse_work`
+--
+ALTER TABLE `lmscourse_work`
+  MODIFY `exid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lmsdb`
@@ -4918,7 +4946,7 @@ ALTER TABLE `lmsmail`
 -- AUTO_INCREMENT for table `lmsonlineexams`
 --
 ALTER TABLE `lmsonlineexams`
-  MODIFY `exid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `exid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lmspayment`
@@ -4984,7 +5012,7 @@ ALTER TABLE `lmstealmsr`
 -- AUTO_INCREMENT for table `lmstealmsr_multiple`
 --
 ALTER TABLE `lmstealmsr_multiple`
-  MODIFY `tealmsr_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6015;
+  MODIFY `tealmsr_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6019;
 
 --
 -- AUTO_INCREMENT for table `lmsurl`
@@ -5044,7 +5072,7 @@ ALTER TABLE `paper_image`
 -- AUTO_INCREMENT for table `paper_marks`
 --
 ALTER TABLE `paper_marks`
-  MODIFY `mid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `mid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `settings`
