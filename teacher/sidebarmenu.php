@@ -53,7 +53,16 @@
 		</a>
 		<ul aria-expanded="false">
 			<li><a href="verbal.php">Verbal Exams Details</a></li>
-			
+
+		</ul>
+	</li>
+	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Course Works</span>
+		</a>
+		<ul aria-expanded="false">
+			<li><a href="course_work.php">Add Course Work</a></li>
+			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
 		</ul>
 	</li>
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">

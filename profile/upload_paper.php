@@ -56,8 +56,8 @@ if (isset($_POST['upload_btn'])) {
 	$_SESSION['up_image_view'] = $up_image;
 
 	if (mysqli_query($conn, "INSERT INTO
-	exam_submissions (id, user_id, exam_id, filename, time, marks, status)
-	VALUES (NULL, '$_SESSION[reid]', '$exid', '$up_image', '$current_time', '0', '0')")) {
+	exam_submissions (id, user_id, exam_id, filename, time, marks,remark, status)
+	VALUES (NULL, '$_SESSION[reid]', '$exid', '$up_image', '$current_time', '0','', '0')")) {
 		header("location:upload_paper.php");
 	}
 }

@@ -66,6 +66,9 @@
 							<a href="paper_exam_list.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Paper Exams</span> </a>
 						</li>
 						<li class="menu--item">
+							<a href="course_work.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Course Work</span> </a>
+						</li>
+						<li class="menu--item">
 							<a href="my_attendence.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">My Attendence</span> </a>
 						</li>
 						<!-- <li class="menu--item">

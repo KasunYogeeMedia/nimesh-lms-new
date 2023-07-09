@@ -43,7 +43,7 @@ if (isset($_GET['remove'])) {
     <!--**********************************
             Content body start
         ***********************************-->
-    <div class="content-body bg-lblue">
+    <div class="wrapper custom-theme bg-light">
         <div class="row m-0">
             <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9 pt-4">
                 <!-- row -->
@@ -76,10 +76,7 @@ if (isset($_GET['remove'])) {
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                       
                                                         <th>Lesson</th>
-
-                                                        
                                                         <th>Start</th>
                                                         <th>End</th>
                                                         <th>Student Presant Date</th>
@@ -88,10 +85,11 @@ if (isset($_GET['remove'])) {
                                                 <tbody>
                                                     <?php
                                                     $count = 0;
-                                                    $list_qury = mysqli_query($conn, "SELECT lmsregister.*, user_attandance.*
+                                                    $list_qury = mysqli_query($conn, "SELECT lmsregister.*, user_attandance.*,lmsclass_schlmsle.*
                                                     FROM lmsregister
                                                     INNER JOIN user_attandance ON lmsregister.reid = user_attandance.userid
                                                     INNER JOIN lmsclass_schlmsle ON lmsclass_schlmsle.classid = user_attandance.lid
+                                                    WHERE lmsregister.reid = $current_user_data[reid]
                                                     ORDER BY classid DESC");
 
                                                     while ($list_resalt = mysqli_fetch_array($list_qury)) {
@@ -101,10 +99,10 @@ if (isset($_GET['remove'])) {
                                                     ?>
                                                         <tr>
                                                             <td><?php echo number_format($count, 0); ?></td>
-                                                          
+
                                                             <td style="text-transform: capitalize;"><?php echo $list_resalt['lesson']; ?></td>
-                                                    
-                                                           
+
+
                                                             <td><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></td>
                                                             <td><?php echo date_format(date_create($list_resalt['class_end_time']), "h:i:s A"); ?></td>
                                                             <td><?php echo date_format(date_create($list_resalt['date']), " h:i:s A"); ?></td>
