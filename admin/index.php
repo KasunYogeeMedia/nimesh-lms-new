@@ -88,7 +88,9 @@ if (isset($_POST['log'])) {
 									<h4 class="text-center mb-4" style="font-weight:bold;color:#000000;">Login in Admin Panel</h4>
 
 									<?php if (isset($error)) : ?>
-										<h1 style="background-color: #ff0000; color: #000000; width: 100%; font-size: 18px; text-align: center;"><?php echo $error; ?></h1>
+										<div class="alert alert-danger" role="alert">
+											<?php echo $error; ?>
+										</div>
 									<?php endif; ?>
 
 									<form action="index.php" method="POST">

@@ -32,7 +32,7 @@ CREATE TABLE `certificate` (
   `userId` int NOT NULL,
   `certificate_status` int NOT NULL DEFAULT '1',
   `issue_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `certificate`
@@ -53,7 +53,7 @@ CREATE TABLE `chats` (
   `msg` varchar(255) NOT NULL,
   `sub_id` bigint NOT NULL,
   `dt` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `chats`
@@ -417,7 +417,7 @@ CREATE TABLE `lmsexpense` (
   `name` varchar(255) NOT NULL,
   `cost` bigint NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `lmsexpense`
@@ -3086,7 +3086,7 @@ CREATE TABLE `lmsstuden_video_watch` (
   `lid` int DEFAULT NULL,
   `allowed_view` int DEFAULT NULL,
   `watched_count` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4567,9 +4567,9 @@ CREATE TABLE `verbal_exam` (
   `id` int NOT NULL,
   `userId` bigint NOT NULL,
   `marks` bigint NOT NULL,
-  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `document` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `status` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `verbal_exam`
