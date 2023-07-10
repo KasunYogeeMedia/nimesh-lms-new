@@ -8,6 +8,9 @@ session_unset();
 
 session_destroy();
 
-echo "<script>window.location='https://ongoing.website/websites/nimesh-lms-new/admin';</script>";
+echo "<script>
+window.location = 'https://ongoing.website/websites/nimesh-lms-new/admin/';
+</script>
+";
 
 
