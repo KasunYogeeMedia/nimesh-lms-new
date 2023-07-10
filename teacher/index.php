@@ -80,9 +80,16 @@ if (isset($_POST['login_bt'])) {
                                         <center><img src="../super_admin/settings/logo/<?php echo $main_logo; ?>"></center>
                                     </p>
                                     <h4 class="text-center mb-4">Log In | Teacher</h4>
-                                    <hr>
-                                    <?php if ($error_not_found == 1) { ?> <div style="background: linear-gradient(red,darkred); color: white; padding: 10px; text-align: center;">User not found, Please try agian.</div> <?php } ?>
-                                    <?php if ($error_not_match == 1) { ?> <div style="background: linear-gradient(red,darkred); color: white; padding: 10px; text-align: center;">your enterd password not match, Please try agian.</div> <?php } ?>
+                                    <?php if ($error_not_found == 1) { ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            User not found, Please try agian.
+                                        </div>
+                                    <?php } ?>
+                                    <?php if ($error_not_match == 1) { ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            your enterd password not match, Please try agian.
+                                        </div>
+                                    <?php } ?>
                                     <form action="index.php" method="POST">
                                         <div class="form-group">
                                             <label><strong>Username</strong></label>

@@ -82,7 +82,7 @@ if (isset($_POST['login'])) {
     <main>
         <div class="card__image-container">
             <div class="slide-images">
-                <img class="slide" src="assets/img/slide1.jpg" alt="Card Image" />
+                <img class="slide" src="assets/img/slide1.jp" alt="Card Image" />
                 <img class="slide" src="assets/img/slide2.jpg" alt="Card Image" />
                 <img class="slide" src="assets/img/slide3.jpg" alt="Card Image" />
             </div>
