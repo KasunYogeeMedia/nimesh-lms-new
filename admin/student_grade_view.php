@@ -160,7 +160,8 @@ require_once '../super_admin/dbconfig4.php';
 												<tbody>
 													<?php
 
-													$stmt = $DB_con->prepare('SELECT * FROM lmsregister ORDER BY reid');
+											$stmt = $DB_con->prepare("SELECT * FROM lmsregister WHERE level='{$_GET['gid']}' ORDER BY reid");
+
 
 													$stmt->execute();
 
