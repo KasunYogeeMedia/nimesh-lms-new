@@ -286,7 +286,7 @@
 		?>
 	</li>
 	<li>
-		<a href="../logout.php" aria-expanded="false">
+		<a href="logout.php" aria-expanded="false">
 			<i class="la la-sign-out"></i>
 			<span class="nav-text">Logout</span>
 		</a>
