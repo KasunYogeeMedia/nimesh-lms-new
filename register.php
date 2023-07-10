@@ -101,9 +101,9 @@ if (isset($_POST['register'])) {
 	<main>
 		<div class="card__image-container">
 			<div class="slide-images reg">
-				<img class="slide" src="assets/img/slide1.jpg" alt="Card Image" />
-				<img class="slide" src="assets/img/slide2.jpg" alt="Card Image" />
-				<img class="slide" src="assets/img/slide3.jpg" alt="Card Image" />
+				<img class="slide" src="assets/img/slide1.png" alt="Card Image" />
+				<img class="slide" src="assets/img/slide2.png" alt="Card Image" />
+				<img class="slide" src="assets/img/slide3.png" alt="Card Image" />
 			</div>
 		</div>
 		<form method="POST" id="myform">
