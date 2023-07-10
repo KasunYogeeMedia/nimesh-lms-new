@@ -39,8 +39,8 @@ if (isset($_POST["Export"])) {
      header('Content-Type: text/csv; charset=utf-8');
      header('Content-Disposition: attachment; filename=all_students.csv');
      $output = fopen("php://output", "w");
-     fputcsv($output, array('ID', 'Student Number', 'Email', 'Full Name', 'DOB', 'Gender', 'School', 'District', 'Town', 'PContact', 'Contact', 'Address', 'Level', 'Password', 'Image', 'Add Date', 'Status', 'IP Address', 'Relogin', 'Relogin IP', 'Payment', 'Verification code'));
-     $query = "SELECT * from lmsregister ORDER BY reid DESC";
+     fputcsv($output, array('ID', 'Student Number', 'Email', 'Full Name', 'DOB', 'Gender', 'School', 'District', 'Town', 'PContact', 'Contact', 'Address', 'Add Date'));
+     $query = "SELECT reid,stnumber,email,fullname,dob,gender,school,district,town,pcontactnumber,contactnumber,address,add_date from lmsregister ORDER BY reid DESC";
      $result = mysqli_query($conn, $query);
      while ($row = mysqli_fetch_assoc($result)) {
           fputcsv($output, $row);
