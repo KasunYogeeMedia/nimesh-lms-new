@@ -89,11 +89,11 @@ if (isset($_POST['login'])) {
         </div>
         <form method="POST">
             <?php if (isset($_GET['request'])) { ?><div class="alert alert-info text-center"><strong>Information!</strong><br>Your Re login request send successfully. Waiting for approval your request.</div><?php } ?>
-            <?php if (isset($_GET['password_error'])) { ?><div class="alert alert-danger text-center"><strong>We're sorry! </strong><br>The username or password you entered doesn't match our records.
+            <?php if (isset($_GET['password_error'])) { ?><div class="alert alert-danger text-center"><strong>We're sorry! </strong><br>The phone number or password you entered doesn't match our records.
                     Please try again or use the forgot my password button to reset your password</div><?php } ?>
-            <?php if (isset($_GET['user_error'])) { ?><div class="alert alert-danger text-center"><strong>Sorry!</strong><br>The email address you entered isn't connected to an account, please register</div><?php } ?>
+            <?php if (isset($_GET['user_error'])) { ?><div class="alert alert-danger text-center"><strong>Sorry!</strong><br>The phone number you entered isn't connected to an account, please register</div><?php } ?>
             <?php if (isset($_GET['ip_error'])) { ?><div class="alert alert-danger text-center"><strong>Sorry!</strong><br>Your account has been blocked due to unautorised access.<br><br><a style="color: dodgerblue; cursor: pointer;" onClick="JavaScript:window.location='login.php?req_id=<?php echo $_GET['u']; ?>';">Request Re login?</a></div><?php } ?>
-            <?php if (isset($_GET['success'])) { ?><div class="alert alert-success" style="font-weight:bold;background-color:#f36a22;color:#ffffff;"> Thanks for registering! Sign in now and start learning right away! </div><?php } ?>
+            <?php if (isset($_GET['success'])) { ?><div class="alert alert-success" style="font-weight:bold;background-color:#f36a22;color:#ffffff;"> Thanks for loged In! Sign in now and start learning right away! </div><?php } ?>
             <h2 class="heading-text">Sign In</h2>
             <div class="inp-1">
                 <i class="far fa fa-mobile fa-lg"></i>

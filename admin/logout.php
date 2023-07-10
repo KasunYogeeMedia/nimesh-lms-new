@@ -3,7 +3,11 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
+session_unset();
+
 session_destroy();
-unset($_SESSION['user_id']);
-header('location:admin/index.php');
-exit();
+
+echo "<script>window.location='https://ongoing.website/websites/nimesh-lms-new/admin';</script>";
+
+

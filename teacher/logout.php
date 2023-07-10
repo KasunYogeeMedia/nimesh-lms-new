@@ -8,4 +8,4 @@ session_unset();
 
 session_destroy();
 
-echo "<script>window.location='index.php';</script>";
+echo "<script>window.location='https://ongoing.website/websites/nimesh-lms-new/teacher/';</script>";
