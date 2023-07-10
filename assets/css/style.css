@@ -480,4 +480,16 @@ footer {
     }
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+    .deznav .hamburger {
+        position: fixed;
+        top: 10px;
+        background-color: #fff;
+        right: 10px;
+        border-radius: 5px;
+
+    }
+    .authincation-content {
+        background: #ffffffbd;
+    }
+}

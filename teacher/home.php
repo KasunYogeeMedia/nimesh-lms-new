@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 if (!isset($_SESSION)) {
 	session_start();
@@ -151,7 +151,7 @@ if (isset($_SESSION['tid'])) {
 							</div>
 						</div>
 					</div>
-					<div class="courses-sec">
+					<!-- <div class="courses-sec">
 						<div class="card border-0 bg-light">
 							<div class="card-body">
 								<p class="h5 mb-4 fw-bold text-dark">Top Courses</p>
@@ -195,9 +195,9 @@ if (isset($_SESSION['tid'])) {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
-						<div class="col-xl-4 col-xxl-4 col-sm-6">
+						<div class="col-xl-6 col-xxl-6 col-sm-6">
 							<div class="widget-stat card bg-success">
 								<div class="card-body">
 									<div class="media">
@@ -205,7 +205,7 @@ if (isset($_SESSION['tid'])) {
 											<i class="la la-slideshare"></i>
 										</span>
 										<div class="media-body text-white">
-											<p class="mb-1">Total Classes</p>
+											<p class="mb-1 text-light">Total Classes</p>
 											<h3 class="text-white"><?php
 																	$my_class = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE tealmsr='$_SESSION[tid]'");
 																	echo number_format(mysqli_num_rows($my_class), 0);
@@ -215,7 +215,7 @@ if (isset($_SESSION['tid'])) {
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-4 col-xxl-4 col-sm-6">
+						<div class="col-xl-6 col-xxl-6 col-sm-6">
 							<div class="widget-stat card bg-primary">
 								<div class="card-body">
 									<div class="media">
@@ -223,7 +223,7 @@ if (isset($_SESSION['tid'])) {
 											<i class="la la-book"></i>
 										</span>
 										<div class="media-body text-white">
-											<p class="mb-1">Total Tutes</p>
+											<p class="mb-1 text-light">Total Tutes</p>
 											<h3 class="text-white"><?php
 																	$my_tute = mysqli_query($conn, "SELECT * FROM lmsclasstute WHERE tid='$_SESSION[tid]'");
 																	echo number_format(mysqli_num_rows($my_tute), 0);
@@ -233,7 +233,7 @@ if (isset($_SESSION['tid'])) {
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-4 col-xxl-4 col-sm-6">
+						<!-- <div class="col-xl-4 col-xxl-4 col-sm-6">
 							<div class="widget-stat card bg-warning">
 								<div class="card-body">
 									<div class="media">
@@ -250,8 +250,8 @@ if (isset($_SESSION['tid'])) {
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-4 col-xxl-4 col-sm-6">
+						</div> -->
+						<!-- <div class="col-xl-4 col-xxl-4 col-sm-6">
 							<div class="widget-stat card bg-secondary">
 								<div class="card-body">
 									<div class="media">
@@ -259,14 +259,14 @@ if (isset($_SESSION['tid'])) {
 											<i class="la la-black-tie"></i>
 										</span>
 										<div class="media-body text-white">
-											<p class="mb-1">Total Student</p>
+											<p class="mb-1 text-light">Total Student</p>
 											<h3 class="text-white"></h3>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-8 col-xxl-8 col-sm-6">
+						</div> -->
+						<!-- <div class="col-xl-8 col-xxl-8 col-sm-6">
 							<div class="widget-stat card bg-danger">
 								<div class="card-body">
 									<div class="media">
@@ -280,7 +280,7 @@ if (isset($_SESSION['tid'])) {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
