@@ -1,10 +1,32 @@
-# Enable directory browsing
+# Disable directory browsing
+Options -Indexes
 
-Options +Indexes
+# Protect the .htaccess file itself
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>
 
-# Allow access to all files
-
-<FilesMatch ".\*">
-Order allow,deny
-Allow from all
+# Protect sensitive files
+<FilesMatch "(config\.php|\.env)">
+Order Allow,Deny
+Deny from all
 </FilesMatch>
+
+# Prevent script execution in specific directories
+<DirectoryMatch "(vendor|app|database)">
+Options -ExecCGI -FollowSymLinks -Indexes
+AllowOverride None
+Order deny,allow
+Deny from all
+</DirectoryMatch>
+
+# Prevent access to specific file types
+<FilesMatch "\.(sql|bak|inc|tpl|ini)">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# Enable server-side PHP error logging
+php_flag log_errors on
+php_value error_log /path/to/error.log
