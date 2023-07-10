@@ -136,28 +136,13 @@ require_once '../super_admin/conn.php';
 													<div class="col-auto my-auto">
 														<div class="bg-primary sq-box rounded-circle text-center">
 															<h4 class="text-light">
-																<i class="fa fa-user-o" aria-hidden="true"></i>
-															</h4>
-														</div>
-													</div>
-													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Your Profile</p>
-														<a class="small" href="">View more</a>
-													</div>
-												</div>
-											</div>
-											<div class="card bg-primary bg-opacity-10 border-0 p-4 mb-3">
-												<div class="row">
-													<div class="col-auto my-auto">
-														<div class="bg-primary sq-box rounded-circle text-center">
-															<h4 class="text-light">
 																<i class="fa fa-shield" aria-hidden="true"></i>
 															</h4>
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Bank Payment</p>
-														<a class="small" href="">View more</a>
+														<p class="h6 mb-0 fw-bold">Manual Payments</p>
+														<a class="small" href="./manual_payments.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -171,8 +156,23 @@ require_once '../super_admin/conn.php';
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Card Payment</p>
-														<a class="small" href="">View more</a>
+														<p class="h6 mb-0 fw-bold">Online Payments</p>
+														<a class="small" href="./online_payments.php">View more</a>
+													</div>
+												</div>
+											</div>
+											<div class="card bg-primary bg-opacity-10 border-0 p-4 mb-3">
+												<div class="row">
+													<div class="col-auto my-auto">
+														<div class="bg-primary sq-box rounded-circle text-center">
+															<h4 class="text-light">
+																<i class="fa fa-user-o" aria-hidden="true"></i>
+															</h4>
+														</div>
+													</div>
+													<div class="col my-auto">
+														<p class="h6 mb-0 fw-bold">Payment Report</p>
+														<a class="small" href="./payment_report.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -512,7 +512,8 @@ require_once '../super_admin/conn.php';
 																			// $payment_resalt = mysqli_fetch_assoc($payment_count);
 
 
-																			// ?> </h3>
+																			// 
+																			?> </h3>
 													<h3><?php //echo number_format($payment_resalt['amount'], 2) 
 														?></h3>
 													<div class="progress mb-2 bg-white">

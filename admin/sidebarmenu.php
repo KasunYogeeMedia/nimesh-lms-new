@@ -105,7 +105,7 @@
 
 			echo '<a href="attendence.php" aria-expanded="false">
 							<i class="la la-file-text"></i>
-							<span class="nav-text">Students Attendence</span>
+							<span class="nav-text">Students Attendance</span>
 						</a>';
 		} else {
 

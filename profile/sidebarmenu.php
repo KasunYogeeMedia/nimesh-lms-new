@@ -69,7 +69,7 @@
 							<a href="course_work.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">Course Work</span> </a>
 						</li>
 						<li class="menu--item">
-							<a href="my_attendence.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">My Attendence</span> </a>
+							<a href="my_attendence.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">My Attendance</span> </a>
 						</li>
 						<!-- <li class="menu--item">
 							<a href="reviews.php" class="menu--link"> <i class='uil uil-star menu--icon'></i> <span class="menu--label">Rate Your Experience</span> </a>
