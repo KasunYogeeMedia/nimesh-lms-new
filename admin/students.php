@@ -188,23 +188,25 @@ require_once '../super_admin/dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<p><?php if ($row['image'] == "") {
-																			$pro_img = "../profile/images/hd_dp.jpg";
-																		} else {
-																			$pro_img = "../profile/uploadImg/" . $row['image'];
-																		} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
-																		<strong><?php echo $row['fullname']; ?></strong>
-																	</p>
-																	<p><strong>Student Number : <?php echo $row['stnumber']; ?></strong></p>
-																	<p><strong>Birth Day : <?php echo $row['dob']; ?></strong></p>
-																	<p><strong>Email : <?php echo $row['email']; ?></strong></p>
-																	<p><strong>Gender : <?php echo $row['gender']; ?></strong></p>
-																	<p><strong>School: <?php echo $row['school']; ?></strong></p>
-																	<p><strong>District : <?php echo $row['district']; ?></strong></p>
-																	<p><strong>Town/City : <?php echo $row['town']; ?></strong></p>
-																	<p><strong>Parent Contct No : <?php echo "0" . (int)$row['pcontactnumber']; ?></strong></p>
-																	<p><strong>Contct No/Username : <?php echo "0" . (int)$row['contactnumber']; ?></strong></p>
-																	<p>Address : <?php echo $row['address']; ?></p>
+																	<div class="h-scroll-half">
+																		<p><?php if ($row['image'] == "") {
+																				$pro_img = "../profile/images/hd_dp.jpg";
+																			} else {
+																				$pro_img = "../profile/uploadImg/" . $row['image'];
+																			} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
+																			<strong><?php echo $row['fullname']; ?></strong>
+																		</p>
+																		<p><strong>Student Number : <?php echo $row['stnumber']; ?></strong></p>
+																		<p><strong>Birth Day : <?php echo $row['dob']; ?></strong></p>
+																		<p><strong>Email : <?php echo $row['email']; ?></strong></p>
+																		<p><strong>Gender : <?php echo $row['gender']; ?></strong></p>
+																		<p><strong>School: <?php echo $row['school']; ?></strong></p>
+																		<p><strong>District : <?php echo $row['district']; ?></strong></p>
+																		<p><strong>Town/City : <?php echo $row['town']; ?></strong></p>
+																		<p><strong>Parent Contct No : <?php echo "0" . (int)$row['pcontactnumber']; ?></strong></p>
+																		<p><strong>Contct No/Username : <?php echo "0" . (int)$row['contactnumber']; ?></strong></p>
+																		<p>Address : <?php echo $row['address']; ?></p>
+																	</div>
 																</td>
 																<td><a href="javascript:void(0);"><strong><?php
 

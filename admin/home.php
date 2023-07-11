@@ -28,7 +28,7 @@ require_once '../super_admin/conn.php';
 <body>
 
 	<?php
-	// require_once 'preloader.php';
+	require_once 'preloader.php';
 	?>
 
 

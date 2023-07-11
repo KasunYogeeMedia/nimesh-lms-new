@@ -1,0 +1,9 @@
+# Enable directory browsing
+Options +Indexes
+
+# Allow access to all files
+<FilesMatch ".*">
+Order allow,deny
+Allow from all
+</FilesMatch>
+

@@ -230,22 +230,46 @@ require_once '../super_admin/dbconfig4.php';
         Main wrapper end
     ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <script src="vendor/global/global.min.js"></script>
-    <script src="js/deznav-init.js"></script>
-    <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="js/custom.min.js"></script>
+    <?php
 
-    <!-- Datatable -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="js/plugins-init/datatables.init.js"></script>
+    require_once 'footerjs.php';
 
-    <!-- Svganimation scripts -->
-    <script src="vendor/svganimation/vivus.min.js"></script>
-    <script src="vendor/svganimation/svg.animation.js"></script>
+    ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        // In your Javascript (external .js resource or <script> tag)
+
+        $(document).ready(function() {
+
+            $('#feeID').select2({
+
+                placeholder: "Select Teacher",
+
+                allowClear: true
+
+            });
+
+            $('#pay_sub_id').select2({
+
+                placeholder: "Select Course",
+
+                allowClear: true
+
+            });
+
+            $('#userID').select2({
+
+                placeholder: "Select Student",
+
+                allowClear: true
+
+            });
+
+
+        });
+    </script>
 
 </body>
 

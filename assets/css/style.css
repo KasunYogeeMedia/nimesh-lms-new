@@ -1,5 +1,8 @@
 /* Custom styles here */
 
+/* .deznav{
+    opacity: 0;
+} */
 .custom-theme.bg-light {
     background-color: #E0EBFB !important;
 }
@@ -126,6 +129,11 @@ a:hover {
     height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+.h-scroll-half {
+	height: 100px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .checked {

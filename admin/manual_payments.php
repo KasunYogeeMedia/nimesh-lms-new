@@ -443,10 +443,7 @@ if (isset($_GET['remove'])) {
 
                                                     <?php
 
-                                                    $sub_qury = mysqli_query($conn, "SELECT s.sid,c.cid,c.name cname,s.name sname
-FROM lmssubject s INNER JOIN lmsclass c ON s.class_id=c.cid
-WHERE s.status='Publish'
-ORDER BY c.name");
+                                                    $sub_qury = mysqli_query($conn, "SELECT s.sid,c.cid,c.name cname,s.name sname FROM lmssubject s INNER JOIN lmsclass c ON s.class_id=c.cid WHERE s.status='Publish' ORDER BY c.name");
                                                     while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
 
                                                     ?>
