@@ -281,8 +281,8 @@ if ($image_resalt['image'] == "") {
 													<div class="fcrse_content">
 														<a href="#" class="crse14s"><?php echo $level_resalt['lesson']; ?></a>
 														<div class="vdtodt">
-															<span class="vdt14 badge badge-primary" style="font-size:14px;">Start : <?php echo date_format(date_create($level_resalt['class_start_time']), "h:i:s A"); ?></span>
-															<span class="vdt14 badge badge-primary" style="font-size:14px;">End : <?php echo date_format(date_create($level_resalt['class_end_time']), "h:i:s A"); ?></span>
+															<span style="font-size:14px;">Start : <?php echo date_format(date_create($level_resalt['class_start_time']), "h:i:s A"); ?></span>
+															<span style="font-size:14px;">End : <?php echo date_format(date_create($level_resalt['class_end_time']), "h:i:s A"); ?></span>
 														</div>
 														<?php
 														$vmonth = date_format(date_create($level_resalt['add_date']), "Y-m-01");

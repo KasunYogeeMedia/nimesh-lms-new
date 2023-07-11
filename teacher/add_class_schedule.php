@@ -440,7 +440,7 @@ if (isset($_POST['add_class_bt'])) {
 																										} else {
 																											echo "Save Changes";
 																										} ?></button>
-											<a class="btn btn-light" href="class_schedule.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="class_schedule.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

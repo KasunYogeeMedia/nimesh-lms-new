@@ -442,7 +442,7 @@ if (isset($_POST['update'])) {
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="update" class="btn btn-primary" value="Update">
-											<a class="btn btn-light" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

@@ -31,7 +31,7 @@
 							<a href="#" id="night-mode" class="btn-night-mode"> <i class="uil uil-moon"></i> Night mode <span class="btn-night-mode-switch">
 									<span class="uk-switch-button"></span></span>
 							</a>
-						</div> <a href="bank_payment.php" class="item channel_item">Bank Payment</a> <a href="card_payment.php" class="item channel_item">Card Payment</a> <a href="manual_payment.php" class="item channel_item">Manual Payment</a> <a href="reviews.php" class="item channel_item">Reviews</a> <a href="../logout.php" class="item channel_item">Logout</a>
+						</div> <a href="bank_payment.php" class="item channel_item">Bank Payment</a> <a href="card_payment.php" class="item channel_item">Card Payment</a> <a href="manual_payment.php" class="item channel_item">Manual Payment</a> <a href="reviews.php" class="item channel_item">Reviews</a> <a href="logout.php" class="item channel_item">Logout</a>
 					</div>
 				</li>
 
