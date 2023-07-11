@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
                         }
                     </script>
 
-                    <form id="myform" action="Group_chat.php" method="POST">
+                    <form id="myform" action="group_chat.php" method="POST">
                         <div class="inner_div" id="chathist">
                             <?php
                             $query = "SELECT * FROM chats where sub_id = $current_user_data[level]";
