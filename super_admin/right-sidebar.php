@@ -9,7 +9,7 @@
 					<a href="#" class="opts_account p-0" title="Account">
 
 						<div class="row bg-lblue">
-							<div class="col-5"><img class="m-0" src="../assets/img/hd_dp.jpg" style="object-fit: cover;"></div>
+							<div class="col-5 my-auto"><img class="m-0" src="../assets/img/hd_dp.jpg" style="object-fit: cover;"></div>
 							<div class="col-7 my-auto text-dark">
 								<p class="fw-bold">Admin </p>
 							</div>

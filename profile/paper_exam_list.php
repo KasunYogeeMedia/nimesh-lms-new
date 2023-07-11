@@ -68,7 +68,7 @@ if ($image_resalt['image'] == "") {
 											<div class="col-lg-3 col-md-4">
 												<div class="fcrse_1 mt-30">
 													<a href="#" class="fcrse_img">
-														<img src="images/exams_pick.png" class="pro_pick2" style="height:300px;">
+														<img src="images/exams_pick.png" class="pro_pick2">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> Start Time</strong> <?php echo date_format(date_create($exams_resalt['starttime']), "h:i:s A"); ?></div>
 															<div class="badge_seller"><i class="uil uil-star"></i> End Time </strong> <?php echo date_format(date_create($exams_resalt['endtime']), "h:i:s A"); ?></div>

@@ -141,7 +141,7 @@ if ($image_resalt['image'] == "") {
 											<div class="col-lg-3 col-md-4">
 												<div class="fcrse_1 mt-30">
 													<a href="#" class="fcrse_img">
-														<img src="images/pro_pick2.png" class="pro_pick2" style="height:300px;">
+														<img src="images/pro_pick2.png" class="pro_pick2">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo $tute_resalt['ctype']; ?></div>
 															<div class="crse_reviews">
@@ -237,7 +237,7 @@ if ($image_resalt['image'] == "") {
 											<div class="col-lg-3 col-md-4">
 												<div class="fcrse_1 mt-30">
 													<a href="#" class="fcrse_img">
-														<img src="images/pro_pick2.png" class="pro_pick2" style="height:300px;">
+														<img src="images/pro_pick2.png" class="pro_pick2">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo $tute_resalt['ctype']; ?></div>
 															<div class="crse_reviews">

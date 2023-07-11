@@ -138,7 +138,7 @@ if ($image_resalt['image'] == "") {
 															$pro_img = "images/hd_dp2.jpg";
 														} else {
 															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
-														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
+														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
 															<div class="crse_reviews">
@@ -242,7 +242,7 @@ if ($image_resalt['image'] == "") {
 															$pro_img = "images/hd_dp2.jpg";
 														} else {
 															$pro_img = "../super_admin/images/class/" . $level_resalt['image'];
-														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2" style="height:300px;">
+														} ?><img src="<?php echo $pro_img; ?>" class="pro_pick2">
 														<div class="course-overlay">
 															<div class="badge_seller"><i class="uil uil-star"></i> <?php echo date_format(date_create($level_resalt['classdate']), "M d, Y"); ?></div>
 															<div class="crse_reviews">

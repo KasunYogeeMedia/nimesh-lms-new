@@ -171,7 +171,7 @@ require_once '../super_admin/dbconfig4.php';
 									$pro_img = "uploadImg/" . $row['image'];
 								} ?>
 								<div class="row bg-light">
-									<div class="col-5"><img class="m-0" src="<?php echo $pro_img; ?>" style="object-fit: cover;"></div>
+									<div class="col-5 my-auto"><img class="m-0" src="<?php echo $pro_img; ?>" style="object-fit: cover;"></div>
 									<div class="col-7 my-auto text-dark">
 										<p class="fw-bold"><?php echo $row['fullname']; ?> <i class="fa fa-sort-desc align-top" aria-hidden="true"></i></p>
 									</div>
