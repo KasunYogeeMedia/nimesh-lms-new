@@ -493,7 +493,7 @@ require_once("conn.php");
 													<i class="fa fa-university"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1">Total Revenue</p>
+													<p class="mb-1 text-light">Total Revenue</p>
 													<h3 class="text-white"><?php /*
 																			$c_date = date("Y-01-01");
 
