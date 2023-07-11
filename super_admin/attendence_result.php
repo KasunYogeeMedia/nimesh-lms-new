@@ -26,7 +26,7 @@ $total = $row[0];
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Attendence | Online Learning Platforms | Dashboard</title>
+    <title>Attendance | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -104,14 +104,14 @@ $total = $row[0];
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Total Attendence - <?php echo $total; ?></h4>
+                            <h4>Total Attendance - <?php echo $total; ?></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students Attendence</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students Attendence</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students Attendance</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students Attendance</a></li>
                         </ol>
                     </div>
                 </div>
