@@ -352,17 +352,17 @@ if (isset($_POST['all_archive'])) {
 
                                                                 <?php if ($payment_resalt['status'] == 0) { ?>
 
-                                                                    <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=1" class="btn btn-success btn-sm" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-thck"></i> Approve</a>
+                                                                    <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=1" class="btn btn-success btn-sm mb-1" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-thck"></i> Approve</a>
 
                                                                 <?php } ?>
 
                                                                 <?php if ($payment_resalt['status'] == 1) { ?>
 
-                                                                    <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=0" class="btn btn-primary btn-sm" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-times-circle"></i> Reject</a>
+                                                                    <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=0" class="btn btn-primary btn-sm mb-1" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-times-circle"></i> Reject</a>
 
                                                                 <?php } ?>
 
-                                                                <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=3" class="btn btn-info btn-sm" title="Archive Record" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-archive"></i> Archive</a>
+                                                                <a href="online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>&status=3" class="btn btn-info btn-sm `mb-1`" title="Archive Record" onClick="JavaScript:return confirm('Are your sure change this payment status?');"><i class="fa fa-archive"></i> Archive</a>
 
                                                                 <a class="btn btn-sm btn-danger" href="delete_online_payments.php?pid=<?php echo $payment_resalt['pid']; ?>" onClick="return confirm('Are youe sure remove this payment');"><i class="la la-trash-o"></i></a>
                                                             </td>

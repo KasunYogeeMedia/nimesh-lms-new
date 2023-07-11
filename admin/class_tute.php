@@ -182,7 +182,7 @@ require_once '../super_admin/dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<a class="btn btn-primary" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
+																	<a class="btn btn-primary mb-2" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
 																	<a class="btn btn-danger" href="delete_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">

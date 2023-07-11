@@ -192,7 +192,7 @@ if (isset($_GET['id'])) {
                                                             <td><?php echo number_format($count, 0); ?></td>
                                                             <td>
 
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success"><i class="fa fa-check"></i> Approval</a>
+                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success mb-1"><i class="fa fa-check"></i> Approval</a>
 
                                                                 <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=2&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger"><i class="la la-trash-o"></i> Reject</a>
 
