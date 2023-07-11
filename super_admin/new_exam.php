@@ -306,7 +306,7 @@ if (isset($_GET['lms_exam_id'])) {
 																										} else {
 																											echo "Add Exam";
 																										} ?></button>
-											<a class="btn btn-light" href="exam.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="exam.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

@@ -279,7 +279,7 @@ if ($image_resalt['image'] == "") {
 						<div class="ttr-header-submenu">
 							<ul>
 								<li><a href="student_profile.php">Time Table</a></li>
-								<li><a href="../logout.php">Logout</a></li>
+								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</div>
 					</li>

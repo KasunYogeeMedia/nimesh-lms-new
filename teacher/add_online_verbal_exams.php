@@ -739,7 +739,7 @@ if (isset($_POST['add_class_bt'])) {
                                                 } ?>
                                             </button>
 
-                                            <a class="btn btn-light" href="class_schlmsle.php"><i class="fa fa-times"></i> Cancel</a>
+                                            <a class="btn btn-danger" href="class_schedule.php"><i class="fa fa-times"></i> Cancel</a>
 
                                         </div>
 

@@ -239,7 +239,7 @@ if (isset($_GET['edit'])) {
 																										} else {
 																											echo "Add Exam";
 																										} ?></button>
-											<a class="btn btn-light" href="video_lessons.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="video_lessons.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

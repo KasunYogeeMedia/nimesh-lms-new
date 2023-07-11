@@ -455,7 +455,7 @@ WHERE ex.exid='$exid'");
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <?php if (isset($_GET['exid'])) { ?><input type="submit" name="update" class="btn btn-primary" value="Update Course Work"><?php } ?>
                                             <?php if (!isset($_GET['exid'])) { ?><input type="submit" name="add_exams" class="btn btn-primary" value="Add Course Work"><?php } ?>
-                                            <a class="btn btn-light" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
+                                            <a class="btn btn-danger" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
                                         </div>
                                     </div>
                                 </form>

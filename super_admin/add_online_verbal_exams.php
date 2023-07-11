@@ -38,7 +38,7 @@ if (isset($_POST['update_class_bt'])) {
     $classtype = mysqli_real_escape_string($conn, $_POST['classtype']);
     $classstatus = mysqli_real_escape_string($conn, $_POST['classstatus']);
 
-   
+
 
 
     if (!$_FILES['image']['name'] == "") {
@@ -99,7 +99,7 @@ if (isset($_POST['add_class_bt'])) {
     $classtype = mysqli_real_escape_string($conn, $_POST['classtype']);
     $classstatus = mysqli_real_escape_string($conn, $_POST['classstatus']);
 
-    
+
 
 
     if (!$_FILES['image']['name'] == "") {
@@ -450,322 +450,324 @@ if (isset($_POST['add_class_bt'])) {
 
                                     <div class="row">
 
-                                     
-                                    <input type="hidden" name="classtype" value="Online Class" />
 
-                                   
+                                        <input type="hidden" name="classtype" value="Online Class" />
 
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                        <div class="form-group">
 
-                                            <label class="form-label">Teacher</label>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                            <select name="tealmsr" class="form-control" required>
+                                            <div class="form-group">
 
-                                                <option value="<?php if (isset($_GET['edit'])) {
-                                                                    echo $edit_resalt['tealmsr'];
-                                                                } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
+                                                <label class="form-label">Teacher</label>
+
+                                                <select name="tealmsr" class="form-control" required>
+
+                                                    <option value="<?php if (isset($_GET['edit'])) {
+                                                                        echo $edit_resalt['tealmsr'];
+                                                                    } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
                                                                                         echo $tealmsr_resalt['fullname'];
                                                                                     } else {
                                                                                         echo "Select";
                                                                                     } ?></option>
 
-                                                <?php
+                                                    <?php
 
-                                                $tealmsr = mysqli_query($conn, "SELECT * FROM lmstealmsr where status='1' ORDER BY fullname");
+                                                    $tealmsr = mysqli_query($conn, "SELECT * FROM lmstealmsr where status='1' ORDER BY fullname");
 
-                                                while ($tealmsr_resalt = mysqli_fetch_array($tealmsr)) {
+                                                    while ($tealmsr_resalt = mysqli_fetch_array($tealmsr)) {
 
-                                                ?>
+                                                    ?>
 
-                                                    <option value="<?php echo $tealmsr_resalt['tid']; ?>"><?php echo $tealmsr_resalt['fullname']; ?></option>
+                                                        <option value="<?php echo $tealmsr_resalt['tid']; ?>"><?php echo $tealmsr_resalt['fullname']; ?></option>
 
-                                                <?php
+                                                    <?php
 
-                                                }
+                                                    }
 
-                                                ?>
+                                                    ?>
 
-                                            </select>
-
-
+                                                </select>
 
 
 
-                                        </div>
 
-                                    </div>
 
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-
-                                        <div class="form-group">
-
-                                            <label class="form-label">Lesson</label>
-
-                                            <input type="text" name="lesson" class="form-control" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                echo $edit_resalt['lesson'];
-                                                                                                            } ?>" required>
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-12">
+                                            <div class="form-group">
 
-                                        <div class="form-group">
+                                                <label class="form-label">Lesson</label>
 
-                                            <label class="form-label">Batch</label>
+                                                <input type="text" name="lesson" class="form-control" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                    echo $edit_resalt['lesson'];
+                                                                                                                } ?>" required>
 
-                                            <select name="level" class="form-control" onChange="JavaScript:send_level(this.value);" required>
+                                            </div>
 
-                                                <option value="<?php if (isset($_GET['edit'])) {
-                                                                    echo $edit_resalt['level'];
-                                                                } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-2 col-sm-12">
+
+                                            <div class="form-group">
+
+                                                <label class="form-label">Batch</label>
+
+                                                <select name="level" class="form-control" onChange="JavaScript:send_level(this.value);" required>
+
+                                                    <option value="<?php if (isset($_GET['edit'])) {
+                                                                        echo $edit_resalt['level'];
+                                                                    } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
                                                                                         echo $edit_resalt['name'];
                                                                                     } else {
                                                                                         echo "Select";
                                                                                     } ?></option>
 
-                                                <?php
+                                                    <?php
 
-                                                $level = mysqli_query($conn, "SELECT * FROM lmsclass ORDER BY cid");
+                                                    $level = mysqli_query($conn, "SELECT * FROM lmsclass ORDER BY cid");
 
-                                                while ($level_resalt = mysqli_fetch_array($level)) {
+                                                    while ($level_resalt = mysqli_fetch_array($level)) {
 
-                                                ?>
+                                                    ?>
 
-                                                    <option value="<?php echo $level_resalt['cid']; ?>"><?php echo $level_resalt['name']; ?></option>
+                                                        <option value="<?php echo $level_resalt['cid']; ?>"><?php echo $level_resalt['name']; ?></option>
 
-                                                <?php
+                                                    <?php
 
-                                                }
+                                                    }
 
-                                                ?>
+                                                    ?>
 
-                                            </select>
-
-
+                                                </select>
 
 
+
+
+
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <script>
+                                            function send_level(level_id) {
 
-                                    <script>
-                                        function send_level(level_id) {
+                                                var xhttp = new XMLHttpRequest();
 
-                                            var xhttp = new XMLHttpRequest();
+                                                xhttp.onreadystatechange = function() {
 
-                                            xhttp.onreadystatechange = function() {
+                                                    if (this.readyState == 4 && this.status == 200) {
 
-                                                if (this.readyState == 4 && this.status == 200) {
+                                                        document.getElementById("subject_dis").innerHTML = this.responseText;
 
-                                                    document.getElementById("subject_dis").innerHTML = this.responseText;
+                                                    }
 
-                                                }
+                                                };
 
-                                            };
+                                                xhttp.open("GET", "ajax_subject_filter.php?level_id=" + level_id, true);
 
-                                            xhttp.open("GET", "ajax_subject_filter.php?level_id=" + level_id, true);
+                                                xhttp.send();
 
-                                            xhttp.send();
+                                            }
+                                        </script>
 
-                                        }
-                                    </script>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="form-group">
 
-                                        <div class="form-group">
+                                                <label class="form-label">Course</label>
 
-                                            <label class="form-label">Course</label>
+                                                <span id="subject_dis">
 
-                                            <span id="subject_dis">
+                                                    <select name="subject" class="form-control" required>
 
-                                                <select name="subject" class="form-control" required>
-
-                                                    <option hidden="yes" value="<?php if (isset($_GET['edit'])) {
-                                                                                    echo $edit_resalt['subject'];
-                                                                                } else {
-                                                                                } ?>"><?php if (isset($_GET['edit'])) {
+                                                        <option hidden="yes" value="<?php if (isset($_GET['edit'])) {
+                                                                                        echo $edit_resalt['subject'];
+                                                                                    } else {
+                                                                                    } ?>"><?php if (isset($_GET['edit'])) {
                                                                                             echo $subject_resalt['name'];
                                                                                         } else {
                                                                                             echo "Course Not Found";
                                                                                         } ?></option>
 
-                                                </select>
+                                                    </select>
 
-                                            </span>
-
-
+                                                </span>
 
 
 
-                                        </div>
 
-                                    </div>
 
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
-
-                                        <div class="form-group">
-
-                                            <label class="form-label">Class Date</label>
-
-                                            <input type="date" name="classdate" class="form-control" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                echo $edit_resalt['classdate'];
-                                                                                                            } ?>" required>
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-12">
+                                            <div class="form-group">
 
-                                        <div class="form-group">
+                                                <label class="form-label">Class Date</label>
 
-                                            <label class="form-label">Start Time</label>
+                                                <input type="date" name="classdate" class="form-control" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                    echo $edit_resalt['classdate'];
+                                                                                                                } ?>" required>
 
-                                            <input type="time" name="class_start_time" class="form-control" style="display: inline-block;" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                                                        echo $edit_resalt['class_start_time'];
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-2 col-sm-12">
+
+                                            <div class="form-group">
+
+                                                <label class="form-label">Start Time</label>
+
+                                                <input type="time" name="class_start_time" class="form-control" style="display: inline-block;" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                                                            echo $edit_resalt['class_start_time'];
+                                                                                                                                                        } ?>" required>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-2 col-sm-12">
+
+                                            <div class="form-group">
+
+                                                <label class="form-label">End Time</label>
+
+                                                <input type="time" name="class_end_time" class="form-control" style="display: inline-block;" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                                                        echo $edit_resalt['class_end_time'];
                                                                                                                                                     } ?>" required>
 
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-12">
-
-                                        <div class="form-group">
-
-                                            <label class="form-label">End Time</label>
-
-                                            <input type="time" name="class_end_time" class="form-control" style="display: inline-block;" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                                                    echo $edit_resalt['class_end_time'];
-                                                                                                                                                } ?>" required>
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
 
-                                        <div class="form-group">
+                                                <label class="form-label">Link</label>
 
-                                            <label class="form-label">Link</label>
+                                                <input type="text" name="classlink" class="form-control" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                    echo $edit_resalt['classlink'];
+                                                                                                                } ?>" required>
 
-                                            <input type="text" name="classlink" class="form-control" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                echo $edit_resalt['classlink'];
-                                                                                                            } ?>" required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
-
-                                        <div class="form-group">
-
-                                            <label class="form-label">Password</label>
-
-                                            <input type="text" name="cpassword" class="form-control" value="<?php if (isset($_GET['edit'])) {
-                                                                                                                echo $edit_resalt['cpassword'];
-                                                                                                            } ?>" required>
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+
+                                            <div class="form-group">
+
+                                                <label class="form-label">Password</label>
+
+                                                <input type="text" name="cpassword" class="form-control" value="<?php if (isset($_GET['edit'])) {
+                                                                                                                    echo $edit_resalt['cpassword'];
+                                                                                                                } ?>" required>
+
+                                            </div>
+
+                                        </div>
 
 
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                        <div class="form-group">
+                                            <div class="form-group">
 
-                                            <label class="form-label">Class Status</label>
+                                                <label class="form-label">Class Status</label>
 
-                                            <select name="classstatus" class="form-control" required>
+                                                <select name="classstatus" class="form-control" required>
 
-                                                <option value="<?php if (isset($_GET['edit'])) {
-                                                                    echo $edit_resalt['classstatus'];
-                                                                } ?>"><?php if (isset($_GET['edit'])) {
+                                                    <option value="<?php if (isset($_GET['edit'])) {
+                                                                        echo $edit_resalt['classstatus'];
+                                                                    } ?>"><?php if (isset($_GET['edit'])) {
                                                                             echo $edit_resalt['classstatus'];
                                                                         } ?></option>
 
-                                                <option value="0">Upublished</option>
+                                                    <option value="0">Upublished</option>
 
-                                                <option value="1">Pubslished</option>
+                                                    <option value="1">Pubslished</option>
 
-                                                <option value="2">Done</option>
+                                                    <option value="2">Done</option>
 
-                                                <option value="3">Cancel</option>
+                                                    <option value="3">Cancel</option>
 
-                                            </select>
-
-
+                                                </select>
 
 
+
+
+
+                                            </div>
 
                                         </div>
 
-                                    </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
 
-                                    <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="form-group">
 
-                                        <div class="form-group">
+                                                <label class="form-label">Cover Photo</label>
 
-                                            <label class="form-label">Cover Photo</label>
+                                                <label for="fileName"><img src="../profile/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
 
-                                            <label for="fileName"><img src="../profile/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
-
-                                            <input type="file" name="image" id="fileName" hidden="yes" onChange="dis_name();">
+                                                <input type="file" name="image" id="fileName" hidden="yes" onChange="dis_name();">
 
 
 
-                                            <script>
-                                                function dis_name() {
+                                                <script>
+                                                    function dis_name() {
 
-                                                    var input = document.getElementById("fileName");
+                                                        var input = document.getElementById("fileName");
 
-                                                    var fReader = new FileReader();
+                                                        var fReader = new FileReader();
 
-                                                    fReader.readAsDataURL(input.files[0]);
+                                                        fReader.readAsDataURL(input.files[0]);
 
-                                                    fReader.onloadend = function(event) {
+                                                        fReader.onloadend = function(event) {
 
-                                                        var img = document.getElementById("yourImgTag");
+                                                            var img = document.getElementById("yourImgTag");
 
-                                                        img.src = event.target.result;
+                                                            img.src = event.target.result;
+
+                                                        }
 
                                                     }
+                                                </script>
 
-                                                }
-                                            </script>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                            <button type="submit" name="<?php if (isset($_GET['edit'])) {
+                                                                            echo "update_class_bt";
+                                                                        } else {
+                                                                            echo "add_class_bt";
+                                                                        } ?>" class="btn btn-primary">
+                                                <?php if (isset($_GET['edit'])) {
+                                                    echo "Update";
+                                                } else {
+                                                    echo "Save Changes";
+                                                } ?>
+                                            </button>
+
+                                            <a class="btn btn-light" href="class_schedule.php"><i class="fa fa-times"></i> Cancel</a>
 
                                         </div>
 
                                     </div>
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-
-                                        <button type="submit" name="<?php if (isset($_GET['edit'])) {
-                                                                        echo "update_class_bt";
-                                                                    } else {
-                                                                        echo "add_class_bt";
-                                                                    } ?>" class="btn btn-primary">
-                                            <?php if (isset($_GET['edit'])) {
-                                                echo "Update";
-                                            } else {
-                                                echo "Save Changes";
-                                            } ?>
-                                        </button>
-
-                                        <a class="btn btn-light" href="class_schlmsle.php"><i class="fa fa-times"></i> Cancel</a>
-
-                                    </div>
+                                </form>
 
                             </div>
-
-                            </form>
 
                         </div>
 
@@ -773,15 +775,13 @@ if (isset($_POST['add_class_bt'])) {
 
                 </div>
 
+
+
             </div>
-
-
 
         </div>
 
-    </div>
-
-    <!--**********************************
+        <!--**********************************
 
             Content body end
 
@@ -789,15 +789,15 @@ if (isset($_POST['add_class_bt'])) {
 
 
 
-    <?php
+        <?php
 
-    require_once 'footer.php';
+        require_once 'footer.php';
 
-    ?>
+        ?>
 
 
 
-    <!--**********************************
+        <!--**********************************
 
            Support ticket button start
 
@@ -805,7 +805,7 @@ if (isset($_POST['add_class_bt'])) {
 
 
 
-    <!--**********************************
+        <!--**********************************
 
            Support ticket button end
 

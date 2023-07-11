@@ -9,8 +9,6 @@
 		$stmt_delete->bindParam(':csid',$_GET['csid']);
 		$stmt_delete->execute();
 
-		echo"<script type='text/javascript'>window.location.href = 'class_schlmsle.php';</script>";
+		echo"<script type='text/javascript'>window.location.href = 'class_schedule.php';</script>";
 		
 	}
-
-?>

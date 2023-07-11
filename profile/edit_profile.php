@@ -97,7 +97,7 @@ if (isset($_POST['change_password'])) {
 
 		if ($password == $re_password) {
 			mysqli_query($con, "UPDATE lmsregister SET password='$password' WHERE reid='$user_id'");
-			echo "<script>window.location='../logout.php';</script>";
+			echo "<script>window.location='logout.php';</script>";
 		} else {
 			//re pass not match
 			echo "<script>window.location='edit_profile.php?re_pass#pass_dis';</script>";

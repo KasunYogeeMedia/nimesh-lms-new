@@ -197,7 +197,7 @@ require_once '../super_admin/dbconfig4.php';
 									<a href="#" id="night-mode" class="btn-night-mode"> <i class="uil uil-moon"></i> Night mode <span class="btn-night-mode-switch">
 											<span class="uk-switch-button"></span></span>
 									</a>
-								</div> <a href="bank_payment.php" class="item channel_item">Bank Payment</a> <a href="card_payment.php" class="item channel_item">Card Payment</a> <a href="manual_payment.php" class="item channel_item">Manual Payment</a> <a href="reviews.php" class="item channel_item">Reviews</a> <a href="../logout.php" class="item channel_item">Logout</a>
+								</div> <a href="bank_payment.php" class="item channel_item">Bank Payment</a> <a href="card_payment.php" class="item channel_item">Card Payment</a> <a href="manual_payment.php" class="item channel_item">Manual Payment</a> <a href="reviews.php" class="item channel_item">Reviews</a> <a href="logout.php" class="item channel_item">Logout</a>
 							</div>
 						</li>
 
@@ -308,68 +308,68 @@ require_once '../super_admin/dbconfig4.php';
 			<?php
 			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
 			if ($lesson_data) {
-			$row_count_lesson = mysqli_num_rows($lesson_data);
-			if ($row_count_lesson > 0) {
-			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
-				$lesson_date = $lesson_datas['classdate'];
-				$day = date("d", strtotime($lesson_date));
+				$row_count_lesson = mysqli_num_rows($lesson_data);
+				if ($row_count_lesson > 0) {
+					while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+						$lesson_date = $lesson_datas['classdate'];
+						$day = date("d", strtotime($lesson_date));
 			?>
 
-				<div class="card border-0 mb-4 bg-primary bg-opacity-10">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-auto my-auto">
-								<div class="bg-primary rounded-circle text-center text-light sq-box">
-									<h2><?php echo $day; ?></h2>
+						<div class="card border-0 mb-4 bg-primary bg-opacity-10">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto my-auto">
+										<div class="bg-primary rounded-circle text-center text-light sq-box">
+											<h2><?php echo $day; ?></h2>
+										</div>
+									</div>
+									<div class="col">
+
+										<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+
+										<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . $lesson_datas['classtype']; ?></p>
+									</div>
 								</div>
 							</div>
-							<div class="col">
-								
-									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
-								
-								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . $lesson_datas['classtype']; ?></p>
-							</div>
 						</div>
-					</div>
-				</div>
 
 			<?php
+					}
+				}
 			}
-		  }
-		}
 			?>
 			<?php
 			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE level='$current_user_data[level]' AND classstatus=1 AND classdate >= CURDATE()");
 			if ($lesson_data) {
-			$row_count = mysqli_num_rows($lesson_data);
-			if($row_count > 0){
-			while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
-				$lesson_date = $lesson_datas['classdate'];
-				$day = date("d", strtotime($lesson_date));
+				$row_count = mysqli_num_rows($lesson_data);
+				if ($row_count > 0) {
+					while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+						$lesson_date = $lesson_datas['classdate'];
+						$day = date("d", strtotime($lesson_date));
 			?>
 
-				<div class="card border-0 mb-4 bg-success bg-opacity-10">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-auto my-auto">
-								<div class="bg-success rounded-circle text-center text-light sq-box">
-									<h2><?php echo $day; ?></h2>
+						<div class="card border-0 mb-4 bg-success bg-opacity-10">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto my-auto">
+										<div class="bg-success rounded-circle text-center text-light sq-box">
+											<h2><?php echo $day; ?></h2>
+										</div>
+									</div>
+									<div class="col">
+
+										<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+
+										<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . "Verbal Exam"; ?></p>
+									</div>
 								</div>
 							</div>
-							<div class="col">
-								
-									<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
-								
-								<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . "Verbal Exam"; ?></p>
-							</div>
 						</div>
-					</div>
-				</div>
 
 			<?php
+					}
+				}
 			}
-		 }
-		}
 			?>
 		</div>
 	</div>

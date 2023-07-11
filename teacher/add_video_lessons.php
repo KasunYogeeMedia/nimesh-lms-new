@@ -345,7 +345,7 @@ if (isset($_POST['add_lesson'])) {
 
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="add_lesson" class="btn btn-primary" value="Save changes">
-											<a class="btn btn-light" href="video_lessons.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="video_lessons.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 
 									</div>

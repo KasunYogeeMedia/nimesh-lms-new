@@ -350,7 +350,7 @@ if (isset($_POST['save'])) {
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="save" class="btn btn-primary" value="Save changes">
-											<a class="btn btn-light" href="admin.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="admin.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>
