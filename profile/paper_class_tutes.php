@@ -1,8 +1,7 @@
 ﻿<?php
 
-if (!isset($_SESSION)) {
-	session_start();
-}
+session_start();
+
 include '../super_admin/conn.php';
 require_once '../super_admin/dbconfig4.php';
 $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister INNER JOIN lmsclass ON lmsregister.level=lmsclass.cid WHERE reid='$_SESSION[reid]'");

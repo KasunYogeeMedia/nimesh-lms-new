@@ -1,8 +1,7 @@
 <?php
 
-if (!isset($_SESSION)) {
-	session_start();
-}
+session_start();
+
 if (!isset($_SESSION['reid'])) {
 	header('location:login.php');
 	die();
@@ -201,12 +200,12 @@ if (isset($_POST['update_picture'])) {
 									</div>
 									<?php
 									if (isset($errMSG)) {
-										echo '<h2 style="background-color:#ff0000; text-align:center; width: 100%; color: #ffffff; padding: 8px 8px;">' . $errMSG . '</h2>';
+										echo '<div class="alert alert-danger mt-2" role="alert">' . $errMSG . '</div>';
 									} else if (isset($msg)) {
-										echo '<h2 style="background-color:#00ff00;text-align:center; width: 100%; color: #ffffff; padding: 8px 8px;">' . $msg . '</h2>';
+										echo '<div class="alert alert-success mt-2" role="alert">' . $msg . '</div>';
 									}
-
 									?>
+
 
 									<div class="col-lg-12 div-sec">
 										<div class="row">

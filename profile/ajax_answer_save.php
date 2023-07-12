@@ -1,8 +1,7 @@
 <?php
 
-if (!isset($_SESSION)) {
     session_start();
-}
+
 include '../dathboard/conn.php';
 
 $lms_answer_identify = $_SESSION['lms_exam_system_id'] . $_SESSION['reid'];

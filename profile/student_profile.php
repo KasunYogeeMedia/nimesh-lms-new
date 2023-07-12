@@ -1,8 +1,6 @@
 <?php
 
-if (!isset($_SESSION)) {
-	session_start();
-}
+session_start();
 
 //$success_payment = $_SESSION['success'];
 
@@ -761,7 +759,7 @@ if (isset($_POST['submit_bt'])) {
 												<div class="tutor150"> <a href="#" class="tutor_name">Hi,<?php echo $row['fullname']; ?></a>
 													<div class="mef78" title="Verify"> <i class="uil uil-check-circle"></i> </div>
 												</div>
-												<div class="tutor_cate">Address : <?php echo $row['address']; ?> </div>
+												<div class="tutor_cate">District	 : <?php echo $row['address']; ?> </div>
 												<hr>
 												<div class="tutor_cate">Your Username : <?php echo "0" . (int)$row['contactnumber']; ?> </div> <a href="edit_profile.php" class="btn btn-primary">Go To Your Profile</a>
 											</div>
@@ -827,7 +825,7 @@ if (isset($_POST['submit_bt'])) {
 												<tr>
 
 													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
-														<p class="bg-light">Address </p>
+														<p class="bg-light">District </p>
 													</td>
 													<td style="font-weight:bold;font-family:emoji;border: 4px solid #031133;color:#000000;">
 														<p class="bg-light"><?php echo $row['address']; ?></p>
