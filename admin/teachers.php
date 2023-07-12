@@ -188,7 +188,31 @@ if (isset($_GET['status']) && isset($_GET['type'])) {
 															<td style="white-space: nowrap">
 																<a href="edit_teacher.php?edit=<?php echo $tec_resalt['tid']; ?>" title="Edit" class="btn btn-sm btn-primary" style="margin-right: 5px;"><i class="la la-pencil"></i></a>
 																<a href="teachers.php?status=<?php echo $tec_resalt['tid']; ?>&type=<?php echo $tec_resalt['status']; ?>" title="Status Change" style="margin-right: 5px;" onClick="JavaScript:return confirm('Are you sure change this status?');" class="btn btn-sm btn-secondary"><i class="fa fa-lg fa-cogs" style="color: darkblue;"></i></a>
-																<a href="teachers.php?delete=<?php echo $tec_resalt['tid']; ?>" title="Delete" onClick="JavaScript:return confirm('Are you sure delete this teacher?');" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+																<a href="#" title="Delete" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteTeacherModal<?php echo $tec_resalt['tid']; ?>">
+																	<i class="la la-trash-o"></i>
+																</a>
+
+																<!-- Modal -->
+																<div class="modal fade" id="deleteTeacherModal<?php echo $tec_resalt['tid']; ?>" tabindex="-1" aria-labelledby="deleteTeacherModalLabel<?php echo $tec_resalt['tid']; ?>" aria-hidden="true">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="deleteTeacherModalLabel<?php echo $tec_resalt['tid']; ?>">Delete Teacher</h5>
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">
+																				Are you sure you want to delete this teacher?
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																				<a href="teachers.php?delete=<?php echo $tec_resalt['tid']; ?>" class="btn btn-danger">Delete</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
 															</td>
 															<td align="center">
 																<?php

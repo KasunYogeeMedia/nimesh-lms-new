@@ -182,12 +182,34 @@ require_once '../super_admin/dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<a class="btn btn-primary mb-2" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
+																	<a class="btn btn-primary mb-1" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
-																	<a class="btn btn-danger" href="delete_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
+																	<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteClassTutorialModal<?php echo $row["ctuid"]; ?>">
 																		<i class="fa fa-times-circle"></i>
 																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteClassTutorialModal<?php echo $row["ctuid"]; ?>" tabindex="-1" aria-labelledby="deleteClassTutorialModalLabel<?php echo $row["ctuid"]; ?>" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteClassTutorialModalLabel<?php echo $row["ctuid"]; ?>">Delete Class Tutorial</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					Are you sure you want to delete this class tutorial?
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																					<a href="delete_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>" class="btn btn-danger">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td>
 																	<?php

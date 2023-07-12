@@ -172,7 +172,31 @@ require_once '../super_admin/dbconfig4.php';
 															<tr>
 																<td><?php echo $row['reid']; ?></td>
 																<td>
-																	<a class="btn btn-sm btn-danger" href="delete_students.php?stid=<?php echo $row["reid"]; ?>" onClick="return confirm('Are youe sure remove this student');"><i class="la la-trash-o"></i></a>
+																	<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteStudentModal<?php echo $row["reid"]; ?>">
+																		<i class="la la-trash-o"></i>
+																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteStudentModal<?php echo $row["reid"]; ?>" tabindex="-1" aria-labelledby="deleteStudentModalLabel<?php echo $row["reid"]; ?>" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteStudentModalLabel<?php echo $row["reid"]; ?>">Delete Student</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					Are you sure you want to remove this student?
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																					<a href="delete_students.php?stid=<?php echo $row["reid"]; ?>" class="btn btn-danger">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td>
 																	<?php

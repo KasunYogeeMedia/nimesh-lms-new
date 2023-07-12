@@ -195,7 +195,31 @@ require_once '../super_admin/dbconfig4.php';
                                                                 </td>
                                                                 <td>
                                                                     <a href="edit_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                                        <i class="la la-trash-o"></i>
+                                                                    </a>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="deleteModalLabel">Delete Subject</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    Are you sure you want to delete this subject?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-danger">Delete</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </td>
                                                             </tr>
                                                     <?php
