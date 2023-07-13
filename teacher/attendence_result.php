@@ -7,7 +7,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require_once '../super_admin/includes.php';
+// var_dump($att_res);
+
+// require_once '../super_admin/includes.php';
 
 require_once '../super_admin/conn.php';
 

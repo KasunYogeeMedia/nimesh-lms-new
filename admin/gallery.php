@@ -118,12 +118,7 @@ require_once '../super_admin/dbconfig4.php';
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-							<li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-						</ul>
-					</div>
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -181,53 +176,7 @@ require_once '../super_admin/dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							<div id="grid-view" class="tab-pane fade col-lg-12">
-								<div class="row">
-									<tbody>
-										<?php
-
-										$stmt = $DB_con->prepare('SELECT * FROM lmsgallery ORDER BY id');
-
-										$stmt->execute();
-
-										if ($stmt->rowCount() > 0) {
-
-											while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-												extract($row);
-
-										?>
-												<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-													<div class="card border-0 bg-light">
-														<div class="card-body">
-															<div class="text-center">
-																<div class="profile-photo">
-																	<img src="images/gallery/<?php echo $row['image']; ?>" width="100%" height="250">
-																</div>
-																<ul class="list-group mb-3 list-group-flush">
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Status : </span><strong><span><?php echo $row['status']; ?></span></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Added Date : </span><strong><?php echo $row['add_date']; ?></strong>
-																	</li>
-																</ul>
-																<a class="btn btn-primary btn-rounded mt-3 px-4" href="edit_gallery.php?glid=<?php echo $row["id"]; ?>">
-																	<i class="fa fa-edit"></i>
-																</a>
-																<a class="btn btn-danger btn-rounded mt-3 px-4" href="delete_gallery.php?glid=<?php echo $row["id"]; ?>">
-																	<i class="fa fa-times-circle"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-										<?php
-											}
-										}
-										?>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

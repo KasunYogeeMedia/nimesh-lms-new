@@ -98,12 +98,7 @@ if (isset($_SESSION['tid'])) {
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-							<li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-						</ul>
-					</div>
+					
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -189,111 +184,7 @@ if (isset($_SESSION['tid'])) {
 									</div>
 								</div>
 							</div>
-							<div id="grid-view" class="tab-pane fade col-lg-12">
-								<div class="row">
-									<tbody>
-										<?php
-
-										$stmt = $DB_con->prepare('SELECT * FROM lmslesson ORDER BY lid');
-
-										$stmt->execute();
-
-										if ($stmt->rowCount() > 0) {
-
-											while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-												extract($row);
-
-										?>
-												<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-													<div class="card border-0 bg-light">
-														<div class="card-body">
-															<div class="text-center">
-																<div class="profile-photo">
-																	<iframe width="100%" height="250" src="<?php echo $row['video']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-																</div>
-																<h3 class="mt-4 mb-1"><strong><?php echo $row['title']; ?></strong></h3>
-																<ul class="list-group mb-3 list-group-flush">
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Teacher :</span><strong><?php
-
-																													$id = $row['tid'];
-
-																													$query = $DB_con->prepare('SELECT fullname FROM lmstealmsr WHERE tid=' . $id);
-
-																													$query->execute();
-
-																													$result = $query->fetch();
-
-																													echo $result['fullname'];
-
-																													?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Type :</span><strong><?php echo $row['type']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Al Year :</span><strong><?php
-
-																													$id = $row['class'];
-
-																													$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
-
-																													$query->execute();
-
-																													$result = $query->fetch();
-
-																													echo $result['name'];
-
-																													?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Class :</span><strong><?php
-
-																													$id = $row['subject'];
-
-																													$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
-
-																													$query->execute();
-
-																													$result = $query->fetch();
-
-																													echo $result['name'];
-
-																													?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Status :</span><strong><?php
-
-																													if ($row['status'] == "0") {
-
-																														echo '<button class="btn btn-primary btn-sm" on>Pending</button>';
-																													} else if ($row['status'] == "1") {
-
-																														echo '<button class="btn btn-success btn-sm">Success</button>';
-																													}
-
-																													?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Added Date :</span><strong><?php echo $row['add_date']; ?></strong>
-																	</li>
-																</ul>
-																<a class="btn btn-primary btn-rounded mt-3 px-4" href="edit_video_lessons.php?leid=<?php echo $row["lid"]; ?>">
-																	<i class="fa fa-edit"></i>
-																</a>
-																<a class="btn btn-danger btn-rounded mt-3 px-4" href="delete_video_lessons.php?leid=<?php echo $row["lid"]; ?>">
-																	<i class="fa fa-times-circle"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-										<?php }
-										}
-										?>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

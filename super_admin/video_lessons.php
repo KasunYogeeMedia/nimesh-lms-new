@@ -119,12 +119,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-
-						</ul>
-					</div>
+					
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
