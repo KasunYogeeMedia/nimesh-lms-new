@@ -161,7 +161,7 @@ if (isset($_GET['remove'])) {
                                                     while ($exam_resalt = mysqli_fetch_array($exam_qury)) {
                                                     ?>
                                                         <tr>
-                                                            <td style="white-space: nowrap;">
+                                                            <td style="white-space: normal;">
                                                                 <a href="q_list.php?exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-success" title="Add question"><i class="fa fa-question"></i></a>
                                                                 <a href="new_exam.php?lms_exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-primary" title="Test Exam"><i class="fa fa-edit"></i></a>
                                                                 <a href="exam.php?remove=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-danger" title="Test Exam" onClick="JavaScript:return confirm('Are your sure remove this exam?');">

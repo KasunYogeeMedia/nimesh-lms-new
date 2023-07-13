@@ -186,7 +186,7 @@ if (isset($_GET['exid'])) {
 
 																	?>
 																</td>
-																<td style="white-space: nowrap;">
+																<td style="white-space: normal;">
 																	<a class="btn btn-sm btn-primary" href="add_online_exams.php?exid=<?php echo $row["exid"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
@@ -223,8 +223,8 @@ if (isset($_GET['exid'])) {
 																	?>
 																</td>
 																<td><?php echo $row['examname']; ?></td>
-																<td style="white-space: nowrap;"><?php echo date("Y-m-d h:i:s A", strtotime($row['add_date'])); ?></td>
-																<td style="white-space: nowrap;">Start: <?php echo date("Y-m-d h:i:s A", strtotime($row['edate'])); ?><br>End: <?php echo date("Y-m-d h:i:s A", strtotime($row['exam_end_date'])); ?></td>
+																<td style="white-space: normal;"><?php echo date("Y-m-d h:i:s A", strtotime($row['add_date'])); ?></td>
+																<td style="white-space: normal;">Start: <?php echo date("Y-m-d h:i:s A", strtotime($row['edate'])); ?><br>End: <?php echo date("Y-m-d h:i:s A", strtotime($row['exam_end_date'])); ?></td>
 																<td><a class="btn btn-success btn-rounded mt-3 px-4" href="images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
 																<td><?php echo $row['quizcount']; ?></td>
 															</tr>

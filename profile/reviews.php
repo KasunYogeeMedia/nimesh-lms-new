@@ -108,7 +108,7 @@ if (isset($_POST['add_review'])) {
 								<h2 class="st_title mb-4">Rate Your Learning Experience</h2>
 							</div>
 							<form action="reviews.php" method="post">
-								<div class="basic_profile bg-light p-3">
+								<div class="basic_profile bg-light p-4">
 									<div class="col-lg-12">
 										<div class="basic_ptitle">
 											<h4>Your Feedback Is Appreciated</h4>

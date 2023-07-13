@@ -16,6 +16,8 @@
 
 <link href="css/night-mode.css" rel="stylesheet">
 
+<link rel="stylesheet" href="../assets/css/stylesm.css">
+
 <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
 
 <!-- <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">

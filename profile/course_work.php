@@ -253,7 +253,7 @@ if (isset($_POST['submit'])) {
                                                 </td>
 
                                                 <td style="font-weight: normal;"><?php echo $status; ?></td>
-                                                <td style="white-space: nowrap;">
+                                                <td style="white-space: normal;">
                                                     <?php if ($check_resalt['status'] == 1) { ?>
                                                         can't edit
                                                     <?php } else { ?>
