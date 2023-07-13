@@ -165,13 +165,13 @@ if (isset($_POST['update_picture'])) {
 			padding-left: 0;
 		}
 
-		.subject-item {
+		/* .subject-item {
 			font-weight: bold;
 			color: #ffffff;
 			background-color: #28a745;
 			padding: 5px;
 			margin-bottom: 5px;
-		}
+		} */
 	</style>
 </head>
 
@@ -192,11 +192,11 @@ if (isset($_POST['update_picture'])) {
 					<div class="row">
 						<div class="col-lg-12">
 							<h2 class="st_title mb-4">Edit My Profile</h2>
-							<div class="basic_profile bg-light p-3">
+							<div class="basic_profile bg-light p-4">
 								<form method="post">
 									<div class="basic_ptitle">
 										<h4>1. Edit My Profile Details</h4>
-
+										<hr style="background-color:#ffffff;">
 									</div>
 									<?php
 									if (isset($errMSG)) {
@@ -303,13 +303,13 @@ if (isset($_POST['update_picture'])) {
 										?>
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-6">
 
 												<label class="col-form-label">Batch</label>
 												<div class="ui search focus mt-30">
 													<div class="ui left icon input swdh11 swdh19">
 														<span id="class_load">
-															<select name="level" required="" id="class_val" onchange="JavaScript:select_subject(this.value);" class="form-control simple" style="border: 2px solid #ccc;">
+															<select class="form-control simple;" name="level" required="" id="class_val" onchange="JavaScript:select_subject(this.value);">
 																<option value="" hidden="yes">Select Batch</option>
 																<?php
 																$stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');
@@ -354,50 +354,25 @@ if (isset($_POST['update_picture'])) {
 													xhttp.send();
 												}
 											</script>
-											<div class="col-md-7">
+											<div class="col-md-6">
 
 												<label class="col-form-label">Course</label>
 												<div class="ui search focus mt-30">
 													<div id="sub_load">
-														Course Not Found
+														<ul class="subject-list" style="border: 2px solid #ccc; border-radius: .35rem; padding: .35rem .75rem;">
+															<?php
+															$a = array();
+															$sub_qury = mysqli_query($conn, "SELECT * FROM lmsreq_subject INNER JOIN lmssubject ON lmsreq_subject.sub_req_sub_id=lmssubject.sid WHERE sub_req_reg_no='$contactnumber'");
+															while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
+																array_push($a, $sub_resalt['name']);
+															}
+															?>
+															<?php foreach ($a as $subject) { ?>
+																<li class="subject-item"><?php echo $subject; ?></li>
+															<?php } ?>
+														</ul>
 													</div>
 												</div>
-											</div>
-
-											<div class="col-lg-12">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="row">
-															<div class="col-md-12 text-sec">
-																<br>
-																<hr>
-																<span style="font-weight:bold;font-size:16px;color:#ffffff;">
-																	<label class="col-form-label">Current Course :</label>
-																	<hr style="background-color:#ffffff;">
-																	<?php
-																	$a = array();
-																	$sub_qury = mysqli_query($conn, "SELECT * FROM lmsreq_subject INNER JOIN lmssubject ON lmsreq_subject.sub_req_sub_id=lmssubject.sid WHERE sub_req_reg_no='$contactnumber'");
-																	while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-																		array_push($a, $sub_resalt['name']);
-																	}
-																	?>
-
-																	<div class="badge badge-success">
-																		<label class="col-form-label">Current Course :</label>
-																		<hr style="background-color: #ffffff;">
-																		<ul class="subject-list">
-																			<?php foreach ($a as $subject) { ?>
-																				<li class="subject-item"><?php echo $subject; ?></li>
-																			<?php } ?>
-																		</ul>
-																	</div>
-																</span>
-															</div><br>
-														</div>
-													</div>
-												</div>
-
-
 											</div>
 										</div>
 
@@ -410,9 +385,9 @@ if (isset($_POST['update_picture'])) {
 													<input type="submit" name="update" class="btn btn-primary btn-block" value="Update Profile">
 													<br>
 												</div>
-												<div class="col-md-6 text-end">
+												<!-- <div class="col-md-6 text-end">
 													<a href="edit_profile.php" class="btn btn-danger btn-block">Close</a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -425,7 +400,7 @@ if (isset($_POST['update_picture'])) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="basic_profile bg-light p-3">
+							<div class="basic_profile bg-light p-4">
 								<form method="post" enctype="multipart/form-data">
 									<?php if (isset($_GET['jpg_image'])) { ?><div class="alert alert-danger"><strong>Fail!</strong> Please select JPG image.</div><?php } ?>
 									<?php if (isset($_GET['image_upload'])) { ?><div class="alert alert-info"><strong>Successfully!</strong> Profile update successfully.</div><?php } ?>
@@ -464,9 +439,9 @@ if (isset($_POST['update_picture'])) {
 											<div class="col-md-6">
 												<input type="submit" name="update_picture" class="btn btn-primary btn-block" value="Update Profile Picture">
 											</div>
-											<div class="col-md-6 text-end">
+											<!-- <div class="col-md-6 text-end">
 												<a href="edit_profile.php" class="btn btn-danger btn-block">Close</a>
-											</div>
+											</div> -->
 										</div>
 									</div>
 								</form>
@@ -477,12 +452,12 @@ if (isset($_POST['update_picture'])) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="basic_profile bg-light p-3">
+							<div class="basic_profile bg-light p-4">
 								<form class="edit-profile m-b30" method="post">
 									<div class="basic_ptitle">
-										<h4>Change My Password</h4>
-
+										<h4>4.Change My Password</h4>
 									</div>
+									<hr style="background-color:#ffffff;">
 									<div class="col-lg-12 div-sec">
 										<div class="row">
 											<div class="col-md-4">
@@ -520,9 +495,9 @@ if (isset($_POST['update_picture'])) {
 											<div class="col-md-6">
 												<input type="submit" name="change_password" class="btn btn-primary btn-block" value="Change Password">
 											</div>
-											<div class="col-md-6 text-end">
+											<!-- <div class="col-md-6 text-end">
 												<a href="edit_profile.php" class="btn btn-danger btn-block">Close</a>
-											</div>
+											</div> -->
 										</div>
 									</div>
 							</div>
@@ -530,7 +505,7 @@ if (isset($_POST['update_picture'])) {
 					</div>
 				</div>
 			</div>
-			<div id="rgsb" class="rg-sb col-sm-6 col-md-5 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
+			<div id="rgsb" class="rg-sb col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
 				<?php
 				require_once 'right-sidebar.php';
 				?>

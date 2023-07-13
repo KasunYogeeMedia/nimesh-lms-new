@@ -382,7 +382,7 @@ margin: 5px 1px 3px 0px; */
 }
 
 .sub_table {
-    height: 250px;
+    max-height: 250px;
     overflow: auto;
 }
 

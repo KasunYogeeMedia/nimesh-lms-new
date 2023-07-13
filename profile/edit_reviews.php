@@ -115,7 +115,7 @@ if (isset($_POST['update'])) {
 					<div class="col-lg-12">
 						<h2 class="st_title mb-4">Review</h2>
 						<form action="" class="edit-profile m-b30" method="POST">
-							<div class="basic_profile bg-light p-3">
+							<div class="basic_profile bg-light p-4">
 								<div class="col-lg-12">
 									<div class="basic_ptitle">
 										<h4>Edit Your Review</h4>

@@ -186,7 +186,7 @@ if (isset($_POST['register'])) {
 			<div class="inp-1">
 				<!-- <i class="fas fa-unlock-alt fa-lg"></i> -->
 				<div id="sub_load" class="text-light">
-					Course Not Found
+					<!-- Course Not Found	 -->
 				</div>
 			</div>
 			<div class="inp-1">

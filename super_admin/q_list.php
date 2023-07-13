@@ -163,7 +163,7 @@ $mcq_resalt = mysqli_fetch_assoc($mcq_qury);
                                         ?>
                                             <tr>
                                                 <td><?php echo $q_count; ?></td>
-                                                <td style="white-space: nowrap;">
+                                                <td style="white-space: normal;">
                                                     <a href="add_question_new.php?id=<?php echo $q_list_resalt['id']; ?>&exam_id=<?php echo $_GET['exam_id']; ?>" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
                                                     <a href="q_list.php?remove=<?php echo $q_list_resalt['id']; ?>&exam_id=<?php echo $_GET['exam_id']; ?>" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure to remove this question?');"><i class="fa fa-trash"></i></a>
                                                 </td>

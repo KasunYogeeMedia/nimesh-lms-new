@@ -114,7 +114,7 @@ unset($_SESSION['exam_id']);
 											?>
 
 													<tr style="text-transform: capitalize;">
-														<td style="white-space: nowrap;">
+														<td style="white-space: normal;">
 															<?php
 															$check_exam = mysqli_query($conn, "SELECT * FROM lms_exam_report r WHERE r.exam_report_user='$_SESSION[reid]' AND r.exam_report_paper='$exam_resalt[lms_exam_id]'");
 															if (mysqli_num_rows($check_exam) > 0) {
