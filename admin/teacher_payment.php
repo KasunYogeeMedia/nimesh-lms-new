@@ -141,12 +141,7 @@ require_once '../super_admin/dbconfig4.php';
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="nav nav-pills mb-3">
-                            <li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-                            <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-                        </ul>
-                    </div>
+                    
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -220,64 +215,7 @@ require_once '../super_admin/dbconfig4.php';
                                     </div>
                                 </div>
                             </div>
-                            <div id="grid-view" class="tab-pane fade col-lg-12">
-                                <div class="row">
-                                    <tbody>
-                                        <?php
-                                        $tec_qury = mysqli_query($conn, "SELECT * FROM lmstealmsr ORDER BY fullname");
-                                        while ($tec_resalt = mysqli_fetch_array($tec_qury)) {
-
-                                            $income_qury = mysqli_query($conn, "SELECT SUM(amount) as total_income FROM lmspayment WHERE feeID='$tec_resalt[tid]' and status='1'");
-                                            $icome_resalt = mysqli_fetch_array($income_qury);
-
-                                            $pay_qury = mysqli_query($conn, "SELECT SUM(lms_teacher_payment_history_amount) as total_pay FROM lms_teacher_payment_history WHERE lms_teacher_payment_history_tid='$tec_resalt[tid]'");
-                                            $pay_resalt = mysqli_fetch_array($pay_qury);
-
-                                            $pay_qury1 = mysqli_query($conn, "SELECT SUM(lms_teacher_payment_company_amount) as total_pay1 FROM lms_teacher_payment_history WHERE lms_teacher_payment_history_tid='$tec_resalt[tid]'");
-                                            $pay_resalt1 = mysqli_fetch_array($pay_qury1);
-
-                                            $a = $icome_resalt['total_income'] - ($pay_resalt['total_pay'] + $pay_resalt1['total_pay1']);
-
-                                            $b = $a / 100 * $tec_resalt['Percentage'];
-
-                                            $c = $a - $b;
-
-                                            $d = $a - $c;
-                                        ?>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                                <div class="card border-0 bg-light">
-                                                    <div class="card-body">
-                                                        <div class="text-center">
-                                                            <div class="profile-photo">
-                                                                <?php if ($tec_resalt['image'] == "") {
-                                                                    $pro_img = "../profile/img/pro_pick.png";
-                                                                } else {
-                                                                    $pro_img = "images/teacher/" . $tec_resalt['image'];
-                                                                } ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
-                                                            </div>
-                                                            <h3 class="mt-4 mb-1"><strong><?php echo $tec_resalt['fullname']; ?></strong></h3>
-                                                            <p class="text-muted"><strong>Percentage : <?php echo $tec_resalt['Percentage'] . "%"; ?></strong></p>
-                                                            <ul class="list-group mb-3 list-group-flush">
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Total Income :</span><strong><?php echo number_format($a, 2) ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Company Amount :</span><strong><?php echo number_format($d, 2) ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Teacher Amount :</span><strong><?php echo number_format($c, 2) ?></strong>
-                                                                </li>
-                                                            </ul>
-                                                            <a href="add_new_teacher_payment.php?id=<?php echo $tec_resalt['tid']; ?>" style="color: darkred; cursor: pointer;"><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Pay Payment</button></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

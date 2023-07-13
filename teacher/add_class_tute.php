@@ -319,7 +319,7 @@ if (isset($_POST['add_classtute'])) {
 													<option style="display:none;">Select Class Type</option>
 													<option>Online Class</option>
 													<option>Paper Class</option>
-													<option>Free Class</option>
+													<!-- <option>Free Class</option> -->
 												</select>
 											</div>
 										</div>

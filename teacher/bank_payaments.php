@@ -109,12 +109,7 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="nav nav-pills mb-3">
-                            <li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-                            <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-                        </ul>
-                    </div>
+                   
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -204,79 +199,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="grid-view" class="tab-pane fade col-lg-12">
-                                <div class="row">
-                                    <tbody>
-                                        <?php
-                                        $count = 0;
-                                        $payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' ORDER BY status ASC");
-                                        while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
-                                            $count++;
-
-                                            $user_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$payment_resalt[userID]'");
-                                            $user_resalt = mysqli_fetch_array($user_qury);
-                                        ?>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                                <div class="card border-0 bg-light">
-                                                    <div class="card-body">
-                                                        <div class="text-center">
-                                                            <div class="profile-photo">
-                                                                <a href="<?php echo "$url/profile/uploadImg/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
-                                                            </div>
-                                                            <h3 class="mt-4 mb-1"><strong><?php echo $user_resalt['fullname']; ?></strong></h3>
-                                                            <p class="text-muted"><strong>Course/Batch : <?php
-                                                                                                            $sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$payment_resalt[pay_sub_id]'");
-                                                                                                            while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-                                                                                                            ?> <?php echo $sub_resalt['name']; ?>
-
-                                                                        -
-
-                                                                        <?php
-                                                                                                                $cl_qury = mysqli_query($conn, "SELECT * FROM lmsclass WHERE cid='$sub_resalt[class_id]'");
-                                                                                                                while ($cl_resalt = mysqli_fetch_array($cl_qury)) {
-                                                                        ?> <?php echo $cl_resalt['name']; ?> <?php }
-                                                                                                            } ?>
-                                                                </strong></p>
-                                                            <hr>
-                                                            <ul class="list-group mb-3 list-group-flush">
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Class Fee : </span><strong>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Bank/Branch : </span><strong><?php echo $payment_resalt['bank']; ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Institute : </span><strong><?php echo $payment_resalt['branch']; ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Pay Date : </span><strong><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></strong>
-                                                                </li>
-                                                                <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Status : </span><strong>
-                                                                        <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                            <span>Not Approval</span>
-                                                                        <?php } ?>
-                                                                        <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                            <span>Approval</span>
-                                                                        <?php } ?></strong>
-                                                                </li>
-
-                                                            </ul>
-                                                            <?php if ($payment_resalt['status'] == 0) { ?>
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success btn-rounded mt-3 px-4"><i class="fa fa-check"></i> Approval</a>
-                                                            <?php } ?>
-                                                            <?php if ($payment_resalt['status'] == 1) { ?>
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=0" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger btn-rounded mt-3 px-4"><i class="la la-trash-o"></i> Reject</a>
-                                                            <?php } ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

@@ -118,12 +118,7 @@ if (isset($_GET['remove'])) {
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-							<li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-						</ul>
-					</div>
+					
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -238,111 +233,7 @@ if (isset($_GET['remove'])) {
 									</div>
 								</div>
 							</div>
-							<div id="grid-view" class="tab-pane fade col-lg-12">
-								<div class="row">
-									<tbody>
-										<?php
-										$count = 0;
-										$list_qury = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle INNER JOIN lmstealmsr ON lmsclass_schlmsle.tealmsr=lmstealmsr.tid ORDER BY classid DESC");
-
-										while ($list_resalt = mysqli_fetch_array($list_qury)) {
-											$count++;
-
-											$level_qury = mysqli_query($conn, "SELECT * FROM lmsclass WHERE cid='$list_resalt[level]'");
-											$level_resalt = mysqli_fetch_array($level_qury);
-
-											$subject_qury = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE classid='$list_resalt[classid]'");
-											$subject_resalt = mysqli_fetch_array($subject_qury);
-										?>
-											<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-												<div class="card border-0 bg-light">
-													<div class="card-body">
-														<div class="text-center">
-															<div class="profile-photo">
-																<?php if ($subject_resalt['image'] == "") {
-																	$pro_img = "../profile/images/hd_dp.jpg";
-																} else {
-																	$pro_img = "images/class/" . $subject_resalt['image'];
-																} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
-															</div>
-															<h3 class="mt-4 mb-1"><strong><?php echo $list_resalt['lesson']; ?></strong></h3>
-															<p class="text-muted"><strong>Teacher : <?php echo $list_resalt['fullname']; ?></strong></p>
-															<hr>
-															<ul class="list-group mb-3 list-group-flush">
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Class Type : </span><strong><?php echo $list_resalt['classtype']; ?></strong>
-																</li>
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Password : </span><strong><?php echo $subject_resalt['cpassword']; ?></strong>
-																</li>
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">AL Year : </span><strong><?php echo $level_resalt['name']; ?></strong>
-																</li>
-
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Class : </span><strong><?php
-
-																												$id = $subject_resalt['subject'];
-
-																												require_once 'dbconfig4.php';
-
-																												$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
-
-																												$query->execute();
-
-																												$result = $query->fetch();
-
-																												echo $result['name'];
-
-																												?></strong>
-																</li>
-
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Class Time : </span><strong><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></strong>
-																</li>
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Class Date : </span><strong><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></strong>
-																</li>
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Month :</span><strong><span style="font-size:14px;"> <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($list_resalt['add_date']), "F"); ?></span></strong>
-																</li>
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Added Date : </span><strong><?php echo date_format(date_create($list_resalt['add_date2']), "M d, Y - h:i:s A"); ?></strong>
-																</li>
-
-																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">Status : </span><strong>
-																		<?php
-
-																		if ($list_resalt['classstatus'] == "0") {
-
-																			echo '<button class="btn btn-primary btn-sm" on>Unpublished</button>';
-																		} else if ($list_resalt['classstatus'] == "1") {
-
-																			echo '<button class="btn btn-success btn-sm">Published</button>';
-																		} else if ($list_resalt['classstatus'] == "2") {
-
-																			echo '<button class="btn btn-warning btn-sm">Done</button>';
-																		} else {
-
-																			echo '<button class="btn btn-danger btn-sm">Cancel</button>';
-																		}
-																		?></strong>
-																</li>
-
-															</ul>
-															<a href="<?php echo $list_resalt['classlink']; ?>" target="_blank" class="btn btn-sm btn-secondary btn-rounded mt-3 px-4"><i class="fa fa-lg fa-video-camera"></i></a>
-															<a href="add_class_schedule.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary btn-rounded mt-3 px-4"><i class="fa fa-lg fa-edit"></i></a>
-															<a href="class_schedule.php?remove=<?php echo $list_resalt['classid']; ?>" onClick="JavaScript:return confirm('Are your sure delete lesson?');" class="btn btn-sm btn-danger btn-rounded mt-3 px-4"><i class="fa fa-lg fa-trash"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
-										<?php
-										}
-										?>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -17,11 +17,11 @@ if (isset($_POST['register'])) {
 	$stnumber = mysqli_real_escape_string($con, $_POST['stnumber']);
 	$email = mysqli_real_escape_string($con, $_POST['email']);
 	$dob = mysqli_real_escape_string($con, $_POST['dob']);
-	//$gender = mysqli_real_escape_string($con, $_POST['gender']);
+	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	//$school = mysqli_real_escape_string($con, $_POST['school']);
 	$district = mysqli_real_escape_string($con, $_POST['district']);
 	//$town = mysqli_real_escape_string($con, $_POST['town']);
-	//$pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
+	$pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
 	//$pemail = mysqli_real_escape_string($con, $_POST['pemail']);
 	//$pname = mysqli_real_escape_string($con, $_POST['pname']);
 	$fullname = mysqli_real_escape_string($con, $_POST['fullname']);
@@ -40,7 +40,7 @@ if (isset($_POST['register'])) {
 			$success_msg = 1;
 		} else {
 			//pass
-			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,email,dob,district,fullname,contactnumber, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$email','$dob','$district','$fullname','$contactnumber','$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
+			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,email,dob,gender,district,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$email','$dob','$gender','$district',$pcontactnumber,'$fullname','$contactnumber',school,'$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
 
 				if (!empty($_POST['subjects'])) {
 					foreach ($_POST['subjects'] as $subject_id) {
@@ -107,10 +107,10 @@ if (isset($_POST['register'])) {
 			</div>
 		</div>
 		<form method="POST" id="myform">
-			<?php if ($success_msg == 1) { ?><div class="alert alert-primary" style="font-weight:bold;background-color:#007bff;color:#ffffff;">Sorry! You are already registered.</div><?php } ?>
-			<?php if ($success_msg == 2) { ?><div class="alert alert-danger" style="font-weight:bold;background-color:#dc3545;color:#ffffff;">Error! The Re-Enter Password you entered does not match.</div><?php } ?>
-			<?php if ($success_msg == 3) { ?><div class="alert alert-danger" style="font-weight:bold;background-color:#dc3545;color:#ffffff;">Error! Your entered details something is wrong. Please try again.</div><?php } ?>
-			<?php if (isset($_GET['success'])) { ?><div class="alert alert-success" style="font-weight:bold;background-color:#f36a22;color:#ffffff;"> Thanks for registering! Sign in now and start learning right away! </div><?php } ?>
+			<?php if ($success_msg == 1) { ?><div class="alert alert-warning" role="alert">Sorry! You are already registered.</div><?php } ?>
+			<?php if ($success_msg == 2) { ?><div class="alert alert-danger" role="alert">Error! The Re-Enter Password you entered does not match.</div><?php } ?>
+			<?php if ($success_msg == 3) { ?><div class="alert alert-danger" role="alert">Error! Your entered details something is wrong. Please try again.</div><?php } ?>
+			<?php if (isset($_GET['success'])) { ?><div class="alert alert-success" role="alert"> Thanks for registering! Sign in now and start learning right away! </div><?php } ?>
 			<h2 class="heading-text">Sign Up</h2>
 			<div class="inp-1">
 				<?php
@@ -218,6 +218,17 @@ if (isset($_POST['register'])) {
 					<option value="Trincomalee">Trincomalee</option>
 					<option value="Vavuniya">Vavuniya</option>
 				</select>
+			</div>
+			<div class="inp-1">
+				<i class="fas fa fa-user fa-lg"></i>
+				<select name="gender" required>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+			<div class="inp-1">
+				<i class="fas fa fa-phone fa-lg"></i>
+				<input name="pcontactnumber" type="text" placeholder="Enter Parent Phone Number" maxlength="10" minlength="10">
 			</div>
 			<div class="inp-1">
 				<i class="fas fa fa-key fa-lg"></i>

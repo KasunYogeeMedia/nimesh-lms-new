@@ -116,11 +116,7 @@ require_once '../super_admin/dbconfig4.php';
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn btn-square btn-secondary mr-1 show active">List View</a></li>
-						</ul>
-					</div>
+					
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -161,9 +157,32 @@ require_once '../super_admin/dbconfig4.php';
 															<tr>
 																<td><?php echo $row['id']; ?></td>
 																<td>
-																	<a class="btn btn-danger" href="delete_review.php?rrid=<?php echo $row["id"]; ?>">
+																	<!-- Button trigger modal -->
+																	<a class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">
 																		<i class="fa fa-times-circle"></i>
 																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+																		<div class="modal-dialog" role="document">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Review</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					<p>Are you sure you want to delete this review?</p>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+																					<a class="btn btn-danger" href="delete_review.php?rrid=<?php echo $row["id"]; ?>">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td><?php
 

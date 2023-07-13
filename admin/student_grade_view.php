@@ -119,12 +119,7 @@ require_once '../super_admin/dbconfig4.php';
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-							<li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-						</ul>
-					</div>
+					
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -237,95 +232,7 @@ require_once '../super_admin/dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							<div id="grid-view" class="tab-pane fade col-lg-12">
-								<div class="row">
-									<tbody>
-										<?php
-
-										$stmt = $DB_con->prepare('SELECT * FROM lmsregister ORDER BY reid');
-
-										$stmt->execute();
-
-										if ($stmt->rowCount() > 0) {
-
-											while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-												extract($row);
-
-										?>
-												<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-													<div class="card border-0 bg-light">
-														<div class="card-body">
-															<div class="text-center">
-																<div class="profile-photo">
-																	<?php if ($row['image'] == "") {
-																		$pro_img = "../profile/images/hd_dp.jpg";
-																	} else {
-																		$pro_img = "../profile/uploadImg/" . $row['image'];
-																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
-																</div>
-																<h3 class="mt-4 mb-1"><strong><?php echo $row['fullname']; ?></strong></h3>
-																<p class="text-muted"><strong>Classes :- <?php
-																											$sub_qury = mysqli_query($conn, "SELECT * FROM lmsreq_subject INNER JOIN lmssubject ON lmsreq_subject.sub_req_sub_id=lmssubject.sid WHERE sub_req_reg_no='$row[contactnumber]'");
-																											while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-																											?><?php echo $sub_resalt['name'], "<br>"; ?><?php } ?></strong></p>
-																<ul class="list-group mb-3 list-group-flush">
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Student Number. :</span><strong><?php echo $row['stnumber']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Birth day. :</span><strong><?php echo $row['dob']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Email. :</span><strong><?php echo $row['email']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Gender. :</span><strong><?php echo $row['gender']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">School. :</span><strong><?php echo $row['school']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">District. :</span><strong><?php echo $row['district']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Town/City. :</span><strong><?php echo $row['town']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Parent Contact No. :</span><strong><?php echo "0" . (int)$row['pcontactnumber']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Contact No. :</span><strong><?php echo "0" . (int)$row['contactnumber']; ?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Batch :</span><strong><?php
-
-																													$id = $row['level'];
-
-																													$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
-
-																													$query->execute();
-
-																													$result = $query->fetch();
-
-																													echo $result['name'];
-
-																													?></strong>
-																	</li>
-																	<li class="list-group-item px-0 d-flex justify-content-between">
-																		<span class="mb-0">Added Date. :</span><strong><?php echo $row['add_date']; ?></strong>
-																	</li>
-																</ul>
-																<a class="btn btn-sm btn-danger btn-rounded mt-3 px-4" href="delete_students.php?stid=<?php echo $row["reid"]; ?>" onClick="return confirm('Are youe sure remove this student');"><i class="la la-trash-o"></i></a>
-															</div>
-														</div>
-													</div>
-												</div>
-										<?php }
-										}
-										?>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

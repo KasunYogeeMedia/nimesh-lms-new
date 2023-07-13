@@ -253,23 +253,7 @@ if (isset($_POST['all_archive'])) {
 
                 <div class="row">
 
-                    <div class="col-lg-12">
-
-                        <ul class="nav nav-pills mb-3">
-
-                            <li class="nav-item">
-
-                                <form method="post">
-
-                                    <button type="submit" class="nav-link btn btn-square btn-secondary mr-1 show active" name="all_archive"><i class="fa fa-archive"></i> Archive All</button>
-
-                                </form>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
+                    
 
                     <div class="col-lg-12">
 

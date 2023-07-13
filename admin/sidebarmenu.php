@@ -220,11 +220,11 @@
 			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
 		</ul>
 	</li>
-	<!-- <li><a href="reviews.php" aria-expanded="false">
+	<li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
 		</a>
-	</li> -->
+	</li>
 	<!-- <li><a href="gallery.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Gallery</span>
