@@ -101,7 +101,7 @@ if (isset($_POST['update'])) {
 		$stmt->bindParam(':payment_month', $payment_month);
 		$stmt->bindParam(':status', $status);
 		$stmt->bindParam(':cttid', $id);
-		var_dump($stmt);
+		// var_dump($stmt);
 		if ($stmt->execute()) {
 
 			$successMSG = "Class Tute Successfully Updated ...";
@@ -308,7 +308,7 @@ if (isset($_POST['update'])) {
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
-												<select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
+												<select class="form-control" name="class" required>
 													<option value="<?php
 																	$id = $class;
 																	$query = $DB_con->prepare('SELECT cid FROM lmsclass WHERE cid=' . $id);
@@ -316,12 +316,12 @@ if (isset($_POST['update'])) {
 																	$result = $query->fetch();
 																	echo $result['cid'];
 																	?>" hidden="yes"><?php
-																						$id = $class;
-																						$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
-																						$query->execute();
-																						$result = $query->fetch();
-																						echo $result['name'];
-																						?>
+												$id = $class;
+												$query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
+												$query->execute();
+												$result = $query->fetch();
+												echo $result['name'];
+												?>
 													</option>
 													<?php
 													require_once '../super_admin/dbconfig4.php';
@@ -339,6 +339,12 @@ if (isset($_POST['update'])) {
 											</div>
 										</div>
 										<script>
+											// Automatically trigger the send_level function after the page loads
+											window.onload = function() {
+												var levelId = document.querySelector('select[name="class"]').value;
+												send_level(levelId);
+											};
+
 											function send_level(level_id) {
 												var xhttp = new XMLHttpRequest();
 												xhttp.onreadystatechange = function() {
@@ -356,7 +362,7 @@ if (isset($_POST['update'])) {
 												<span id="subject_dis">
 													<select name="subject" class="form-control" required>
 														<?php
-														if ($_GET['leid']) {
+														if ($_GET['le id']) {
 															$sub_qury = mysqli_query($conn, "SELECT * FROM lmslesson WHERE lid='$_GET[leid]'");
 															$sub_resalt = mysqli_fetch_array($sub_qury);
 														}
@@ -370,6 +376,8 @@ if (isset($_POST['update'])) {
 												</span>
 											</div>
 										</div>
+
+
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Month</label>

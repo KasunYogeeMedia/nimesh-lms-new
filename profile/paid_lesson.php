@@ -61,7 +61,7 @@ if ($image_resalt['image'] == "") {
 							<h4 class="item_title mb-4">This Month's Recordings</h4>
 
 						</div>
-						<div class="col-lg-12">
+						<!-- <div class="col-lg-12">
 							<div class="widget-box bg-light mb-2 p-3">
 								<form method="post">
 									<div class="row">
@@ -108,7 +108,7 @@ if ($image_resalt['image'] == "") {
 								</form>
 
 							</div>
-						</div>
+						</div> -->
 						<div class="col-md-12">
 							<div class="_14d25">
 								<div class="row">

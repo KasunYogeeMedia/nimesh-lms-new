@@ -50,12 +50,12 @@ if ($image_resalt['image'] == "") {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="item_title mb-4">Paid Live Classes</h4>
+                            <h4 class="item_title mb-4">Verbal Exams</h4>
 
                         </div>
                         <?php
                         if ($full_pay == 1) { ?>
-                            <div class="col-lg-12">
+                            <!-- <div class="col-lg-12">
                                 <div class="widget-box bg-light mb-2 p-3">
 
                                     <form method="post">
@@ -109,7 +109,7 @@ if ($image_resalt['image'] == "") {
                                     </form>
 
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <div class="_14d25">
                                     <div class="row">

@@ -54,7 +54,7 @@ if ($image_resalt['image'] == "") {
 							<br>
 							<a href="online_class.php" class="see150">See all</a>
 						</div>
-						<div class="col-lg-12">
+						<!-- <div class="col-lg-12">
 							<div class="widget-box bg-light mb-2 p-3">
 								<form method="post">
 									<div class="row">
@@ -94,7 +94,7 @@ if ($image_resalt['image'] == "") {
 								</form>
 
 							</div>
-						</div>
+						</div> -->
 						<div class="col-md-12">
 							<div class="_14d25">
 								<div class="row">

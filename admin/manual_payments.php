@@ -20,6 +20,8 @@ if (isset($_POST['pay_bt'])) {
 
     $amount = mysqli_real_escape_string($conn, $_POST['amount']);
 
+    $pay_type = mysqli_real_escape_string($conn, $_POST['pay_type']);
+
     $current_time   = date("Y-m-d H:i:s");
     $feeID          = $_POST['feeID'][0];
     $pay_month      = $_POST['expiredate'] . "-01";
@@ -28,76 +30,15 @@ if (isset($_POST['pay_bt'])) {
 
         $pay_sub_id = $value;
 
-        //------------------------------
 
-        $subject_qury = mysqli_query($conn, "SELECT fees_valid_period FROM lmssubject WHERE sid='$pay_sub_id' ");
-
-        $subject_resalt = mysqli_fetch_array($subject_qury);
-
-        $subject_valid_days = $subject_resalt['fees_valid_period'];
-
-        $paying_month = $_POST['expiredate'];
-
-        if (date("Y-m", strtotime($paying_month)) < date("Y-m")) {
-            echo "Invalid month selected";
-            exit;
-        } else {
-
-            if ($subject_valid_days == 1) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;
-
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 30) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    $fina_date = date("Y-m-t", strtotime(date($paying_month)));
-                } else {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 40) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 45) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-
-                    //echo $paying_month."=".$fina_date; exit;
-
-                }
-            }
-
-            $exp_date = $fina_date;
-        }
 
         //-----------------------
 
         $sql = "INSERT INTO
 
-        lmspayment (userID, feeID, pay_sub_id, amount, bank, paymentMethod, created_at, expiredate, status, pay_month)
+        lmspayment (userID, feeID, pay_sub_id, amount, bank, paymentMethod, created_at, status, pay_type)
 
-        VALUES ('$userID','$feeID','$pay_sub_id','$amount','Pay bank','Manual','$current_time','$exp_date','1','$pay_month')";
+        VALUES ('$userID','$feeID','$pay_sub_id','$amount','Pay bank','Manual','$current_time','1','$pay_type')";
 
         if (mysqli_query($conn, $sql)) {
 
@@ -466,7 +407,14 @@ if (isset($_GET['remove'])) {
                                                 <td colspan="3">&nbsp;</td>
                                             </tr>
 
-                                            <td><input type="tel" name="amount" pattern="[0-9]+([\.][0-9]{0,2})?" required class="form-control" placeholder="Pay amount" onKethp="JavaScrip:dis_load(this.value);" onBlur="JavaScrip:dis_load();"></td>
+                                            <td class="d-none"><input value="1" type="tel" name="amount" pattern="[0-9]+([\.][0-9]{0,2})?" required class="form-control" placeholder="Pay amount" onKethp="JavaScrip:dis_load(this.value);" onBlur="JavaScrip:dis_load();"></td>
+
+                                            <td>
+                                                <select name="pay_type" class="form-select" aria-label="Default select example">
+                                                    <option value="half">Half Payment</option>
+                                                    <option value="full">Full Payment</option>
+                                                </select>
+                                            </td>
 
                                             <td>
 
@@ -592,7 +540,7 @@ if (isset($_GET['remove'])) {
 
                                                         <th>Status</th>
 
-                                                        <th>Classes</th>
+                                                        <th>Student Name</th>
 
                                                         <th>Class Fee</th>
 
@@ -611,7 +559,7 @@ if (isset($_GET['remove'])) {
 
                                                     $count = 0;
 
-                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yp.expiredate,yp.pay_month,yt.fullname ytfullname,ys.name
+                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yt.fullname ytfullname,ys.name
 
 FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
 
@@ -635,7 +583,27 @@ ORDER BY yp.pid DESC");
 
                                                             <td align="center">
 
-                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-sm btn-danger" title="Remove Payment" onClick="JavaScript:return confirm('Are your sure remove this payment?');"><i class="fa fa-trash"></i></a>
+                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-sm btn-danger" title="Remove Payment" data-bs-toggle="modal" data-bs-target="#confirmDelete"><i class="fa fa-trash"></i></a>
+
+                                                                <!-- Confirmation Modal -->
+                                                                <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="confirmDeleteLabel">Confirmation</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Are you sure you want to remove this payment?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-danger">Delete</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
 
                                                             </td>
 

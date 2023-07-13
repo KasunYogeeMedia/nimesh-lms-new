@@ -309,17 +309,13 @@ if (isset($_POST['submit_bt'])) {
 
 					<?php if (isset($_GET['success'])) { ?>
 
-						<div style="color:#ffffff; border-radius: 4px; font-family: Rubik; font-weight: bold; font-size:18px; text-align: center; padding: 20px; margin-bottom: 20px; background-color:green;">
-
+						<div class="alert alert-success" role="alert">
 							<i class="fa fa-check-circle"></i> Card Payment මගින් ඔබ සාර්ථකව පන්ති ගාස්තු ගෙවා ඇත !!
-
 						</div>
 
 					<?php } else if (isset($fail)) { ?>
-						<div style="color:#ffffff; border-radius: 4px; font-family: Rubik; font-weight: bold; font-size:18px; text-align: center; padding: 20px; margin-bottom: 20px; background-color:red;">
-
+						<div class="alert alert-danger" role="alert">
 							<i class="fa fa-times-circle"></i> Card Payment Fail !!
-
 						</div>
 
 					<?php }
@@ -329,7 +325,7 @@ if (isset($_POST['submit_bt'])) {
 
 					<?php if (isset($_GET['payed'])) { ?>
 
-						<div style="color:#ffffff; border-radius: 4px; font-family: Rubik; font-weight: bold; font-size:18px; text-align: center; padding: 20px; margin-bottom: 20px; background-color:green;">
+						<div class="alert alert-success" role="alert">
 
 							<i class="fa fa-check-circle"></i> ඔබගේ බැංකු රිසිට්පත ඔබ සාර්ථකව UPLOAD කරන ලදී.එය අනුමත වූ විට ඔබට SMS එකක් මගින් දැනුම් දෙනු ඇත !!
 
@@ -339,7 +335,7 @@ if (isset($_POST['submit_bt'])) {
 
 					<?php if (isset($_GET['error'])) { ?>
 
-						<div style="color:#ffffff; border-radius: 4px; font-family: Rubik; font-weight: bold; font-size:18px; text-align: center; padding: 20px; margin-bottom: 20px; background-color:red;">
+						<div class="alert alert-danger" role="alert">
 
 							<i class="fa fa-times-circle"></i> <?php echo htmlspecialchars($_GET['error']); ?>
 
@@ -759,7 +755,7 @@ if (isset($_POST['submit_bt'])) {
 												<div class="tutor150"> <a href="#" class="tutor_name">Hi,<?php echo $row['fullname']; ?></a>
 													<div class="mef78" title="Verify"> <i class="uil uil-check-circle"></i> </div>
 												</div>
-												<div class="tutor_cate">District	 : <?php echo $row['address']; ?> </div>
+												<div class="tutor_cate">District : <?php echo $row['address']; ?> </div>
 												<hr>
 												<div class="tutor_cate">Your Username : <?php echo "0" . (int)$row['contactnumber']; ?> </div> <a href="edit_profile.php" class="btn btn-primary">Go To Your Profile</a>
 											</div>
