@@ -124,7 +124,7 @@ require_once '../super_admin/conn.php';
 							</div>
 						</div>
 					</div>
-					<div class="scroll-sec">
+					<!-- <div class="scroll-sec">
 						<div class="row">
 							<div class="col-sm-12 col-md-4">
 								<div class="card border-0 bg-light">
@@ -337,7 +337,7 @@ require_once '../super_admin/conn.php';
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- <div class="row">
 						<div class="col-xl-12 col-xxl-12 col-sm-12">
 							<div class="row">

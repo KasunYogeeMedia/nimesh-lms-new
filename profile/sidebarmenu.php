@@ -21,9 +21,9 @@
 						<li class="menu--item">
 							<a href="group_chat.php" class="menu--link"> <i class='uil uil-comments menu--icon'></i> <span class="menu--label">Group Chat</span> </a>
 						</li>
-						<li class="menu--item">
+						<!-- <li class="menu--item">
 							<a href="free_class.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">Free Workshop</span> </a>
-						</li>
+						</li> -->
 						<!-- <li class="menu--item">
 							<a href="free_class_tutes.php" class="menu--link"> <i class='uil uil-star menu--icon'></i> <span class="menu--label">Free Class
 									Tutes</span> </a>

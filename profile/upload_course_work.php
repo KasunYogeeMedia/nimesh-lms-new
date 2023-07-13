@@ -18,7 +18,7 @@ $user_resalt = mysqli_fetch_array($user_qury);
 $image_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid='$_SESSION[reid]'");
 $image_resalt = mysqli_fetch_array($image_qury);
 
-if(isset($_GET['exid'])){
+if (isset($_GET['exid'])) {
     $course_work = mysqli_query($conn, "SELECT * FROM lmscourse_work where exid = $_GET[exid] LIMIT 1");
     $course_work_resalt = mysqli_fetch_array($course_work);
 }
@@ -136,73 +136,74 @@ if (isset($_POST['upload_btn'])) {
 
                                     <div class="noti-box-list">
 
-                                        <div class="card-body">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div>
+                                                    <h4>Description</h4>
+                                                    <p class="my-3"><?php echo $course_work_resalt['description']; ?></p>
+                                                </div>
 
-                                            <div>
-                                                <h3>Description</h3>
-                                                <p><?php echo $course_work_resalt['description'];?></p>
+                                                <?php if (!isset($_SESSION['up_image_view'])) { ?>
+
+                                                    <p>You can upload multiple images.</p>
+
+
+
+                                                    <form method="post" enctype="multipart/form-data">
+
+                                                        <table>
+
+                                                            <tbody>
+
+                                                                <tr>
+
+                                                                    <td>
+
+                                                                        <input name="image_file[]" type="file" multiple="multiple" required="required" class="form-control" accept="image/jpeg">
+
+                                                                    </td>
+
+                                                                    <td><button name="upload_btn" type="submit" class="btn btn-success w-100">Upload Image's</button></td>
+
+                                                                </tr>
+
+                                                            </tbody>
+
+                                                        </table>
+
+
+
+                                                    </form>
+
+                                                <?php } ?>
+
+
+
+                                                <?php if (isset($_SESSION['up_image_view'])) { ?>
+
+
+
+                                                    <?php
+
+                                                    $dis = json_decode($_SESSION['up_image_view']);
+
+                                                    foreach ($dis as $dis) {
+
+                                                    ?>
+
+                                                        <img class="" src="uploadImg/paper/<?php echo $dis; ?>">
+
+                                                    <?php
+
+                                                    }
+
+                                                    ?>
+
+
+
+                                                <?php } ?>
+
                                             </div>
-
-                                            <?php if (!isset($_SESSION['up_image_view'])) { ?>
-
-                                                <p>You can upload multiple images.</p>
-
-
-
-                                                <form method="post" enctype="multipart/form-data">
-
-                                                    <table>
-
-                                                        <tbody>
-
-                                                            <tr>
-
-                                                                <td>
-
-                                                                    <input name="image_file[]" type="file" multiple="multiple" required="required" class="form-control" accept="image/jpeg">
-
-                                                                </td>
-
-                                                                <td><button name="upload_btn" type="submit" class="btn btn-success w-100">Upload Image's</button></td>
-
-                                                            </tr>
-
-                                                        </tbody>
-
-                                                    </table>
-
-
-
-                                                </form>
-
-                                            <?php } ?>
-
-
-
-                                            <?php if (isset($_SESSION['up_image_view'])) { ?>
-
-                                                
-
-                                                <?php
-
-                                                $dis = json_decode($_SESSION['up_image_view']);
-
-                                                foreach ($dis as $dis) {
-
-                                                ?>
-
-                                                    <img src="uploadImg/paper/<?php echo $dis; ?>" style="width: 30%; height: 300px; object-fit: contain; border: 1px solid #CCCCCC; margin: 5px;">
-
-                                                <?php
-
-                                                }
-
-                                                ?>
-
-
-
-                                            <?php } ?>
-
                                         </div>
 
                                     </div>

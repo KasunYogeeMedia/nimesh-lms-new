@@ -134,7 +134,7 @@ if (isset($_POST['submit'])) {
     if ($filename = $img->upload()) {
         $success = 1;
 
-        $sql = "INSERT INTO exam_submissions (user_id, exam_id, filename) VALUES (" . $user_id . ", " . $exam_id . ", '" . $filename . "')";
+        $sql = "INSERT INTO course_work_submissions (user_id, exam_id, filename) VALUES (" . $user_id . ", " . $exam_id . ", '" . $filename . "')";
 
         mysqli_query($conn, $sql);
     } else {
@@ -161,7 +161,6 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
 
     <?php
     require_once 'sidebarmenu.php';
@@ -212,12 +211,24 @@ if (isset($_POST['submit'])) {
                                         <?php
                                         $cont = 0;
                                         $list_qury = mysqli_query($conn, "SELECT e.exid,s.name sname,e.examname,e.edate,e.exam_end_date,e.starttime,e.endtime FROM lmscourse_work e LEFT JOIN lmssubject c ON e.subject=c.sid LEFT JOIN lmssubject s on e.subject=s.sid ORDER BY e.exid DESC");
-                                        while ($list_resalt = mysqli_fetch_assoc($list_qury)) {
-                                            $cont++;
-                                            $check_qury = mysqli_query($conn, "SELECT * FROM exam_submissions e WHERE e.user_id='$_SESSION[reid]' AND e.exam_id='$list_resalt[exid]'");
-                                            if (mysqli_num_rows($check_qury) > 0) {
-                                                $check_resalt = mysqli_fetch_assoc($check_qury);
 
+                                        // var_dump("SELECT e.exid,s.name sname,e.examname,e.edate,e.exam_end_date,e.starttime,e.endtime FROM lmscourse_work e LEFT JOIN lmssubject c ON e.subject=c.sid LEFT JOIN lmssubject s on e.subject=s.sid ORDER BY e.exid DESC");
+
+
+
+                                        while ($list_resalt = mysqli_fetch_assoc($list_qury)) {
+
+                                            $cont++;
+                                            $check_qury = mysqli_query($conn, "SELECT * FROM course_work_submissions e WHERE e.user_id='$_SESSION[reid]' AND e.exam_id='$list_resalt[exid]'");
+
+                                            // var_dump($list_resalt['exid']);
+                                            // var_dump($_SESSION['reid']);
+
+                                            // var_dump("SELECT * FROM course_work_submissions e WHERE e.user_id='$_SESSION[reid]' AND e.exam_id='$list_resalt[exid]'");
+                                            $check_resalt = mysqli_fetch_assoc($check_qury);
+                                            // var_dump($check_resalt); // data not pass in this step
+
+                                            if (mysqli_num_rows($check_qury) > 0) {
                                                 $mark = $check_resalt['marks'] . "%";
                                                 $submit_time = date("M d, Y h:i:s A", strtotime($check_resalt['time']));
                                                 $upload_btn = false;
@@ -227,12 +238,14 @@ if (isset($_POST['submit'])) {
                                                     $status = "Pending approval";
                                                 }
                                             } else {
+
                                                 $rate = "N/A";
                                                 $mark = "N/A";
                                                 $submit_time = "N/A";
                                                 $upload_btn = true;
                                                 $status = "Open";
                                             }
+
                                         ?>
 
                                             <tr>
