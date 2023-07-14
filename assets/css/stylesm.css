@@ -76,3 +76,8 @@ center img {
 #class_val {
    border: none !important;
 }
+
+/*Sammani's styles*/
+.page-titles .breadcrumb .breadcrumb-item+.breadcrumb-item:before {
+  font-size: 14px;
+}

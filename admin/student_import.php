@@ -150,7 +150,7 @@ if (!empty($_GET['status'])) {
                         <div class="row">
                             <!-- Import link -->
                             <div class="col-md-12 head">
-                                <div class="float-right">
+                                <div class="float-right mb-2">
                                     <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i> Import</a>
                                 </div>
                             </div>

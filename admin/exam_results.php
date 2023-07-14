@@ -159,7 +159,7 @@ if (isset($_GET['remove'])) {
                                                                 <?php } ?>
                                                             </select>
                                                         </td>
-                                                        <td><button name="filter" type="submit" class="btn btn-sm btn-success ml-2">Filter</button></td>
+                                                        <td><button name="filter" type="submit" class="btn btn-sm btn-success ml-2 fs-6">Filter</button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
