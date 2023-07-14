@@ -142,7 +142,7 @@ if (isset($_GET['exam_id'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -225,7 +225,7 @@ if (isset($_GET['exam_id'])) {
 
                                                             if ($deadline - $submitted_time) {
 
-                                                                echo '<td><button class="btn btn-success">Submited</span></td>';
+                                                                echo '<td><button class="btn btn-success btn-sm">Submited</span></td>';
                                                             } else {
 
                                                                 echo '<td><span>Late submitted</span></td>';
@@ -236,7 +236,7 @@ if (isset($_GET['exam_id'])) {
                                                                 <?php echo $submission_result['marks']; ?>%
                                                                 <?php /*?><?php if ($submission_result['marks'] == -1) {echo "NA"; }else{echo $submission_result['marks'] . " %";} ?><a href="#" class="edit_marks_btn" <?php if ($submission_result['marks'] != -1) {echo 'data-current_marks="'.$submission_result['marks'].'"'; }else{echo 'data-current_marks="0"';} ?> data-submission_id="<?php echo $submission_result['id']; ?>" ><i class="fa fa-edit"></i><?php */ ?>
                                                             </td>
-                                                            <td><a target="_blank" href="add_course_work_marks.php?id=<?php echo $submission_result['id']; ?>"><button class="btn btn-primary">Check &amp; Add Marks</button></a></td>
+                                                            <td><a target="_blank" href="add_course_work_marks.php?id=<?php echo $submission_result['id']; ?>"><button class="btn btn-primary btn-sm">Check &amp; Add Marks</button></a></td>
                                                         </tr>
                                                     <?php
                                                     }

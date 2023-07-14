@@ -73,7 +73,7 @@
 
 	</li>
 
-	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+	<!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-money"></i>
 			<span class="nav-text">Payments</span>
 		</a>
@@ -82,7 +82,7 @@
 			<li><a href="payment_list.php?type=Bank">Bank Payments</a></li>
 			<li><a href="payment_list.php?type=Card">Online Payments</a></li>
 		</ul>
-	</li>
+	</li> -->
 	<li>
 		<a href="logout.php" aria-expanded="false">
 			<i class="la la-sign-out"></i>

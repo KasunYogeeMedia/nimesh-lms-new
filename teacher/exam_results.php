@@ -98,7 +98,7 @@ if (isset($_SESSION['tid'])) {
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -109,7 +109,6 @@ if (isset($_SESSION['tid'])) {
 									<div class="card-body">
 										<div class="table-responsive">
 											<form method="post">
-
 												<table class="m-3">
 													<tbody>
 														<tr>
@@ -131,8 +130,6 @@ if (isset($_SESSION['tid'])) {
 														</tr>
 													</tbody>
 												</table>
-
-
 											</form>
 											<table id="dataTable" class="table table-bordered">
 												<thead>
@@ -184,7 +181,7 @@ if (isset($_SESSION['tid'])) {
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

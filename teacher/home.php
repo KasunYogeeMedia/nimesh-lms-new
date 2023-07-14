@@ -198,7 +198,7 @@ if (isset($_SESSION['tid'])) {
 					</div> -->
 					<div class="row">
 						<div class="col-xl-6 col-xxl-6 col-sm-6">
-							<div class="widget-stat card bg-success">
+							<div class="widget-stat card bg-primary">
 								<div class="card-body">
 									<div class="media">
 										<span class="mr-3">

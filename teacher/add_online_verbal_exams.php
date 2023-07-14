@@ -49,14 +49,14 @@ if (isset($_POST['update_class_bt'])) {
         if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
             $imagename = time() . $_FILES['image']['name'];
             $source = $_FILES['image']['tmp_name'];
-            $target = "images/class/" . str_replace(" ", "_", $imagename);
+            $target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
             $db_send_name = str_replace(" ", "_", $imagename);
             move_uploaded_file($source, $target);
 
 
             $imagepath = $imagename;
-            $save = "images/class/" . $imagepath; //This is the new file you saving
-            $file = "images/class/" . $imagepath; //This is the original file
+            $save = "../admin/images/class/" . $imagepath; //This is the new file you saving
+            $file = "../admin/images/class/" . $imagepath; //This is the original file
 
 
             list($width, $height) = getimagesize($file);
@@ -110,14 +110,14 @@ if (isset($_POST['add_class_bt'])) {
         if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
             $imagename = time() . $_FILES['image']['name'];
             $source = $_FILES['image']['tmp_name'];
-            $target = "images/class/" . str_replace(" ", "_", $imagename);
+            $target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
             $db_send_name = str_replace(" ", "_", $imagename);
             move_uploaded_file($source, $target);
 
 
             $imagepath = $imagename;
-            $save = "images/class/" . $imagepath; //This is the new file you saving
-            $file = "images/class/" . $imagepath; //This is the original file
+            $save = "../admin/images/class/" . $imagepath; //This is the new file you saving
+            $file = "../admin/images/class/" . $imagepath; //This is the original file
 
 
             list($width, $height) = getimagesize($file);
@@ -468,7 +468,7 @@ if (isset($_POST['add_class_bt'])) {
                                                 while ($tealmsr_resalt = mysqli_fetch_array($tealmsr)) {
                                                 ?>
                                                     <input type="hidden" class="form-control" name="tealmsr" value="<?php echo $tealmsr_resalt['tid']; ?>" required>
-                                                    <input type="text" class="form-control" name="tealmsr" value="<?php echo $tealmsr_resalt['fullname']; ?>" readonly>
+                                                    <input type="text" class="form-control" name="tealmsrname" value="<?php echo $tealmsr_resalt['fullname']; ?>" readonly>
                                                 <?php
                                                 }
                                                 ?>

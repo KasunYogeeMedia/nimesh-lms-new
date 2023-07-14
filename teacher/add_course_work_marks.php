@@ -38,10 +38,9 @@ WHERE es.id='$id'");
 
     $check_qury = mysqli_query($conn, "SELECT * FROM course_work_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'");
     if (!mysqli_num_rows($check_qury) > 0) {
-
         if (mysqli_query($conn, "UPDATE course_work_submissions SET marks='100',remark='',status='1' WHERE id='$id'")) {
         }
-    }
+    } 
 } else {
     echo "Error! Something is wrong. Please go to the <a href='home.php'>main page.</a>";
     exit();
@@ -50,16 +49,16 @@ WHERE es.id='$id'");
 if (isset($_POST['submit_btn'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    if (mysqli_query($conn, "DELETE FROM course_work_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'")) {
+    // if (mysqli_query($conn, "DELETE FROM course_work_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'")) {
 
 
-
-
+        
         $remark = mysqli_real_escape_string($conn, $_POST['remark']);
         $marks = mysqli_real_escape_string($conn, $_POST['marks']);
         mysqli_query($conn, "UPDATE course_work_submissions SET marks='$marks',remark='$remark',status='1' WHERE id='$id'");
-        header("location:add_course_work_marks.php?id=$id");
-    }
+        header("location:course_work_submissions.php");
+        // var_dump("UPDATE course_work_submissions SET marks='$marks',remark='$remark',status='1' WHERE id='$id'");
+    // }
 }
 ?>
 
@@ -211,6 +210,7 @@ if (isset($_POST['submit_btn'])) {
 
 
                                             Remark
+                                           
                                             <textarea name=" remark" rows="4" class="form-control" id="remark"><?php echo $view_resalt['remark']; ?></textarea>
 
                                             <button name="submit_btn" type="submit" class="btn btn-success text-white mt-2">Submit</button>

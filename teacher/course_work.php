@@ -13,7 +13,7 @@ require_once '../super_admin/dbconfig4.php';
 if (isset($_GET['exid'])) {
     $exid = mysqli_real_escape_string($conn, $_GET['exid']);
     if (mysqli_query($conn, "DELETE FROM lmscourse_work WHERE exid='$exid'")) {
-        header("location:online_exams.php");
+        header("location:course_work.php");
     }
 }
 
@@ -126,7 +126,7 @@ if (isset($_GET['exid'])) {
                 </div>
 
                 <div class="row">
-                   
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -185,9 +185,30 @@ if (isset($_GET['exid'])) {
                                                                     <a class="btn btn-sm btn-primary" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    <a class="btn btn-sm btn-danger" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
+                                                                    <!-- Button trigger modal -->
+                                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal<?php echo $row["exid"]; ?>">
                                                                         <i class="fa fa-times-circle"></i>
                                                                     </a>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="deleteConfirmationModal<?php echo $row["exid"]; ?>" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Remove Exam</h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <p>Are you sure you want to remove the exam?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                    <a href="course_work.php?exid=<?php echo $row["exid"]; ?>" class="btn btn-danger">Remove</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </td>
                                                                 <td><?php
 
@@ -220,7 +241,7 @@ if (isset($_GET['exid'])) {
                                                                 <td><?php echo $row['examname']; ?></td>
                                                                 <td style="white-space: normal;"><?php echo date("Y-m-d h:i:s A", strtotime($row['add_date'])); ?></td>
                                                                 <td style="white-space: normal;">Start: <?php echo date("Y-m-d h:i:s A", strtotime($row['edate'])); ?><br>End: <?php echo date("Y-m-d h:i:s A", strtotime($row['exam_end_date'])); ?></td>
-                                                                <td><a class="btn btn-success btn-rounded mt-3 px-4" href="images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
+                                                                <td><a class="btn btn-success btn-rounded" href="images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
 
                                                             </tr>
                                                     <?php }
