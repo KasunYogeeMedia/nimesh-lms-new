@@ -13,7 +13,7 @@ require_once '../super_admin/dbconfig4.php';
 if (isset($_GET['exid'])) {
     $exid = mysqli_real_escape_string($conn, $_GET['exid']);
     if (mysqli_query($conn, "DELETE FROM lmscourse_work WHERE exid='$exid'")) {
-        header("location:online_exams.php");
+        header("location:course_work.php");
     }
 }
 
@@ -126,7 +126,7 @@ if (isset($_GET['exid'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -185,9 +185,30 @@ if (isset($_GET['exid'])) {
                                                                     <a class="btn btn-sm btn-primary mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    <a class="btn btn-sm btn-danger mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
+                                                                    <!-- Button trigger modal -->
+                                                                    <a class="btn btn-sm btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
                                                                         <i class="la la-trash-o"></i>
                                                                     </a>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation</h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    Are you sure you want to remove the exam?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                    <a class="btn btn-danger" href="course_work.php?exid=<?php echo $row["exid"]; ?>">Delete</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </td>
                                                                 <td><?php
 
@@ -232,7 +253,7 @@ if (isset($_GET['exid'])) {
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
