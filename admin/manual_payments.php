@@ -397,7 +397,7 @@ if (isset($_GET['remove'])) {
 
                                                     $count = 0;
 
-                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yt.fullname ytfullname,ys.name
+                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pay_type,yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yt.fullname ytfullname,ys.name
 
 FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
 
@@ -471,6 +471,7 @@ ORDER BY yp.pid DESC");
 
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
+                                                            <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?></td>
                                                         </tr>
 
                                                     <?php
