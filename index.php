@@ -270,7 +270,7 @@ require_once 'super_admin/dbconfig4.php';
                         <div class="col-lg-4 col-md-6">
                             <div class="single-course-inner">
                                 <div class="thumb">
-                                    <img src="<?php echo $list_row['image'];?>" alt="img">
+                                    <img src="admin/<?php echo $list_row['image'];?>" alt="img">
                                 </div>
                                 <div class="details">
                                     <div class="details-inner">

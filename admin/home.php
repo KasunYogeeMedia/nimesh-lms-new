@@ -171,8 +171,38 @@ require_once '../super_admin/conn.php';
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Teacher Payments</p>
+														<p class="h6 mb-0 fw-bold">Payments Report</p>
 														<a class="small" href="payment_report.php">View more</a>
+													</div>
+												</div>
+											</div>
+											<div class="card bg-primary bg-opacity-10 border-0 p-4 mb-3">
+												<div class="row">
+													<div class="col-auto my-auto">
+														<div class="bg-primary sq-box rounded-circle text-center">
+															<h4 class="text-light">
+																<i class="fa fa-credit-card" aria-hidden="true"></i>
+															</h4>
+														</div>
+													</div>
+													<div class="col my-auto">
+														<p class="h6 mb-0 fw-bold">Manual Payments</p>
+														<a class="small" href="manual_payments.php">View more</a>
+													</div>
+												</div>
+											</div>
+											<div class="card bg-primary bg-opacity-10 border-0 p-4 mb-3">
+												<div class="row">
+													<div class="col-auto my-auto">
+														<div class="bg-primary sq-box rounded-circle text-center">
+															<h4 class="text-light">
+																<i class="fa fa-credit-card" aria-hidden="true"></i>
+															</h4>
+														</div>
+													</div>
+													<div class="col my-auto">
+														<p class="h6 mb-0 fw-bold">Teacher Payment</p>
+														<a class="small" href="teacher_payment.php">View more</a>
 													</div>
 												</div>
 											</div>

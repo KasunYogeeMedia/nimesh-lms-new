@@ -470,8 +470,7 @@ ORDER BY yp.pid DESC");
                                                                 <span style="font-size: 12px; background-color: dodgerblue; padding: 5px; color: #FFFFFF; border-radius: 10px; white-space: nowrap">Pay <?php echo number_format((float)$payment_resalt['amount'], 2); ?></span>
 
                                                             </td>
-                                                            <td><a href="#"><span style="font-size:14px;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></a></td>
-                                                            <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?></td>
+                                                            <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                         </tr>
 
                                                     <?php
