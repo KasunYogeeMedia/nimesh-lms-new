@@ -126,7 +126,7 @@ require_once '../super_admin/conn.php';
 					</div>
 					<div class="scroll-sec">
 						<div class="row">
-							<div class="col-sm-12 col-md-4">
+							<div class="col-sm-12 col-md-6">
 								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Profile & Payments</p>
@@ -141,8 +141,8 @@ require_once '../super_admin/conn.php';
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Manual Payments</p>
-														<a class="small" href="manual_payments.php">View more</a>
+														<p class="h6 mb-0 fw-bold">Online Payments</p>
+														<a class="small" href="online_payments.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -156,8 +156,8 @@ require_once '../super_admin/conn.php';
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Online Payments</p>
-														<a class="small" href="online_payments.php">View more</a>
+														<p class="h6 mb-0 fw-bold">Bank Payments</p>
+														<a class="small" href="paid_bank_payaments.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -171,7 +171,7 @@ require_once '../super_admin/conn.php';
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Payment Report</p>
+														<p class="h6 mb-0 fw-bold">Teacher Payments</p>
 														<a class="small" href="payment_report.php">View more</a>
 													</div>
 												</div>
@@ -180,76 +180,36 @@ require_once '../super_admin/conn.php';
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-8">
+							<div class="col-sm-12 col-md-6">
 								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Lectures</p>
 										<div class="h-scroll">
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
+											<?php
+											$totLec = mysqli_query($conn, "SELECT lesson, image FROM `lmsclass_schlmsle` WHERE add_date2 <= '" . date('Y-m-t') . "' ");
+											while ($sub_resalt = mysqli_fetch_array($totLec)) {
+											?>
+												<div class="card border-0 rounded-0 p-3">
+													<div class="row">
+														<div class="col-auto">
+															<div class="sq-box bg-warning bg-opacity-10 rounded-3">
+																<img src="../super_admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
+															</div>
+														</div>
+														<div class="col">
+															<p class="fw-bold mb-1">
+																<?php echo $sub_resalt['lesson']; ?>
+															</p>
+															<a href="/super_admin/class_schedule.php" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
 														</div>
 													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
 												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
+
+											<?php
+											}
+											?>
 										</div>
+
 									</div>
 								</div>
 							</div>

@@ -117,92 +117,90 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div class="upc-act">
+
+
+	<div class="upc-act">
 		<div class="card bg-light border-0">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-8">
-						<p class="h6 fw-bold">Upcomig Activities</p>
+						<p class="h6">Upcomig Activities</p>
 					</div>
 					<div class="col-4 text-end">
-						<a class="" href="">See all</a>
+
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="card border-0 mb-4 bg-primary bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-primary rounded-circle text-center text-light sq-box">
-							<h2>8</h2>
+		<div class="h-scroll">
+			<?php
+			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsclass_schlmsle WHERE  classstatus=1 AND classdate >= CURDATE()");
+			if ($lesson_data) {
+				$row_count_lesson = mysqli_num_rows($lesson_data);
+				if ($row_count_lesson > 0) {
+					while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+						$lesson_date = $lesson_datas['classdate'];
+						$day = date("d", strtotime($lesson_date));
+			?>
+
+						<div class="card border-0 mb-4 bg-primary bg-opacity-10">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto my-auto">
+										<div class="bg-primary rounded-circle text-center text-light sq-box">
+											<h2><?php echo $day; ?></h2>
+										</div>
+									</div>
+									<div class="col">
+
+										<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+
+										<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . $lesson_datas['classtype']; ?></p>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card border-0 mb-4 bg-danger bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-danger rounded-circle text-center text-light sq-box">
-							<h2>13</h2>
+
+			<?php
+					}
+				}
+			}
+			?>
+			<?php
+			$lesson_data = mysqli_query($conn, "SELECT * FROM lmsverbal_exam WHERE  classstatus=1 AND classdate >= CURDATE()");
+			if ($lesson_data) {
+				$row_count = mysqli_num_rows($lesson_data);
+				if ($row_count > 0) {
+					while ($lesson_datas = mysqli_fetch_assoc($lesson_data)) {
+						$lesson_date = $lesson_datas['classdate'];
+						$day = date("d", strtotime($lesson_date));
+			?>
+
+						<div class="card border-0 mb-4 bg-success bg-opacity-10">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto my-auto">
+										<div class="bg-success rounded-circle text-center text-light sq-box">
+											<h2><?php echo $day; ?></h2>
+										</div>
+									</div>
+									<div class="col">
+
+										<p class="fw-bold mb-0"><?php echo $lesson_datas['lesson']; ?><i class="fa fa-angle-right ms-3" aria-hidden="true"></i></p>
+
+										<p class="small"><?php echo $lesson_datas['classdate'] . ' ' . $lesson_datas['class_start_time'] . ' ' . $lesson_datas['class_end_time'] . ' ' . "Verbal Exam"; ?></p>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
+
+			<?php
+					}
+				}
+			}
+			?>
 		</div>
-		<div class="card border-0 mb-4 bg-success bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-success rounded-circle text-center text-light sq-box">
-							<h2>18</h2>
-						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card border-0 mb-4 bg-warning bg-opacity-10">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto my-auto">
-						<div class="bg-warning rounded-circle text-center text-light sq-box">
-							<h2>23</h2>
-						</div>
-					</div>
-					<div class="col">
-						<a href="">
-							<p class="fw-bold mb-0">Adv. Maths Assignment Due <i class="fa fa-angle-right ms-3" aria-hidden="true"></i>
-							</p>
-						</a>
-						<p class="small">8th - 10th July 2023 8 A.M - 9 A.M Online Zoom Session</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
+	</div>
 </div>
 
 <script>

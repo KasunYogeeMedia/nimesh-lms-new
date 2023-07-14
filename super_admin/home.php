@@ -126,7 +126,7 @@ require_once("conn.php");
 					</div>
 					<div class="scroll-sec">
 						<div class="row">
-							<div class="col-sm-12 col-md-4">
+							<div class="col-sm-12 col-md-6">
 								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Profile & Payments</p>
@@ -141,8 +141,8 @@ require_once("conn.php");
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Manual Payments</p>
-														<a class="small" href="./manual_payments.php">View more</a>
+														<p class="h6 mb-0 fw-bold">Online Payments</p>
+														<a class="small" href="online_payments.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -156,8 +156,8 @@ require_once("conn.php");
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Online Payments</p>
-														<a class="small" href="./online_payments.php">View more</a>
+														<p class="h6 mb-0 fw-bold">Bank Payments</p>
+														<a class="small" href="paid_bank_payaments.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -171,8 +171,8 @@ require_once("conn.php");
 														</div>
 													</div>
 													<div class="col my-auto">
-														<p class="h6 mb-0 fw-bold">Payment Report</p>
-														<a class="small" href="./payment_report.php">View more</a>
+														<p class="h6 mb-0 fw-bold">Teacher Payments</p>
+														<a class="small" href="payment_report.php">View more</a>
 													</div>
 												</div>
 											</div>
@@ -180,83 +180,43 @@ require_once("conn.php");
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-8">
+							<div class="col-sm-12 col-md-6">
 								<div class="card border-0 bg-light">
 									<div class="card-body">
 										<p class="h6 mb-3 fw-bold">Lectures</p>
 										<div class="h-scroll">
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
+											<?php
+											$totLec = mysqli_query($conn, "SELECT lesson, image FROM `lmsclass_schlmsle` WHERE add_date2 <= '" . date('Y-m-t') . "' ");
+											while ($sub_resalt = mysqli_fetch_array($totLec)) {
+											?>
+												<div class="card border-0 rounded-0 p-3">
+													<div class="row">
+														<div class="col-auto">
+															<div class="sq-box bg-warning bg-opacity-10 rounded-3">
+																<img src="../super_admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
+															</div>
+														</div>
+														<div class="col">
+															<p class="fw-bold mb-1">
+																<?php echo $sub_resalt['lesson']; ?>
+															</p>
+															<a href="/super_admin/class_schedule.php" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
 														</div>
 													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
 												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
-											<div class="card border-0 rounded-0 p-3">
-												<div class="row">
-													<div class="col-auto">
-														<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-															<img src="../assets/img/bird.png" alt="" class="img-fluid m-auto">
-														</div>
-													</div>
-													<div class="col">
-														<p class="fw-bold mb-1">
-															Build an Android Application in Swift
-															Learn the fundamentals
-														</p>
-														<a href="" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
-													</div>
-												</div>
-											</div>
+
+											<?php
+											}
+											?>
 										</div>
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="fdb-sec my-3">
+					<!-- <div class="fdb-sec my-3">
 						<div class="card border-0 bg-light">
 							<div class="card-body">
 								<div class="h-scroll">
@@ -337,7 +297,7 @@ require_once("conn.php");
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
 						<div class="col-xl-12 col-xxl-12 col-sm-12">
 							<div class="row">
@@ -493,28 +453,43 @@ require_once("conn.php");
 													<i class="fa fa-university"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1 text-light">Total Revenue</p>
-													<h3 class="text-white"><?php /*
-																			$c_date = date("Y-01-01");
+													<p class="mb-1 text-light">Current Month Total Revenue</p>
+													<h3 class="text-white">
+														<?php
+														$total_rev = mysqli_query($conn, "SELECT SUM(amount) AS total FROM `lmspayment` WHERE status=1 AND created_at <= '" . date('Y-m-t') . "' ");
+														while ($sub_resalt = mysqli_fetch_array($total_rev)) {
+															echo $sub_resalt['total'];
+														}
+														?>
+													</h3>
+													<div class="progress mb-2 bg-white">
+														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
-																			$income_qury = mysqli_query($conn, "SELECT SUM(amount) as total_income FROM lmspayment WHERE pay_month = '$c_date' AND status='1'");
-																			$icome_resalt = mysqli_fetch_array($income_qury);
+								<div class="col-xl-4 col-xxl-4 col-sm-6">
+									<div class="widget-stat card bg-success">
+										<div class="card-body">
+											<div class="media">
+												<span class="mr-3">
+													<i class="fa fa-university"></i>
+												</span>
+												<div class="media-body text-white">
+													<p class="mb-1 text-light">Total Expences</p>
+													<h3 class="text-white">
 
-																			$pay_qury = mysqli_query($conn, "SELECT SUM(lms_teacher_payment_history_amount) as total_pay FROM lms_teacher_payment_history");
-																			$pay_resalt = mysqli_fetch_array($pay_qury);
 
-																			$pay_qury1 = mysqli_query($conn, "SELECT SUM(lms_teacher_payment_company_amount) as total_pay1 FROM lms_teacher_payment_history");
-																			$pay_resalt1 = mysqli_fetch_array($pay_qury1);
-
-																			$a = $icome_resalt['total_income'] - ($pay_resalt['total_pay'] + $pay_resalt1['total_pay1']);
-
-																			$payment_count = mysqli_query($conn, "SELECT SUM(amount) amount FROM lmspayment WHERE status=1");
-																			$payment_resalt = mysqli_fetch_assoc($payment_count);
-
-																			
-																			*/ ?> </h3>
-													<h3><?php //echo number_format($payment_resalt['amount'], 2) 
-														?></h3>
+														<?php
+														$total_exp = mysqli_query($conn, "SELECT SUM(cost) AS total FROM `lmsexpense` WHERE date <= '" . date('Y-m-t') . "' ");
+														while ($sub_resalt = mysqli_fetch_array($total_exp)) {
+															echo $sub_resalt['total'];
+														}
+														?>
+													</h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
 													</div>
@@ -567,6 +542,9 @@ require_once("conn.php");
 						</div>
 					</div>
 				</div>
+
+
+
 				<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
 					<?php
 					require_once 'right-sidebar.php';

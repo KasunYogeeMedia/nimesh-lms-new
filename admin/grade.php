@@ -154,7 +154,7 @@ require_once '../super_admin/dbconfig4.php';
                                                     ?>
                                                             <tr>
                                                                 <td><?php echo $row['cid']; ?></td>
-                                                                <td><a href="javascript:void(0);"><strong><?php echo $row['name']; ?></strong></a></td>
+                                                                <td><strong><?php echo $row['name']; ?></strong></td>
                                                                 <td><?php echo $row['add_date']; ?></td>
                                                                 <td>
                                                                     <?php
