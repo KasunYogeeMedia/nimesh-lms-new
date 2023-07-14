@@ -112,5 +112,6 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 		return $full_pay;
 	}
 
+	
 
 }
