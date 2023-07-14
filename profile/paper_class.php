@@ -61,8 +61,8 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title mb-4">Paid Paper Classes</h4>
-							<a href="online_class.php" class="see150">See all</a>
+							<h4 class="item_title mb-4">Paper Classes</h4>
+
 						</div>
 						<!-- <div class="col-lg-12">
 							<div class="widget-box bg-light mb-2 p-3">

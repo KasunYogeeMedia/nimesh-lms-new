@@ -41,8 +41,8 @@ if (isset($_POST['update_bt'])) {
 	$lms_exam_question = mysqli_real_escape_string($conn, $_POST['lms_exam_question']);
 	$lms_exam_time_duration = mysqli_real_escape_string($conn, $_POST['lms_exam_time_duration']);
 	$lms_exam_start_time = mysqli_real_escape_string($conn, $_POST['lms_exam_start_time']);
-	//	$lms_exam_end_time=mysqli_real_escape_string($conn,$_POST['lms_exam_end_time']);
-	//	$lms_exam_pay_type=mysqli_real_escape_string($conn,$_POST['lms_exam_pay_type']);
+	$lms_exam_end_time = mysqli_real_escape_string($conn, $_POST['lms_exam_end_time']);
+	$lms_exam_pay_type = mysqli_real_escape_string($conn, $_POST['lms_exam_pay_type']);
 
 	if (mysqli_query($conn, "UPDATE lms_exam_details SET lms_exam_add_user='$lms_exam_add_user',lms_exam_name='$lms_exam_name',lms_exam_subject='$lms_exam_subject',lms_exam_question='$lms_exam_question',lms_exam_start_time='$lms_exam_start_time',lms_exam_end_time='$lms_exam_end_time',lms_exam_time_duration='$lms_exam_time_duration',lms_exam_pay_type='$lms_exam_pay_type' WHERE lms_exam_id='$lms_exam_id'")) {
 		echo "<script>window.location='new_exam.php?update&lms_exam_id=$lms_exam_id';</script>";
@@ -57,12 +57,12 @@ if (isset($_POST['add_bt'])) {
 	$lms_exam_question = mysqli_real_escape_string($conn, $_POST['lms_exam_question']);
 	$lms_exam_time_duration = mysqli_real_escape_string($conn, $_POST['lms_exam_time_duration']);
 	$lms_exam_start_time = mysqli_real_escape_string($conn, $_POST['lms_exam_start_time']);
-	//$lms_exam_end_time=mysqli_real_escape_string($conn,$_POST['lms_exam_end_time']);
-	//$lms_exam_pay_type=mysqli_real_escape_string($conn,$_POST['lms_exam_pay_type']);
+	$lms_exam_end_time = mysqli_real_escape_string($conn, $_POST['lms_exam_end_time']);
+	$lms_exam_pay_type = mysqli_real_escape_string($conn, $_POST['lms_exam_pay_type']);
 	$lms_exam_system_id = time();
 	$lms_exam_add_time = date("Y-m-d H:i:s");
 
-	if (mysqli_query($conn, "INSERT INTO lms_exam_details(lms_exam_add_user,lms_exam_system_id, lms_exam_name, lms_exam_subject, lms_exam_question, lms_exam_time_duration, lms_exam_start_time, lms_exam_end_time, lms_exam_add_time, lms_exam_pay_type) VALUES ('$_SESSION[tid]','$lms_exam_system_id','$lms_exam_name','$lms_exam_subject','$lms_exam_question','$lms_exam_start_time','$lms_exam_end_time','$lms_exam_add_time','$lms_exam_pay_type')")) {
+	if (mysqli_query($conn, "INSERT INTO lms_exam_details(lms_exam_add_user,lms_exam_system_id, lms_exam_name, lms_exam_subject, lms_exam_question, lms_exam_time_duration, lms_exam_start_time, lms_exam_end_time, lms_exam_add_time, lms_exam_pay_type) VALUES ('$_SESSION[tid]','$lms_exam_system_id','$lms_exam_name','$lms_exam_subject','$lms_exam_question','$lms_exam_time_duration','$lms_exam_start_time','$lms_exam_end_time','$lms_exam_add_time','$lms_exam_pay_type')")) {
 		echo "<script>window.location='exam.php?success';</script>";
 	} else {
 		echo "<script>window.location='new_exam.php?fail';</script>";

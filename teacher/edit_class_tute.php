@@ -285,7 +285,7 @@ if (isset($_POST['update'])) {
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
-												<select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
+												<select class="form-control" name="class" required>
 													<option value="<?php
 																	$id = $class;
 																	$query = $DB_con->prepare('SELECT cid FROM lmsclass WHERE cid=' . $id);
@@ -315,6 +315,12 @@ if (isset($_POST['update'])) {
 											</div>
 										</div>
 										<script>
+											// Automatically trigger the send_level function after the page loads
+											window.onload = function() {
+												var levelId = document.querySelector('select[name="class"]').value;
+												send_level(levelId);
+											};
+
 											function send_level(level_id) {
 												var xhttp = new XMLHttpRequest();
 												xhttp.onreadystatechange = function() {

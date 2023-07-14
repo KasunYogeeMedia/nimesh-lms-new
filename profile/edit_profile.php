@@ -415,7 +415,13 @@ if (isset($_POST['update_picture'])) {
 												</label>
 												<div class="ui search focus mt-30">
 													<div class="ui left icon input swdh11 swdh19">
-														<label for="up_image"><img src="<?php echo $dis_image_path; ?>" id="dis_image" style="width: 200px; height: 200px; border: 1px solid #EEE; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;"></label>
+														<label for="up_image" class="position-relative">
+															<img src="<?php echo $dis_image_path; ?>" id="dis_image" style="width: 200px; height: 200px; border: 1px solid #EEE; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;">
+															<div class="icon-wrap">
+																<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+															</div>
+
+														</label>
 														<input accept="image/jpeg" class="form-control" required type="file" name="user_image" id="up_image" style="display: none;" onChange="JavaScript:dis_name();">
 
 														<script>

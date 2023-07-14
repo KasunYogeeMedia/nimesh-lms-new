@@ -227,11 +227,14 @@ if (isset($_POST['submit_bt'])) {
 
 		if (!isset($error)) {
 
+
 			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`,`pay_type`)
 
 				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "')";
 
 			//echo $sql;exit;
+
+
 
 			mysqli_query($conn, $sql);
 		} else {
@@ -445,7 +448,7 @@ if (isset($_POST['submit_bt'])) {
 												</div>
 												<div class="row">
 													<div class="col-2 about-title pt-3 fw-bold">Location:</div>
-													<div class="col-10 pt-3"><?php echo $row['town']; ?></div>
+													<div class="col-10 pt-3"><?php echo $row['district']; ?></div>
 												</div>
 											</div>
 										</div>
@@ -749,7 +752,8 @@ if (isset($_POST['submit_bt'])) {
 													$pro_img = "images/hd_dp.jpg";
 												} else {
 													$pro_img = "uploadImg/" . $row['image'];
-												} ?><img src="<?php echo $pro_img; ?>" id="dis_image" style="width: 200px; height: 200px; border: 1px solid #EEE; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;">
+												} ?>
+												<img src="<?php echo $pro_img; ?>" id="dis_image" style="width: 200px; height: 200px; border: 1px solid #EEE; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;">
 											</div>
 											<div class="tutor_content_dt">
 												<div class="tutor150"> <a href="#" class="tutor_name">Hi,<?php echo $row['fullname']; ?></a>
@@ -887,65 +891,65 @@ if (isset($_POST['submit_bt'])) {
 											array_push($selected_subjects, $sub_id);
 										}
 
-										// $tea_qury = mysqli_query($conn, "SELECT tid,systemid,fullname FROM lmstealmsr ORDER BY fullname");
+										$tea_qury = mysqli_query($conn, "SELECT tid,systemid,fullname FROM lmstealmsr ORDER BY fullname");
 
-										// while ($tea_resalt = mysqli_fetch_assoc($tea_qury)) {
+										while ($tea_resalt = mysqli_fetch_assoc($tea_qury)) {
 
 										?>
 
-										<thead>
-											<!-- <tr style="background-color: #8b8c90;">
+											<thead>
+												<!-- <tr style="background-color: #8b8c90;">
 													<td colspan="6" style="color: #ffffff;border:4px solid #8b8c90;"><?php echo $tea_resalt['fullname']; ?></td>
 
 												</tr> -->
-										</thead>
-										<tbody>
+											</thead>
+											<tbody>
+												<?php
+
+												$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
+
+												while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
+
+													//check paid subject
+
+													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
+													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
+													if ($check_paid_full) {
+														$paid_resalt_full = mysqli_fetch_array($check_paid_full);
+													}
+													if ($check_paid_half) {
+														$paid_resalt_half = mysqli_fetch_array($check_paid_half);
+													}
+
+
+
+													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
+
+												?>
+														<tr>
+															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+															<!--kasun 2021.12.01 change color to black from white-->
+														</tr>
+														<tr>
+															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+															<!--kasun 2021.12.01 change color to black from white-->
+														</tr>
 											<?php
 
-											$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
-
-											while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
-
-												//check paid subject
-
-												$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
-												$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-												if ($check_paid_full) {
-													$paid_resalt_full = mysqli_fetch_array($check_paid_full);
-												}
-												if ($check_paid_half) {
-													$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-												}
-
-
-
-												if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-
-											?>
-													<tr>
-														<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-														<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
-														<!--kasun 2021.12.01 change color to black from white-->
-													</tr>
-													<tr>
-														<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-														<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-														<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-														<!--kasun 2021.12.01 change color to black from white-->
-													</tr>
-											<?php
-
+													}
 												}
 											}
-											// }
 
 											?>
-										</tbody>
+											</tbody>
 									</table>
 							</div>
 						</div>

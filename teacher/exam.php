@@ -106,7 +106,7 @@ if (isset($_GET['remove'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -120,32 +120,58 @@ if (isset($_GET['remove'])) {
                                             <table id="dataTable" class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th></th>
+                                                        <th>Action</th>
                                                         <th>EXAM</th>
                                                         <th>SUBJECT</th>
                                                         <th>TIME DURATION</th>
                                                         <th>QUESTIONS PER PAPER</th>
+                                                        <!-- <th>TITLE</th> -->
                                                         <th>ADD TIME</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
+
                                                     $join_str = "lms_exam_details INNER JOIN lmssubject ON lms_exam_details.lms_exam_subject=lmssubject.sid";
                                                     $exam_qury = mysqli_query($conn, "SELECT * FROM $join_str WHERE lms_exam_add_user='$_SESSION[tid]' ORDER BY lms_exam_id DESC");
                                                     while ($exam_resalt = mysqli_fetch_array($exam_qury)) {
                                                     ?>
                                                         <tr>
                                                             <td>
-                                                                <a href="add_question.php?lms_exam_system_id=<?php echo $exam_resalt['lms_exam_system_id']; ?>" class="btn btn-sm btn-success btn-rounded mt-3 px-4" title="Add question"><i class="fa fa-question"></i></a>
-                                                                <a href="new_exam.php?lms_exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-primary btn-rounded mt-3 px-4" title="Test Exam"><i class="fa fa-edit"></i></a>
-                                                                <a href="exam.php?remove=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-danger btn-rounded mt-3 px-4" title="Test Exam" onClick="JavaScript:return confirm('Are your sure remove this exam?');"><i class="fa fa-tralms"></i></a>
+                                                                <a href="add_question.php?lms_exam_system_id=<?php echo $exam_resalt['lms_exam_system_id']; ?>" class="btn btn-sm btn-success mb-1" title="Add question"><i class="fa fa-question"></i></a>
+                                                                <a href="new_exam.php?lms_exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-primary mb-1" title="Test Exam"><i class="fa fa-edit"></i></a>
+                                                                <!-- Button trigger modal -->
+                                                                <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal<?php echo $exam_resalt['lms_exam_id']; ?>" title="Remove Exam">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </a>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="deleteConfirmationModal<?php echo $exam_resalt['lms_exam_id']; ?>" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="deleteConfirmationModalLabel">Remove Exam</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p>Are you sure you want to remove this exam?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                <a href="exam.php?remove=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-danger">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
 
                                                             </td>
+
                                                             <td><?php echo $exam_resalt['lms_exam_name']; ?></td>
                                                             <td><?php echo $exam_resalt['name']; ?></td>
                                                             <td><?php echo $exam_resalt['lms_exam_time_duration'] . "Min"; ?></td>
                                                             <td><?php echo $exam_resalt['lms_exam_question']; ?></td>
-                                                            <td><?php echo $row['title']; ?></td>
+                                                            <!-- <td><?php echo $exam_resalt['title']; ?></td> -->
                                                             <td><?php echo date_format(date_create($exam_resalt['lms_exam_add_time']), "M d, Y - h:i:s A"); ?></td>
                                                         </tr>
                                                     <?php

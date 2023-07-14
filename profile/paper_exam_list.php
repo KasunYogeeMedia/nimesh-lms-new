@@ -49,8 +49,7 @@ if ($image_resalt['image'] == "") {
 					<div class="row">
 						<div class="col-lg-12">
 							<h4 class="item_title mb-4">Paper Exams</h4>
-							<br>
-							<a href="online_class.php" class="see150">See all</a>
+
 						</div>
 						<div class="col-md-12">
 							<div class="_14d25">
