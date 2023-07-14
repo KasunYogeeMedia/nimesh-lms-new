@@ -387,7 +387,7 @@ if (isset($_POST['add_class_bt'])) {
 											</div>
 										</div>
 
-										<div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+										<div class="col-lg-3 col-md-6 col-sm-12 mb-2 d-none">
 											<label class="form-label">Upload Month</label>
 											<input name="payment_month" type="month" id="payment_month" class="form-control" value="<?php if (isset($_GET['edit'])) {
 																																		echo $edit_resalt['add_date'];

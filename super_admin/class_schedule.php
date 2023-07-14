@@ -6,13 +6,21 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['remove'])) {
 	$remove = mysqli_real_escape_string($conn, $_GET['remove']);
 	mysqli_query($conn, "DELETE FROM lmsclass_schlmsle WHERE classid='$remove'");
+
+	// Display Bootstrap alert after deletion
+	echo '
+    <div class="alert alert-success" role="alert">
+      Class schedule deleted successfully.
+    </div>
+    ';
+
 	echo "<script>window.location='class_schedule.php';</script>";
 }
 ?>
@@ -118,7 +126,7 @@ if (isset($_GET['remove'])) {
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -166,9 +174,33 @@ if (isset($_GET['remove'])) {
 														<tr>
 															<td><?php echo number_format($count, 0); ?></td>
 															<td align="center">
-																<a href="<?php echo $list_resalt['classlink']; ?>" target="_blank" class="btn btn-sm btn-secondary"><i class="fa fa-lg fa-video-camera"></i></a>
-																<a href="add_class_schedule.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-lg fa-edit"></i></a>
-																<a href="class_schedule.php?remove=<?php echo $list_resalt['classid']; ?>" onClick="JavaScript:return confirm('Are your sure delete lesson?');" class="btn btn-sm btn-danger"><i class="fa fa-lg fa-trash"></i></a>
+																<a href="<?php echo $list_resalt['classlink']; ?>" target="_blank" class="btn btn-sm btn-secondary mb-1"><i class="fa fa-lg fa-video-camera"></i></a>
+																<a href="add_class_schedule.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary mb-1"><i class="fa fa-lg fa-edit"></i></a>
+																<a href="#" onClick="return confirm('Are you sure you want to delete this lesson?');" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteLessonModal<?php echo $list_resalt['classid']; ?>">
+																	<i class="fa fa-lg fa-trash"></i>
+																</a>
+
+																<!-- Modal -->
+																<div class="modal fade" id="deleteLessonModal<?php echo $list_resalt['classid']; ?>" tabindex="-1" aria-labelledby="deleteLessonModalLabel<?php echo $list_resalt['classid']; ?>" aria-hidden="true">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="deleteLessonModalLabel<?php echo $list_resalt['classid']; ?>">Delete Lesson</h5>
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">
+																				Are you sure you want to delete this lesson?
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																				<a href="class_schedule.php?remove=<?php echo $list_resalt['classid']; ?>" class="btn btn-danger">Delete</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
 															</td>
 															<td><?php if ($subject_resalt['image'] == "") {
 																	$pro_img = "../profile/images/hd_dp.jpg";
@@ -205,7 +237,7 @@ if (isset($_GET['remove'])) {
 
 																$id = $subject_resalt['subject'];
 
-																require_once 'dbconfig4.php';
+																require_once '../super_admin/dbconfig4.php';
 
 																$query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
 
@@ -233,7 +265,7 @@ if (isset($_GET['remove'])) {
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

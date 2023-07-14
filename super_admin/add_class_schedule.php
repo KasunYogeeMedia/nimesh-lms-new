@@ -705,7 +705,7 @@ if (isset($_POST['add_class_bt'])) {
 
 
 
-										<div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+										<div class="col-lg-3 col-md-6 col-sm-12 mb-2 d-none">
 
 											<label class="form-label">Upload Month</label>
 
