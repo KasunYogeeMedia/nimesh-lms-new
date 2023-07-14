@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +73,7 @@ require_once 'dbconfig4.php';
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -141,7 +141,7 @@ require_once 'dbconfig4.php';
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -198,7 +198,7 @@ require_once 'dbconfig4.php';
                                                             <td><?php if ($tec_resalt['image'] == "") {
                                                                     $pro_img = "../profile/img/pro_pick.png";
                                                                 } else {
-                                                                    $pro_img = "images/teacher/" . $tec_resalt['image'];
+                                                                    $pro_img = "../admin/images/teacher/" . $tec_resalt['image'];
                                                                 } ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
                                                                 <?php echo $tec_resalt['fullname']; ?></td>
                                                             <td align="right"><?php echo $tec_resalt['Percentage'] . "%"; ?></td>
@@ -215,7 +215,7 @@ require_once 'dbconfig4.php';
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

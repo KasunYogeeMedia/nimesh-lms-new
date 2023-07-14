@@ -6,11 +6,11 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once("config.php");
+require_once '../super_admin/config.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg5 = '';
 
@@ -42,7 +42,7 @@ if (isset($_POST['add_exams'])) {
 	} else if (empty($status)) {
 		$errMSG = "Please Select Status.";
 	} {
-		$upload_dir = 'images/exams/'; // upload directory
+		$upload_dir = '../admin/images/exams/'; // upload directory
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -106,7 +106,7 @@ if (isset($_POST['update'])) {
 	$imgSize = $_FILES['user_image']['size'];
 	if ($imgFile) {
 
-		$upload_dir = 'images/exams/'; // upload directory	
+		$upload_dir = '../admin/images/exams/'; // upload directory	
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -222,7 +222,7 @@ WHERE ex.exid='$exid'");
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -352,7 +352,7 @@ WHERE ex.exid='$exid'");
 												<select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
 													<option value="" hidden="lms">Select Al Year</option>
 													<?php
-													require_once 'dbconfig4.php';
+													require_once '../super_admin/dbconfig4.php';
 													$stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');
 													$stmt->execute();
 													if ($stmt->rowCount() > 0) {
@@ -454,7 +454,7 @@ WHERE ex.exid='$exid'");
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<?php if (isset($_GET['exid'])) { ?><input type="submit" name="update" class="btn btn-primary" value="Update Exam"><?php } ?>
 											<?php if (!isset($_GET['exid'])) { ?><input type="submit" name="add_exams" class="btn btn-primary" value="Add Exam"><?php } ?>
-											<a class="btn btn-light" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

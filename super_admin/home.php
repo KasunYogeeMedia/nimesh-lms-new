@@ -55,7 +55,7 @@ require_once("conn.php");
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -193,7 +193,7 @@ require_once("conn.php");
 													<div class="row">
 														<div class="col-auto">
 															<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-																<img src="../super_admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
+																<img src="../super_admin/../admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
 															</div>
 														</div>
 														<div class="col">

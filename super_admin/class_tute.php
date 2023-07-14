@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ require_once 'dbconfig4.php';
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -119,7 +119,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -177,12 +177,34 @@ require_once 'dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<a class="btn btn-primary" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
+																	<a class="btn btn-primary mb-1" href="edit_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
-																	<a class="btn btn-danger" href="delete_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>">
-																		<i class="fa fa-times-circle"></i>
+																	<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteClassTutorialModal<?php echo $row["ctuid"]; ?>">
+																		<i class="fa la la-trash-o"></i>
 																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteClassTutorialModal<?php echo $row["ctuid"]; ?>" tabindex="-1" aria-labelledby="deleteClassTutorialModalLabel<?php echo $row["ctuid"]; ?>" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteClassTutorialModalLabel<?php echo $row["ctuid"]; ?>">Delete Class Tutorial</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					Are you sure you want to delete this class tutorial?
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																					<a href="delete_class_tute.php?cttid=<?php echo $row["ctuid"]; ?>" class="btn btn-danger">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td>
 																	<?php
@@ -219,7 +241,7 @@ require_once 'dbconfig4.php';
 																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
-																<td><a href="images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
+																<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
 																<td><span style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
@@ -232,7 +254,7 @@ require_once 'dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

@@ -6,9 +6,16 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
+
+if (isset($_GET['exid'])) {
+    $exid = mysqli_real_escape_string($conn, $_GET['exid']);
+    if (mysqli_query($conn, "DELETE FROM lmscourse_work WHERE exid='$exid'")) {
+        header("location:online_exams.php");
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +26,7 @@ require_once 'dbconfig4.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Students Batch Wise Report | Online Learning Platforms | Dashboard</title>
+    <title>Course Works | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -106,14 +113,14 @@ require_once 'dbconfig4.php';
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Students</h4>
+                            <h4>All Online Exams</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Online Exams</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Online Exams</a></li>
                         </ol>
                     </div>
                 </div>
@@ -125,76 +132,95 @@ require_once 'dbconfig4.php';
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
                                 <div class="card border-0 bg-light">
                                     <div class="card-header">
-                                        <h4 class="card-title">All Students </h4>
+                                        <h4 class="card-title">All Online Exams</h4>
+                                        <a href="add_course_work.php" class="btn btn-square btn-secondary">+ Add Online Exams</a>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <div>
-                                                <form class="form-horizontal" action="functions.php" method="post" name="upload_excel" enctype="multipart/form-data">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12 col-md-offset-4" style="text-align:right;">
-                                                            <input type="hidden" name="gid" value="<?php echo $_GET['gid']; ?>">
-                                                            <input type="submit" name="export_grade" class="btn btn-success" value="export to excel" />
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
                                             <table id="dataTable" class="table table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
+                                                        <th>Option</th>
                                                         <th>Action</th>
-                                                        <th>Certificate Status</th>
-                                                        <th>Student</th>
-                                                        <th>Date</th>
+                                                        <th>Al Year</th>
+                                                        <th>Class Course</th>
+                                                        <th>Exam</th>
+                                                        <th>Exam Post</th>
+                                                        <th>Time</th>
+                                                        <th>Document</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-
-                                                    $stmt = $DB_con->prepare("SELECT *
-                                                    FROM lmsregister
-                                                    -- INNER JOIN exam_submissions ON lmsregister.reid = exam_submissions.user_id
-                                                    -- INNER JOIN lms_exam_report ON lmsregister.reid = lms_exam_report.exam_report_user
-                                                    INNER JOIN verbal_exam ON lmsregister.reid = verbal_exam.userId
-                                                    LEFT JOIN certificate ON lmsregister.reid = certificate.userId
-                                                    where level = $_GET[gid]");
+                                                    $no_count = 0;
+                                                    $stmt = $DB_con->prepare('SELECT * FROM lmscourse_work ORDER BY exid DESC');
 
                                                     $stmt->execute();
 
                                                     if ($stmt->rowCount() > 0) {
 
                                                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
+                                                            $no_count++;
                                                             extract($row);
 
                                                     ?>
                                                             <tr>
-                                                                <td><?php echo $row['reid']; ?></td>
-                                                                <td>
-                                                                    <a id="print-btn" class="btn btn-sm btn-primary" data-userid="<?php echo $row['reid']; ?>" data-certificate="<?php echo $row['certificate_status']; ?>"><i class="la la-print"></i></a>
-                                                                </td>
+                                                                <td><?php echo $no_count; ?></td>
                                                                 <td>
                                                                     <?php
 
-                                                                    if ($row['certificate_status'] == "0") {
+                                                                    if ($row['status'] == "0") {
 
-                                                                        echo '<button class="btn btn-primary btn-sm">Pending</button>';
-                                                                    } else if ($row['certificate_status'] == "1") {
+                                                                        echo '<button class="btn btn-primary btn-sm" on>Pending</button>';
+                                                                    } else if ($row['status'] == "1") {
 
-                                                                        echo '<button class="btn btn-success btn-sm">Success</button>';
-                                                                    } else if ($row['certificate_status'] == "") {
-
-                                                                        echo '<button class="btn btn-success btn-sm">Not Issued</button>';
+                                                                        echo '<button class="btn btn-success btn-sm">Published</button>';
                                                                     }
 
                                                                     ?>
                                                                 </td>
-                                                                <td>
-                                                                    <?php echo $row['fullname']; ?>
+                                                                <td style="white-space: normal;">
+                                                                    <a class="btn btn-sm btn-primary mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </a>
+                                                                    <a class="btn btn-sm btn-danger mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
+                                                                        <i class="la la-trash-o"></i>
+                                                                    </a>
                                                                 </td>
+                                                                <td><?php
 
-                                                                <td><strong><?php echo $row['issue_date']; ?></strong></td>
+                                                                    $id = $row['class'];
+
+                                                                    $query = $DB_con->prepare('SELECT name FROM lmsclass WHERE cid=' . $id);
+
+                                                                    $query->execute();
+
+                                                                    $result = $query->fetch();
+
+                                                                    echo $result['name'];
+
+                                                                    ?></td>
+                                                                <td>
+                                                                    <?php
+
+                                                                    $id = $row['subject'];
+
+                                                                    $query = $DB_con->prepare('SELECT name FROM lmssubject WHERE sid=' . $id);
+
+                                                                    $query->execute();
+
+                                                                    $result = $query->fetch();
+
+                                                                    echo $result['name'];
+
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php echo $row['examname']; ?></td>
+                                                                <td style="white-space: normal;"><?php echo date("Y-m-d h:i:s A", strtotime($row['add_date'])); ?></td>
+                                                                <td style="white-space: normal;">Start: <?php echo date("Y-m-d h:i:s A", strtotime($row['edate'])); ?><br>End: <?php echo date("Y-m-d h:i:s A", strtotime($row['exam_end_date'])); ?></td>
+                                                                <td><a class="btn btn-success btn-rounded mt-3 px-4" href="../admin/images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
 
                                                             </tr>
                                                     <?php }
@@ -217,7 +243,6 @@ require_once 'dbconfig4.php';
             Content body end
         ***********************************-->
 
-
         <?php
         require_once 'footer.php';
         ?>
@@ -239,70 +264,6 @@ require_once 'dbconfig4.php';
     <?php
     require_once 'footerjs.php';
     ?>
-
-
-
-
-
-    <script>
-        // Select the print button
-        const printBtn = document.getElementById('print-btn');
-
-        // Add a click event listener to the print button
-        printBtn.addEventListener('click', function() {
-            // Get the values of the data attributes
-            const userid = printBtn.getAttribute('data-userid');
-            const certificate = printBtn.getAttribute('data-certificate');
-
-
-            // Check if certificate and status are empty
-            if (certificate === "") {
-                // Perform AJAX request to insert the data
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Reload the page after the AJAX request is completed
-                        location.reload();
-                    }
-                };
-
-                // Set up the AJAX request
-                xhr.open('POST', 'certificate_insert.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-                // Construct the data to send with the request
-                const data = 'userid=' + encodeURIComponent(userid);
-
-                // Send the AJAX request
-                xhr.send(data);
-            } else {
-                // Perform AJAX request to update the data
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Reload the page after the AJAX request is completed
-                        location.reload();
-                    }
-                };
-
-                // Set up the AJAX request
-                xhr.open('POST', 'certificate_update.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-                // Construct the data to send with the request
-                const data = 'userid=' + encodeURIComponent(userid) +
-                    '&certificate=' + encodeURIComponent(certificate) +
-                    '&status=' + encodeURIComponent(status);
-
-                // Send the AJAX request
-                xhr.send(data);
-            }
-        });
-    </script>
-
-    </script>
-
-
 
 </body>
 

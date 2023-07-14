@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@ require_once 'dbconfig4.php';
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -139,7 +139,7 @@ require_once 'dbconfig4.php';
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -179,7 +179,7 @@ require_once 'dbconfig4.php';
                                                             <td><?php echo $exam_resalt['lms_exam_time_duration'] . "Min"; ?></td>
                                                             <td><?php echo $exam_resalt['lms_exam_question']; ?></td>
                                                             <td><?php echo $row['title']; ?></td>
-                                                            <td><img src="images/lesson/cover/<?php echo $row['cover']; ?>" alt="" width="200" height="100"></td>
+                                                            <td><img src="../admin/images/lesson/cover/<?php echo $row['cover']; ?>" alt="" width="200" height="100"></td>
                                                             <td><iframe width="200" height="100" src="<?php echo $row['video']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
                                                             <td><?php echo date_format(date_create($exam_resalt['lms_exam_add_time']), "M d, Y - h:i:s A"); ?></td>
                                                         </tr>

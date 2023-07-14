@@ -19,9 +19,9 @@ if (isset($_GET['edit'])) {
 	$edit_resalt = mysqli_fetch_array($edit_qury);
 
 	if ($edit_resalt['image'] == "") {
-		$image_path = "../profile/images/hd_dp.jpg";
+		$image_path = "../profile/../admin/images/hd_dp.jpg";
 	} else {
-		$image_path = "images/teacher/" . $edit_resalt['image'];
+		$image_path = "../admin/images/teacher/" . $edit_resalt['image'];
 	}
 }
 
@@ -50,13 +50,13 @@ if (isset($_POST['update_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "images/teacher/" . str_replace(" ", "_", $imagename);
+			$target = "../admin/images/teacher/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "images/teacher/" . $imagepath; //This is the new file you saving
-			$file = "images/teacher/" . $imagepath; //This is the original file
+			$save = "../admin/images/teacher/" . $imagepath; //This is the new file you saving
+			$file = "../admin/images/teacher/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
@@ -139,7 +139,7 @@ if (isset($_POST['update_bt'])) {
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">

@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 if (isset($_POST['pay_bt'])) {
 
@@ -20,6 +20,8 @@ if (isset($_POST['pay_bt'])) {
 
     $amount = mysqli_real_escape_string($conn, $_POST['amount']);
 
+    $pay_type = mysqli_real_escape_string($conn, $_POST['pay_type']);
+
     $current_time   = date("Y-m-d H:i:s");
     $feeID          = $_POST['feeID'][0];
     $pay_month      = $_POST['expiredate'] . "-01";
@@ -28,76 +30,15 @@ if (isset($_POST['pay_bt'])) {
 
         $pay_sub_id = $value;
 
-        //------------------------------
 
-        $subject_qury = mysqli_query($conn, "SELECT fees_valid_period FROM lmssubject WHERE sid='$pay_sub_id' ");
-
-        $subject_resalt = mysqli_fetch_array($subject_qury);
-
-        $subject_valid_days = $subject_resalt['fees_valid_period'];
-
-        $paying_month = $_POST['expiredate'];
-
-        if (date("Y-m", strtotime($paying_month)) < date("Y-m")) {
-            echo "Invalid month selected";
-            exit;
-        } else {
-
-            if ($subject_valid_days == 1) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;
-
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 30) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    $fina_date = date("Y-m-t", strtotime(date($paying_month)));
-                } else {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date('Y-m-d')."',INTERVAL + ".$subject_valid_days." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date('Y-m-d') . "',INTERVAL + " . $subject_valid_days . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 40) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-                }
-            } else if ($subject_valid_days == 45) {
-
-                if (date("Y-m-d") <= date("Y-m-t", strtotime(date($paying_month)))) {
-
-                    //$fina_date = $this->db->query("SELECT DATE_ADD('".date("Y-m-t", strtotime(date($paying_month)))."',INTERVAL + ".($subject_valid_days-30)." DAY) as dd ")->row()->dd;
-                    $Q = mysqli_query($conn, "SELECT DATE_ADD('" . date("Y-m-t", strtotime(date($paying_month))) . "',INTERVAL + " . ($subject_valid_days - 30) . " DAY) as dd ");
-                    $R = mysqli_fetch_array($Q);
-                    $fina_date = $R['dd'];
-
-                    //echo $paying_month."=".$fina_date; exit;
-
-                }
-            }
-
-            $exp_date = $fina_date;
-        }
 
         //-----------------------
 
         $sql = "INSERT INTO
 
-        lmspayment (userID, feeID, pay_sub_id, amount, bank, paymentMethod, created_at, expiredate, status, pay_month)
+        lmspayment (userID, feeID, pay_sub_id, amount, bank, paymentMethod, created_at, status, pay_type)
 
-        VALUES ('$userID','$feeID','$pay_sub_id','$amount','Pay bank','Manual','$current_time','$exp_date','1','$pay_month')";
+        VALUES ('$userID','$feeID','$pay_sub_id','$amount','Pay bank','Manual','$current_time','1','$pay_type')";
 
         if (mysqli_query($conn, $sql)) {
 
@@ -182,11 +123,11 @@ if (isset($_GET['remove'])) {
 
             <a href="index.php" class="brand-logo">
 
-                <img class="logo-abbr" src="images/logo-white.png" alt="">
+                <img class="logo-abbr" src="../admin/images/logo-white.png" alt="">
 
-                <img class="logo-compact" src="images/logo-text-white.png" alt="">
+                <img class="logo-compact" src="../admin/images/logo-text-white.png" alt="">
 
-                <img class="brand-title" src="images/logo-text-white.png" alt="">
+                <img class="brand-title" src="../admin/images/logo-text-white.png" alt="">
 
             </a>
 
@@ -240,7 +181,7 @@ if (isset($_GET['remove'])) {
 
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
 
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 
                                 </a>
 
@@ -369,162 +310,7 @@ if (isset($_GET['remove'])) {
 
                 <div class="row">
 
-                    <div class="col-lg-12">
 
-                        <ul class="nav nav-pills mb-3">
-
-                            <li class="nav-item">
-
-                                <form method="post" class="m-3" autocomplete="off">
-
-                                    <strong>Create New Payment</strong>
-                                    <hr>
-
-                                    <table style="margin-top: 15px;">
-
-                                        <tbody>
-
-                                            <div class="form-group" id="manual_pay">
-
-                                                <select type="text" name="userID" id="userID" required class="form-control" placeholder="Select Student" list="stu_list" onChange="JavaScrip:dis_load(this.value);" onBlur="JavaScrip:dis_load();">
-
-                                                    <?php
-
-                                                    $select_stu = mysqli_query($conn, "SELECT * FROM lmsregister ORDER BY fullname");
-
-                                                    while ($stu_resalt = mysqli_fetch_array($select_stu)) {
-
-                                                    ?>
-
-                                                        <option value="<?php echo $stu_resalt['reid']; ?>"><?php echo $stu_resalt['fullname']; ?> - <?php echo "0" . (int)$stu_resalt['contactnumber']; ?></option>
-
-                                                    <?php
-
-                                                    }
-
-                                                    ?>
-
-
-
-
-
-
-                                                </select>
-
-                                            </div>
-
-                                            <div class="form-group" id="manual_pay">
-
-                                                <select name="feeID[]" id="feeID" class="form-control" multiple="multiple">
-
-                                                    <?php
-
-                                                    $tec_qury = mysqli_query($conn, "SELECT tid,fullname,contactnumber FROM lmstealmsr ORDER BY fullname");
-
-                                                    while ($tec_resalt = mysqli_fetch_array($tec_qury)) {
-
-                                                    ?>
-
-                                                        <option value="<?php echo $tec_resalt['tid']; ?>"><?php echo $tec_resalt['fullname']; ?> - <?php echo "0" . (int)$tec_resalt['contactnumber']; ?></option>
-
-                                                    <?php
-
-                                                    }
-
-                                                    ?>
-
-                                                </select>
-
-                                            </div>
-
-                                            <div class="form-group" id="manual_pay">
-
-                                                <select name="pay_sub_id[]" id="pay_sub_id" class="form-control" multiple="multiple">
-
-                                                    <?php
-
-                                                    $sub_qury = mysqli_query($conn, "SELECT s.sid,c.cid,c.name cname,s.name sname FROM lmssubject s INNER JOIN lmsclass c ON s.class_id=c.cid WHERE s.status='Publish' ORDER BY c.name");
-                                                    while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-
-                                                    ?>
-
-                                                        <option value="<?php echo $sub_resalt['sid']; ?>"><?php echo $sub_resalt['cname']; ?> - <?php echo $sub_resalt['sname']; ?></option>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                </select>
-
-                                            </div>
-
-
-
-                                            <tr>
-
-                                            <tr>
-                                                <td colspan="3">&nbsp;</td>
-                                            </tr>
-
-                                            <td><input type="tel" name="amount" pattern="[0-9]+([\.][0-9]{0,2})?" required class="form-control" placeholder="Pay amount" onKethp="JavaScrip:dis_load(this.value);" onBlur="JavaScrip:dis_load();"></td>
-
-                                            <td>
-
-                                                <input name="expiredate" type="month" class="form-control" id="expiredate" value="<?php echo date("Y-m"); ?>">
-
-                                            </td>
-
-                                            <td><button name="pay_bt" type="submit" class="btn btn-info ml-2">Add Payment</button></td>
-
-                                            </tr>
-
-                                        </tbody>
-
-                                    </table>
-
-                                    <datalist id="stu_list">
-
-
-
-                                    </datalist>
-
-
-
-                                </form>
-
-                                <script>
-                                    function dis_load() {
-
-                                        var userID = document.getElementById('userID').value;
-
-                                        var xhttp = new XMLHttpRequest();
-
-                                        xhttp.onreadystatechange = function() {
-
-                                            if (this.readyState == 4 && this.status == 200) {
-
-                                                document.getElementById("details_dis").innerHTML = this.responseText;
-
-                                            }
-
-                                        };
-
-                                        xhttp.open("GET", "ajax_details_dis.php?userID=" + userID, true);
-
-                                        xhttp.send();
-
-                                    }
-                                </script>
-
-
-
-                                <div id="details_dis" class="m-3"></div>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
 
                     <div class="col-lg-12">
 
@@ -592,7 +378,7 @@ if (isset($_GET['remove'])) {
 
                                                         <th>Status</th>
 
-                                                        <th>Classes</th>
+                                                        <th>Student Name</th>
 
                                                         <th>Class Fee</th>
 
@@ -611,7 +397,7 @@ if (isset($_GET['remove'])) {
 
                                                     $count = 0;
 
-                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yp.expiredate,yp.pay_month,yt.fullname ytfullname,ys.name
+                                                    $payment_qury = mysqli_query($conn, "SELECT yp.pid,yp.status,yr.fullname,yp.amount,yp.created_at,yt.fullname ytfullname,ys.name
 
 FROM lmspayment yp LEFT JOIN lmsregister yr ON yp.userID=yr.reid
 
@@ -635,7 +421,27 @@ ORDER BY yp.pid DESC");
 
                                                             <td align="center">
 
-                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-sm btn-danger" title="Remove Payment" onClick="JavaScript:return confirm('Are your sure remove this payment?');"><i class="fa fa-trash"></i></a>
+                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-sm btn-danger" title="Remove Payment" data-bs-toggle="modal" data-bs-target="#confirmDelete"><i class="fa fa-trash"></i></a>
+
+                                                                <!-- Confirmation Modal -->
+                                                                <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="confirmDeleteLabel">Confirmation</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Are you sure you want to remove this payment?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                <a href="manual_payments.php?remove=<?php echo $payment_resalt['pid']; ?>" class="btn btn-danger">Delete</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
 
                                                             </td>
 

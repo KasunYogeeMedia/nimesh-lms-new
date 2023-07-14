@@ -6,11 +6,11 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once("config.php");
+require_once '../super_admin/config.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 date_default_timezone_set("Asia/Colombo");
 $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -83,7 +83,7 @@ if (isset($_POST['pay_bt'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -180,12 +180,12 @@ if (isset($_POST['pay_bt'])) {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td>Company Rate<br><input type="text"  name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
+                                                    <td>Company Rate<br><input type="text" name="lms_teacher_payment_company_amount" class="form-control" required value="<?php echo $d; ?>"></td>
                                                     <td></td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Payment<br><input type="text"  name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
+                                                    <td>Payment<br><input type="text" name="lms_teacher_payment_history_amount" class="form-control" required value="<?php echo $c; ?>"></td>
                                                     <td><br><button type="submit" name="pay_bt" class="btn btn-success">Pay</button></td>
                                                 </tr>
                                             </tbody>
@@ -256,22 +256,10 @@ if (isset($_POST['pay_bt'])) {
         Main wrapper end
     ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <script src="vendor/global/global.min.js"></script>
-    <script src="js/deznav-init.js"></script>
-    <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="js/custom.min.js"></script>
+    <?php
+    require_once 'footerjs.php';
+    ?>
 
-    <!-- Datatable -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="js/plugins-init/datatables.init.js"></script>
-
-    <!-- Svganimation scripts -->
-    <script src="vendor/svganimation/vivus.min.js"></script>
-    <script src="vendor/svganimation/svg.animation.js"></script>
 
 </body>
 

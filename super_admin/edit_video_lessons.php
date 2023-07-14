@@ -54,7 +54,7 @@ if (isset($_POST['update'])) {
 
 	if ($imgFile) {
 
-		$upload_dir = 'images/lesson/cover/'; // upload directory	
+		$upload_dir = '../admin/images/lesson/cover/'; // upload directory	
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -190,7 +190,7 @@ if (isset($_POST['update'])) {
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">

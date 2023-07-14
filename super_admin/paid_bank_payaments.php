@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -139,7 +139,7 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -185,10 +185,10 @@ if (isset($_GET['id'])) {
                                                         <tr>
                                                             <td><?php echo number_format($count, 0); ?></td>
                                                             <td>
-                                                                <a href="paid_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=2&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger"><i class="la la-trash-o"></i> Reject</a>
+                                                                <a href="paid_bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=2&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger"><i class="la la-trash-o"></i></a>
                                                             </td>
                                                             <td>
-                                                                <a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
+                                                                <a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
                                                             </td>
                                                             <td>
                                                                 <?php if ($payment_resalt['status'] == 0) { ?>
@@ -215,7 +215,7 @@ if (isset($_GET['id'])) {
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
                                                             </td>
-                                                            <td><span style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></td>
+                                                            <td><span style="font-size:14px;color:#000000;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
                                                         </tr>
                                                     <?php
@@ -227,7 +227,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

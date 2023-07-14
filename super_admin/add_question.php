@@ -5,9 +5,9 @@ if (!isset($_SESSION)) {
 }
 
 require_once 'includes.php';
-require_once 'conn.php';
-require_once("config.php");
-require_once 'dbconfig4.php';
+require_once '../super_admin/conn.php';
+require_once '../super_admin/config.php';
+require_once '../super_admin/dbconfig4.php';
 
 date_default_timezone_set("Asia/Colombo");
 
@@ -160,7 +160,7 @@ if ($edit == 1) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">

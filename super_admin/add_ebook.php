@@ -6,11 +6,11 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once("config.php");
+require_once '../super_admin/config.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg5 = '';
 
@@ -45,7 +45,7 @@ if (isset($_POST['add_classtute'])) {
 	} else if (empty($status)) {
 		$errMSG = "Please Select Status.";
 	} {
-		$upload_dir = 'images/classtute/'; // upload directory
+		$upload_dir = '../admin/images/classtute/'; // upload directory
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -134,7 +134,7 @@ if (isset($_POST['add_classtute'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -363,7 +363,7 @@ if (isset($_POST['add_classtute'])) {
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="add_classtute" class="btn btn-primary" value="Save changes">
-											<a class="btn btn-light" href="class_tute.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="class_tute.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

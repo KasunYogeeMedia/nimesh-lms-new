@@ -65,7 +65,7 @@ if (isset($_GET['remove'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -203,9 +203,9 @@ if (isset($_GET['remove'])) {
 
 															</td>
 															<td><?php if ($subject_resalt['image'] == "") {
-																	$pro_img = "../profile/images/hd_dp.jpg";
+																	$pro_img = "../profile/../admin/images/hd_dp.jpg";
 																} else {
-																	$pro_img = "images/class/" . $subject_resalt['image'];
+																	$pro_img = "../admin/images/class/" . $subject_resalt['image'];
 																} ?><img src="<?php echo $pro_img; ?>" class="pro_pick"></td>
 															<td><?php
 

@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -147,7 +147,7 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -238,7 +238,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

@@ -9,9 +9,9 @@ require_once 'includes.php';
 ?>
 <?php
 
-require("conn.php");
+require '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['sbid'])) {
 	$sbid = mysqli_real_escape_string($conn, $_GET['sbid']);
@@ -101,7 +101,7 @@ if (isset($_POST['update'])) {
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -260,7 +260,7 @@ if (isset($_POST['update'])) {
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="update" class="btn btn-primary" value="Update">
-											<a class="btn btn-light" href="subject.php"><i class="fa fa-times"></i> Close</a>
+											<a class="btn btn-danger" href="subject.php"><i class="fa fa-times"></i> Close</a>
 										</div>
 									</div>
 								</form>

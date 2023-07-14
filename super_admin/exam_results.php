@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_POST['filter'])) {
     if ($_POST['exam_report_paper'] == "All") {
@@ -63,7 +63,7 @@ if (isset($_GET['remove'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -159,7 +159,7 @@ if (isset($_GET['remove'])) {
                                                                 <?php } ?>
                                                             </select>
                                                         </td>
-                                                        <td><button name="filter" type="submit" class="btn btn-sm btn-success ml-2">Filter</button></td>
+                                                        <td><button name="filter" type="submit" class="btn btn-sm btn-success ml-2 fs-6">Filter</button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

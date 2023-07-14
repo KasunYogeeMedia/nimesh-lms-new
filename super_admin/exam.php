@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['remove'])) {
     $remove = mysqli_real_escape_string($conn, $_GET['remove']);
@@ -57,7 +57,7 @@ if (isset($_GET['remove'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -125,7 +125,7 @@ if (isset($_GET['remove'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -159,8 +159,30 @@ if (isset($_GET['remove'])) {
                                                             <td style="white-space: normal;">
                                                                 <a href="q_list.php?exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-success" title="Add question"><i class="fa fa-question"></i></a>
                                                                 <a href="new_exam.php?lms_exam_id=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-primary" title="Test Exam"><i class="fa fa-edit"></i></a>
-                                                                <a href="exam.php?remove=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-sm btn-danger" title="Test Exam" onClick="JavaScript:return confirm('Are your sure remove this exam?');">
-                                                                    <i class="fa fa-trash-o"></i></a>
+                                                                <a href="#" class="btn btn-sm btn-danger" title="Test Exam" onClick="return confirm('Are you sure you want to remove this exam?');" data-toggle="modal" data-target="#removeExamModal<?php echo $exam_resalt['lms_exam_id']; ?>">
+                                                                    <i class="fa fa-trash-o"></i>
+                                                                </a>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="removeExamModal<?php echo $exam_resalt['lms_exam_id']; ?>" tabindex="-1" aria-labelledby="removeExamModalLabel<?php echo $exam_resalt['lms_exam_id']; ?>" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="removeExamModalLabel<?php echo $exam_resalt['lms_exam_id']; ?>">Remove Exam</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Are you sure you want to remove this exam?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                <a href="exam.php?remove=<?php echo $exam_resalt['lms_exam_id']; ?>" class="btn btn-danger">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
                                                             </td>
                                                             <td><?php echo $exam_resalt['lms_exam_name']; ?></td>

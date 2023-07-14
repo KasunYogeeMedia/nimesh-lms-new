@@ -5,8 +5,8 @@ if (!isset($_SESSION)) {
 }
 
 require_once 'includes.php';
-require_once 'conn.php';
-require_once 'dbconfig4.php';
+require_once '../super_admin/conn.php';
+require_once '../super_admin/dbconfig4.php';
 
 date_default_timezone_set("Asia/Colombo");
 
@@ -47,14 +47,14 @@ if (isset($_POST['update_class_bt'])) {
         if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
             $imagename = time() . $_FILES['image']['name'];
             $source = $_FILES['image']['tmp_name'];
-            $target = "images/class/" . str_replace(" ", "_", $imagename);
+            $target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
             $db_send_name = str_replace(" ", "_", $imagename);
             move_uploaded_file($source, $target);
 
 
             $imagepath = $imagename;
-            $save = "images/class/" . $imagepath; //This is the new file you saving
-            $file = "images/class/" . $imagepath; //This is the original file
+            $save = "../admin/images/class/" . $imagepath; //This is the new file you saving
+            $file = "../admin/images/class/" . $imagepath; //This is the original file
 
 
             list($width, $height) = getimagesize($file);
@@ -108,14 +108,14 @@ if (isset($_POST['add_class_bt'])) {
         if ($_FILES['image']['type'] == "image/jpeg" || "image/png" || "image/jpg") {
             $imagename = time() . $_FILES['image']['name'];
             $source = $_FILES['image']['tmp_name'];
-            $target = "images/class/" . str_replace(" ", "_", $imagename);
+            $target = "../admin/images/class/" . str_replace(" ", "_", $imagename);
             $db_send_name = str_replace(" ", "_", $imagename);
             move_uploaded_file($source, $target);
 
 
             $imagepath = $imagename;
-            $save = "images/class/" . $imagepath; //This is the new file you saving
-            $file = "images/class/" . $imagepath; //This is the original file
+            $save = "../admin/images/class/" . $imagepath; //This is the new file you saving
+            $file = "../admin/images/class/" . $imagepath; //This is the original file
 
 
             list($width, $height) = getimagesize($file);
@@ -211,11 +211,11 @@ if (isset($_POST['add_class_bt'])) {
 
 			<a href="index.php" class="brand-logo">
 
-                <img class="logo-abbr" src="images/logo-white.png" alt="">
+                <img class="logo-abbr" src="../admin/images/logo-white.png" alt="">
 
-                <img class="logo-compact" src="images/logo-text-white.png" alt="">
+                <img class="logo-compact" src="../admin/images/logo-text-white.png" alt="">
 
-                <img class="brand-title" src="images/logo-text-white.png" alt="">
+                <img class="brand-title" src="../admin/images/logo-text-white.png" alt="">
 
             </a>
 
@@ -273,7 +273,7 @@ if (isset($_POST['add_class_bt'])) {
 
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
 
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
 
                                 </a>
 
@@ -466,10 +466,10 @@ if (isset($_POST['add_class_bt'])) {
                                                     <option value="<?php if (isset($_GET['edit'])) {
                                                                         echo $edit_resalt['tealmsr'];
                                                                     } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
-                                                                                        echo $tealmsr_resalt['fullname'];
-                                                                                    } else {
-                                                                                        echo "Select";
-                                                                                    } ?></option>
+                                                                                            echo $tealmsr_resalt['fullname'];
+                                                                                        } else {
+                                                                                            echo "Select";
+                                                                                        } ?></option>
 
                                                     <?php
 
@@ -522,10 +522,10 @@ if (isset($_POST['add_class_bt'])) {
                                                     <option value="<?php if (isset($_GET['edit'])) {
                                                                         echo $edit_resalt['level'];
                                                                     } ?>" hidden="yes"><?php if (isset($_GET['edit'])) {
-                                                                                        echo $edit_resalt['name'];
-                                                                                    } else {
-                                                                                        echo "Select";
-                                                                                    } ?></option>
+                                                                                            echo $edit_resalt['name'];
+                                                                                        } else {
+                                                                                            echo "Select";
+                                                                                        } ?></option>
 
                                                     <?php
 
@@ -589,10 +589,10 @@ if (isset($_POST['add_class_bt'])) {
                                                                                         echo $edit_resalt['subject'];
                                                                                     } else {
                                                                                     } ?>"><?php if (isset($_GET['edit'])) {
-                                                                                            echo $subject_resalt['name'];
-                                                                                        } else {
-                                                                                            echo "Course Not Found";
-                                                                                        } ?></option>
+                                                                                                echo $subject_resalt['name'];
+                                                                                            } else {
+                                                                                                echo "Course Not Found";
+                                                                                            } ?></option>
 
                                                     </select>
 
@@ -688,8 +688,8 @@ if (isset($_POST['add_class_bt'])) {
                                                     <option value="<?php if (isset($_GET['edit'])) {
                                                                         echo $edit_resalt['classstatus'];
                                                                     } ?>"><?php if (isset($_GET['edit'])) {
-                                                                            echo $edit_resalt['classstatus'];
-                                                                        } ?></option>
+                                                                                echo $edit_resalt['classstatus'];
+                                                                            } ?></option>
 
                                                     <option value="0">Upublished</option>
 
@@ -715,7 +715,7 @@ if (isset($_POST['add_class_bt'])) {
 
                                                 <label class="form-label">Cover Photo</label>
 
-                                                <label for="fileName"><img src="../profile/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
+                                                <label for="fileName"><img src="../profile/../admin/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
 
                                                 <input type="file" name="image" id="fileName" hidden="yes" onChange="dis_name();">
 
@@ -759,7 +759,7 @@ if (isset($_POST['add_class_bt'])) {
                                                 } ?>
                                             </button>
 
-                                            <a class="btn btn-light" href="class_schedule.php"><i class="fa fa-times"></i> Cancel</a>
+                                            <a class="btn btn-danger" href="online_verbal.php"><i class="fa fa-times"></i> Cancel</a>
 
                                         </div>
 

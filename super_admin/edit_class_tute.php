@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 if (isset($_GET['cttid']) && !empty($_GET['cttid'])) {
 
@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
 	$imgSize = $_FILES['user_image']['size'];
 	if ($imgFile) {
 
-		$upload_dir = 'images/classtute/'; // upload directory	
+		$upload_dir = '../admin/images/classtute/'; // upload directory	
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -101,7 +101,7 @@ if (isset($_POST['update'])) {
 		$stmt->bindParam(':payment_month', $payment_month);
 		$stmt->bindParam(':status', $status);
 		$stmt->bindParam(':cttid', $id);
-		var_dump($stmt);
+		// var_dump($stmt);
 		if ($stmt->execute()) {
 
 			$successMSG = "Class Tute Successfully Updated ...";
@@ -152,7 +152,7 @@ if (isset($_POST['update'])) {
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -285,7 +285,7 @@ if (isset($_POST['update'])) {
 
 																		?></option>
 													<?php
-													require_once 'dbconfig4.php';
+													require_once '../super_admin/dbconfig4.php';
 
 													$stmt = $DB_con->prepare('SELECT * FROM lmstealmsr where status="1" ORDER BY tid');
 
@@ -308,7 +308,7 @@ if (isset($_POST['update'])) {
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
-												<select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
+												<select class="form-control" name="class" required>
 													<option value="<?php
 																	$id = $class;
 																	$query = $DB_con->prepare('SELECT cid FROM lmsclass WHERE cid=' . $id);
@@ -324,7 +324,7 @@ if (isset($_POST['update'])) {
 																						?>
 													</option>
 													<?php
-													require_once 'dbconfig4.php';
+													require_once '../super_admin/dbconfig4.php';
 													$stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');
 													$stmt->execute();
 													if ($stmt->rowCount() > 0) {
@@ -339,6 +339,12 @@ if (isset($_POST['update'])) {
 											</div>
 										</div>
 										<script>
+											// Automatically trigger the send_level function after the page loads
+											window.onload = function() {
+												var levelId = document.querySelector('select[name="class"]').value;
+												send_level(levelId);
+											};
+
 											function send_level(level_id) {
 												var xhttp = new XMLHttpRequest();
 												xhttp.onreadystatechange = function() {
@@ -356,7 +362,7 @@ if (isset($_POST['update'])) {
 												<span id="subject_dis">
 													<select name="subject" class="form-control" required>
 														<?php
-														if ($_GET['leid']) {
+														if ($_GET['le id']) {
 															$sub_qury = mysqli_query($conn, "SELECT * FROM lmslesson WHERE lid='$_GET[leid]'");
 															$sub_resalt = mysqli_fetch_array($sub_qury);
 														}
@@ -370,6 +376,8 @@ if (isset($_POST['update'])) {
 												</span>
 											</div>
 										</div>
+
+
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Month</label>

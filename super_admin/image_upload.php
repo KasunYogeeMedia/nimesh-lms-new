@@ -22,7 +22,7 @@ if (isset($_POST['upload_btn'])) {
 }
 ?>
 <form method="post" enctype="multipart/form-data" style="width: 100px; display: inline-block; vertical-align: top; margin: 5px;" onSubmit="change_name();">
-	<label style="cursor: pointer;"><img src="images/img_upload.png" id="yourImgTag" style="width: 100px; height: 100px; object-fit: cover;">
+	<label style="cursor: pointer;"><img src="../admin/images/img_upload.png" id="yourImgTag" style="width: 100px; height: 100px; object-fit: cover;">
 		<input name="fileName" type="file" required="required" id="fileName" style="display: none;" onChange="dis_name();" accept="image/jpeg"></label>
 	<button name="upload_btn" type="submit" style="display: block; width: 100%; margin-top: 5px;" id="sub_btn">Upload</button>
 </form>

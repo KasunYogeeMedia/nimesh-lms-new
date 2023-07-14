@@ -16,9 +16,9 @@ date_default_timezone_set("Asia/Colombo");
 $current_time = date("Y-m-d H:i:s");
 
 $GLOBALS['conn'] = $conn;
-function check_resalt($exam_id, $user_id, $quizno)
+function check_resalt($exam_id, $user_id, $description)
 {
-    $q_qury = mysqli_query($GLOBALS['conn'], "SELECT * FROM paper_marks p WHERE p.exam_id='$exam_id' AND p.user_id='$user_id' AND p.quizno='$quizno'");
+    $q_qury = mysqli_query($GLOBALS['conn'], "SELECT * FROM course_work_marks p WHERE p.exam_id='$exam_id' AND p.user_id='$user_id' AND p.description='$description'");
     if (mysqli_num_rows($q_qury) > 0) {
         $q_resalt = mysqli_fetch_assoc($q_qury);
         $answerstatus = $q_resalt['answerstatus'];
@@ -30,20 +30,16 @@ function check_resalt($exam_id, $user_id, $quizno)
 
 if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
-    $view_paper = mysqli_query($conn, "SELECT es.id,es.filename,r.fullname,r.contactnumber,ex.examname,ex.quizcount,r.reid,es.marks,es.remark
-FROM exam_submissions es LEFT JOIN lmsregister r ON es.user_id=r.reid
-LEFT JOIN lmsonlineexams ex ON es.exam_id=ex.exid
+    $view_paper = mysqli_query($conn, "SELECT es.id,es.filename,r.fullname,r.contactnumber,ex.examname,r.reid,es.marks,es.remark
+FROM course_work_submissions es LEFT JOIN lmsregister r ON es.user_id=r.reid
+LEFT JOIN lmscourse_work ex ON es.exam_id=ex.exid
 WHERE es.id='$id'");
     $view_resalt = mysqli_fetch_assoc($view_paper);
 
-    $check_qury = mysqli_query($conn, "SELECT * FROM paper_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'");
+    $check_qury = mysqli_query($conn, "SELECT * FROM course_work_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'");
     if (!mysqli_num_rows($check_qury) > 0) {
-        for ($e = 1; $e <= $view_resalt['quizcount']; $e++) {
-            mysqli_query($conn, "INSERT INTO
-paper_marks (mid, exam_id, user_id, quizno, answerstatus, add_date, status)
-VALUES (NULL, '$view_resalt[id]', '$view_resalt[reid]', '$e', '1', '$current_time', '1')");
-        }
-        if (mysqli_query($conn, "UPDATE exam_submissions SET marks='100',remark='',status='1' WHERE id='$id'")) {
+
+        if (mysqli_query($conn, "UPDATE course_work_submissions SET marks='100',remark='',status='1' WHERE id='$id'")) {
         }
     }
 } else {
@@ -54,28 +50,17 @@ VALUES (NULL, '$view_resalt[id]', '$view_resalt[reid]', '$e', '1', '$current_tim
 if (isset($_POST['submit_btn'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    if (mysqli_query($conn, "DELETE FROM paper_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'")) {
+    if (mysqli_query($conn, "DELETE FROM course_work_marks WHERE exam_id='$view_resalt[id]' AND user_id='$view_resalt[reid]'")) {
 
-        $cret_answer = 0;
-        for ($e = 1; $e <= $view_resalt['quizcount']; $e++) {
-            if (empty($_POST['quiz' . $e])) {
-                $answer = 0;
-            } else {
-                $answer = 1;
-                $cret_answer++;
-            }
-            mysqli_query($conn, "INSERT INTO
-			paper_marks (mid, exam_id, user_id, quizno, answerstatus, add_date, status)
-			VALUES (NULL, '$view_resalt[id]', '$view_resalt[reid]', '$e', '$answer', '$current_time', '1')");
-        }
+
+
+
+        $remark = mysqli_real_escape_string($conn, $_POST['remark']);
+        $marks = mysqli_real_escape_string($conn, $_POST['marks']);
+        mysqli_query($conn, "UPDATE course_work_submissions SET marks='$marks',remark='$remark',status='1' WHERE id='$id'");
+        header("location:add_course_work_marks.php?id=$id");
     }
-
-    $marks = $cret_answer / $view_resalt['quizcount'] * 100;
-    $remark = mysqli_real_escape_string($conn, $_POST['remark']);
-    mysqli_query($conn, "UPDATE exam_submissions SET marks='$marks',remark='$remark',status='1' WHERE id='$id'");
-    header("location:add_marks.php?id=$id");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -218,36 +203,15 @@ if (isset($_POST['submit_btn'])) {
                                         <div class="col-12">
                                             <strong>Exam Details</strong><br>
                                             Name <strong><?php echo $view_resalt['examname']; ?></strong><br>
-                                            Total Quiz <strong><?php echo $view_resalt['quizcount']; ?></strong><br>
-                                            Marks/Batch <span><?php echo $view_resalt['marks']; ?>%</span>
 
-                                            <p class="mt-2 text-success"><em>Put a check mark for the wrong question</em></p>
+                                            Marks/Batch <span></span>
+                                            <input type="text" name="marks" value="<?php echo $view_resalt['marks']; ?>"></br>
 
-                                            <div class="table-responsive">
-                                                <table style="width: 100%; margin-top: 10px;">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Question</td>
-                                                            <td align="center">Wrong Answer</td>
-                                                        </tr>
-                                                        <?php
-                                                        for ($e = 1; $e <= $view_resalt['quizcount']; $e++) {
-                                                        ?>
-                                                            <tr class="table table-sm">
-                                                                <td align="left" valign="middle">Question <?php echo $e; ?></td>
-                                                                <td align="center" valign="middle">
-                                                                    <input <?php if (check_resalt($view_resalt['id'], $view_resalt['reid'], $e) == 1) {
-                                                                                echo "checked";
-                                                                            } ?> type="checkbox" name="quiz<?php echo $e; ?>">
-                                                                </td>
-                                                            </tr>
-                                                        <?php } ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+
+
 
                                             Remark
-                                            <textarea name="remark" rows="4" class="form-control" id="remark"><?php echo $view_resalt['remark']; ?></textarea>
+                                            <textarea name=" remark" rows="4" class="form-control" id="remark"><?php echo $view_resalt['remark']; ?></textarea>
 
                                             <button name="submit_btn" type="submit" class="btn btn-success text-white mt-2">Submit</button>
                                         </div>

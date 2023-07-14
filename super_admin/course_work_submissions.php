@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     $marks = htmlspecialchars($_POST["marks"]);
     $submission_id = htmlspecialchars($_POST["submission_id"]);
 
-    $sql = "UPDATE exam_submissions SET marks = " . $marks . " WHERE id = " . $submission_id;
+    $sql = "UPDATE course_work_submissions SET marks = " . $marks . " WHERE id = " . $submission_id;
 
     echo $sql;
 
@@ -42,7 +42,7 @@ if (isset($_GET['exam_id'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Submissions | Online Learning Platforms | Dashboard</title>
+    <title>Course Works Submissions | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -161,11 +161,11 @@ if (isset($_GET['exam_id'])) {
 
                                         <div class="form-group">
 
-                                            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = 'submissions.php?exam_id=' + this.options[this.selectedIndex].value);">
+                                            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = 'course_work_submissions.php?exam_id=' + this.options[this.selectedIndex].value);">
                                                 <option value="0">Filter by exam</option>
                                                 <?php
 
-                                                $query = mysqli_query($conn, "SELECT * FROM lmsonlineexams");
+                                                $query = mysqli_query($conn, "SELECT * FROM lmscourse_work");
                                                 while ($result = mysqli_fetch_array($query)) {
                                                     if ($result['exid']  ==  $exam_id) {
                                                         echo '<option selected="selected" value="' . $result['exid'] . '">' . $result['examname'] . '</option>';
@@ -184,7 +184,7 @@ if (isset($_GET['exam_id'])) {
                                             <table id="dataTable" class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <td>Exam Name</td>
+                                                        <td>Course Work Title</td>
                                                         <td>Student</td>
                                                         <td>Sbmitted Date/Time</td>
                                                         <td>Due Date/Time</td>
@@ -198,15 +198,15 @@ if (isset($_GET['exam_id'])) {
                                                     $today_time = date("Y-m-d");
 
                                                     if ($exam_id != 0) {
-                                                        $submission_query = mysqli_query($conn, "SELECT * FROM exam_submissions WHERE exam_id =" . $exam_id);
+                                                        $submission_query = mysqli_query($conn, "SELECT * FROM course_work_submissions WHERE exam_id =$exam_id");
                                                     } else {
-                                                        $submission_query = mysqli_query($conn, "SELECT * FROM exam_submissions");
+                                                        $submission_query = mysqli_query($conn, "SELECT * FROM course_work_submissions");
                                                     }
 
                                                     while ($submission_result = mysqli_fetch_array($submission_query)) {
                                                         date_default_timezone_set('Asia/Colombo');
 
-                                                        $exam_query = mysqli_query($conn, "SELECT * FROM lmsonlineexams  WHERE exid=" . $submission_result['exam_id']);
+                                                        $exam_query = mysqli_query($conn, "SELECT * FROM lmscourse_work  WHERE exid=" . $submission_result['exam_id']);
                                                         $user_query = mysqli_query($conn, "SELECT * FROM lmsregister  WHERE reid=" . $submission_result['user_id']);
 
                                                         $exam_result = mysqli_fetch_array($exam_query);
@@ -236,7 +236,7 @@ if (isset($_GET['exam_id'])) {
                                                                 <?php echo $submission_result['marks']; ?>%
                                                                 <?php /*?><?php if ($submission_result['marks'] == -1) {echo "NA"; }else{echo $submission_result['marks'] . " %";} ?><a href="#" class="edit_marks_btn" <?php if ($submission_result['marks'] != -1) {echo 'data-current_marks="'.$submission_result['marks'].'"'; }else{echo 'data-current_marks="0"';} ?> data-submission_id="<?php echo $submission_result['id']; ?>" ><i class="fa fa-edit"></i><?php */ ?>
                                                             </td>
-                                                            <td><a target="_blank" href="add_marks.php?id=<?php echo $submission_result['id']; ?>"><button class="btn btn-primary">Answer &amp; Add Marks</button></a></td>
+                                                            <td><a target="_blank" href="add_course_work_marks.php?id=<?php echo $submission_result['id']; ?>"><button class="btn btn-primary">Check &amp; Add Marks</button></a></td>
                                                         </tr>
                                                     <?php
                                                     }

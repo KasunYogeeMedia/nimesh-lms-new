@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'dbconfig4.php';
+include '../super_admin/dbconfig4.php';
 
-require_once("conn.php");
+require_once '../super_admin/conn.php';
 
 if (isset($_GET['id'])) {
 
@@ -78,7 +78,7 @@ if (isset($_GET['id'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -139,7 +139,7 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -187,7 +187,7 @@ if (isset($_GET['id'])) {
                                                             <td><?php echo number_format($count, 0); ?></td>
                                                             <td>
 
-                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success"><i class="fa fa-check"></i> Approval</a>
+                                                                <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=1&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Approval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-success mb-1"><i class="fa fa-check"></i> Approval</a>
 
                                                                 <a href="bank_payaments.php?id=<?php echo $payment_resalt['pid']; ?>&status=2&mobile=<?php echo "0" . (int)$user_resalt['contactnumber']; ?>" title="Unapproval Payment" onClick="JavaScript:return confirm('Are your sure change this payment status?');" class="btn btn-danger"><i class="la la-trash-o"></i> Reject</a>
 
@@ -232,7 +232,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ require_once 'dbconfig4.php';
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -116,7 +116,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -157,9 +157,32 @@ require_once 'dbconfig4.php';
 															<tr>
 																<td><?php echo $row['id']; ?></td>
 																<td>
-																	<a class="btn btn-danger" href="delete_review.php?rrid=<?php echo $row["id"]; ?>">
-																		<i class="fa fa-times-circle"></i>
+																	<!-- Button trigger modal -->
+																	<a class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">
+																		<i class="la la-trash-o"></i>
 																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+																		<div class="modal-dialog" role="document">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Review</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					<p>Are you sure you want to delete this review?</p>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+																					<a class="btn btn-danger" href="delete_review.php?rrid=<?php echo $row["id"]; ?>">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td><?php
 
@@ -203,19 +226,19 @@ require_once 'dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<img src="images/teacher/<?php
+																	<img src="../admin/images/teacher/<?php
 
-																								$id = $row['tealmsr'];
+																										$id = $row['tealmsr'];
 
-																								$query = $DB_con->prepare('SELECT image FROM lmstealmsr WHERE tid=' . $id);
+																										$query = $DB_con->prepare('SELECT image FROM lmstealmsr WHERE tid=' . $id);
 
-																								$query->execute();
+																										$query->execute();
 
-																								$result = $query->fetch();
+																										$result = $query->fetch();
 
-																								echo $result['image'];
+																										echo $result['image'];
 
-																								?>" alt="" id="dis_image" style="width: 32px; height: 32px; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;" />
+																										?>" alt="" id="dis_image" style="width: 32px; height: 32px; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;" />
 
 																	<?php
 

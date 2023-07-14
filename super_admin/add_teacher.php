@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg = '';
 
@@ -36,13 +36,13 @@ if (isset($_POST['add_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "images/teacher/" . str_replace(" ", "_", $imagename);
+			$target = "../admin/images/teacher/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "images/teacher/" . $imagepath; //This is the new file you saving
-			$file = "images/teacher/" . $imagepath; //This is the original file
+			$save = "../admin/images/teacher/" . $imagepath; //This is the new file you saving
+			$file = "../admin/images/teacher/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
@@ -118,7 +118,7 @@ if (isset($_POST['add_bt'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -220,7 +220,7 @@ if (isset($_POST['add_bt'])) {
 												<p style="color:red;">Only JPG</p>
 												<input type="hidden" name="systemid" id="" value="<?php echo $systemid_val; ?>">
 
-												<label for="fileName"><img src="../profile/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
+												<label for="fileName"><img src="../profile/../admin/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
 												<input type="file" name="image" id="fileName" hidden="lms" onChange="dis_name();">
 
 												<script>
@@ -342,7 +342,7 @@ if (isset($_POST['add_bt'])) {
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<input type="submit" name="add_bt" class="btn btn-primary" value="Save changes">
-											<a class="btn btn-light" href="teachers.php"><i class="fa fa-times"></i> Cancel</a>
+											<a class="btn btn-danger" href="teachers.php"><i class="fa fa-times"></i> Cancel</a>
 										</div>
 									</div>
 								</form>

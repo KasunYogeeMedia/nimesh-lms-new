@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ require_once 'dbconfig4.php';
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -117,7 +117,7 @@ require_once 'dbconfig4.php';
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -191,7 +191,31 @@ require_once 'dbconfig4.php';
                                                                 </td>
                                                                 <td>
                                                                     <a href="edit_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                                        <i class="la la-trash-o"></i>
+                                                                    </a>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="deleteModalLabel">Delete Subject</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    Are you sure you want to delete this subject?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <a href="delete_subject.php?sbid=<?php echo $row["sid"]; ?>" class="btn btn-danger">Delete</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </td>
                                                             </tr>
                                                     <?php

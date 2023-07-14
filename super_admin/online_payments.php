@@ -124,7 +124,7 @@ if (isset($_POST['all_archive'])) {
 
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
 
-                                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 
                                 </a>
 

@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-include 'conn.php';
+include '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ require_once 'dbconfig4.php';
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -119,7 +119,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -167,7 +167,31 @@ require_once 'dbconfig4.php';
 															<tr>
 																<td><?php echo $row['reid']; ?></td>
 																<td>
-																	<a class="btn btn-sm btn-danger" href="delete_students.php?stid=<?php echo $row["reid"]; ?>" onClick="return confirm('Are youe sure remove this student');"><i class="la la-trash-o"></i></a>
+																	<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteStudentModal<?php echo $row["reid"]; ?>">
+																		<i class="la la-trash-o"></i>
+																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="deleteStudentModal<?php echo $row["reid"]; ?>" tabindex="-1" aria-labelledby="deleteStudentModalLabel<?php echo $row["reid"]; ?>" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="deleteStudentModalLabel<?php echo $row["reid"]; ?>">Delete Student</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				<div class="modal-body">
+																					Are you sure you want to remove this student?
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																					<a href="delete_students.php?stid=<?php echo $row["reid"]; ?>" class="btn btn-danger">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td>
 																	<?php
@@ -183,23 +207,25 @@ require_once 'dbconfig4.php';
 																	?>
 																</td>
 																<td>
-																	<p><?php if ($row['image'] == "") {
-																			$pro_img = "../profile/images/hd_dp.jpg";
-																		} else {
-																			$pro_img = "../profile/uploadImg/" . $row['image'];
-																		} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
-																		<strong><?php echo $row['fullname']; ?></strong>
-																	</p>
-																	<p><strong>Student Number : <?php echo $row['stnumber']; ?></strong></p>
-																	<p><strong>Birth Day : <?php echo $row['dob']; ?></strong></p>
-																	<p><strong>Email : <?php echo $row['email']; ?></strong></p>
-																	<p><strong>Gender : <?php echo $row['gender']; ?></strong></p>
-																	<p><strong>School: <?php echo $row['school']; ?></strong></p>
-																	<p><strong>District : <?php echo $row['district']; ?></strong></p>
-																	<p><strong>Town/City : <?php echo $row['town']; ?></strong></p>
-																	<p><strong>Parent Contct No : <?php echo "0" . (int)$row['pcontactnumber']; ?></strong></p>
-																	<p><strong>Contct No/Username : <?php echo "0" . (int)$row['contactnumber']; ?></strong></p>
-																	<p>Address : <?php echo $row['address']; ?></p>
+																	<div class="h-scroll-half">
+																		<p><?php if ($row['image'] == "") {
+																				$pro_img = "../profile/../admin/images/hd_dp.jpg";
+																			} else {
+																				$pro_img = "../profile/uploadImg/" . $row['image'];
+																			} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
+																			<strong><?php echo $row['fullname']; ?></strong>
+																		</p>
+																		<p><strong>Student Number : <?php echo $row['stnumber']; ?></strong></p>
+																		<p><strong>Birth Day : <?php echo $row['dob']; ?></strong></p>
+																		<p><strong>Email : <?php echo $row['email']; ?></strong></p>
+																		<p><strong>Gender : <?php echo $row['gender']; ?></strong></p>
+																		<p><strong>School: <?php echo $row['school']; ?></strong></p>
+																		<p><strong>District : <?php echo $row['district']; ?></strong></p>
+																		<p><strong>Town/City : <?php echo $row['town']; ?></strong></p>
+																		<p><strong>Parent Contct No : <?php echo "0" . (int)$row['pcontactnumber']; ?></strong></p>
+																		<p><strong>Contct No/Username : <?php echo "0" . (int)$row['contactnumber']; ?></strong></p>
+																		<p>Address : <?php echo $row['address']; ?></p>
+																	</div>
 																</td>
 																<td><a href="javascript:void(0);"><strong><?php
 
@@ -229,7 +255,7 @@ require_once 'dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

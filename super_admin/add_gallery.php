@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $msg = '';
 
@@ -38,7 +38,7 @@ if (isset($_POST['save'])) {
     } else if (empty($imgFile)) {
         $errMSG = "Please Select image File.";
     } else {
-        $upload_dir = 'images/gallery/'; // upload directory
+        $upload_dir = '../admin/images/gallery/'; // upload directory
 
         $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -55,7 +55,7 @@ if (isset($_POST['save'])) {
                 $file = $tmp_dir;
                 $sourceProperties = getimagesize($file);
                 $fileNewName = time();
-                $folderPath = "images/gallery/";
+                $folderPath = "../admin/images/gallery/";
                 $ext = pathinfo($imgFile, PATHINFO_EXTENSION);
                 $imageType = $sourceProperties[2];
 
@@ -167,7 +167,7 @@ if (isset($_POST['save'])) {
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -282,7 +282,7 @@ if (isset($_POST['save'])) {
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <input type="submit" name="save" class="btn btn-primary" value="Save changes">
-                                            <a class="btn btn-light" href="gallery.php"><i class="fa fa-times"></i> Cancel</a>
+                                            <a class="btn btn-danger" href="gallery.php"><i class="fa fa-times"></i> Cancel</a>
                                         </div>
                                     </div>
                                 </form>

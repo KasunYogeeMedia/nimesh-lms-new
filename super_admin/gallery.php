@@ -50,7 +50,7 @@ require_once 'dbconfig4.php';
 						<ul class="navbar-nav header-right">
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
+									<img src="../admin/images/profile/pic1.jpg" width="20" alt="" />
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a href="admin.php" class="dropdown-item ai-icon">
@@ -118,7 +118,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -155,7 +155,7 @@ require_once 'dbconfig4.php';
 													?>
 															<tr>
 																<td><?php echo $row['id']; ?></td>
-																<td><img src="images/gallery/<?php echo $row['image']; ?>" alt="" width="100" height="60"></td>
+																<td><img src="../admin/images/gallery/<?php echo $row['image']; ?>" alt="" width="100" height="60"></td>
 																<td><?php echo $row['add_date']; ?></td>
 																<td><span><?php echo $row['status']; ?></span></td>
 																<td><a class="btn btn-primary" href="edit_gallery.php?glid=<?php echo $row["id"]; ?>">
@@ -176,7 +176,7 @@ require_once 'dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

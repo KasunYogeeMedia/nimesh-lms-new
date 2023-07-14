@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ require_once 'dbconfig4.php';
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="../admin/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="admin.php" class="dropdown-item ai-icon">
@@ -112,7 +112,7 @@ require_once 'dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -212,7 +212,7 @@ require_once 'dbconfig4.php';
 																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
-																<td><a href="images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
+																<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
 																<td><span style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
@@ -225,7 +225,7 @@ require_once 'dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
