@@ -159,7 +159,7 @@ require_once '../super_admin/dbconfig4.php';
 																<td>
 																	<!-- Button trigger modal -->
 																	<a class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">
-																		<i class="fa fa-times-circle"></i>
+																		<i class="la la-trash-o"></i>
 																	</a>
 
 																	<!-- Modal -->

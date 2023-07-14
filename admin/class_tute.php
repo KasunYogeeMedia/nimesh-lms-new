@@ -181,7 +181,7 @@ require_once '../super_admin/dbconfig4.php';
 																		<i class="fa fa-edit"></i>
 																	</a>
 																	<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteClassTutorialModal<?php echo $row["ctuid"]; ?>">
-																		<i class="fa fa-times-circle"></i>
+																		<i class="fa la la-trash-o"></i>
 																	</a>
 
 																	<!-- Modal -->

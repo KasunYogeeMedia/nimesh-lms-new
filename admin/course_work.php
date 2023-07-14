@@ -182,11 +182,11 @@ if (isset($_GET['exid'])) {
                                                                     ?>
                                                                 </td>
                                                                 <td style="white-space: normal;">
-                                                                    <a class="btn btn-sm btn-primary" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>">
+                                                                    <a class="btn btn-sm btn-primary mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    <a class="btn btn-sm btn-danger" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
-                                                                        <i class="fa fa-times-circle"></i>
+                                                                    <a class="btn btn-sm btn-danger mb-1" href="add_course_work.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
+                                                                        <i class="la la-trash-o"></i>
                                                                     </a>
                                                                 </td>
                                                                 <td><?php

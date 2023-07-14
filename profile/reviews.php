@@ -233,7 +233,7 @@ if (isset($_POST['add_review'])) {
 						<!-- Your Profile Views Chart -->
 						<div class="col-lg-12">
 							<div class="review_right">
-								<div class="review_right_heading">
+								<div class="review_right_heading mt-4">
 									<h3>My All Reviews</h3>
 
 								</div>
