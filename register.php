@@ -18,7 +18,7 @@ if (isset($_POST['register'])) {
 	$email = mysqli_real_escape_string($con, $_POST['email']);
 	$dob = mysqli_real_escape_string($con, $_POST['dob']);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
-	//$school = mysqli_real_escape_string($con, $_POST['school']);
+	$coupon = mysqli_real_escape_string($con, $_POST['coupon']);
 	$district = mysqli_real_escape_string($con, $_POST['district']);
 	//$town = mysqli_real_escape_string($con, $_POST['town']);
 	$pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
@@ -40,7 +40,7 @@ if (isset($_POST['register'])) {
 			$success_msg = 1;
 		} else {
 			//pass
-			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,email,dob,gender,district,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$email','$dob','$gender','$district',$pcontactnumber,'$fullname','$contactnumber',school,address, '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
+			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,coupon,email,dob,gender,district,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$coupon','$email','$dob','$gender','$district',$pcontactnumber,'$fullname','$contactnumber',school,address, '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
 
 				if (!empty($_POST['subjects'])) {
 					foreach ($_POST['subjects'] as $subject_id) {
@@ -127,6 +127,10 @@ if (isset($_POST['register'])) {
 				?>
 				<i class="far fa fa-id-card fa-lg"></i>
 				<input name="stnumber" required type="text" value="<?php echo $reg_prefix; ?>-<?php echo $final_code; ?>" readonly>
+			</div>
+			<div class="inp-1">
+				<i class="far fa fa-id-card fa-lg"></i>
+				<input name="coupon"  type="text"  placeholder="You have Coupon Code">
 			</div>
 			<div class="inp-1">
 				<i class="far fa fa-envelope fa-lg"></i>

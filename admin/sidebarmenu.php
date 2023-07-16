@@ -241,6 +241,11 @@
 			<span class="nav-text">Certificate</span>
 		</a>
 	</li>
+	<li><a href="coupon.php" aria-expanded="false">
+			<i class="la la-camera-retro"></i>
+			<span class="nav-text">Coupon</span>
+		</a>
+	</li>
 	<!--
 		<?php
 		if ($mail == 'True') {

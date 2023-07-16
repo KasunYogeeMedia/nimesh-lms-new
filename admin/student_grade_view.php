@@ -119,7 +119,7 @@ require_once '../super_admin/dbconfig4.php';
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -144,7 +144,7 @@ require_once '../super_admin/dbconfig4.php';
 													<tr>
 														<th>ID</th>
 														<th>Action</th>
-														<th>Status</th>
+														<th>Current Status</th>
 														<th>Student</th>
 
 														<th>Course</th>
@@ -155,7 +155,7 @@ require_once '../super_admin/dbconfig4.php';
 												<tbody>
 													<?php
 
-											$stmt = $DB_con->prepare("SELECT * FROM lmsregister WHERE level='{$_GET['gid']}' ORDER BY reid");
+													$stmt = $DB_con->prepare("SELECT * FROM lmsregister WHERE level='{$_GET['gid']}' ORDER BY reid DESC");
 
 
 													$stmt->execute();
@@ -171,6 +171,11 @@ require_once '../super_admin/dbconfig4.php';
 																<td><?php echo $row['reid']; ?></td>
 																<td>
 																	<a class="btn btn-sm btn-danger" href="delete_students.php?stid=<?php echo $row["reid"]; ?>" onClick="return confirm('Are youe sure remove this student');"><i class="la la-trash-o"></i></a>
+																	<?php if ($row["status"] == 0) { ?>
+																		<button class="btn btn-sm btn-success statusButton" data-id="<?php echo $row["reid"]; ?>" id="statusButton">Activate</button>
+																	<?php } else { ?>
+																		<button class="btn btn-sm btn-danger statusButton" data-id="<?php echo $row["reid"]; ?>" id="statusButton">Deactivate</button>
+																	<?php } ?>
 																</td>
 																<td>
 																	<?php
@@ -232,7 +237,7 @@ require_once '../super_admin/dbconfig4.php';
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -359,6 +364,57 @@ require_once '../super_admin/dbconfig4.php';
 			});
 
 		}
+	</script>
+	<script>
+		$(document).ready(function() {
+			// Button click event handler
+			$('.statusButton').click(function() {
+				// Get the ID from the data attribute
+				var id = $(this).data('id');
+
+				// Make an AJAX request
+				$.ajax({
+					url: 'change_status.php', // URL to the server-side script that handles the database status change
+					method: 'POST', // or 'GET' depending on your server-side configuration
+					data: {
+						id: id
+					}, // Pass the ID as data
+					success: function(response) {
+						// Handle the response from the server
+						console.log(response);
+
+						// Parse the response string into a JSON object
+						var responseObject = JSON.parse(response);
+
+						// Update the page content based on the response
+						if (responseObject.status === 'success') {
+							// Display success message
+							$('.message').text('Status changed successfully.');
+							$('.message').show();
+
+							// Update the specific element on the page with the new status value
+							$('#statusElement').text(responseObject.newStatus);
+							setTimeout(function() {
+								location.reload();
+							}, 1500);
+
+						} else {
+							// Display error message
+							$('.message').text('An error occurred while changing the status.');
+							$('.message').show();
+						}
+					},
+					error: function(xhr, status, error) {
+						// Handle the error
+						console.log(error);
+
+						// Display error message
+						$('.message').text('An error occurred while changing the status.');
+						$('.message').show();
+					}
+				});
+			});
+		});
 	</script>
 
 </body>

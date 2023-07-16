@@ -38,13 +38,25 @@ if (isset($_POST['login'])) {
             } else {
                 echo "<script>window.location='login.php?ip_error';</script>";
             }
+
+            
         } else {
             //password not match
             echo "<script>window.location='login.php?password_error';</script>";
         }
     } else {
         //user not found
-        echo "<script>window.location='login.php?user_error';</script>";
+        if ($result['status'] == 0) {
+
+
+
+            //setcookie('reid', $result['reid'], time() + (86400 * 30), "/");
+
+            echo "<script>window.location='login.php?status_error';</script>";
+        }else{
+            echo "<script>window.location='login.php?user_error';</script>";
+        }
+        
     }
 }
 
@@ -94,6 +106,7 @@ if (isset($_POST['login'])) {
             <?php if (isset($_GET['user_error'])) { ?><div class="alert alert-danger text-center"><strong>Sorry!</strong><br>The phone number you entered isn't connected to an account, please register</div><?php } ?>
             <?php if (isset($_GET['ip_error'])) { ?><div class="alert alert-danger text-center"><strong>Sorry!</strong><br>Your account has been blocked due to unautorised access.<br><br><a style="color: dodgerblue; cursor: pointer;" onClick="JavaScript:window.location='login.php?req_id=<?php echo $_GET['u']; ?>';">Request Re login?</a></div><?php } ?>
             <?php if (isset($_GET['success'])) { ?><div class="alert alert-success" role="alert"> Thanks for loged In! Sign in now and start learning right away! </div><?php } ?>
+            <?php if (isset($_GET['status_error'])) { ?><div class="alert alert-danger" role="alert"> Your Account is Not Activated! </div><?php } ?>
             <h2 class="heading-text">Sign In</h2>
             <div class="inp-1">
                 <i class="far fa fa-mobile fa-lg"></i>

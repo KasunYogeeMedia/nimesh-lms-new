@@ -903,6 +903,7 @@ if (isset($_POST['submit_bt'])) {
 
 												</tr> -->
 											</thead>
+
 											<tbody>
 												<?php
 
@@ -926,22 +927,89 @@ if (isset($_POST['submit_bt'])) {
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 
 												?>
-														<tr>
-															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+														<?php if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
+															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
+															$currentDate = date('Y-m-d');
+															// Query to fetch data based on the coupon code
+															$sql = "SELECT * FROM lmscoupon WHERE coupon_code = ? AND valid_date > ?";
 
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
-															<!--kasun 2021.12.01 change color to black from white-->
-														</tr>
-														<tr>
-															<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+															// Create a prepared statement
+															$stmt = $conn->prepare($sql);
 
-															<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-															<!--kasun 2021.12.01 change color to black from white-->
-														</tr>
+															// Bind the parameters
+															$stmt->bind_param("ss", $couponCode, $currentDate);
+
+															// Execute the statement
+															$stmt->execute();
+
+															// Get the result set
+															$result = $stmt->get_result();
+
+															// Check if there is a matching row
+															
+															if ($result->num_rows > 0) {
+																while ($row = $result->fetch_assoc()) {
+																// Access the data from $row array
+																$percentage = $row['percentage'];
+																$final_discount  = $percentage/100 ;
+																
+																?>
+																<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payments</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'] * $final_discount, 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] * $final_discount / 2), 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+															<?php }
+															} else { ?>
+																<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+															<?php }
+															?>
+								
+														<?php } else { ?>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+																<!--kasun 2021.12.01 change color to black from white-->
+															</tr>
+														<?php } ?>
+
 											<?php
 
 													}

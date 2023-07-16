@@ -54,9 +54,13 @@ function send_sms($receiver_number, $messsage)
 
 $payment_getway = mysqli_query($conn, "SELECT * FROM lmsgetway WHERE id=1");
 $getway_resalt = mysqli_fetch_array($payment_getway);
-$app_id = $getway_resalt['app_id'];
-$hash_salt = $getway_resalt['hash_salt'];
-$a_token = $getway_resalt['a_token'];
+if(mysqli_num_rows($payment_getway) > 0){
+
+	$app_id = $getway_resalt['app_id'];
+	$hash_salt = $getway_resalt['hash_salt'];
+	$a_token = $getway_resalt['a_token'];
+}
+
 
 $lmsurl = mysqli_query($conn, "SELECT * FROM lmsurl WHERE id=1");
 $lmsurl_resalt = mysqli_fetch_array($lmsurl);
