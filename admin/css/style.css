@@ -11111,6 +11111,14 @@ a.active {
 .footer {
     padding-left: 17.1875rem;
     background-color: #F7F8FA;
+    height: 50px;
+}
+
+.content-body{
+    min-height: 100vh !important;
+}
+.row.m-0 {
+	min-height: calc(100vh - 50px);
 }
 
 .footer .copyright {
@@ -35079,9 +35087,9 @@ table.dataTable.display tbody td {
 }
 
 .authincation-content {
-    background: #fff;
-    box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
-    border-radius: 5px;
+	background: #fff;
+	box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.31);
+	border-radius: 20px;
 }
 
 [data-theme-version="dark"] .authincation-content {

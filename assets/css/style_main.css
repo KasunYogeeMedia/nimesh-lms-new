@@ -4216,3 +4216,20 @@ ul {
   margin-bottom: 0;
   color: #fff;
 }
+
+/* Workshop styles */
+
+.bg-pur{
+  background-color: #80267F;
+}
+.ws-box{
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.3); 
+box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.3);
+}
+.ws-box:hover{
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.5); 
+  box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.5);
+}
+.bg-pur .text-light a:hover{
+  color: #fff;
+}

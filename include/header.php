@@ -37,6 +37,9 @@
                         <li>
                             <a href="register.php">Register</a>
                         </li>
+                        <li>
+                            <a href="workshop.php">Workshop</a>
+                        </li>
                     </ul>
                 </div>
             </div>

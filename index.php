@@ -7,6 +7,7 @@ require_once 'super_admin/dbconfig4.php';
 <html lang="zxx">
 
 <!-- Mirrored from theme-flix.com/edumen/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Aug 2021 05:01:12 GMT -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@ require_once 'super_admin/dbconfig4.php';
     <link rel="stylesheet" href="assets/css/responsive_main.css">
 
 </head>
+
 <body>
 
     <!-- preloader area start -->
@@ -33,26 +35,26 @@ require_once 'super_admin/dbconfig4.php';
         </div>
     </div>
     <!-- preloader area end -->
-    
-  <!-- include header -->
-    <?php include'include/header.php';?>
-    
+
+    <!-- include header -->
+    <?php include 'include/header.php'; ?>
+
     <!-- banner start -->
     <div class="banner-area banner-area-1 banner-bg-overlay" style="background-image: url('assets/img/banner/111.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-7">
                     <div class="banner-inner style-white text-center text-lg-left">
-<!--                         <h6 class="al-animate-1 sub-title">Save over <span>30%</span> in paid courses</h6> -->
-                        <h1 class="al-animate-2 title" >INSTITUTE FOR PROFESSINAL DEVELOPMENT</h1>
-<!--                         <p class="al-animate-3">Macstudy is by far the most anticipated and most requested online course among our learners.</p>
+                        <!--                         <h6 class="al-animate-1 sub-title">Save over <span>30%</span> in paid courses</h6> -->
+                        <h1 class="al-animate-2 title">INSTITUTE FOR PROFESSINAL DEVELOPMENT</h1>
+                        <!--                         <p class="al-animate-3">Macstudy is by far the most anticipated and most requested online course among our learners.</p>
                         <a class="btn btn-base al-animate-4" href="course.html">All Courses</a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- banner end -->   
+    <!-- banner end -->
 
     <!-- counter area start -->
     <div class="counter-area">
@@ -108,9 +110,9 @@ require_once 'super_admin/dbconfig4.php';
             </div>
         </div>
     </div>
-    <!-- counter end --> 
-  
-  <!-- about area start -->
+    <!-- counter end -->
+
+    <!-- about area start -->
     <div class="about-area pd-top-90 pd-bottom-90">
         <div class="container">
             <div class="row">
@@ -139,7 +141,7 @@ require_once 'super_admin/dbconfig4.php';
                         <h5 class="sub-title">Who we are</h5>
                         <p class="content"> we are offering range of courses targeting children and working professionals and conducting corporate trainings targeting organisations worldwide</p>
                         <div class="single-list-inner mt-4">
-                            <ul> 
+                            <ul>
                                 <li><i class="fa fa-check"></i> Access to 4,000+ of our top courses</li>
                                 <li><i class="fa fa-check"></i> Explore a variety of fresh topics</li>
                                 <li><i class="fa fa-check"></i> Find the right instructor for you </li>
@@ -151,19 +153,19 @@ require_once 'super_admin/dbconfig4.php';
         </div>
     </div>
     <!-- about area end -->
-  
-  <!--course-area start-->
+
+    <!--course-area start-->
     <div class="course-area pd-top-120 pd-bottom-120">
         <div class="container">
             <div class="row justify-content-center">
-                
+
                 <div class="col-lg-4 col-md-6">
                     <div class="single-course-inner">
                         <div class="thumb">
                             <img src="assets/img/course/CONSULTANT.jpg" alt="img">
                         </div>
                         <div class="details">
-<!--                             <span class="price">17500</span> -->
+                            <!--                             <span class="price">17500</span> -->
                             <p class="status"><i class="fa fa-signal"></i> Beginner</p>
                             <div class="details-inner">
                                 <h5><a href="course.php">CONSULTANT -TRAINING AND SKILL DEVELOPMENT </a></h5>
@@ -192,7 +194,7 @@ require_once 'super_admin/dbconfig4.php';
                             </div>
                         </div>
                         <div class="details">
-<!--                             <span class="price">$60</span> -->
+                            <!--                             <span class="price">$60</span> -->
                             <p class="status"><i class="fa fa-signal"></i> Beginner</p>
                             <div class="details-inner">
                                 <h5><a href="course.php">Bussiness English Course</a></h5><br>
@@ -221,7 +223,7 @@ require_once 'super_admin/dbconfig4.php';
                             </div>
                         </div>
                         <div class="details">
-<!--                             <span class="price">$90</span> -->
+                            <!--                             <span class="price">$90</span> -->
                             <p class="status"><i class="fa fa-signal"></i> Beginner</p>
                             <div class="details-inner">
                                 <h5><a href="course.php">Announcing And Media courses</a></h5>
@@ -243,19 +245,19 @@ require_once 'super_admin/dbconfig4.php';
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!--course-area end-->
 
-      <!--course-area start-->
-      <div class="course-area pd-top-20 pd-bottom-120">
+    <!--course-area start-->
+    <div class="course-area pd-top-20 pd-bottom-120">
         <div class="container">
-        <div class="text-center">
-                <h3 class="sub-title">Work Shop</h3>
-                </div>
+            <div class="text-center">
+                <h3 class="sub-title mb-5">Work Shop</h3>
+            </div>
             <div class="row justify-content-center">
-            <?php
+                <?php
                 // Assuming you have already established a database connection
 
                 // The SQL query
@@ -263,45 +265,45 @@ require_once 'super_admin/dbconfig4.php';
 
                 // Execute the query
                 $list_result = mysqli_query($conn, $list_query);
-                
+
                 if (mysqli_num_rows($list_result) > 0) {
                     while ($list_row = mysqli_fetch_assoc($list_result)) {
-                        ?>
+                ?>
                         <div class="col-lg-4 col-md-6">
-                            <div class="single-course-inner">
-                                <div class="thumb">
-                                    <img src="admin/images/class/<?php echo $list_row['image'];?>" alt="img">
+                            <div class="single-course-inner ws-box">
+                                <div class="thumb text-center p-4">
+                                    <img src="admin/images/class/<?php echo $list_row['image']; ?>" alt="img">
                                 </div>
-                                <div class="details">
-                                    <div class="details-inner">
-                                        <h5><a href="<?php echo $list_row['classlink'];?>"><?php echo $list_row['lesson'];?></a></h5>
+                                <div class="details pt-0">
+                                    <div class="details-inner text-center p-2 mb-4 text-light bg-pur">
+                                        <h5 class="text-light"><a href="<?php echo $list_row['classlink']; ?>"><?php echo $list_row['lesson']; ?></a></h5>
                                     </div>
                                     <div class="bottom-area">
-                                        <div class="row  d-flex align-items-center justify-content-center">
-                                            <div class="col-6 align-self-center ml-5">
-                                                <a href="register.php"><i class="fa fa-play-circle"></i>Register Class</a>
+                                        <div class="row d-flex align-items-center justify-content-center">
+                                            <div class="text-center">
+                                                <a href="register.php"><i class="fa fa-play-circle mr-2"></i>Register Class</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "Empty";
                 }
 
                 // Close the database connection
-               
+
                 ?>
 
-              
 
-          
-         
+
+
+
             </div>
-            
+
         </div>
     </div>
     <!--course-area end-->
@@ -319,9 +321,9 @@ require_once 'super_admin/dbconfig4.php';
         </div>
     </div>
     <!-- call to action area start -->
-  
+
     <!-- include footer -->
-    <?php include'include/footer.php';?>
+    <?php include 'include/footer.php'; ?>
 
     <!-- back to top area start -->
     <div class="back-to-top">
@@ -338,4 +340,5 @@ require_once 'super_admin/dbconfig4.php';
 </body>
 
 <!-- Mirrored from theme-flix.com/edumen/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Aug 2021 05:06:56 GMT -->
+
 </html>

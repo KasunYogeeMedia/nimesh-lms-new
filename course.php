@@ -11,9 +11,9 @@
     <link rel=icon href="assets/img/favicon.png" sizes="20x20" type="image/png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/vendor_main.css">
+    <link rel="stylesheet" href="assets/css/style_main.css">
+    <link rel="stylesheet" href="assets/css/responsive_main.css">
 
 </head>
 <body>
@@ -382,9 +382,9 @@
 
 
     <!-- all plugins here -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/vendor_main.js"></script>
     <!-- main js  -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main_main.js"></script>
 </body>
 
 <!-- Mirrored from theme-flix.com/edumen/course-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Aug 2021 05:11:08 GMT -->
