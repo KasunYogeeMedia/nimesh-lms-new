@@ -33,21 +33,43 @@ function send_sms($receiver_number, $messsage)
 	$sms_resalt = mysqli_fetch_array($sms);
 	$sender_id = $sms_resalt['sender_id'];
 	$sa_token = $sms_resalt['sa_token'];
-	require('SMSTurbineAPICaller.php');
 
-	$api_link = 'https://api.smsturbine.com/api/v1/sms/send';
-	$mask = $sender_id;
-	$api_key = $sa_token;
-	$number = $receiver_number;   //Receiver Number
-	$messsage = $messsage;        //SENDING MESSAGE සිංහල / தமிழ் / English
+	$MSISDN = $receiver_number;
+	$SRC = $sender_id;
+	$MESSAGE = (urldecode($messsage));
+	$AUTH = "716|dgD95hyXSbuxuoj5F4pG8QBdJ4wcoFzo064CAuhs ";  //Replace your Access Token
 
-	$sender = new SMSTurbineAPICaller($mask, $api_key, $number, $messsage, $api_link);
-	$response = $sender->execute();
+	$msgdata = array("recipient" => $MSISDN, "sender_id" => $sa_token, "message" => $MESSAGE);
 
-	if (array_key_exists('status', $response) && $response['status'] == 'Success') {
-		echo $response['message'] . "<br>";
+
+
+	$curl = curl_init();
+
+	//IF you are running in locally and if you don't have https/SSL. then uncomment bellow two lines
+	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => "https://sms.send.lk/api/v3/sms/send",
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => json_encode($msgdata),
+		CURLOPT_HTTPHEADER => array(
+			"accept: application/json",
+			"authorization: Bearer $AUTH",
+			"cache-control: no-cache",
+			"content-type: application/x-www-form-urlencoded",
+		),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+		echo "cURL Error #:" . $err;
 	} else {
-		echo $response['message'] . "<br>";
+		echo $response;
 	}
 }
 
