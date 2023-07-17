@@ -967,7 +967,7 @@ if (isset($_POST['submit_bt'])) {
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] - $final_discount / 2), 2); ?></td>
+																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] - $final_discount) / 2, 2); ?></td>
 																<!--kasun 2021.12.01 change color to black from white-->
 															</tr>
 															<?php }
