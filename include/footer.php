@@ -59,7 +59,7 @@
                             <ul class="details style-icon">
                               <li><i class="fa fa-phone"></i> +94 772 597 766</li>  
                               <li><i class="fa fa-phone"></i> +94 772 795 279</li>
-                                <li><i class="fa fa-envelope-o"></i> ipdedu@ipdedu.com</li>
+                                <li><i class="fa fa-envelope-o"></i> info@ipdedulk.com</li>
                                 <li><i class="fa fa-map-marker"></i> 17/01 First lane , Gothami Road , Borrella</li>
                             </ul>
                         </div>
