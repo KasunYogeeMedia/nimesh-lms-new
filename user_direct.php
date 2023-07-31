@@ -57,7 +57,7 @@
 
 @media (max-width: 576px){
 .container.ba1 {
-  padding: 150px 150px;
+  padding: 0;
 
 }
 }
