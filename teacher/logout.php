@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 echo "<script>
-window.location = 'https://ongoing.website/websites/nimesh-lms-new/teacher/';
+window.location = 'https://ipdedulk.com/teacher/';
 </script>
 ";

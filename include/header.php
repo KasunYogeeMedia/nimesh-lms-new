@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="edumint_main_menu">
                 <ul class="navbar-nav menu-open">
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="course.php">Courses</a>
