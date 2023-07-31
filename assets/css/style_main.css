@@ -4242,9 +4242,11 @@ box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.3);
 .registerlink{
   padding: 7px 30px; 
   background: var(--main-color); border-radius:25px;
-  color: #fff;
+  
 }
-
+.registerlink:hover{
+  color: #fff!important;
+}
 
 @media (max-width: 576px){
 .mobile-btn {
@@ -4255,6 +4257,7 @@ box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.3);
 .registerlink{
   color: #fff!important;
 }
+
 
 .loginlink{
   padding: 7px 37px; 
