@@ -53,18 +53,22 @@
   padding: 20px 20px;
   font-size: 20px;
 }
-
+.heading-text{
+    margin: 25px auto;
+}
 
 @media (max-width: 576px){
 .container.ba1 {
   padding: 0;
 
 }
+
 }
 </style>
     <main>
         <div class="container ba1">
             <div class="row text-center">
+                <h2 class="heading-text pb-20">Select your role?</h2>
                 <div class="col-md-6 ">
                     <a href="/login.php" class="btn btnslogin">Student Login</a>  
                 </div>   
