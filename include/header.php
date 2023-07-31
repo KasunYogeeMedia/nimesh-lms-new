@@ -32,7 +32,7 @@
                             <a href="gallery.php">Gallery</a>
                         </li>
                         <li>
-                            <a href="user.php">Login</a>
+                            <a href="user_direct.php">Login</a>
                         </li>
                         <li>
                             <a href="register.php">Register</a>
