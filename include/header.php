@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="logo">
-                <a href="index.php"><img src="assets/img/logo-2.png" alt="img"></a>
+                <a href="/"><img src="assets/img/logo-2.png" alt="img"></a>
             </div>
             <div class="nav-left-part nav-right-part-desktop">
 
