@@ -4233,3 +4233,34 @@ box-shadow: 0px 0px 15px 5px rgba(128,38,127,0.3);
 .bg-pur .text-light a:hover{
   color: #fff;
 }
+.loginlink{
+  padding: 7px 30px; 
+  background: #80808026; 
+  border-radius:25px; 
+  border: 1px solid #8a0caa;
+}
+.registerlink{
+  padding: 7px 30px; 
+  background: var(--main-color); border-radius:25px;
+}
+
+
+@media (max-width: 576px){
+.mobile-btn {
+  float: left !important;
+  padding-left: 0px;
+
+}
+.registerlink{
+  color: #fff!important;
+}
+
+.loginlink{
+  padding: 7px 37px; 
+  background: #80808026; 
+  border-radius:25px; 
+  border: 1px solid #8a0caa;
+}
+
+}
+
