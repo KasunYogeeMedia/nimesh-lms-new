@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 09, 2023 at 07:07 AM
--- Server version: 8.0.30
--- PHP Version: 8.2.0
+-- Host: localhost:3306
+-- Generation Time: Aug 04, 2023 at 09:11 AM
+-- Server version: 5.7.43
+-- PHP Version: 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `yogeedev_nimesh_lms`
+-- Database: `ipdedu_nimesh_lms`
 --
 
 -- --------------------------------------------------------
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `certificate` (
-  `id` int NOT NULL,
-  `userId` int NOT NULL,
-  `certificate_status` int NOT NULL DEFAULT '1',
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `certificate_status` int(11) NOT NULL DEFAULT '1',
   `issue_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `certificate`
@@ -48,12 +48,12 @@ INSERT INTO `certificate` (`id`, `userId`, `certificate_status`, `issue_date`) V
 --
 
 CREATE TABLE `chats` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `uname` varchar(255) NOT NULL,
   `msg` varchar(255) NOT NULL,
-  `sub_id` bigint NOT NULL,
+  `sub_id` bigint(20) NOT NULL,
   `dt` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `chats`
@@ -70,12 +70,12 @@ INSERT INTO `chats` (`id`, `uname`, `msg`, `sub_id`, `dt`) VALUES
 --
 
 CREATE TABLE `course_work_marks` (
-  `mid` int NOT NULL,
-  `exam_id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `mid` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `marks` tinyint(1) NOT NULL,
   `add_date` datetime NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,14 +85,14 @@ CREATE TABLE `course_work_marks` (
 --
 
 CREATE TABLE `course_work_submissions` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `exam_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
   `filename` text NOT NULL,
   `time` datetime NOT NULL,
-  `marks` int NOT NULL,
+  `marks` int(11) NOT NULL,
   `remark` text NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -109,14 +109,14 @@ INSERT INTO `course_work_submissions` (`id`, `user_id`, `exam_id`, `filename`, `
 --
 
 CREATE TABLE `exam_submissions` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `exam_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
   `filename` text NOT NULL,
   `time` datetime NOT NULL,
-  `marks` int NOT NULL,
+  `marks` int(11) NOT NULL,
   `remark` text NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -133,7 +133,7 @@ INSERT INTO `exam_submissions` (`id`, `user_id`, `exam_id`, `filename`, `time`, 
 --
 
 CREATE TABLE `lmsadmins` (
-  `user_id` int NOT NULL,
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(15) NOT NULL,
   `user_email` varchar(40) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
@@ -165,7 +165,7 @@ INSERT INTO `lmsadmins` (`user_id`, `user_name`, `user_email`, `user_pass`, `adm
 --
 
 CREATE TABLE `lmsclass` (
-  `cid` int NOT NULL,
+  `cid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL
@@ -196,16 +196,16 @@ INSERT INTO `lmsclass` (`cid`, `name`, `add_date`, `status`) VALUES
 --
 
 CREATE TABLE `lmsclasstute` (
-  `ctuid` int NOT NULL,
-  `tid` int NOT NULL,
-  `class` int NOT NULL,
-  `subject` int NOT NULL,
+  `ctuid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `class` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
   `month` varchar(50) NOT NULL,
   `ctype` varchar(50) NOT NULL,
   `title` text NOT NULL,
   `tdocument` varchar(500) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -279,9 +279,9 @@ INSERT INTO `lmsclasstute` (`ctuid`, `tid`, `class`, `subject`, `month`, `ctype`
 --
 
 CREATE TABLE `lmsclass_schlmsle` (
-  `classid` int NOT NULL,
-  `level` int NOT NULL,
-  `subject` int NOT NULL,
+  `classid` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
   `tealmsr` varchar(50) NOT NULL,
   `lesson` varchar(1000) NOT NULL,
   `classdate` date NOT NULL,
@@ -310,11 +310,11 @@ INSERT INTO `lmsclass_schlmsle` (`classid`, `level`, `subject`, `tealmsr`, `less
 --
 
 CREATE TABLE `lmscomments` (
-  `id` int NOT NULL,
-  `uid` int NOT NULL,
-  `tealmsr` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `tealmsr` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `rate` int NOT NULL,
+  `rate` int(11) NOT NULL,
   `review` text NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL
@@ -333,14 +333,28 @@ INSERT INTO `lmscomments` (`id`, `uid`, `tealmsr`, `title`, `rate`, `review`, `a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lmscoupon`
+--
+
+CREATE TABLE `lmscoupon` (
+  `id` int(11) NOT NULL,
+  `coupon_code` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
+  `percentage` int(11) NOT NULL,
+  `valid_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lmscourse_work`
 --
 
 CREATE TABLE `lmscourse_work` (
-  `exid` int NOT NULL,
-  `tid` int NOT NULL,
+  `exid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
   `class` varchar(400) NOT NULL,
-  `subject` int NOT NULL,
+  `subject` int(11) NOT NULL,
   `examname` varchar(200) NOT NULL,
   `edate` datetime NOT NULL,
   `exam_end_date` datetime NOT NULL,
@@ -349,7 +363,7 @@ CREATE TABLE `lmscourse_work` (
   `edocument` varchar(500) NOT NULL,
   `description` varchar(255) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -366,7 +380,7 @@ INSERT INTO `lmscourse_work` (`exid`, `tid`, `class`, `subject`, `examname`, `ed
 --
 
 CREATE TABLE `lmsdb` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `dbname` varchar(400) NOT NULL,
   `username` varchar(400) NOT NULL,
   `password` varchar(400) NOT NULL
@@ -386,16 +400,16 @@ INSERT INTO `lmsdb` (`id`, `dbname`, `username`, `password`) VALUES
 --
 
 CREATE TABLE `lmsebook` (
-  `ctuid` int NOT NULL,
-  `tid` int NOT NULL,
-  `class` int NOT NULL,
-  `subject` int NOT NULL,
+  `ctuid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `class` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
   `month` varchar(50) NOT NULL,
   `ctype` varchar(50) NOT NULL,
   `title` text NOT NULL,
   `tdocument` varchar(500) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -413,11 +427,11 @@ INSERT INTO `lmsebook` (`ctuid`, `tid`, `class`, `subject`, `month`, `ctype`, `t
 --
 
 CREATE TABLE `lmsexpense` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `cost` bigint NOT NULL,
+  `cost` bigint(20) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `lmsexpense`
@@ -433,7 +447,7 @@ INSERT INTO `lmsexpense` (`id`, `name`, `cost`, `date`) VALUES
 --
 
 CREATE TABLE `lmsgallery` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `image` varchar(500) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL
@@ -446,7 +460,7 @@ CREATE TABLE `lmsgallery` (
 --
 
 CREATE TABLE `lmsgetway` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `app_id` varchar(4000) NOT NULL,
   `hash_salt` varchar(4000) NOT NULL,
   `a_token` varchar(4000) NOT NULL
@@ -466,18 +480,18 @@ INSERT INTO `lmsgetway` (`id`, `app_id`, `hash_salt`, `a_token`) VALUES
 --
 
 CREATE TABLE `lmslesson` (
-  `lid` int NOT NULL,
-  `tid` int NOT NULL,
+  `lid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
   `type` varchar(50) NOT NULL,
   `class` varchar(100) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `title` varchar(500) NOT NULL,
   `available_days` varchar(100) NOT NULL,
-  `no_of_views_per_day` int NOT NULL,
+  `no_of_views_per_day` int(11) NOT NULL,
   `cover` varchar(500) NOT NULL,
   `video` varchar(1000) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -996,7 +1010,7 @@ INSERT INTO `lmslesson` (`lid`, `tid`, `type`, `class`, `subject`, `title`, `ava
 --
 
 CREATE TABLE `lmsmail` (
-  `mid` int NOT NULL,
+  `mid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `subject` varchar(200) NOT NULL,
@@ -1011,19 +1025,19 @@ CREATE TABLE `lmsmail` (
 --
 
 CREATE TABLE `lmsonlineexams` (
-  `exid` int NOT NULL,
-  `tid` int NOT NULL,
+  `exid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
   `class` varchar(400) NOT NULL,
-  `subject` int NOT NULL,
+  `subject` int(11) NOT NULL,
   `examname` varchar(200) NOT NULL,
   `edate` datetime NOT NULL,
   `exam_end_date` datetime NOT NULL,
   `starttime` time DEFAULT NULL,
   `endtime` time DEFAULT NULL,
   `edocument` varchar(500) NOT NULL,
-  `quizcount` int NOT NULL,
+  `quizcount` int(11) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1040,11 +1054,11 @@ INSERT INTO `lmsonlineexams` (`exid`, `tid`, `class`, `subject`, `examname`, `ed
 --
 
 CREATE TABLE `lmspayment` (
-  `pid` int NOT NULL,
+  `pid` int(11) NOT NULL,
   `fileName` varchar(50) DEFAULT NULL,
-  `userID` int NOT NULL,
-  `feeID` int NOT NULL,
-  `pay_sub_id` int NOT NULL,
+  `userID` int(11) NOT NULL,
+  `feeID` int(11) NOT NULL,
+  `pay_sub_id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `accountnumber` varchar(50) NOT NULL DEFAULT '0',
   `bank` varchar(100) NOT NULL,
@@ -1052,8 +1066,8 @@ CREATE TABLE `lmspayment` (
   `paymentMethod` varchar(20) NOT NULL,
   `created_at` datetime NOT NULL,
   `session_id` varchar(20) NOT NULL DEFAULT '0',
-  `status` int NOT NULL,
-  `order_status` int NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL,
+  `order_status` int(11) NOT NULL DEFAULT '0',
   `pay_type` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1072,7 +1086,7 @@ INSERT INTO `lmspayment` (`pid`, `fileName`, `userID`, `feeID`, `pay_sub_id`, `a
 --
 
 CREATE TABLE `lmsregister` (
-  `reid` int NOT NULL,
+  `reid` int(11) NOT NULL,
   `stnumber` varchar(200) NOT NULL,
   `email` varchar(400) NOT NULL,
   `fullname` varchar(200) NOT NULL,
@@ -1086,15 +1100,15 @@ CREATE TABLE `lmsregister` (
   `pname` varchar(4000) DEFAULT NULL,
   `contactnumber` varchar(20) NOT NULL,
   `address` text NOT NULL,
-  `level` int NOT NULL,
+  `level` int(11) NOT NULL,
   `password` varchar(255) NOT NULL,
   `image` varchar(500) NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL,
   `ip_address` varchar(20) NOT NULL,
-  `relogin` int NOT NULL,
-  `reloging_ip` int NOT NULL,
-  `payment` int NOT NULL,
+  `relogin` int(11) NOT NULL,
+  `reloging_ip` int(11) NOT NULL,
+  `payment` int(11) NOT NULL,
   `verifycode` varchar(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1540,9 +1554,9 @@ INSERT INTO `lmsregister` (`reid`, `stnumber`, `email`, `fullname`, `dob`, `gend
 --
 
 CREATE TABLE `lmsrequest_relogin` (
-  `relog_id` int NOT NULL,
-  `relog_user` int NOT NULL,
-  `relog_status` int NOT NULL,
+  `relog_id` int(11) NOT NULL,
+  `relog_user` int(11) NOT NULL,
+  `relog_status` int(11) NOT NULL,
   `req_ip_add` varchar(255) NOT NULL,
   `relog_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1554,9 +1568,9 @@ CREATE TABLE `lmsrequest_relogin` (
 --
 
 CREATE TABLE `lmsreq_subject` (
-  `sub_req_id` int NOT NULL,
+  `sub_req_id` int(11) NOT NULL,
   `sub_req_reg_no` varchar(50) NOT NULL,
-  `sub_req_sub_id` int NOT NULL
+  `sub_req_sub_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -3049,7 +3063,7 @@ INSERT INTO `lmsreq_subject` (`sub_req_id`, `sub_req_reg_no`, `sub_req_sub_id`) 
 --
 
 CREATE TABLE `lmssms` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `sa_token` varchar(4000) NOT NULL,
   `sender_id` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -3068,9 +3082,9 @@ INSERT INTO `lmssms` (`id`, `sa_token`, `sender_id`) VALUES
 --
 
 CREATE TABLE `lmsstudent_subject` (
-  `ssid` int NOT NULL,
-  `student` int NOT NULL DEFAULT '0',
-  `subject` int NOT NULL DEFAULT '0'
+  `ssid` int(11) NOT NULL,
+  `student` int(11) NOT NULL DEFAULT '0',
+  `subject` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -3080,13 +3094,13 @@ CREATE TABLE `lmsstudent_subject` (
 --
 
 CREATE TABLE `lmsstuden_video_watch` (
-  `id` int NOT NULL,
-  `reg_no` int DEFAULT NULL,
-  `subject_id` int DEFAULT NULL,
-  `lid` int DEFAULT NULL,
-  `allowed_view` int DEFAULT NULL,
-  `watched_count` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id` int(11) NOT NULL,
+  `reg_no` int(11) DEFAULT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `lid` int(11) DEFAULT NULL,
+  `allowed_view` int(11) DEFAULT NULL,
+  `watched_count` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3095,8 +3109,8 @@ CREATE TABLE `lmsstuden_video_watch` (
 --
 
 CREATE TABLE `lmssubject` (
-  `sid` int NOT NULL,
-  `class_id` int NOT NULL,
+  `sid` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -3119,9 +3133,9 @@ INSERT INTO `lmssubject` (`sid`, `class_id`, `name`, `price`, `add_date`, `statu
 --
 
 CREATE TABLE `lmssubject_tealmsr` (
-  `stid` int NOT NULL,
-  `subject` int NOT NULL DEFAULT '0',
-  `tealmsr` int NOT NULL DEFAULT '0'
+  `stid` int(11) NOT NULL,
+  `subject` int(11) NOT NULL DEFAULT '0',
+  `tealmsr` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -3131,8 +3145,8 @@ CREATE TABLE `lmssubject_tealmsr` (
 --
 
 CREATE TABLE `lmstealmsr` (
-  `tid` int NOT NULL,
-  `systemid` int NOT NULL,
+  `tid` int(11) NOT NULL,
+  `systemid` int(11) NOT NULL,
   `fullname` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
   `contactnumber` varchar(50) NOT NULL,
@@ -3143,7 +3157,7 @@ CREATE TABLE `lmstealmsr` (
   `image` varchar(500) NOT NULL,
   `Percentage` float NOT NULL,
   `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -3161,10 +3175,10 @@ INSERT INTO `lmstealmsr` (`tid`, `systemid`, `fullname`, `address`, `contactnumb
 --
 
 CREATE TABLE `lmstealmsr_multiple` (
-  `tealmsr_id` int NOT NULL,
-  `tealmsr_system_id` int NOT NULL,
-  `tealmsr_type` int NOT NULL,
-  `tealmsr_contain_id` int NOT NULL
+  `tealmsr_id` int(11) NOT NULL,
+  `tealmsr_system_id` int(11) NOT NULL,
+  `tealmsr_type` int(11) NOT NULL,
+  `tealmsr_contain_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -4167,7 +4181,7 @@ INSERT INTO `lmstealmsr_multiple` (`tealmsr_id`, `tealmsr_system_id`, `tealmsr_t
 --
 
 CREATE TABLE `lmsurl` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `url` varchar(4000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4185,7 +4199,7 @@ INSERT INTO `lmsurl` (`id`, `url`) VALUES
 --
 
 CREATE TABLE `lmsusers` (
-  `user_id` int NOT NULL,
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(15) NOT NULL,
   `user_email` varchar(40) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
@@ -4217,9 +4231,9 @@ INSERT INTO `lmsusers` (`user_id`, `user_name`, `user_email`, `user_pass`, `admi
 --
 
 CREATE TABLE `lmsverbal_exam` (
-  `classid` int NOT NULL,
-  `level` int NOT NULL,
-  `subject` int NOT NULL,
+  `classid` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
   `tealmsr` varchar(50) NOT NULL,
   `lesson` varchar(1000) NOT NULL,
   `classdate` date NOT NULL,
@@ -4240,11 +4254,11 @@ CREATE TABLE `lmsverbal_exam` (
 --
 
 CREATE TABLE `lms_answer` (
-  `lms_answer_id` int NOT NULL,
-  `lms_answer_user` int NOT NULL,
-  `lms_answer_paper` int NOT NULL,
-  `lms_answer_q` int NOT NULL,
-  `lms_answer_a` int NOT NULL
+  `lms_answer_id` int(11) NOT NULL,
+  `lms_answer_user` int(11) NOT NULL,
+  `lms_answer_paper` int(11) NOT NULL,
+  `lms_answer_q` int(11) NOT NULL,
+  `lms_answer_a` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -4274,17 +4288,17 @@ INSERT INTO `lms_answer` (`lms_answer_id`, `lms_answer_user`, `lms_answer_paper`
 --
 
 CREATE TABLE `lms_exam_details` (
-  `lms_exam_id` int NOT NULL,
-  `lms_exam_add_user` int NOT NULL,
-  `lms_exam_system_id` int NOT NULL,
+  `lms_exam_id` int(11) NOT NULL,
+  `lms_exam_add_user` int(11) NOT NULL,
+  `lms_exam_system_id` int(11) NOT NULL,
   `lms_exam_name` varchar(255) NOT NULL,
-  `lms_exam_subject` int NOT NULL,
-  `lms_exam_question` int NOT NULL,
-  `lms_exam_time_duration` int NOT NULL,
+  `lms_exam_subject` int(11) NOT NULL,
+  `lms_exam_question` int(11) NOT NULL,
+  `lms_exam_time_duration` int(11) NOT NULL,
   `lms_exam_start_time` datetime NOT NULL,
   `lms_exam_end_time` datetime NOT NULL,
   `lms_exam_add_time` datetime NOT NULL,
-  `lms_exam_pay_type` int NOT NULL COMMENT '1=pay, 0=free'
+  `lms_exam_pay_type` int(11) NOT NULL COMMENT '1=pay, 0=free'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -4301,14 +4315,14 @@ INSERT INTO `lms_exam_details` (`lms_exam_id`, `lms_exam_add_user`, `lms_exam_sy
 --
 
 CREATE TABLE `lms_exam_report` (
-  `lms_report_id` int NOT NULL,
-  `exam_report_user` int NOT NULL,
-  `exam_report_paper` int NOT NULL,
-  `exam_report_faced` int NOT NULL,
-  `exam_report_corect` int NOT NULL,
-  `exam_report_percent` int NOT NULL,
+  `lms_report_id` int(11) NOT NULL,
+  `exam_report_user` int(11) NOT NULL,
+  `exam_report_paper` int(11) NOT NULL,
+  `exam_report_faced` int(11) NOT NULL,
+  `exam_report_corect` int(11) NOT NULL,
+  `exam_report_percent` int(11) NOT NULL,
   `exam_report_complet_time` datetime NOT NULL,
-  `status` int NOT NULL DEFAULT '1'
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -4328,14 +4342,14 @@ INSERT INTO `lms_exam_report` (`lms_report_id`, `exam_report_user`, `exam_report
 --
 
 CREATE TABLE `lms_mcq_questions` (
-  `id` int NOT NULL,
-  `exam_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
   `question` text NOT NULL,
   `ans_1` text NOT NULL,
   `ans_2` text NOT NULL,
   `ans_3` text NOT NULL,
   `ans_4` text NOT NULL,
-  `ans` int NOT NULL
+  `ans` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -4358,8 +4372,8 @@ INSERT INTO `lms_mcq_questions` (`id`, `exam_id`, `question`, `ans_1`, `ans_2`, 
 --
 
 CREATE TABLE `lms_teacher_payment_history` (
-  `lms_teacher_payment_history_id` int NOT NULL,
-  `lms_teacher_payment_history_tid` int NOT NULL,
+  `lms_teacher_payment_history_id` int(11) NOT NULL,
+  `lms_teacher_payment_history_tid` int(11) NOT NULL,
   `lms_teacher_payment_company_amount` float NOT NULL,
   `lms_teacher_payment_history_amount` float NOT NULL,
   `lms_teacher_payment_history_time` datetime NOT NULL
@@ -4468,8 +4482,8 @@ INSERT INTO `lms_teacher_payment_history` (`lms_teacher_payment_history_id`, `lm
 --
 
 CREATE TABLE `paper_image` (
-  `pi_id` int NOT NULL,
-  `pi_exam_id` int NOT NULL,
+  `pi_id` int(11) NOT NULL,
+  `pi_exam_id` int(11) NOT NULL,
   `pi_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4487,13 +4501,13 @@ INSERT INTO `paper_image` (`pi_id`, `pi_exam_id`, `pi_image`) VALUES
 --
 
 CREATE TABLE `paper_marks` (
-  `mid` int NOT NULL,
-  `exam_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `quizno` tinyint NOT NULL,
+  `mid` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quizno` tinyint(4) NOT NULL,
   `answerstatus` tinyint(1) NOT NULL,
   `add_date` datetime NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -4523,7 +4537,7 @@ INSERT INTO `paper_marks` (`mid`, `exam_id`, `user_id`, `quizno`, `answerstatus`
 --
 
 CREATE TABLE `settings` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `reg_prefix` varchar(3) NOT NULL,
   `application_name` varchar(400) NOT NULL,
   `main_logo` varchar(4000) NOT NULL
@@ -4543,10 +4557,10 @@ INSERT INTO `settings` (`id`, `reg_prefix`, `application_name`, `main_logo`) VAL
 --
 
 CREATE TABLE `user_attandance` (
-  `id` int NOT NULL,
-  `userid` int NOT NULL,
-  `subjectid` int NOT NULL,
-  `lid` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `subjectid` int(11) NOT NULL,
+  `lid` int(11) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4564,12 +4578,12 @@ INSERT INTO `user_attandance` (`id`, `userid`, `subjectid`, `lid`, `date`) VALUE
 --
 
 CREATE TABLE `verbal_exam` (
-  `id` int NOT NULL,
-  `userId` bigint NOT NULL,
-  `marks` bigint NOT NULL,
-  `document` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `status` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id` int(11) NOT NULL,
+  `userId` bigint(20) NOT NULL,
+  `marks` bigint(20) NOT NULL,
+  `document` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `verbal_exam`
@@ -4844,253 +4858,253 @@ ALTER TABLE `verbal_exam`
 -- AUTO_INCREMENT for table `certificate`
 --
 ALTER TABLE `certificate`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `course_work_marks`
 --
 ALTER TABLE `course_work_marks`
-  MODIFY `mid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `course_work_submissions`
 --
 ALTER TABLE `course_work_submissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `exam_submissions`
 --
 ALTER TABLE `exam_submissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsclass`
 --
 ALTER TABLE `lmsclass`
-  MODIFY `cid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `lmsclasstute`
 --
 ALTER TABLE `lmsclasstute`
-  MODIFY `ctuid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `ctuid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `lmsclass_schlmsle`
 --
 ALTER TABLE `lmsclass_schlmsle`
-  MODIFY `classid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `classid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmscomments`
 --
 ALTER TABLE `lmscomments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `lmscourse_work`
 --
 ALTER TABLE `lmscourse_work`
-  MODIFY `exid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `exid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lmsdb`
 --
 ALTER TABLE `lmsdb`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsebook`
 --
 ALTER TABLE `lmsebook`
-  MODIFY `ctuid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `ctuid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `lmsexpense`
 --
 ALTER TABLE `lmsexpense`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lmsgallery`
 --
 ALTER TABLE `lmsgallery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmsgetway`
 --
 ALTER TABLE `lmsgetway`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmslesson`
 --
 ALTER TABLE `lmslesson`
-  MODIFY `lid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=722;
+  MODIFY `lid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=722;
 
 --
 -- AUTO_INCREMENT for table `lmsmail`
 --
 ALTER TABLE `lmsmail`
-  MODIFY `mid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmsonlineexams`
 --
 ALTER TABLE `lmsonlineexams`
-  MODIFY `exid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `exid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lmspayment`
 --
 ALTER TABLE `lmspayment`
-  MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lmsregister`
 --
 ALTER TABLE `lmsregister`
-  MODIFY `reid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1746;
+  MODIFY `reid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1746;
 
 --
 -- AUTO_INCREMENT for table `lmsrequest_relogin`
 --
 ALTER TABLE `lmsrequest_relogin`
-  MODIFY `relog_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `relog_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmsreq_subject`
 --
 ALTER TABLE `lmsreq_subject`
-  MODIFY `sub_req_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9552;
+  MODIFY `sub_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9552;
 
 --
 -- AUTO_INCREMENT for table `lmssms`
 --
 ALTER TABLE `lmssms`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsstudent_subject`
 --
 ALTER TABLE `lmsstudent_subject`
-  MODIFY `ssid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ssid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmsstuden_video_watch`
 --
 ALTER TABLE `lmsstuden_video_watch`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmssubject`
 --
 ALTER TABLE `lmssubject`
-  MODIFY `sid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmssubject_tealmsr`
 --
 ALTER TABLE `lmssubject_tealmsr`
-  MODIFY `stid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `stid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lmstealmsr`
 --
 ALTER TABLE `lmstealmsr`
-  MODIFY `tid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `lmstealmsr_multiple`
 --
 ALTER TABLE `lmstealmsr_multiple`
-  MODIFY `tealmsr_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6019;
+  MODIFY `tealmsr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6019;
 
 --
 -- AUTO_INCREMENT for table `lmsurl`
 --
 ALTER TABLE `lmsurl`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsusers`
 --
 ALTER TABLE `lmsusers`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lmsverbal_exam`
 --
 ALTER TABLE `lmsverbal_exam`
-  MODIFY `classid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `classid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lms_answer`
 --
 ALTER TABLE `lms_answer`
-  MODIFY `lms_answer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `lms_answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `lms_exam_details`
 --
 ALTER TABLE `lms_exam_details`
-  MODIFY `lms_exam_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `lms_exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `lms_exam_report`
 --
 ALTER TABLE `lms_exam_report`
-  MODIFY `lms_report_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `lms_report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `lms_mcq_questions`
 --
 ALTER TABLE `lms_mcq_questions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `lms_teacher_payment_history`
 --
 ALTER TABLE `lms_teacher_payment_history`
-  MODIFY `lms_teacher_payment_history_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `lms_teacher_payment_history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `paper_image`
 --
 ALTER TABLE `paper_image`
-  MODIFY `pi_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paper_marks`
 --
 ALTER TABLE `paper_marks`
-  MODIFY `mid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_attandance`
 --
 ALTER TABLE `user_attandance`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `verbal_exam`
 --
 ALTER TABLE `verbal_exam`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
