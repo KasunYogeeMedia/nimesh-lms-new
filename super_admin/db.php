@@ -130,7 +130,7 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 			$full_pay = 1;
 			return $full_pay;
 		} else {
-			$full_pay = 0;
+			$full_pay = 2;
 			return $full_pay;
 		}
 	}else{

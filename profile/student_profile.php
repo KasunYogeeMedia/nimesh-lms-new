@@ -932,9 +932,11 @@ if (isset($_POST['submit_bt'])) {
 													}
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-													var_dump($full_pay);
+													
 												?>
-														<?php if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
+														<?php 
+														if($full_pay == 0 ){
+														if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
 															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
 															$currentDate = date('Y-m-d');
 															// Query to fetch data based on the coupon code
@@ -1026,6 +1028,10 @@ if (isset($_POST['submit_bt'])) {
 																<!--kasun 2021.12.01 change color to black from white-->
 															</tr>
 														<?php } ?>
+													<?php }else{ ?>
+
+
+												<?	}?>	
 
 											<?php
 
