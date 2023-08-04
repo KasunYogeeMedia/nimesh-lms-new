@@ -264,21 +264,81 @@ if ($image_resalt['image'] == "") {
 																<p class="user-status-tag online">Teacher</p>
 																<br>
 																<?php
-																$st_date = date_format(date_create($tute_resalt['add_date']), "Y-m-01");
-																$end_date = date("Y-m-t", strtotime($st_date));
+																
+																$vmonth = date_format(date_create($tute_resalt['add_date']), "Y-m-01");
+																date_default_timezone_set("Asia/Colombo");
+																$lmsck_date = date('Y-m-d');
+																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$tute_resalt[subject]' and status='1'");
+																$row = mysqli_fetch_assoc($lmsck_payments);
+																
+																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$tute_resalt[subject]'");
+																$subject_data = mysqli_fetch_assoc($subject_validate);
+																
 
-																$lmsck_payment = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$tute_resalt[subject]' and status='1' and expiredate BETWEEN '$st_date' AND '$end_date'");
-																if (mysqli_num_rows($lmsck_payment) > 0) {
-																?>
+																$userID = $_SESSION['reid'];
+															
+																if (mysqli_num_rows($lmsck_payments) == 1) {
 
-																	<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
-																<?php
-																} else {
+																	if ($row['pay_type'] == 'full') {
+
+
+
 																?>
-																	<a href="student_profile.php" class="save_btn btn-block">No Class Payment Here</a>
-																<?php
-																}
-																?>
+																		
+
+																			<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+
+
+																		<div>
+																			<p id="showCounts"></p>
+																		</div>
+
+																		<?php
+																	} else {
+
+
+																		$start_date = $subject_data['start'];
+																		$end_date = $subject_data['end'];
+
+																		$start_timestamp = strtotime($start_date);
+																		$end_timestamp = strtotime($end_date);
+
+																		$mid_timestamp = ($start_timestamp + $end_timestamp) / 2;
+																		$mid_date = date("Y-m-d", $mid_timestamp);
+
+																		if ($lmsck_date <= $mid_date) { ?>
+																		
+																				<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+																		<?php } else { ?>
+																			<a href="student_profile.php" class="save_btn btn-block">Pay here to other half payment</a>
+																	<?php
+																		}
+																	}
+																	?>
+
+																	<?php
+
+																} else if (mysqli_num_rows($lmsck_payments) == 2) {
+                                                                    $sum = 0;
+                                                                
+                                                                    // Reset the pointer to the beginning of the result set
+                                                                    mysqli_data_seek($lmsck_payments, 0);
+                                                                
+                                                                    while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
+                                                                        $sum += $row2['amount'];
+                                                                       
+                                                                    }
+                                                                
+                                                                    if ($sum == $subject_data['price']) { ?>
+                                                                        <a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+                                                                    <?php } else { ?>
+                                                                        <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+                                                                    <?php }
+                                                                
+                                                                } else { ?>
+                                                                    <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+                                                                <?php } ?>
+															
 
 															</div>
 														</div>
@@ -290,15 +350,7 @@ if ($image_resalt['image'] == "") {
 										}
 									}
 									?>
-									<div class="col-md-12">
-										<div class="main-loader mt-50">
-											<div class="spinner">
-												<div class="bounce1"></div>
-												<div class="bounce2"></div>
-												<div class="bounce3"></div>
-											</div>
-										</div>
-									</div>
+								
 								</div>
 							</div>
 						</div>
