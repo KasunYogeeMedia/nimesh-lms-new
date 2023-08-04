@@ -935,7 +935,7 @@ if (isset($_POST['submit_bt'])) {
 													
 												?>
 														<?php 
-														if($full_pay == 0 ){
+														if($full_pay == 0 || $full_pay == 2){
 														if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
 															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
 															$currentDate = date('Y-m-d');
