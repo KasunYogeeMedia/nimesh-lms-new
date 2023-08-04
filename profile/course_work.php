@@ -274,7 +274,14 @@ if (isset($_POST['submit'])) {
                                                         <a class="btn btn-sm btn-primary" href="upload_course_work.php?exid=<?php echo $list_resalt['exid']; ?>">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                    <?php } } ?>
+                                                    <?php } ?>    
+                                                    <?php }else { ?>
+                                                        <a class="btn btn-sm btn-primary" href="upload_course_work.php?exid=<?php echo $list_resalt['exid']; ?>">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                
+                                                
+                                               <?php } ?>
 
 
                                                 </td>
