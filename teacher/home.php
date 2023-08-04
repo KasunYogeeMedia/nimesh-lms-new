@@ -1,9 +1,7 @@
 	<?php
 
 
-if (!isset($_SESSION)) {
-	session_start();
-}
+
 require_once 'includes.php';
 
 require_once("../super_admin/conn.php");
