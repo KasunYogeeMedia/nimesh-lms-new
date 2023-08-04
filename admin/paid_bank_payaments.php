@@ -216,7 +216,7 @@ if (isset($_GET['id'])) {
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
                                                             </td>
-                                                            <td><span style="font-size:14px;color:#000000;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo $payment_resalt['pay_type']; ?></span></td>
+                                                            <td><span style="font-size:14px;color:#ffffff;"> <?php echo $payment_resalt['pay_type']; ?></span></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
                                                         </tr>

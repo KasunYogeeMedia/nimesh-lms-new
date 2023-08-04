@@ -169,8 +169,9 @@ if (isset($_GET['id'])) {
                                                         <th>Student Name</th>
                                                         <th>Course/Batch</th>
                                                         <th>Class Fee</th>
-                                                        <th>Valid Date - Paid Month</th>
+                                                        <th>Pay Type</th>
                                                         <th>Pay Date</th>
+                                                        <th>Coupen</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -220,8 +221,9 @@ if (isset($_GET['id'])) {
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
                                                             </td>
-                                                            <td><span style="font-size:14px;color:#ffffff;">Valid Date : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['expiredate']), "M d, Y"); ?> - Paid Month : <i class="fa fa-check-circle"></i> <?php echo date_format(date_create($payment_resalt['pay_month']), "F"); ?></span></td>
+                                                            <td><span style="font-size:14px;color:#ffffff;"> <?php echo $payment_resalt['pay_type']; ?></span></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
+                                                            <td><?php echo $payment_resalt['coupen']?></td>
                                                         </tr>
                                                     <?php
                                                     }
