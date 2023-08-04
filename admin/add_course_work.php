@@ -81,7 +81,7 @@ if (isset($_POST['add_exams'])) {
 
             $successMSG = "Online Exams Successfully Added.";
 
-            header("refresh:2;online_exams.php"); // redirects image view page after 5 seconds.
+            header("refresh:2;course_work.php.php"); // redirects image view page after 5 seconds.
 
         } else {
 
