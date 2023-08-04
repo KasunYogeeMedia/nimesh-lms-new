@@ -1,10 +1,7 @@
 <?php
 
 
-if (!isset($_SESSION)) {
-    
-        session_start(); 
-}
+
 
 
 
@@ -18,7 +15,10 @@ if (!isset($_SESSION['tid']) || (trim($_SESSION['tid']) == '')) {
     exit();
 }
 
-
+if (!isset($_SESSION)) {
+    
+        session_start(); 
+}
 
 $session_id = $_SESSION['tid']; 
 
