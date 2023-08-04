@@ -88,6 +88,7 @@ if ($image_resalt['image'] == "") {
 											<th scope="col">Slip</th>
 											<th scope="col">Amount</th>
 											<th scope="col">Pay Date</th>
+											<th scope="col">Coupen</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -137,6 +138,9 @@ if ($image_resalt['image'] == "") {
 
 												<td>
 													<?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?>
+												</td>
+												<td>
+													<?php echo $payment_resalt['coupen']; ?>
 												</td>
 											</tr>
 										<?php
