@@ -64,7 +64,7 @@ if (isset($_POST['upload_btn'])) {
     if (mysqli_query($conn, "INSERT INTO
 	course_work_submissions (id, user_id, exam_id, filename, time, marks, remark, status)
 	VALUES (NULL, '$_SESSION[reid]', '$exid', '$up_image', '$current_time', '0','', '0')")) {
-        header("location:upload_course_work.php");
+        header("location:course_work.php");
     }
 }
 
