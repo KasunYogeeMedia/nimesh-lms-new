@@ -267,13 +267,14 @@ if (isset($_POST['submit'])) {
 
                                                 <td style="font-weight: normal;"><?php echo $status; ?></td>
                                                 <td style="white-space: normal;">
-                                                    <?php if ($check_resalt['status'] == 1) { ?>
+                                                 <?php if (mysqli_num_rows($check_qury) > 0) {
+                                                       if ($check_resalt['status'] == 1) { ?>
                                                         can't edit
                                                     <?php } else { ?>
                                                         <a class="btn btn-sm btn-primary" href="upload_course_work.php?exid=<?php echo $list_resalt['exid']; ?>">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                    <?php } ?>
+                                                    <?php } } ?>
 
 
                                                 </td>
