@@ -931,8 +931,6 @@ if (isset($_POST['submit_bt'])) {
 														$paid_resalt_half = mysqli_fetch_array($check_paid_half);
 													}
 
-
-
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 													
 												?>
