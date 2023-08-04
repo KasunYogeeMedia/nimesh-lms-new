@@ -1,6 +1,6 @@
 <?php
 
-include 'session.php';
+//include 'session.php';
 
 //$username = $_SESSION['username'];
 
