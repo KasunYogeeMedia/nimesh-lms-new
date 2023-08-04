@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2023 at 04:04 AM
+-- Generation Time: Aug 04, 2023 at 06:13 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.0
 
@@ -479,7 +479,8 @@ CREATE TABLE `lmspayment` (
   `session_id` varchar(20) NOT NULL DEFAULT '0',
   `status` int NOT NULL,
   `order_status` int NOT NULL DEFAULT '0',
-  `pay_type` varchar(255) NOT NULL
+  `pay_type` varchar(255) NOT NULL,
+  `coupen` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -526,7 +527,7 @@ INSERT INTO `lmsregister` (`reid`, `stnumber`, `email`, `fullname`, `dob`, `gend
 (1751, 'NM-86237', 'samfernando@gmail.com', 'sam fernando', '2000-11-11', NULL, NULL, 'Badulla', NULL, NULL, NULL, NULL, '771234567', NULL, 51, '25d55ad283aa400af464c76d713c07ad', '', '2023-07-13 08:26:20', '1', '', 0, 0, 0, '', NULL),
 (1753, 'NM-46051', 'samfernando@gmail.com', 'dam fernando', '2023-07-27', NULL, NULL, 'Ampara', NULL, NULL, NULL, NULL, '771234568', NULL, 50, '25d55ad283aa400af464c76d713c07ad', '', '2023-07-13 13:18:05', '1', '', 0, 0, 0, '', NULL),
 (1754, 'NM-71237', 'samfernando@gmail.com', 'sammaniiii', '2023-07-27', NULL, NULL, 'Ampara', NULL, NULL, NULL, NULL, '771234560', NULL, 51, '25d55ad283aa400af464c76d713c07ad', '', '2023-07-13 13:19:14', '1', '', 0, 0, 0, '', NULL),
-(1755, 'NM-56253', 'lucianmacwolf@gmail.com', 'ashan', '2023-07-17', 'male', NULL, 'Badulla', NULL, '787200877', NULL, NULL, '787200877', NULL, 51, '25f9e794323b453885f5181f1b624d0b', '', '2023-07-16 06:11:17', '1', '', 0, 0, 0, '', 'H2L8ICAX');
+(1755, 'NM-56253', 'lucianmacwolf@gmail.com', 'ashan', '2023-07-17', 'male', NULL, 'Badulla', NULL, '787200877', NULL, NULL, '787200877', NULL, 51, '25f9e794323b453885f5181f1b624d0b', '', '2023-08-04 06:09:45', '1', '', 0, 0, 0, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -1334,7 +1335,7 @@ ALTER TABLE `lmsonlineexams`
 -- AUTO_INCREMENT for table `lmspayment`
 --
 ALTER TABLE `lmspayment`
-  MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `lmsregister`
