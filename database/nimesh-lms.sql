@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2023 at 03:57 AM
+-- Generation Time: Aug 04, 2023 at 04:04 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.0
 
@@ -263,6 +263,13 @@ CREATE TABLE `lmscoupon` (
   `percentage` int NOT NULL,
   `valid_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lmscoupon`
+--
+
+INSERT INTO `lmscoupon` (`id`, `coupon_code`, `batch`, `percentage`, `valid_date`) VALUES
+(2, 'H2L8ICAX', 51, 50, '2023-08-15');
 
 -- --------------------------------------------------------
 
@@ -1003,6 +1010,12 @@ ALTER TABLE `lmsclass_schlmsle`
 -- Indexes for table `lmscomments`
 --
 ALTER TABLE `lmscomments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lmscoupon`
+--
+ALTER TABLE `lmscoupon`
   ADD PRIMARY KEY (`id`);
 
 --
