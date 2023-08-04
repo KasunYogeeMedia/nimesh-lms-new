@@ -202,6 +202,7 @@ if (isset($_POST['submit_bt'])) {
 
 		//echo $select_payment;
 		$pay_type = $_POST['paymonth'];
+		$coupen = $_POST['coupen'];
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
 		if ($_POST['paymonth'] == 'half') {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
@@ -228,9 +229,9 @@ if (isset($_POST['submit_bt'])) {
 		if (!isset($error)) {
 
 
-			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`,`pay_type`)
+			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`,`pay_type`,`coupen`)
 
-				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "')";
+				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "', '" . $coupen . "')";
 
 			//echo $sql;exit;
 
@@ -287,6 +288,14 @@ if (isset($_POST['submit_bt'])) {
 	<?php
 	require_once 'headercss.php';
 	?>
+	<style>
+    #paytype {
+        display: none !important; /* Hide the input field visually */
+    }
+	#coupen{
+		display: none !important;
+	}
+</style>
 </head>
 
 <body>
@@ -925,7 +934,7 @@ if (isset($_POST['submit_bt'])) {
 
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-
+													
 												?>
 														<?php if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
 															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
@@ -954,8 +963,8 @@ if (isset($_POST['submit_bt'])) {
 																$final_discount  = $tec_sub_resalt['price'] * ($percentage/100) ;
 																
 																?>
-																<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payments</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -963,7 +972,7 @@ if (isset($_POST['submit_bt'])) {
 																<!--kasun 2021.12.01 change color to black from white-->
 															</tr>
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -972,8 +981,8 @@ if (isset($_POST['submit_bt'])) {
 															</tr>
 															<?php }
 															} else { ?>
-																<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+															<tr>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -981,7 +990,7 @@ if (isset($_POST['submit_bt'])) {
 																<!--kasun 2021.12.01 change color to black from white-->
 															</tr>
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -993,15 +1002,16 @@ if (isset($_POST['submit_bt'])) {
 								
 														<?php } else { ?>
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
 																<!--kasun 2021.12.01 change color to black from white-->
 															</tr>
+															
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -1033,7 +1043,7 @@ if (isset($_POST['submit_bt'])) {
 								<?php
 								}
 								?>
-								<h4>Select Month</h4>
+							
 
 								<br>
 								<label for="fileName1"><img src="images/card payment.png" id="yourImgTag1" style="width:20%;cursor: pointer;" /></label>
@@ -1056,7 +1066,7 @@ if (isset($_POST['submit_bt'])) {
 								<?php
 								}
 								?>
-								<h4>Select Month</h4>
+								
 
 								<br>
 
@@ -1068,7 +1078,8 @@ if (isset($_POST['submit_bt'])) {
 								<ul>
 									<li>
 										<input type="text" name="amount" id="payment_ammount" hidden>
-										<input type="text" name="paymonth" value="half" hidden>
+										<input type="text" name="paymonth" id="paytype" >
+										<input type="text" name="coupen" id="coupen" >
 										<button type="submit" name="submit_bt" id="bank-pay-button" class="btn btn-primary btn-block" disabled="true" style="font-weight:bold;font-size:14px;">බැංකු රිසිට්පතෙන් ගෙවන්න | Rs. <span class="payment_ammount">0.00</span></button>
 									</li>
 								</ul>
@@ -1181,6 +1192,40 @@ if (isset($_POST['submit_bt'])) {
 			}
 		});
 	</script>
+	<script>
+function updatePaymonthValue(checkbox) {
+    // Get the data-paytype from the checkbox's data attribute
+    const paytype = $(checkbox).data('paytype');
+
+    // Set the value of paymonth based on the selected paytype
+    if (paytype === 'full') {
+        $('#paytype').val('full');
+    } else if (paytype === 'half') {
+        $('#paytype').val('half');
+    } else {
+        // Add other payment types if needed
+        $('#paytype').val('');
+    }
+     console.log($('#paytype').val());
+}
+</script>
+<script>
+function updateCoupenValue(checkbox) {
+    // Get the data-paytype from the checkbox's data attribute
+    const coupen = $(checkbox).data('coupen');
+
+    // Set the value of paymonth based on the selected paytype
+    if (coupen === 'used') {
+        $('#coupen').val('used');
+    } else {
+        // Add other payment types if needed
+        $('#coupen').val('');
+    }
+    console.log($('#coupen').val());
+}
+</script>
+
+
 
 </body>
 
