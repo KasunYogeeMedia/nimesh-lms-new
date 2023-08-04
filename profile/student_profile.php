@@ -1001,7 +1001,7 @@ if (isset($_POST['submit_bt'])) {
 															?>
 													<?php } elseif(mysqli_num_rows($lmsck_payments) == 1 && $full_pay == 2) { ?>
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
@@ -1020,7 +1020,7 @@ if (isset($_POST['submit_bt'])) {
 															</tr>
 															
 															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
+																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
