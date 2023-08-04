@@ -932,7 +932,7 @@ if (isset($_POST['submit_bt'])) {
 													}
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-													
+													var_dump($full_pay);
 												?>
 														<?php if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
 															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
