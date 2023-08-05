@@ -7,7 +7,7 @@ if (isset($_GET['leid'])) {
 	$stmt_select = $DB_con->prepare('SELECT cover FROM lmslesson WHERE lid =:leid');
 	$stmt_select->execute(array(':leid' => $_GET['leid']));
 	$imgRow = $stmt_select->fetch(PDO::FETCH_ASSOC);
-	unlink("../super_admin/images/lesson/cover/" . $imgRow['cover']);
+	unlink("../admin/images/lesson/cover/" . $imgRow['cover']);
 
 	$stmt_delete = $DB_con->prepare('DELETE FROM lmslesson WHERE lid =:leid');
 	$stmt_delete->bindParam(':leid', $_GET['leid']);

@@ -25,7 +25,7 @@ if (isset($_SESSION['tid'])) {
         $image_path = "../profile/images/hd_dp.jpg";
     } else {
 
-        $image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
+        $image_path = "../admin/images/teacher/" . $user_resalt['image'];
     }
 } else {
 
@@ -149,7 +149,7 @@ if (isset($_GET['remove'])) {
                                                             <td><?php if ($list_resalt['image'] == "") {
                                                                     $pro_img = "../profile/images/hd_dp.jpg";
                                                                 } else {
-                                                                    $pro_img = "../super_admin/images/class/" . $list_resalt['image'];
+                                                                    $pro_img = "../admin/images/class/" . $list_resalt['image'];
                                                                 } ?><img src="<?php echo $pro_img; ?>" class="pro_pick"></td>
 
 
@@ -181,7 +181,7 @@ if (isset($_GET['remove'])) {
             <!-- Modal content -->
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="myForm" enctype="multipart/form-data">
+                    <form id="myForm" class="p-3" enctype="multipart/form-data">
 
 
                         <!-- Marks Entry -->

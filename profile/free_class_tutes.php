@@ -26,7 +26,7 @@ if ($image_resalt['image'] == "") {
 	<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Free Class Tutes | Online Learning Platforms | Student Panel</title>
+	<title>Workshop Tutes | Online Learning Platforms | Student Panel</title>
 	<?php
 	require_once 'headercss.php';
 	?>
@@ -50,7 +50,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title mb-4">Download Free Class Tutes</h4>
+							<h4 class="item_title mb-4">Download Workshop Tutes</h4>
 
 						</div>
 						<!-- <div class="col-lg-12">
@@ -176,13 +176,13 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
 																<p class="user-status-tag online">Teacher</p>
 																<br>
-																<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
+																<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
 															</div>
 														</div>
 
@@ -257,13 +257,13 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
 																<p class="user-status-tag online">Teacher</p>
 																<br>
-																<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
+																<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" style="background-color:#151fc1;" download>Download Tute</a>
 															</div>
 														</div>
 

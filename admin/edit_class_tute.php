@@ -407,7 +407,7 @@ if (isset($_POST['update'])) {
 													<option style="display:none;">Select Class Type</option>
 													<option>Online Class</option>
 													<option>Paper Class</option>
-													<option>Free Class</option>
+													<option>Workshop</option>
 												</select>
 											</div>
 										</div>

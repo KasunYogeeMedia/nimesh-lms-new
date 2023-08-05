@@ -143,7 +143,7 @@ if (isset($_GET['exid'])) {
                                                         <th>ID</th>
                                                         <th>Option</th>
                                                         <th>Action</th>
-                                                        <th>Al Year</th>
+                                                        <th>Batch</th>
                                                         <th>Class Course</th>
                                                         <th>Exam</th>
                                                         <th>Exam Post</th>
@@ -241,7 +241,7 @@ if (isset($_GET['exid'])) {
                                                                 <td><?php echo $row['examname']; ?></td>
                                                                 <td style="white-space: normal;"><?php echo date("Y-m-d h:i:s A", strtotime($row['add_date'])); ?></td>
                                                                 <td style="white-space: normal;">Start: <?php echo date("Y-m-d h:i:s A", strtotime($row['edate'])); ?><br>End: <?php echo date("Y-m-d h:i:s A", strtotime($row['exam_end_date'])); ?></td>
-                                                                <td><a class="btn btn-success btn-rounded" href="images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
+                                                                <td><a class="btn btn-success btn-rounded" href="../admin/images/exams/<?php echo $row['edocument']; ?>" target="_blank">View Paper</a></td>
 
                                                             </tr>
                                                     <?php }

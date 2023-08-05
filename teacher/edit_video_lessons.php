@@ -23,7 +23,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
 	}
 }
 
@@ -71,7 +71,7 @@ if (isset($_POST['update'])) {
 
 	if ($imgFile) {
 
-		$upload_dir = '../super_admin/images/lesson/cover/'; // upload directory	
+		$upload_dir = '../admin/images/lesson/cover/'; // upload directory	
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 

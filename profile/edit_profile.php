@@ -395,9 +395,6 @@ if (isset($_POST['update_picture'])) {
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="basic_profile bg-light p-4">
@@ -419,43 +416,39 @@ if (isset($_POST['update_picture'])) {
 															<img src="<?php echo $dis_image_path; ?>" id="dis_image" style="width: 150px; height: 150px; border: 1px solid #EEE; border-radius: 100%; cursor: pointer; object-fit: cover; background-position: center;">
 															<div class="icon-wrap">
 																<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
-															</div5
+																</div5 </label>
+																<input accept="image/jpeg" class="form-control" required type="file" name="user_image" id="up_image" style="display: none;" onChange="JavaScript:dis_name();">
 
-														</label>
-														<input accept="image/jpeg" class="form-control" required type="file" name="user_image" id="up_image" style="display: none;" onChange="JavaScript:dis_name();">
-
-														<script>
-															function dis_name(file_name) {
-																var input = document.getElementById("up_image");
-																var fReader = new FileReader();
-																fReader.readAsDataURL(input.files[0]);
-																fReader.onloadend = function(event) {
-																	var img = document.getElementById("dis_image");
-																	img.src = event.target.result;
-																}
-															}
-														</script>
+																<script>
+																	function dis_name(file_name) {
+																		var input = document.getElementById("up_image");
+																		var fReader = new FileReader();
+																		fReader.readAsDataURL(input.files[0]);
+																		fReader.onloadend = function(event) {
+																			var img = document.getElementById("dis_image");
+																			img.src = event.target.result;
+																		}
+																	}
+																</script>
+															</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-lg-12 subite-prof">
-										<div class="row">
-											<div class="col-md-6">
-												<input type="submit" name="update_picture" class="btn btn-primary btn-block" value="Update Profile Picture">
-											</div>
-											<!-- <div class="col-md-6 text-end">
+										<div class="col-lg-12 subite-prof">
+											<div class="row">
+												<div class="col-md-6">
+													<input type="submit" name="update_picture" class="btn btn-primary btn-block" value="Update Profile Picture">
+												</div>
+												<!-- <div class="col-md-6 text-end">
 												<a href="edit_profile.php" class="btn btn-danger btn-block">Close</a>
 											</div> -->
+											</div>
 										</div>
-									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="basic_profile bg-light p-4">
@@ -511,15 +504,16 @@ if (isset($_POST['update_picture'])) {
 					</div>
 				</div>
 			</div>
-			<div id="rgsb" class="rg-sb col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
-				<?php
-				require_once 'right-sidebar.php';
-				?>
-			</div>
 		</div>
-		<?php
-		require_once 'footer.php';
-		?>
+		<div id="rgsb" class="rg-sb col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
+			<?php
+			require_once 'right-sidebar.php';
+			?>
+		</div>
+	</div>
+	<?php
+	require_once 'footer.php';
+	?>
 	</div>
 	<!-- Body End -->
 	<?php

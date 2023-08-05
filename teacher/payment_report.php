@@ -23,7 +23,7 @@ if (isset($_SESSION['tid'])) {
         $image_path = "../profile/images/hd_dp.jpg";
     } else {
 
-        $image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
+        $image_path = "../admin/images/teacher/" . $user_resalt['image'];
     }
 }
 
@@ -116,7 +116,7 @@ if (isset($_SESSION['tid'])) {
                 </div>
 
                 <div class="row">
-                    
+
                     <div class="col-lg-12">
                         <div class="row tab-content">
                             <div class="table-responsive">

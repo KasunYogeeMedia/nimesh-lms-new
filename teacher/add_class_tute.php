@@ -26,7 +26,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 
@@ -68,7 +68,7 @@ if (isset($_POST['add_classtute'])) {
 	} else if (empty($status)) {
 		$errMSG = "Please Select Status.";
 	} {
-		$upload_dir = '../super_admin/images/classtute/'; // upload directory
+		$upload_dir = '../admin/images/classtute/'; // upload directory
 
 		$imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
 
@@ -318,8 +318,8 @@ if (isset($_POST['add_classtute'])) {
 												<select class="form-control" name="ctype" required>
 													<option style="display:none;">Select Class Type</option>
 													<option>Online Class</option>
-													<option>Paper Class</option>
-													<!-- <option>Free Class</option> -->
+													<!-- <option>Paper Class</option> -->
+													<!-- <option>Workshop</option> -->
 												</select>
 											</div>
 										</div>

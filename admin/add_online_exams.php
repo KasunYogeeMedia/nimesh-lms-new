@@ -348,9 +348,9 @@ WHERE ex.exid='$exid'");
 										</div>
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Al Year</label>
+												<label class="form-label">Batch</label>
 												<select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
-													<option value="" hidden="lms">Select Al Year</option>
+													<option value="" hidden="lms">Select Batch</option>
 													<?php
 													require_once '../super_admin/dbconfig4.php';
 													$stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');

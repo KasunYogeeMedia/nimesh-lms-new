@@ -1031,7 +1031,7 @@ if (isset($_POST['submit_bt'])) {
 													<?php }else{ ?>
 
 
-												<?	}?>	
+												<?php	}?>	
 
 											<?php
 
