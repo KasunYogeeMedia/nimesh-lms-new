@@ -83,7 +83,7 @@ if (isset($_POST['update_class_bt'])) {
     }
 
 
-    mysqli_query($conn, "UPDATE lmsverbal_exam SET level='$level',subject='$subject',tealmsr='$tealmsr',lesson='$lesson',classdate='$classdate',class_start_time='$class_start_time',class_end_time='$class_end_time',classlink='$classlink',cpassword='$cpassword',classtype='$classtype',image='$db_send_name',add_date='$payment_month',classstatus='$classstatus' WHERE classid='$edit'");
+    mysqli_query($conn, "UPDATE lmsverbal_exam SET level='$level',subject='$subject',tealmsr='$tealmsr',lesson='$lesson',classdate='$classdate',class_start_time='$class_start_time',class_end_time='$class_end_time',classlink='$classlink',cpassword='$cpassword',classtype='$classtype',image='$db_send_name',classstatus='$classstatus' WHERE classid='$edit'");
     echo "<script>window.location='add_online_verbal_exams.php?edit=$edit&update';</script>";
 }
 
