@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 if (!isset($_SESSION['reid'])) {
-	header('location:https://ongoing.website/websites/nimesh-lms-new/');
+	header('location:https://ipdedulk.com/');
 	exit();
 }
 
