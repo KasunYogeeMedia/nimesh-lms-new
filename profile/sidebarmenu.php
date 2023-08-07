@@ -86,10 +86,13 @@
 						</li>
 
 						<li class="menu--item">
-							<a href="../logout.php" class="menu--link"> <i class='uil uil-wallet menu--icon'></i> <span class="menu--label">Logout</span> </a>
+							<a href="#" class="menu--link" data-bs-toggle="modal" data-bs-target="#logoutModal">
+								<i class="uil uil-wallet menu--icon"></i>
+								<span class="menu--label">Logout</span>
+							</a>
 						</li>
 					</ul>
-
+					
 
 				</div>
 			</div>

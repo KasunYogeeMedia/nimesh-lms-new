@@ -84,9 +84,10 @@
 		</ul>
 	</li> -->
 	<li>
-		<a href="logout.php" aria-expanded="false">
-			<i class="la la-sign-out"></i>
-			<span class="nav-text">Log Out</span>
-		</a>
-	</li>
+      <a href="#" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        <i class="la la-sign-out"></i>
+        <span class="nav-text">Log Out</span>
+      </a>
+    </li>
 </ul>
+

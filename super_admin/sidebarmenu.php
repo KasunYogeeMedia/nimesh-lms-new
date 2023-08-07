@@ -222,7 +222,7 @@
 		</a>
 	</li>
 	<li>-->
-		<li><a href="expense.php" aria-expanded="false">
+	<li><a href="expense.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Expenses</span>
 		</a>
@@ -277,9 +277,10 @@
 		?>
 	</li>
 	<li>
-		<a href="logout.php" aria-expanded="false">
-			<i class="la la-sign-out"></i>
-			<span class="nav-text">Logout</span>
-		</a>
-	</li>
+      <a href="#" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        <i class="la la-sign-out"></i>
+        <span class="nav-text">Logout</span>
+      </a>
+    </li>
 </ul>
+

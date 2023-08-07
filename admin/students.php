@@ -33,52 +33,7 @@ require_once '../super_admin/dbconfig4.php';
     ***********************************-->
 	<div id="main-wrapper">
 
-		<?php
-		// require_once 'navheader.php'; 
-		?>
 
-		<!--**********************************
-            Header start
-        ***********************************-->
-		<!-- <div class="header">
-			<div class="header-content">
-				<nav class="navbar navbar-expand">
-					<div class="collapse navbar-collapse justify-content-between">
-						<div class="header-left">
-
-						</div>
-
-						<ul class="navbar-nav header-right">
-							<li class="nav-item dropdown header-profile">
-								<a class="nav-link" href="#" role="button" data-toggle="dropdown">
-									<img src="images/profile/pic1.jpg" width="20" alt="" />
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a href="admin.php" class="dropdown-item ai-icon">
-										<svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
-											<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-											<circle cx="12" cy="7" r="4"></circle>
-										</svg>
-										<span class="ml-2"><?php echo $user_name; ?></span>
-									</a>
-									<a href="logout.php" class="dropdown-item ai-icon">
-										<svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
-											<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-											<polyline points="16 17 21 12 16 7"></polyline>
-											<line x1="21" y1="12" x2="9" y2="12"></line>
-										</svg>
-										<span class="ml-2">Logout </span>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</div> -->
-		<!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
 
 		<!--**********************************
             Sidebar start
@@ -393,50 +348,50 @@ require_once '../super_admin/dbconfig4.php';
 		$(document).ready(function() {
 			// Button click event handler
 			$('.statusButton').click(function() {
-					// Get the ID from the data attribute
-					var id = $(this).data('id');
+				// Get the ID from the data attribute
+				var id = $(this).data('id');
 
-					// Make an AJAX request
-					$.ajax({
-							url: 'change_status.php', // URL to the server-side script that handles the database status change
-							method: 'POST', // or 'GET' depending on your server-side configuration
-							data: {
-								id: id
-							}, // Pass the ID as data
-							success: function(response) {
-								// Handle the response from the server
-								console.log(response);
+				// Make an AJAX request
+				$.ajax({
+					url: 'change_status.php', // URL to the server-side script that handles the database status change
+					method: 'POST', // or 'GET' depending on your server-side configuration
+					data: {
+						id: id
+					}, // Pass the ID as data
+					success: function(response) {
+						// Handle the response from the server
+						console.log(response);
 
-								// Parse the response string into a JSON object
-								var responseObject = JSON.parse(response);
+						// Parse the response string into a JSON object
+						var responseObject = JSON.parse(response);
 
-								// Update the page content based on the response
-								if (responseObject.status === 'success') {
-									// Display success message
-									$('.message').text('Status changed successfully.');
-									$('.message').show();
+						// Update the page content based on the response
+						if (responseObject.status === 'success') {
+							// Display success message
+							$('.message').text('Status changed successfully.');
+							$('.message').show();
 
-									// Update the specific element on the page with the new status value
-									$('#statusElement').text(responseObject.newStatus);
-									setTimeout(function() {
-										location.reload();
-									}, 1500);
-								
-							} else {
-								// Display error message
-								$('.message').text('An error occurred while changing the status.');
-								$('.message').show();
-							}
-						},
-						error: function(xhr, status, error) {
-							// Handle the error
-							console.log(error);
+							// Update the specific element on the page with the new status value
+							$('#statusElement').text(responseObject.newStatus);
+							setTimeout(function() {
+								location.reload();
+							}, 1500);
 
+						} else {
 							// Display error message
 							$('.message').text('An error occurred while changing the status.');
 							$('.message').show();
 						}
-					});
+					},
+					error: function(xhr, status, error) {
+						// Handle the error
+						console.log(error);
+
+						// Display error message
+						$('.message').text('An error occurred while changing the status.');
+						$('.message').show();
+					}
+				});
 			});
 		});
 	</script>
