@@ -64,7 +64,7 @@ if (isset($_POST['save'])) {
             $successMSG = "Successfully! Add Your Coupon....";
 
             header("refresh:2;coupon.php"); // redirects image view page after 5 seconds.
-
+ob_end_flush();
         } else {
 
             $errMSG = "error while inserting....";
