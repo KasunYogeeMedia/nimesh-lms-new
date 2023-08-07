@@ -1,5 +1,5 @@
 <?php
-
+ob_start(); 
 session_start();
 
 //$success_payment = $_SESSION['success'];
@@ -206,6 +206,7 @@ if (isset($_POST['submit_bt'])) {
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
 		if ($_POST['paymonth'] == 'half') {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
+			
 		} else {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
 		}
@@ -213,16 +214,28 @@ if (isset($_POST['submit_bt'])) {
 
 		$query = mysqli_query($conn, $sql);
 
-		if (mysqli_fetch_array($query)) {
+	if (mysqli_num_rows($query) > 0) {
 
 			$R = mysqli_fetch_array($query);
+            
+			if ($R['status'] == 1 && $R['pay_type'] == 'full' ) {
 
-			if ($R['status'] == 1) {
+				$error = "ඔබ දැනටමත් full පන්ති ගාස්තු ගෙවා ඇත!!";
+			}else if($R['status'] == 0 && $R['pay_type'] == 'full' && mysqli_num_rows($query) == 1 ){
+			    
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";	
+			}else if($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
+			    
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
+			}else if($R['status'] == 1 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
+			    
+			}else if($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
+			  
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
+				
+			}else {
 
-				$error = "ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත!!";
-			} else {
-
-				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් මෙම මාසය සදහා පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
 		}
 
@@ -235,17 +248,18 @@ if (isset($_POST['submit_bt'])) {
 
 			//echo $sql;exit;
 
-
+            echo "<script>window.location='student_profile.php?payed';</script>";
 
 			mysqli_query($conn, $sql);
 		} else {
-
+            
 			header("location:student_profile.php?error='" . $error);
 			die();
+			ob_end_flush();
 		}
 	}
 
-	echo "<script>window.location='student_profile.php?payed';</script>";
+	
 }
 
 
