@@ -142,41 +142,39 @@ require_once '../super_admin/dbconfig4.php';
                                                 <tbody>
                                                     <?php
 
-                                                    $stmt = $DB_con->prepare('SELECT * FROM lmscoupon ORDER BY id');
+                                                    $stmt = $DB_con->prepare('SELECT * FROM lmscoupon ORDER BY id DESC');
 
                                                     $stmt->execute();
 
+                                                   
                                                     if ($stmt->rowCount() > 0) {
-
                                                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
                                                             extract($row);
-
-                                                    ?>
+                                                            ?>
                                                             <tr>
                                                                 <td><?php echo $row['id']; ?></td>
                                                                 <td><a href="javascript:void(0);"><strong><?php echo $row['coupon_code']; ?></strong></a></td>
                                                                 <td><?php echo $row['percentage']; ?></td>
                                                                 <?php 
                                                                 $selectedBatchID = $row['batch']; // Assuming $row contains the data from your previous query
-
+                                                    
                                                                 // Query to fetch data based on selected batch ID
-                                                                $stmt = $DB_con->prepare('SELECT * FROM lmsclass WHERE cid = :selectedBatchID');
-                                                                $stmt->bindParam(':selectedBatchID', $selectedBatchID);
-                                                                $stmt->execute();
-
-                                                                if ($stmt->rowCount() > 0) {
-                                                                $batchData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                                                                // Access the data from $batchData array
-                                                                $cid = $batchData['cid'];
-                                                                $batch_name = $batchData['name'];
-                                                                // Retrieve other column values as needed
-
-                                                                // Output the retrieved data
-                                                                echo "<td>.$batch_name.</td>";
-                                                                
-                                                                // Output other column values as needed
+                                                                $innerStmt = $DB_con->prepare('SELECT * FROM lmsclass WHERE cid = :selectedBatchID');
+                                                                $innerStmt->bindParam(':selectedBatchID', $selectedBatchID);
+                                                                $innerStmt->execute();
+                                                    
+                                                                if ($innerStmt->rowCount() > 0) {
+                                                                    $batchData = $innerStmt->fetch(PDO::FETCH_ASSOC);
+                                                    
+                                                                    // Access the data from $batchData array
+                                                                    $cid = $batchData['cid'];
+                                                                    $batch_name = $batchData['name'];
+                                                                    // Retrieve other column values as needed
+                                                    
+                                                                    // Output the retrieved data
+                                                                    echo "<td>" . $batch_name . "</td>";
+                                                    
+                                                                    // Output other column values as needed
                                                                 }
                                                                 ?>
                                                                 <td><?php echo $row['valid_date']; ?></td>
@@ -185,10 +183,11 @@ require_once '../super_admin/dbconfig4.php';
                                                                     <a href="delete_coupon.php?clid=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                                 </td>
                                                             </tr>
-                                                    <?php
+                                                            <?php
                                                         }
                                                     }
                                                     ?>
+
                                                 </tbody>
                                             </table>
                                         </div>
