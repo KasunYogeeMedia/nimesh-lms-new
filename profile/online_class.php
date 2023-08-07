@@ -355,16 +355,18 @@ if ($image_resalt['image'] == "") {
 																date_default_timezone_set("Asia/Colombo");
 																$lmsck_date = date('Y-m-d');
 																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1'");
-																$row = mysqli_fetch_assoc($lmsck_payment);
+																$row = mysqli_fetch_assoc($lmsck_payments);
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
 
 																$userID = $_SESSION['reid'];
 																$subjectID =  $level_resalt['subject'];
 																$lID =  $level_resalt['classid'];
+																
 																if (mysqli_num_rows($lmsck_payments) == 1) {
 
 																	if ($row['pay_type'] == 'full') {
+																	    
 
 
 
