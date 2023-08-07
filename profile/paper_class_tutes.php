@@ -162,7 +162,7 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
@@ -176,7 +176,7 @@ if ($image_resalt['image'] == "") {
 																if (mysqli_num_rows($lmsck_payment) > 0) {
 																?>
 
-																	<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+																	<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
 																<?php
 																} else {
 																?>
@@ -257,26 +257,26 @@ if ($image_resalt['image'] == "") {
 																	<?php if ($tealmsr_resalt['image'] == "") {
 																		$pro_img = "images/hd_dp.jpg";
 																	} else {
-																		$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																		$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																	} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 																</div>
 																<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
 																<p class="user-status-tag online">Teacher</p>
 																<br>
 																<?php
-																
+
 																$vmonth = date_format(date_create($tute_resalt['add_date']), "Y-m-01");
 																date_default_timezone_set("Asia/Colombo");
 																$lmsck_date = date('Y-m-d');
 																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$tute_resalt[subject]' and status='1'");
 																$row = mysqli_fetch_assoc($lmsck_payments);
-																
+
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$tute_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
-																
+
 
 																$userID = $_SESSION['reid'];
-															
+
 																if (mysqli_num_rows($lmsck_payments) == 1) {
 
 																	if ($row['pay_type'] == 'full') {
@@ -284,9 +284,9 @@ if ($image_resalt['image'] == "") {
 
 
 																?>
-																		
 
-																			<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+
+																		<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
 
 
 																		<div>
@@ -307,8 +307,8 @@ if ($image_resalt['image'] == "") {
 																		$mid_date = date("Y-m-d", $mid_timestamp);
 
 																		if ($lmsck_date <= $mid_date) { ?>
-																		
-																				<a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+
+																			<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
 																		<?php } else { ?>
 																			<a href="student_profile.php" class="save_btn btn-block">Pay here to other half payment</a>
 																	<?php
@@ -319,26 +319,24 @@ if ($image_resalt['image'] == "") {
 																	<?php
 
 																} else if (mysqli_num_rows($lmsck_payments) == 2) {
-                                                                    $sum = 0;
-                                                                
-                                                                    // Reset the pointer to the beginning of the result set
-                                                                    mysqli_data_seek($lmsck_payments, 0);
-                                                                
-                                                                    while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
-                                                                        $sum += $row2['amount'];
-                                                                       
-                                                                    }
-                                                                
-                                                                    if ($sum == $subject_data['price']) { ?>
-                                                                        <a href="../super_admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
-                                                                    <?php } else { ?>
-                                                                        <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
-                                                                    <?php }
-                                                                
-                                                                } else { ?>
-                                                                    <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
-                                                                <?php } ?>
-															
+																	$sum = 0;
+
+																	// Reset the pointer to the beginning of the result set
+																	mysqli_data_seek($lmsck_payments, 0);
+
+																	while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
+																		$sum += $row2['amount'];
+																	}
+
+																	if ($sum == $subject_data['price']) { ?>
+																		<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+																	<?php } else { ?>
+																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+																	<?php }
+																} else { ?>
+																	<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+																<?php } ?>
+
 
 															</div>
 														</div>
@@ -350,7 +348,7 @@ if ($image_resalt['image'] == "") {
 										}
 									}
 									?>
-								
+
 								</div>
 							</div>
 						</div>

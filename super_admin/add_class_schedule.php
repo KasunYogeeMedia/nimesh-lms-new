@@ -470,7 +470,7 @@ if (isset($_POST['add_class_bt'])) {
 
 													<option>Paper Class</option>
 
-													<option>Free Class</option>
+													<option>Workshop</option>
 
 												</select>
 

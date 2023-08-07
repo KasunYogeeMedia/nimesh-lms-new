@@ -139,7 +139,7 @@ require_once("check_user.php");
 				</div>
 
 				<div class="row">
-					
+
 					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -241,7 +241,7 @@ require_once("check_user.php");
 																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
-																<td><a href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
+																<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>
 													<?php }
@@ -253,7 +253,7 @@ require_once("check_user.php");
 									</div>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

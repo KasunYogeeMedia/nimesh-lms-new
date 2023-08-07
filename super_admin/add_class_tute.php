@@ -326,10 +326,8 @@ if (isset($_POST['add_classtute'])) {
 											<div class="form-group">
 												<label class="form-label">Class Type</label>
 												<select class="form-control" name="ctype" required>
-													<option style="display:none;">Select Class Type</option>
 													<option>Online Class</option>
-													<option>Paper Class</option>
-													<option>Free Class</option>
+													
 												</select>
 											</div>
 										</div>

@@ -161,7 +161,7 @@ if (isset($_GET['status']) && isset($_GET['type'])) {
 														<th>Name</th>
 														<th>Phone</th>
 														<th>Email</th>
-														<th>Al Year</th>
+														<th>Batch</th>
 														<th>Classes</th>
 														<th>Qualification</th>
 													</tr>

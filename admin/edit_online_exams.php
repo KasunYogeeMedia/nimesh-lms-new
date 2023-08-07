@@ -306,7 +306,7 @@ if (isset($_POST['update'])) {
 										</div>
 										<div class="col-lg-3 col-md-3 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Al Year</label>
+												<label class="form-label">Batch</label>
 												<select class="form-control" id="input-6" name="class" required onChange="JavaScript:send_level(this.value);">
 													<option value="<?php
 

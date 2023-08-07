@@ -223,7 +223,7 @@ require_once '../super_admin/conn.php';
 													<div class="row">
 														<div class="col-auto">
 															<div class="sq-box bg-warning bg-opacity-10 rounded-3">
-																<img src="../super_admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
+																<img src="../admin/images/class/<?php echo $sub_resalt['image']; ?>" alt="" class="img-fluid m-auto">
 															</div>
 														</div>
 														<div class="col">

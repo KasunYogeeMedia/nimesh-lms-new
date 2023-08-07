@@ -197,7 +197,7 @@ $total = $row[0];
 																	<span class="mb-0">Password : </span><strong><?php echo $subject_resalt['cpassword']; ?></strong>
 																</li>
 																<li class="list-group-item px-0 d-flex justify-content-between">
-																	<span class="mb-0">AL Year : </span><strong><?php echo $level_resalt['name']; ?></strong>
+																	<span class="mb-0">Batch : </span><strong><?php echo $level_resalt['name']; ?></strong>
 																</li>
 
 																<li class="list-group-item px-0 d-flex justify-content-between">

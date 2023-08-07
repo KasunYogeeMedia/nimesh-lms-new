@@ -129,7 +129,7 @@ if ($image_resalt['image'] == "") {
 													<?php if ($lesson_resalt['cover'] == "") {
 														$pro_img = "images/hd_dp2.jpg";
 													} else {
-														$pro_img = "../super_admin/images/lesson/cover/" . $lesson_resalt['cover'];
+														$pro_img = "../admin/images/lesson/cover/" . $lesson_resalt['cover'];
 													} ?><img src="<?php echo $pro_img; ?>" style="object-fit: cover;">
 													<div class="course-overlay">
 														<div class="badge_seller"><i class="uil uil-star"></i> <?php echo $lesson_resalt['type']; ?></div>
@@ -175,7 +175,7 @@ if ($image_resalt['image'] == "") {
 																<?php if ($tealmsr_resalt['image'] == "") {
 																	$pro_img = "images/hd_dp.jpg";
 																} else {
-																	$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																	$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 															</div>
 															<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>
@@ -217,7 +217,7 @@ if ($image_resalt['image'] == "") {
 													<?php if ($lesson_resalt['cover'] == "") {
 														$pro_img = "images/hd_dp2.jpg";
 													} else {
-														$pro_img = "../super_admin/images/lesson/cover/" . $lesson_resalt['cover'];
+														$pro_img = "../admin/images/lesson/cover/" . $lesson_resalt['cover'];
 													} ?><img src="<?php echo $pro_img; ?>" style="object-fit: cover;">
 													<div class="course-overlay">
 														<div class="badge_seller"><i class="uil uil-star"></i> <?php echo $lesson_resalt['type']; ?></div>
@@ -263,7 +263,7 @@ if ($image_resalt['image'] == "") {
 																<?php if ($tealmsr_resalt['image'] == "") {
 																	$pro_img = "images/hd_dp.jpg";
 																} else {
-																	$pro_img = "../super_admin/images/teacher/" . $tealmsr_resalt['image'];
+																	$pro_img = "../admin/images/teacher/" . $tealmsr_resalt['image'];
 																} ?><img src="<?php echo $pro_img; ?>" class="pro_pick">
 															</div>
 															<p class="user-status-title"><span class="bold"><?php echo $tealmsr_resalt['fullname']; ?></span></p>

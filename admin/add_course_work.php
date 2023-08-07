@@ -166,7 +166,7 @@ if (isset($_POST['update'])) {
 
             $successMSG = "Online Exams Successfully Updated ...";
 
-            header("refresh:2;online_exams.php"); // redirects image view page after 5 seconds.
+            header("refresh:2;course_work.php"); // redirects image view page after 5 seconds.
         } else {
             $errMSG = "Sorry Data Could Not Updated !";
         }
@@ -348,9 +348,9 @@ WHERE ex.exid='$exid'");
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <div class="form-group">
-                                                <label class="form-label">Al Year</label>
+                                                <label class="form-label">Batch</label>
                                                 <select class="form-control" name="class" required onChange="JavaScript:send_level(this.value);">
-                                                    <option value="" hidden="lms">Select Al Year</option>
+                                                    <option value="" hidden="lms">Select Batch</option>
                                                     <?php
                                                     require_once '../super_admin/dbconfig4.php';
                                                     $stmt = $DB_con->prepare('SELECT * FROM lmsclass ORDER BY cid');
@@ -455,7 +455,7 @@ WHERE ex.exid='$exid'");
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <?php if (isset($_GET['exid'])) { ?><input type="submit" name="update" class="btn btn-primary" value="Update Course Work"><?php } ?>
                                             <?php if (!isset($_GET['exid'])) { ?><input type="submit" name="add_exams" class="btn btn-primary" value="Add Course Work"><?php } ?>
-                                            <a class="btn btn-danger" href="online_exams.php"><i class="fa fa-times"></i> Cancel</a>
+                                            <a class="btn btn-danger" href="course_work.php"><i class="fa fa-times"></i> Cancel</a>
                                         </div>
                                     </div>
                                 </form>

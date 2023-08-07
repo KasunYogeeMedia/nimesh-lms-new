@@ -25,7 +25,7 @@ if (isset($_SESSION['tid'])) {
 		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
 
-		$image_path = "../super_admin/images/teacher/" . $user_resalt['image'];
+		$image_path = "../admin/images/teacher/" . $user_resalt['image'];
 	}
 } else {
 
@@ -222,7 +222,7 @@ if (isset($_SESSION['tid'])) {
 																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
-																<td><a href="../super_admin/images/classtute/<?php echo $row['tdocument']; ?>" class="btn btn-primary" target="_blank">View Tute</a></td>
+																<td><a href="../admin/images/classtute/<?php echo $row['tdocument']; ?>" class="btn btn-primary" target="_blank">View Tute</a></td>
 																<td><span style="font-size:14px;"> <?php echo date_format(date_create($row['add_date']), "F"); ?></span></td>
 																<td><?php echo $row['add_date']; ?></td>
 															</tr>

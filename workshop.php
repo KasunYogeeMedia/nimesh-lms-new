@@ -79,8 +79,10 @@ require_once 'super_admin/dbconfig4.php';
                 <?php
                 // Assuming you have already established a database connection
 
+                $currentMonthEndDate = date("Y-m-t");
+
                 // The SQL query
-                $list_query = "SELECT * FROM lmsclass_schlmsle WHERE classtype = 'Free Class' AND add_date2 <= '2023-07-31' AND classstatus =0";
+                $list_query = "SELECT * FROM lmsclass_schlmsle WHERE classtype = 'Free Class' AND add_date2 <= '$currentMonthEndDate' AND classstatus =0";
 
                 // Execute the query
                 $list_result = mysqli_query($conn, $list_query);
