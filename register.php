@@ -212,6 +212,10 @@ if (isset($_POST['register'])) {
 				</select>
 			</div>
 			<div class="inp-1">
+				<i class="far fa fa-map-marker fa-lg"></i>
+				<input name="address" type="text" placeholder="Enter Address here">
+			</div>
+			<div class="inp-1">
 				<i class="far fa fa-id-card fa-lg"></i>
 				<input name="coupon" type="text" placeholder="You have Coupon Code">
 			</div>
