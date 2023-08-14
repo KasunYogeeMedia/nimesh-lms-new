@@ -19,13 +19,13 @@ if (isset($_POST['register'])) {
 	$dob = mysqli_real_escape_string($con, $_POST['dob']);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	$coupon = mysqli_real_escape_string($con, $_POST['coupon']);
-	$district = mysqli_real_escape_string($con, $_POST['district']);
+	// $district = mysqli_real_escape_string($con, $_POST['district']);
 	//$town = mysqli_real_escape_string($con, $_POST['town']);
-	$pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
+	// $pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
 	//$pemail = mysqli_real_escape_string($con, $_POST['pemail']);
 	//$pname = mysqli_real_escape_string($con, $_POST['pname']);
 	$fullname = mysqli_real_escape_string($con, $_POST['fullname']);
-	//$address = mysqli_real_escape_string($con, $_POST['address']);
+	$address = mysqli_real_escape_string($con, $_POST['address']);
 	$contactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
 	$to = "0" . (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
 	$level = mysqli_real_escape_string($conn, $_POST['level']);
@@ -40,7 +40,7 @@ if (isset($_POST['register'])) {
 			$success_msg = 1;
 		} else {
 			//pass
-			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,coupon,email,dob,gender,district,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$coupon','$email','$dob','$gender','$district',$pcontactnumber,'$fullname','$contactnumber',school,address, '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
+			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,coupon,email,dob,gender,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$coupon','$email','$dob','$gender',$pcontactnumber,'$fullname','$contactnumber',school,'$address', '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
 
 				if (!empty($_POST['subjects'])) {
 					foreach ($_POST['subjects'] as $subject_id) {
@@ -112,26 +112,7 @@ if (isset($_POST['register'])) {
 			<?php if ($success_msg == 3) { ?><div class="alert alert-danger" role="alert">Error! Your entered details something is wrong. Please try again.</div><?php } ?>
 			<?php if (isset($_GET['success'])) { ?><div class="alert alert-success" role="alert"> Thanks for registering! Sign in now and start learning right away! </div><?php } ?>
 			<h2 class="heading-text">Sign Up</h2>
-			<div class="inp-1">
-				<?php
-				$code_feed = "0123456789";
-				$code_length = 5;  // Set this to be your desired code length
-				$final_code = "";
-				$feed_length = strlen($code_feed);
 
-				for ($i = 0; $i < $code_length; $i++) {
-					$feed_selector = rand(0, $feed_length - 1);
-					$final_code .= substr($code_feed, $feed_selector, 1);
-				}
-
-				?>
-				<i class="far fa fa-id-card fa-lg"></i>
-				<input name="stnumber" required type="text" value="<?php echo $reg_prefix; ?>-<?php echo $final_code; ?>" readonly>
-			</div>
-			<div class="inp-1">
-				<i class="far fa fa-id-card fa-lg"></i>
-				<input name="coupon"  type="text"  placeholder="You have Coupon Code">
-			</div>
 			<div class="inp-1">
 				<i class="far fa fa-envelope fa-lg"></i>
 				<input name="email" type="text" placeholder="Enter Your Email" value="<?php if (isset($_POST['email'])) {
@@ -193,7 +174,7 @@ if (isset($_POST['register'])) {
 					<!-- Course Not Found	 -->
 				</div>
 			</div>
-			<div class="inp-1">
+			<div class="inp-1 d-none">
 				<i class="fas fa fa-globe fa-lg"></i>
 				<select name="district" required>
 					<option value="Ampara">Ampara</option>
@@ -231,6 +212,27 @@ if (isset($_POST['register'])) {
 				</select>
 			</div>
 			<div class="inp-1">
+				<i class="far fa fa-id-card fa-lg"></i>
+				<input name="coupon" type="text" placeholder="You have Coupon Code">
+			</div>
+			<div class="inp-1">
+				<?php
+				$code_feed = "0123456789";
+				$code_length = 5;  // Set this to be your desired code length
+				$final_code = "";
+				$feed_length = strlen($code_feed);
+
+				for ($i = 0; $i < $code_length; $i++) {
+					$feed_selector = rand(0, $feed_length - 1);
+					$final_code .= substr($code_feed, $feed_selector, 1);
+				}
+
+				?>
+				<i class="far fa fa-id-card fa-lg"></i>
+				<input name="stnumber" required type="text" value="<?php echo $reg_prefix; ?>-<?php echo $final_code; ?>" readonly>
+			</div>
+
+			<div class="inp-1 d-none">
 				<i class="fas fa fa-phone fa-lg"></i>
 				<input name="pcontactnumber" type="text" placeholder="Enter Parent Phone Number" maxlength="10" minlength="10">
 			</div>

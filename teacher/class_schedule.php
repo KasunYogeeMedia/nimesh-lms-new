@@ -46,7 +46,7 @@ if (isset($_GET['remove'])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Class Schedule | Teacher Panel | Online Learning Platforms </title>
+	<title>Programme Shedule | Teacher Panel | Online Learning Platforms </title>
 
 	<?php
 	require_once 'headercss.php';
@@ -92,14 +92,14 @@ if (isset($_GET['remove'])) {
 				<div class="row page-titles mx-0">
 					<div class="col-sm-6 p-md-0">
 						<div class="welcome-text">
-							<h4>All Class Schedule</h4>
+							<h4>All Programme Shedule</h4>
 						</div>
 					</div>
 					<div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="home.php">Home</a></li>
-							<li class="breadcrumb-item active"><a href="javascript:void(0);">Class Schedule</a></li>
-							<li class="breadcrumb-item active"><a href="javascript:void(0);">All Class Schedule</a></li>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">Programme Shedule</a></li>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">All Programme Shedule</a></li>
 						</ol>
 					</div>
 				</div>
@@ -111,8 +111,8 @@ if (isset($_GET['remove'])) {
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
 								<div class="card border-0 bg-light">
 									<div class="card-header">
-										<h4 class="card-title">All Class Schedule </h4>
-										<a href="add_class_schedule.php" class="btn btn-square btn-secondary">+ Add Class Schedule</a>
+										<h4 class="card-title">All Programme Shedule </h4>
+										<a href="add_class_schedule.php" class="btn btn-square btn-secondary">+ Add Programme Shedule</a>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">

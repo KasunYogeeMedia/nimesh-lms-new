@@ -289,7 +289,7 @@ if (isset($_POST['save'])) {
 										</div>
 										<div class="col-lg-2 col-md-2 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Class Schedule</label>
+												<label class="form-label">Programme Shedule</label>
 												<select class="form-control" name="class_schedule" required>
 													<option>True</option>
 													<option>False</option>

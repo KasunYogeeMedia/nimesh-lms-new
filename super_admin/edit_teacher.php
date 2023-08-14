@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 require_once 'includes.php';
 
-require_once 'conn.php';
+require_once '../super_admin/conn.php';
 
-require_once 'dbconfig4.php';
+require_once '../super_admin/dbconfig4.php';
 
 $error_png = 0;
 
@@ -19,9 +19,9 @@ if (isset($_GET['edit'])) {
 	$edit_resalt = mysqli_fetch_array($edit_qury);
 
 	if ($edit_resalt['image'] == "") {
-		$image_path = "../profile/../admin/images/hd_dp.jpg";
+		$image_path = "../profile/images/hd_dp.jpg";
 	} else {
-		$image_path = "../admin/images/teacher/" . $edit_resalt['image'];
+		$image_path = "images/teacher/" . $edit_resalt['image'];
 	}
 }
 
@@ -30,10 +30,10 @@ if (isset($_POST['update_bt'])) {
 	$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$contactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
-	$subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
-	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
+	// $subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
+	// $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 	$username = mysqli_real_escape_string($conn, $_POST['username']);
-	$Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
+	// $Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
 
 	if ($_POST['password'] == "") {
 		$password = $edit_resalt['password'];
@@ -50,13 +50,13 @@ if (isset($_POST['update_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "../admin/images/teacher/" . str_replace(" ", "_", $imagename);
+			$target = "images/teacher/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "../admin/images/teacher/" . $imagepath; //This is the new file you saving
-			$file = "../admin/images/teacher/" . $imagepath; //This is the original file
+			$save = "images/teacher/" . $imagepath; //This is the new file you saving
+			$file = "images/teacher/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
@@ -93,7 +93,7 @@ if (isset($_POST['update_bt'])) {
 		}
 	}
 
-	if (mysqli_query($conn, "UPDATE lmstealmsr SET fullname='$fullname',address='$address',contactnumber='$contactnumber',subdetails='$subdetails',qualification='$qualification',username='$username',password='$password',image='$db_send_name',Percentage='$Percentage' WHERE tid='$edit'")) {
+	if (mysqli_query($conn, "UPDATE lmstealmsr SET fullname='$fullname',address='$address',contactnumber='$contactnumber',username='$username',password='$password',image='$db_send_name' WHERE tid='$edit'")) {
 		echo "<script>window.location='edit_teacher.php?edit=$edit&succes&jpg=$error_png';</script>";
 	} else {
 		echo "<script>window.location='edit_teacher.php?edit=$edit&fail';</script>";
@@ -221,22 +221,22 @@ if (isset($_POST['update_bt'])) {
 												<input type="text" name="address" class="form-control" value="<?php echo $edit_resalt['address']; ?>" required>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-3 col-md-3 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Course Details</label>
-												<input type="text" name="subdetails" class="form-control" value="<?php echo $edit_resalt['subdetails']; ?>" required>
+												<input type="text" name="subdetails" class="form-control" value="<?php echo $edit_resalt['subdetails']; ?>">
 											</div>
 										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Qualification</label>
-												<input type="text" name="qualification" class="form-control" value="<?php echo $edit_resalt['qualification']; ?>" required>
+												<input type="text" name="qualification" class="form-control" value="<?php echo $edit_resalt['qualification']; ?>">
 											</div>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-12">
+										<div class="col-lg-2 col-md-2 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Percentage (%)</label>
-												<input type="text" name="Percentage" class="form-control" pattern="\d*" value="<?php echo $edit_resalt['Percentage']; ?>" required>
+												<input type="text" name="Percentage" class="form-control" pattern="\d*" value="<?php echo $edit_resalt['Percentage']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-3 col-sm-12">

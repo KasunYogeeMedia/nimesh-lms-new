@@ -133,7 +133,7 @@
 
 			echo '<a href="class_schedule.php" aria-expanded="false">
 							<i class="la la-slideshare"></i>
-							<span class="nav-text">Class Schedule</span>
+							<span class="nav-text">Programme Shedule</span>
 					      </a>';
 		} else {
 
@@ -202,7 +202,7 @@
 			<li><a href="submissions.php">Student Submitted</a></li>
 		</ul>
 	</li>
-	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+	<!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-leanpub"></i>
 			<span class="nav-text">Online Verbal Exams</span>
 		</a>
@@ -210,7 +210,7 @@
 			<li><a href="online_verbal.php">Verbal Exams</a></li>
 
 		</ul>
-	</li>
+	</li> -->
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-leanpub"></i>
 			<span class="nav-text">Course Works</span>

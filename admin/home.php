@@ -384,7 +384,7 @@ require_once '../super_admin/conn.php';
 													<i class="la la-slideshare"></i>
 												</span>
 												<div class="media-body text-white">
-													<p class="mb-1 text-light">Total Class Schedule</p>
+													<p class="mb-1 text-light">Total Programme Shedule</p>
 													<h3 class="text-white"><?php echo $total_class_schedule ?></h3>
 													<div class="progress mb-2 bg-white">
 														<div class="progress-bar progress-animated bg-light" style="width: 30%"></div>

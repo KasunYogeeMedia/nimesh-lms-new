@@ -163,7 +163,7 @@ if (isset($_POST['update'])) {
     ***********************************-->
 	<div id="main-wrapper">
 
-		
+
 
 		<!--**********************************
             Sidebar start
@@ -351,7 +351,7 @@ if (isset($_POST['update'])) {
 										</div>
 										<div class="col-lg-2 col-md-2 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Class Schedule</label>
+												<label class="form-label">Programme Shedule</label>
 												<select class="form-control" name="class_schedule" required>
 													<option><?php echo $class_schedule; ?></option>
 													<option>True</option>

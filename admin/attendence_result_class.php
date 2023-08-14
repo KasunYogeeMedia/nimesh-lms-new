@@ -26,7 +26,7 @@ $total = $row[0];
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Class Schedule | Online Learning Platforms | Dashboard</title>
+	<title>Programme Shedule | Online Learning Platforms | Dashboard</title>
 	<?php
 	require_once 'headercss.php';
 	?>

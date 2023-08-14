@@ -30,10 +30,10 @@ if (isset($_POST['update_bt'])) {
 	$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$contactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
-	$subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
-	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
+	// $subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
+	// $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 	$username = mysqli_real_escape_string($conn, $_POST['username']);
-	$Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
+	// $Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
 
 	if ($_POST['password'] == "") {
 		$password = $edit_resalt['password'];
@@ -93,7 +93,7 @@ if (isset($_POST['update_bt'])) {
 		}
 	}
 
-	if (mysqli_query($conn, "UPDATE lmstealmsr SET fullname='$fullname',address='$address',contactnumber='$contactnumber',subdetails='$subdetails',qualification='$qualification',username='$username',password='$password',image='$db_send_name',Percentage='$Percentage' WHERE tid='$edit'")) {
+	if (mysqli_query($conn, "UPDATE lmstealmsr SET fullname='$fullname',address='$address',contactnumber='$contactnumber',username='$username',password='$password',image='$db_send_name' WHERE tid='$edit'")) {
 		echo "<script>window.location='edit_teacher.php?edit=$edit&succes&jpg=$error_png';</script>";
 	} else {
 		echo "<script>window.location='edit_teacher.php?edit=$edit&fail';</script>";
@@ -221,22 +221,22 @@ if (isset($_POST['update_bt'])) {
 												<input type="text" name="address" class="form-control" value="<?php echo $edit_resalt['address']; ?>" required>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-3 col-md-3 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Course Details</label>
-												<input type="text" name="subdetails" class="form-control" value="<?php echo $edit_resalt['subdetails']; ?>" required>
+												<input type="text" name="subdetails" class="form-control" value="<?php echo $edit_resalt['subdetails']; ?>">
 											</div>
 										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Qualification</label>
-												<input type="text" name="qualification" class="form-control" value="<?php echo $edit_resalt['qualification']; ?>" required>
+												<input type="text" name="qualification" class="form-control" value="<?php echo $edit_resalt['qualification']; ?>">
 											</div>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-12">
+										<div class="col-lg-2 col-md-2 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Percentage (%)</label>
-												<input type="text" name="Percentage" class="form-control" pattern="\d*" value="<?php echo $edit_resalt['Percentage']; ?>" required>
+												<input type="text" name="Percentage" class="form-control" pattern="\d*" value="<?php echo $edit_resalt['Percentage']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-3 col-sm-12">

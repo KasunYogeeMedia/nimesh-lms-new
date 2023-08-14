@@ -133,7 +133,7 @@ require_once '../super_admin/dbconfig4.php';
                                                                                                                             <p>
                                                                                                                             <p>Payments - <span class="badge badge-pill badge-secondary"><?php echo $row['payments']; ?></span><strong>
                                                                                                                                     <p>
-                                                                                                                                    <p>Class Schedule - <span class="badge badge-pill badge-secondary"><?php echo $row['class_schedule']; ?></span><strong>
+                                                                                                                                    <p>Programme Shedule - <span class="badge badge-pill badge-secondary"><?php echo $row['class_schedule']; ?></span><strong>
                                                                                                                                             <p>
                                                                                                                                             <p>Mail - <span class="badge badge-pill badge-secondary"><?php echo $row['mail']; ?></span>
                                                                                                                                         </strong></p>

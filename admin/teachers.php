@@ -118,7 +118,6 @@ if (isset($_GET['status']) && isset($_GET['type'])) {
 														<th>Email</th>
 														<th>Batch</th>
 														<th>Classes</th>
-														<th>Qualification</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -201,7 +200,6 @@ if (isset($_GET['status']) && isset($_GET['type'])) {
 																echo join("<br>", $subject_array);
 																?>
 															</td>
-															<td><?php echo $tec_resalt['qualification']; ?></td>
 														</tr>
 													<?php
 													}

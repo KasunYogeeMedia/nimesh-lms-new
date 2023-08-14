@@ -15,18 +15,19 @@ $msg = '';
 $msg5 = '';
 
 $systemid_val = time();
+$alertMessage = '';
 
 if (isset($_POST['add_bt'])) {
 
 	$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$contactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
-	$subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
-	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
+	// $subdetails = mysqli_real_escape_string($conn, $_POST['subdetails']);
+	// $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 	$username = mysqli_real_escape_string($conn, $_POST['username']);
 	$password = md5(mysqli_real_escape_string($conn, $_POST['password']));
 	$systemid = mysqli_real_escape_string($conn, $_POST['systemid']);
-	$Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
+	// $Percentage = mysqli_real_escape_string($conn, $_POST['Percentage']);
 
 	date_default_timezone_set("Asia/Colombo");
 	$add_date = date("Y-m-d H:i:s");
@@ -36,13 +37,13 @@ if (isset($_POST['add_bt'])) {
 		if ($_FILES['image']['type'] == "image/jpeg") {
 			$imagename = time() . $_FILES['image']['name'];
 			$source = $_FILES['image']['tmp_name'];
-			$target = "../admin/images/teacher/" . str_replace(" ", "_", $imagename);
+			$target = "images/teacher/" . str_replace(" ", "_", $imagename);
 			$db_send_name = str_replace(" ", "_", $imagename);
 			move_uploaded_file($source, $target);
 
 			$imagepath = $imagename;
-			$save = "../admin/images/teacher/" . $imagepath; //This is the new file you saving
-			$file = "../admin/images/teacher/" . $imagepath; //This is the original file
+			$save = "images/teacher/" . $imagepath; //This is the new file you saving
+			$file = "images/teacher/" . $imagepath; //This is the original file
 
 			list($width, $height) = getimagesize($file);
 
@@ -63,7 +64,17 @@ if (isset($_POST['add_bt'])) {
 		$db_send_name = "";
 	}
 
-	mysqli_query($conn, "INSERT INTO lmstealmsr(systemid, fullname, address, contactnumber,subdetails, qualification, username, password, image, Percentage, add_date, status) VALUES ('$systemid','$fullname','$address','$contactnumber','$subdetails','$qualification','$username','$password','$db_send_name','$Percentage','$add_date','0')");
+	if (mysqli_query($conn, "INSERT INTO lmstealmsr(systemid, fullname, address, contactnumber, username, password, image, add_date, status) VALUES ('$systemid','$fullname','$address','$contactnumber','$username','$password','$db_send_name','$add_date','0')") && mysqli_affected_rows($conn) > 0) {
+		$alertMessage = '<div class="alert alert-success alert-dismissible alert-alt solid fade show">
+	                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+	                        <strong>Success!</strong> Teacher added successfully.
+	                      </div>';
+	} else {
+		$alertMessage = '<div class="alert alert-danger alert-dismissible alert-alt solid fade show">
+	                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+	                        <strong>Error!</strong> Failed to add teacher.
+	                      </div>';
+	}
 
 	if (!empty($_POST['lavel'])) {
 		foreach ($_POST['lavel'] as $lavel) {
@@ -99,6 +110,10 @@ if (isset($_POST['add_bt'])) {
         Main wrapper start
     ***********************************-->
 	<div id="main-wrapper">
+
+		<?php
+		// require_once 'navheader.php'; 
+		?>
 
 
 
@@ -139,6 +154,8 @@ if (isset($_POST['add_bt'])) {
 						</ol>
 					</div>
 				</div>
+
+				<?php echo $alertMessage; ?>
 
 				<div class="row">
 					<div class="col-lg-12">
@@ -182,7 +199,7 @@ if (isset($_POST['add_bt'])) {
 												<p style="color:red;">Only JPG</p>
 												<input type="hidden" name="systemid" id="" value="<?php echo $systemid_val; ?>">
 
-												<label for="fileName"><img src="../profile/../admin/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
+												<label for="fileName"><img src="../profile/images/hd_dp.jpg" id="yourImgTag" class="pro_pick"></label>
 												<input type="file" name="image" id="fileName" hidden="lms" onChange="dis_name();">
 
 												<script>
@@ -216,22 +233,22 @@ if (isset($_POST['add_bt'])) {
 												<input type="text" class="form-control" name="address" placeholder="Enter Address" required>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-3 col-md-3 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Course Details</label>
-												<input type="text" class="form-control" name="subdetails" placeholder="Enter Course Details" required>
+												<input type="text" class="form-control" name="subdetails" placeholder="Enter Course Details">
 											</div>
 										</div>
-										<div class="col-lg-6 col-md-5 col-sm-12">
+										<div class="col-lg-6 col-md-5 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Qualification</label>
-												<input type="text" class="form-control" name="qualification" placeholder="Enter Qualification" required>
+												<input type="text" class="form-control" name="qualification" placeholder="Enter Qualification">
 											</div>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-12">
+										<div class="col-lg-2 col-md-2 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Percentage (%)</label>
-												<input type="text" class="form-control" name="Percentage" placeholder="Enter Percentage" required pattern="\d*">
+												<input type="text" class="form-control" name="Percentage" placeholder="Enter Percentage" pattern="\d*">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-3 col-sm-12">

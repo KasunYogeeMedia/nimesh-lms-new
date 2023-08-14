@@ -173,7 +173,7 @@ if (isset($_POST['add_class_bt'])) {
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
-	<title>Add Class Schedule | Online Learning Platforms | Dashboard</title>
+	<title>Add Programme Shedule | Online Learning Platforms | Dashboard</title>
 
 	<?php
 
@@ -201,7 +201,7 @@ if (isset($_POST['add_class_bt'])) {
 
 
 
-		
+
 		<!--**********************************
 
             Sidebar start
@@ -252,7 +252,7 @@ if (isset($_POST['add_class_bt'])) {
 
 						<div class="welcome-text">
 
-							<h4>Add Class Schedule</h4>
+							<h4>Add Programme Shedule</h4>
 
 						</div>
 
@@ -265,10 +265,10 @@ if (isset($_POST['add_class_bt'])) {
 							<li class="breadcrumb-item"><a href="index.php">Home</a>
 							</li>
 
-							<li class="breadcrumb-item"><a href="javascript:void(0);">Class Schedule</a>
+							<li class="breadcrumb-item"><a href="javascript:void(0);">Programme Shedule</a>
 							</li>
 
-							<li class="breadcrumb-item active"><a href="javascript:void(0);">Add Class Schedule</a>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">Add Programme Shedule</a>
 							</li>
 
 						</ol>
@@ -287,7 +287,7 @@ if (isset($_POST['add_class_bt'])) {
 
 							<div class="card-header">
 
-								<h4 class="card-title">Add Class Schedule</h4>
+								<h4 class="card-title">Add Programme Shedule</h4>
 
 							</div>
 

@@ -166,7 +166,7 @@ if (isset($_POST['add_class_bt'])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Add Class Schedule | Teacher Panel | Online Learning Platforms </title>
+	<title>Add Programme Shedule | Teacher Panel | Online Learning Platforms </title>
 
 	<?php
 	require_once 'headercss.php';
@@ -212,14 +212,14 @@ if (isset($_POST['add_class_bt'])) {
 				<div class="row page-titles mx-0">
 					<div class="col-sm-6 p-md-0">
 						<div class="welcome-text">
-							<h4>Add Class Schedule</h4>
+							<h4>Add Programme Shedule</h4>
 						</div>
 					</div>
 					<div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript:void(0);">Class Schedule</a></li>
-							<li class="breadcrumb-item active"><a href="javascript:void(0);">Add Class Schedule</a></li>
+							<li class="breadcrumb-item"><a href="javascript:void(0);">Programme Shedule</a></li>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">Add Programme Shedule</a></li>
 						</ol>
 					</div>
 				</div>
@@ -228,7 +228,7 @@ if (isset($_POST['add_class_bt'])) {
 					<div class="col-lg-12">
 						<div class="card border-0 bg-light">
 							<div class="card-header">
-								<h4 class="card-title">Add Class Schedule</h4>
+								<h4 class="card-title">Add Programme Shedule</h4>
 							</div>
 							<div class="card-body">
 								<?php if (isset($_GET['added'])) { ?>
