@@ -394,8 +394,8 @@ if (isset($_POST['submit_bt'])) {
 							?>
 									<div class="left_sec py-4 px-5">
 										<h2 class="text-light fw-bold">Welcome Back, <?php echo $row['fullname']; ?></h2>
-										<p class="text-light mt-3 desc">You’ve learned 70% of your goal this week!
-											Keep it up and improve your progress.</p>
+										<!-- <p class="text-light mt-3 desc">You’ve learned 70% of your goal this week!
+											Keep it up and improve your progress.</p> -->
 									</div>
 							<?php
 
