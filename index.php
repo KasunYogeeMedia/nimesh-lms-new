@@ -111,7 +111,66 @@ require_once 'super_admin/dbconfig4.php';
         </div>
     </div>
     <!-- counter end -->
+ <!--course-area start-->
+ <div class="course-area pd-top-20 pd-top-100 pd-bottom-50">
+        <div class="container">
+            <div class="text-center">
+                <h3 class="sub-title mb-5">Work Shop</h3>
+            </div>
+            <div class="row justify-content-center">
+                <?php
+                // Assuming you have already established a database connection
 
+                $currentMonthEndDate = date("Y-m-t");
+                
+
+                // The SQL query
+                $list_query = "SELECT * FROM lmsclass_schlmsle WHERE classtype = 'Workshop' AND add_date2 <= '$currentMonthEndDate' AND classstatus =1";
+                
+                // Execute the query
+                $list_result = mysqli_query($conn, $list_query);
+
+                if (mysqli_num_rows($list_result) > 0) {
+                    while ($list_row = mysqli_fetch_assoc($list_result)) {
+                ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-course-inner ws-box">
+                                <div class="thumb text-center p-4">
+                                    <img src="admin/images/class/<?php echo $list_row['image']; ?>" alt="img">
+                                </div>
+                                <div class="details pt-0">
+                                    <div class="details-inner text-center p-2 mb-4 text-light bg-pur">
+                                        <h5 class="text-light"><a href="<?php echo $list_row['classlink']; ?>"><?php echo $list_row['lesson']; ?></a></h5>
+                                    </div>
+                                    <div class="bottom-area">
+                                        <div class="row d-flex align-items-center justify-content-center">
+                                            <div class="text-center">
+                                                <a href="register.php"><i class="fa fa-play-circle mr-2"></i>Register Class</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                } else {
+                    echo "Empty";
+                }
+
+                // Close the database connection
+
+                ?>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <!--course-area end-->
     <!-- about area start -->
     <div class="about-area pd-top-90 pd-bottom-90">
         <div class="container">
@@ -250,66 +309,7 @@ require_once 'super_admin/dbconfig4.php';
     </div>
     <!--course-area end-->
 
-    <!--course-area start-->
-    <div class="course-area pd-top-20 pd-bottom-120">
-        <div class="container">
-            <div class="text-center">
-                <h3 class="sub-title mb-5">Work Shop</h3>
-            </div>
-            <div class="row justify-content-center">
-                <?php
-                // Assuming you have already established a database connection
-
-                $currentMonthEndDate = date("Y-m-t");
-                
-
-                // The SQL query
-                $list_query = "SELECT * FROM lmsclass_schlmsle WHERE classtype = 'Workshop' AND add_date2 <= '$currentMonthEndDate' AND classstatus =1";
-                
-                // Execute the query
-                $list_result = mysqli_query($conn, $list_query);
-
-                if (mysqli_num_rows($list_result) > 0) {
-                    while ($list_row = mysqli_fetch_assoc($list_result)) {
-                ?>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-course-inner ws-box">
-                                <div class="thumb text-center p-4">
-                                    <img src="admin/images/class/<?php echo $list_row['image']; ?>" alt="img">
-                                </div>
-                                <div class="details pt-0">
-                                    <div class="details-inner text-center p-2 mb-4 text-light bg-pur">
-                                        <h5 class="text-light"><a href="<?php echo $list_row['classlink']; ?>"><?php echo $list_row['lesson']; ?></a></h5>
-                                    </div>
-                                    <div class="bottom-area">
-                                        <div class="row d-flex align-items-center justify-content-center">
-                                            <div class="text-center">
-                                                <a href="register.php"><i class="fa fa-play-circle mr-2"></i>Register Class</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                <?php
-                    }
-                } else {
-                    echo "Empty";
-                }
-
-                // Close the database connection
-
-                ?>
-
-
-
-
-
-            </div>
-
-        </div>
-    </div>
-    <!--course-area end-->
+   
 
     <!-- call to action area start -->
     <div class="call-to-action-area bg-cover pd-top-110 pd-bottom-120" style="background-image: url('assets/img/other/123.jpg');">
