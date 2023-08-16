@@ -154,7 +154,7 @@ require_once("conn.php");
 															<p class="fw-bold mb-1">
 																<?php echo $sub_resalt['lesson']; ?>
 															</p>
-															<a href="/super_admin/class_schedule.php" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
+															<a href="class_schedule.php" class="btn bg-success bg-opacity-10 text-success btn-sm">View More</a>
 														</div>
 													</div>
 												</div>
