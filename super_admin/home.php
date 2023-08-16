@@ -66,9 +66,8 @@ require_once("conn.php");
 						<div class="row">
 							<div class="col-sm-6 col-md-6 col-lg-6 col-xl-5 my-auto">
 								<div class="left_sec py-4 px-5">
-									<h2 class="text-light fw-bold">Welcome Back, Lak</h2>
-									<!-- <p class="text-light mt-3 desc">You’ve learned 70% of your goal this week!
-										Keep it up and improve your progress.</p> -->
+									<h2 class="text-light fw-bold">Welcome Back</h2>
+									<p class="text-light mt-3 desc">Your Super Admin dashboard is here</p>
 								</div>
 							</div>
 							<div class="col-md-1 col-lg-2 col-xl-3 d-none d-xl-inline"></div>
