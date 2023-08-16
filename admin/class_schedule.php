@@ -142,7 +142,7 @@ if (isset($_GET['remove'])) {
 															<td align="center">
 																<a href="<?php echo $list_resalt['classlink']; ?>" target="_blank" class="btn btn-sm btn-secondary mb-1"><i class="fa fa-lg fa-video-camera"></i></a>
 																<a href="add_class_schedule.php?edit=<?php echo $list_resalt['classid']; ?>" class="btn btn-sm btn-primary mb-1"><i class="fa fa-lg fa-edit"></i></a>
-																<a href="#" onClick="return confirm('Are you sure you want to delete this lesson?');" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteLessonModal<?php echo $list_resalt['classid']; ?>">
+																<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteLessonModal<?php echo $list_resalt['classid']; ?>">
 																	<i class="fa fa-lg fa-trash"></i>
 																</a>
 

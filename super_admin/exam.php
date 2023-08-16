@@ -163,7 +163,7 @@ if (isset($_GET['remove'])) {
                                                                     echo '<button class="btn btn-primary btn-sm">Free</button>';
                                                                 } else if ($exam_resalt['lms_exam_pay_type'] == "1") {
 
-                                                                    echo '<button class="btn btn-success btn-sm">Payed</button>';
+                                                                    echo '<button class="btn btn-success btn-sm">Paid</button>';
                                                                 }
 
                                                                 ?>

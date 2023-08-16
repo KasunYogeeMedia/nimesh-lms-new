@@ -140,9 +140,29 @@ if (isset($_GET['exid'])) {
 																	<a class="btn btn-sm btn-primary mb-1" href="add_online_exams.php?exid=<?php echo $row["exid"]; ?>">
 																		<i class="fa fa-edit"></i>
 																	</a>
-																	<a class="btn btn-sm btn-danger mb-1" href="online_exams.php?exid=<?php echo $row["exid"]; ?>" onClick="return confirm('Are you sure to remove the exam?');">
+																	<a class="btn btn-sm btn-danger mb-1" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $row["exid"]; ?>">
 																		<i class="la la-trash-o"></i>
 																	</a>
+
+																	<!-- Modal -->
+																	<div class="modal fade" id="confirmDeleteModal<?php echo $row["exid"]; ?>" tabindex="-1" aria-labelledby="confirmDeleteModalLabel<?php echo $row["exid"]; ?>" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h5 class="modal-title" id="confirmDeleteModalLabel<?php echo $row["exid"]; ?>">Confirm Deletion</h5>
+																					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+																				</div>
+																				<div class="modal-body">
+																					Are you sure you want to remove the exam?
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+																					<a href="online_exams.php?exid=<?php echo $row["exid"]; ?>" class="btn btn-danger">Delete</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</td>
 																<td><?php
 

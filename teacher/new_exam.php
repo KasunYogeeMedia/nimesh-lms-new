@@ -239,7 +239,7 @@ if (isset($_GET['lms_exam_id'])) {
 																if ($edit_resalt['lms_exam_pay_type'] == 1) {
 																	echo "selected";
 																}
-															} ?> value="1">Payed</option>
+															} ?> value="1">Paid</option>
 													<option <?php if (isset($_GET['lms_exam_id'])) {
 																if ($edit_resalt['lms_exam_pay_type'] == 0) {
 																	echo "selected";
