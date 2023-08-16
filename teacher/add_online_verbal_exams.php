@@ -466,7 +466,7 @@ if (isset($_POST['add_class_bt'])) {
 
                                             <div class="form-group">
 
-                                                <label class="form-label">Class Date</label>
+                                                <label class="form-label">Class Publish Date</label>
 
                                                 <input type="date" name="classdate" class="form-control" value="<?php if (isset($_GET['edit'])) {
                                                                                                                     echo $edit_resalt['classdate'];

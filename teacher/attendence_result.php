@@ -217,7 +217,7 @@ if (isset($_GET['remove'])) {
                                                                     <span class="mb-0">Class Time : </span><strong><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></strong>
                                                                 </li>
                                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                    <span class="mb-0">Class Date : </span><strong><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></strong>
+                                                                    <span class="mb-0">Class Publish Date : </span><strong><?php echo date_format(date_create($list_resalt['classdate']), "M d, Y"); ?></strong>
                                                                 </li>
                                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                                     <span class="mb-0">Month :</span><strong><span style="font-size:14px;"> <?php echo date_format(date_create($list_resalt['add_date2']), "F"); ?></span></strong>
