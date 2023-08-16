@@ -40,7 +40,7 @@ if (isset($_POST['register'])) {
 			$success_msg = 1;
 		} else {
 			//pass
-			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,coupon,email,dob,gender,pcontactnumber,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$coupon','$email','$dob','$gender',$pcontactnumber,'$fullname','$contactnumber',school,'$address', '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
+			if (mysqli_query($con, "INSERT INTO lmsregister (stnumber,coupon,email,dob,gender,fullname,contactnumber,school,address, level,password, image, add_date, status, ip_address, relogin, reloging_ip, payment, verifycode) VALUES ('$stnumber','$coupon','$email','$dob','$gender','$fullname','$contactnumber',school,'$address', '$level','$password','', CURRENT_TIMESTAMP, '1', '', '0', '0', '0', '')")) {
 
 				if (!empty($_POST['subjects'])) {
 					foreach ($_POST['subjects'] as $subject_id) {
@@ -204,9 +204,10 @@ if (isset($_POST['register'])) {
 					<option value="Vavuniya">Vavuniya</option>
 				</select>
 			</div>
-			<div class="inp-1">
+			<div class="inp-1 d-none">
 				<i class="fas fa fa-user fa-lg"></i>
 				<select name="gender" required>
+					<option selected value="none">Not Selected</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
