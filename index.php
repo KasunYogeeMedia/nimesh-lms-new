@@ -46,7 +46,7 @@ require_once 'super_admin/dbconfig4.php';
                 <div class="col-xl-12 col-lg-7">
                     <div class="banner-inner style-white text-center text-lg-left">
                         <!--                         <h6 class="al-animate-1 sub-title">Save over <span>30%</span> in paid courses</h6> -->
-                        <h1 class="al-animate-2 title">INSTITUTE FOR PROFESSINAL DEVELOPMENT</h1>
+                        <h1 class="al-animate-2 title">INSTITUTE FOR PROFESSIONAL DEVELOPMENT</h1>
                         <!--                         <p class="al-animate-3">Macstudy is by far the most anticipated and most requested online course among our learners.</p>
                         <a class="btn btn-base al-animate-4" href="course.html">All Courses</a> -->
                     </div>
