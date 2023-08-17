@@ -143,6 +143,7 @@ require_once 'super_admin/dbconfig4.php';
                                         <h5 class="text-light"><a href="<?php echo $list_row['classlink']; ?>"><?php echo $list_row['lesson']; ?></a></h5>
                                     </div>
                                     <h6 class="text-center bg-dark p-2 text-light mb-3" >Class date - <?php echo $list_row['classdate']; ?></h6>
+                                    <h6 class="text-center bg-primary p-2 text-light mb-3" ><?php echo $list_row['class_start_time']; ?> - <?php echo $list_row['class_end_time']; ?></h6>
                                     <div class="bottom-area">
                                         <div class="row d-flex align-items-center justify-content-center">
                                             <div class="text-center">
