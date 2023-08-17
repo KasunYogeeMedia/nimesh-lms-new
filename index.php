@@ -139,9 +139,10 @@ require_once 'super_admin/dbconfig4.php';
                                     <img src="admin/images/class/<?php echo $list_row['image']; ?>" alt="img">
                                 </div>
                                 <div class="details pt-0">
-                                    <div class="details-inner text-center p-2 mb-4 text-light bg-pur">
+                                    <div class="details-inner text-center p-2 mb-3 text-light bg-pur">
                                         <h5 class="text-light"><a href="<?php echo $list_row['classlink']; ?>"><?php echo $list_row['lesson']; ?></a></h5>
                                     </div>
+                                    <h6 class="text-center bg-dark p-2 text-light mb-3" >Class date - <?php echo $list_row['classdate']; ?></h6>
                                     <div class="bottom-area">
                                         <div class="row d-flex align-items-center justify-content-center">
                                             <div class="text-center">

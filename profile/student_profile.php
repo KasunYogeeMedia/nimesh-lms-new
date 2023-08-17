@@ -1,5 +1,5 @@
 <?php
-ob_start(); 
+ob_start();
 session_start();
 
 //$success_payment = $_SESSION['success'];
@@ -206,7 +206,6 @@ if (isset($_POST['submit_bt'])) {
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
 		if ($_POST['paymonth'] == 'half') {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
-			
 		} else {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
 		}
@@ -214,26 +213,24 @@ if (isset($_POST['submit_bt'])) {
 
 		$query = mysqli_query($conn, $sql);
 
-	if (mysqli_num_rows($query) > 0) {
+		if (mysqli_num_rows($query) > 0) {
 
 			$R = mysqli_fetch_array($query);
-            
-			if ($R['status'] == 1 && $R['pay_type'] == 'full' ) {
+
+			if ($R['status'] == 1 && $R['pay_type'] == 'full') {
 
 				$error = "ඔබ දැනටමත් full පන්ති ගාස්තු ගෙවා ඇත!!";
-			}else if($R['status'] == 0 && $R['pay_type'] == 'full' && mysqli_num_rows($query) == 1 ){
-			    
-				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";	
-			}else if($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
-			    
+			} else if ($R['status'] == 0 && $R['pay_type'] == 'full' && mysqli_num_rows($query) == 1) {
+
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
-			}else if($R['status'] == 1 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
-			    
-			}else if($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1 ){
-			  
+			} else if ($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
+
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
-				
-			}else {
+			} else if ($R['status'] == 1 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
+			} else if ($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
+
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
+			} else {
 
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
@@ -248,18 +245,16 @@ if (isset($_POST['submit_bt'])) {
 
 			//echo $sql;exit;
 
-            echo "<script>window.location='student_profile.php?payed';</script>";
+			echo "<script>window.location='student_profile.php?payed';</script>";
 
 			mysqli_query($conn, $sql);
 		} else {
-            
+
 			header("location:student_profile.php?error='" . $error);
 			die();
 			ob_end_flush();
 		}
 	}
-
-	
 }
 
 
@@ -303,13 +298,15 @@ if (isset($_POST['submit_bt'])) {
 	require_once 'headercss.php';
 	?>
 	<style>
-    #paytype {
-        display: none !important; /* Hide the input field visually */
-    }
-	#coupen{
-		display: none !important;
-	}
-</style>
+		#paytype {
+			display: none !important;
+			/* Hide the input field visually */
+		}
+
+		#coupen {
+			display: none !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -487,69 +484,16 @@ if (isset($_POST['submit_bt'])) {
 					</div>
 				</div>
 				<!-- profile section end -->
-				<!-- Password section -->
-				<!-- <div class="profile mb-3">
-					<div class="card border-0 bg-light py-3">
-						<div class="card-body">
-							<p class="h6 mb-3 fw-bold">Update Your Password</p>
-							<form method="post">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="px-3 py-2">
-											<label class="form-label">Old Password</label>
-											<input type="password" class="form-control" name="old_password" required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="px-3 py-2">
-											<label class="form-label">New Password</label>
-											<input type="password" class="form-control" name="password" required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="px-3 py-2">
-											<label class="form-label">Confirm Password</label>
-											<input type="password" class="form-control" name="re_password" required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="px-3 py-2">
-											<label class="form-label">Email</label>
-											<input type="Email" class="form-control" name="email" required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="px-3 py-2">
-											<input type="submit" name="change_password" class="btn btn-primary btn-block" value="Change Password">
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div> -->
-				<!-- Password section -->
-
 
 				<!-- Old sec -->
 				<div class="section-border">
 					<h2 class="section-border-heading">Classes</h2>
 					<div class="row">
+
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Free Workshop</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-leanpub fa-3x text-dark"></i>
-								</div>
-								<a href="free_class.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Paid Live Classes</h2>
+									<h2 class="text-dark">Live Classes</h2>
 								</div>
 								<div class="card_dash_right">
 									<i class="fa fa-book fa-3x text-dark"></i>
@@ -568,63 +512,13 @@ if (isset($_POST['submit_bt'])) {
 								<a href="online_verbal_exam.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Download Free Class Tutes</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="free_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div> -->
-						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Free Exams</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="exam_list.php?type=0" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div> -->
-					</div>
-				</div>
-				<!-- <div class="section-border">
-					<h2 class="section-border-heading">Paid Classes</h2>
-					<div class="row">
-						
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Download Paid Class Tutes</h2>
+									<h2 class="text-dark">Paper Class Tutes</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="online_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Paid Paper Classes</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="paper_class.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Download Paid Paper Class Tutes</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
 								<a href="paper_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
@@ -632,68 +526,42 @@ if (isset($_POST['submit_bt'])) {
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Paid Exams<h2>
+									<h2 class="text-dark">MCQ Exams</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-file-text fa-3x text-dark"></i>
 								</div>
 								<a href="exam_list.php?type=1" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-					</div>
-				</div> -->
-				<!-- <div class="section-border">
-					<h2 class="section-border-heading">Lesson Recordings/Videos</h2>
-					<div class="row">
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">This Month's Recordings</h2>
+									<h2 class="text-dark">Paper Exams</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-file-text fa-3x text-dark"></i>
 								</div>
-								<a href="paid_lesson.php" class="btn btn-success dash_card_a">View More</a>
+								<a href="paper_exam_list.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">All Previous Recordings</h2>
+									<h2 class="text-dark">Course Work</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
+									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
-								<a href="old_video_lessons.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Free Recorded Classes</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="free_lesson.php" class="btn btn-success dash_card_a">View More</a>
+								<a href="course_work.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
-				</div> -->
-				<div class="section-border">
-					<h2 class="section-border-heading">Profile & Payments</h2>
+				</div>
+				
+				<div id="payments" class="section-border">
+					<h2 class="section-border-heading">Payments</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Your Profile</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-user fa-3x text-dark"></i>
-								</div>
-								<a href="edit_profile.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
@@ -729,7 +597,7 @@ if (isset($_POST['submit_bt'])) {
 						</div>
 					</div>
 				</div>
-				<!-- <div class="section-border">
+				<div class="section-border">
 					<h2 class="section-border-heading">Feedback</h2>
 					<div class="row">
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
@@ -744,7 +612,7 @@ if (isset($_POST['submit_bt'])) {
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>
 				<div class="card_dash">
 					<a href="edit_profile.php" class="btn btn-success btn-block">Select and Update Your Course/Courses</a>
 				</div>
@@ -946,106 +814,106 @@ if (isset($_POST['submit_bt'])) {
 													}
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
-													
+
 												?>
-														<?php 
-														if($full_pay == 0 || $full_pay == 2){
-														if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
-															$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
-															$currentDate = date('Y-m-d');
-															// Query to fetch data based on the coupon code
-															$sql = "SELECT * FROM lmscoupon WHERE coupon_code = ? AND valid_date > ?";
+														<?php
+														if ($full_pay == 0 || $full_pay == 2) {
+															if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
+																$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
+																$currentDate = date('Y-m-d');
+																// Query to fetch data based on the coupon code
+																$sql = "SELECT * FROM lmscoupon WHERE coupon_code = ? AND valid_date > ?";
 
-															// Create a prepared statement
-															$stmt = $conn->prepare($sql);
+																// Create a prepared statement
+																$stmt = $conn->prepare($sql);
 
-															// Bind the parameters
-															$stmt->bind_param("ss", $couponCode, $currentDate);
+																// Bind the parameters
+																$stmt->bind_param("ss", $couponCode, $currentDate);
 
-															// Execute the statement
-															$stmt->execute();
+																// Execute the statement
+																$stmt->execute();
 
-															// Get the result set
-															$result = $stmt->get_result();
+																// Get the result set
+																$result = $stmt->get_result();
 
-															// Check if there is a matching row
-															
-															if ($result->num_rows > 0) {
-																while ($row = $result->fetch_assoc()) {
-																// Access the data from $row array
-																$percentage = $row['percentage'];
-																$final_discount  = $tec_sub_resalt['price'] * ($percentage/100) ;
-																
+																// Check if there is a matching row
+
+																if ($result->num_rows > 0) {
+																	while ($row = $result->fetch_assoc()) {
+																		// Access the data from $row array
+																		$percentage = $row['percentage'];
+																		$final_discount  = $tec_sub_resalt['price'] * ($percentage / 100);
+
+														?>
+																		<tr>
+																			<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
+																			<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payments</td>
+																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'] - $final_discount, 2); ?></td>
+																			<!--kasun 2021.12.01 change color to black from white-->
+																		</tr>
+																		<tr>
+																			<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
+																			<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] - $final_discount) / 2, 2); ?></td>
+																			<!--kasun 2021.12.01 change color to black from white-->
+																		</tr>
+																	<?php }
+																} else { ?>
+																	<tr>
+																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+																		<!--kasun 2021.12.01 change color to black from white-->
+																	</tr>
+																	<tr>
+																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+																		<!--kasun 2021.12.01 change color to black from white-->
+																	</tr>
+																<?php }
 																?>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payments</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+															<?php } elseif (mysqli_num_rows($lmsck_payments) == 1 && $full_pay == 2) { ?>
+																<tr>
+																	<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'] - $final_discount, 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" data-coupen="used" onclick="updatePaymonthValue(this); updateCoupenValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+																	<!--kasun 2021.12.01 change color to black from white-->
+																</tr>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] - $final_discount) / 2, 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-															<?php }
-															} else { ?>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+															<?php } else { ?>
+																<tr>
+																	<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
+																	<!--kasun 2021.12.01 change color to black from white-->
+																</tr>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-															<?php }
-															?>
-													<?php } elseif(mysqli_num_rows($lmsck_payments) == 1 && $full_pay == 2) { ?>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+																<tr>
+																	<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-														
+																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
+																	<!--kasun 2021.12.01 change color to black from white-->
+																</tr>
+															<?php } ?>
 														<?php } else { ?>
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price']; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price']; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="full" onclick="updatePaymonthValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Full Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)$tec_sub_resalt['price'], 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-															
-															<tr>
-																<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-																<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
-																<!--kasun 2021.12.01 change color to black from white-->
-															</tr>
-														<?php } ?>
-													<?php }else{ ?>
 
 
-												<?php	}?>	
+														<?php	} ?>
 
 											<?php
 
@@ -1070,7 +938,7 @@ if (isset($_POST['submit_bt'])) {
 								<?php
 								}
 								?>
-							
+
 
 								<br>
 								<label for="fileName1"><img src="images/card payment.png" id="yourImgTag1" style="width:20%;cursor: pointer;" /></label>
@@ -1093,7 +961,7 @@ if (isset($_POST['submit_bt'])) {
 								<?php
 								}
 								?>
-								
+
 
 								<br>
 
@@ -1105,8 +973,8 @@ if (isset($_POST['submit_bt'])) {
 								<ul>
 									<li>
 										<input type="text" name="amount" id="payment_ammount" hidden>
-										<input type="text" name="paymonth" id="paytype" >
-										<input type="text" name="coupen" id="coupen" >
+										<input type="text" name="paymonth" id="paytype">
+										<input type="text" name="coupen" id="coupen">
 										<button type="submit" name="submit_bt" id="bank-pay-button" class="btn btn-primary btn-block" disabled="true" style="font-weight:bold;font-size:14px;">බැංකු රිසිට්පතෙන් ගෙවන්න | Rs. <span class="payment_ammount">0.00</span></button>
 									</li>
 								</ul>
@@ -1220,37 +1088,37 @@ if (isset($_POST['submit_bt'])) {
 		});
 	</script>
 	<script>
-function updatePaymonthValue(checkbox) {
-    // Get the data-paytype from the checkbox's data attribute
-    const paytype = $(checkbox).data('paytype');
+		function updatePaymonthValue(checkbox) {
+			// Get the data-paytype from the checkbox's data attribute
+			const paytype = $(checkbox).data('paytype');
 
-    // Set the value of paymonth based on the selected paytype
-    if (paytype === 'full') {
-        $('#paytype').val('full');
-    } else if (paytype === 'half') {
-        $('#paytype').val('half');
-    } else {
-        // Add other payment types if needed
-        $('#paytype').val('');
-    }
-     console.log($('#paytype').val());
-}
-</script>
-<script>
-function updateCoupenValue(checkbox) {
-    // Get the data-paytype from the checkbox's data attribute
-    const coupen = $(checkbox).data('coupen');
+			// Set the value of paymonth based on the selected paytype
+			if (paytype === 'full') {
+				$('#paytype').val('full');
+			} else if (paytype === 'half') {
+				$('#paytype').val('half');
+			} else {
+				// Add other payment types if needed
+				$('#paytype').val('');
+			}
+			console.log($('#paytype').val());
+		}
+	</script>
+	<script>
+		function updateCoupenValue(checkbox) {
+			// Get the data-paytype from the checkbox's data attribute
+			const coupen = $(checkbox).data('coupen');
 
-    // Set the value of paymonth based on the selected paytype
-    if (coupen === 'used') {
-        $('#coupen').val('used');
-    } else {
-        // Add other payment types if needed
-        $('#coupen').val('');
-    }
-    console.log($('#coupen').val());
-}
-</script>
+			// Set the value of paymonth based on the selected paytype
+			if (coupen === 'used') {
+				$('#coupen').val('used');
+			} else {
+				// Add other payment types if needed
+				$('#coupen').val('');
+			}
+			console.log($('#coupen').val());
+		}
+	</script>
 
 
 

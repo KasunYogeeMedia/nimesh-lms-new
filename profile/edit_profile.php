@@ -49,12 +49,11 @@ extract($edit_row);
 
 if (isset($_POST['update'])) {
 
+	$email = mysqli_real_escape_string($con, $_POST['email']);
 	$fullname = mysqli_real_escape_string($con, $_POST['fullname']);
-
-
-	$contactnumber = (int)$_POST['contactnumber'];
-
-	//$address = mysqli_real_escape_string($con,$_POST['address']);
+	$dob = mysqli_real_escape_string($con, $_POST['dob']);
+	// $contactnumber = (int)$_POST['contactnumber'];
+	$address = mysqli_real_escape_string($con, $_POST['address']);
 
 	//$pname = $_POST['pname'];
 	//$pcontactnumber = (int)$_POST['pcontactnumber'];
@@ -63,7 +62,7 @@ if (isset($_POST['update'])) {
 	if (!isset($errMSG)) {
 
 		//$stmt = $DB_con->prepare("UPDATE lmsregister SET fullname='$fullname',contactnumber='$contactnumber',address='$address',pname='$pname',pcontactnumber='$pcontactnumber',pemail='$pemail' WHERE reid = '".$user_id."'");
-		$stmt = $DB_con->prepare("UPDATE lmsregister SET fullname='$fullname',contactnumber='$contactnumber' WHERE reid = '" . $user_id . "'");
+		$stmt = $DB_con->prepare("UPDATE lmsregister SET email='$email',fullname='$fullname',dob='$dob',address='$address' WHERE reid = '" . $user_id . "'");
 		if ($stmt->execute()) {
 
 			$msg = "User Profile Successfully Updated";
@@ -209,11 +208,27 @@ if (isset($_POST['update_picture'])) {
 
 									<div class="col-lg-12 div-sec">
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-4">
+												<label class="col-form-label">Index No</label>
+												<div class="ui search focus mt-30">
+													<div class="ui left icon input swdh11 swdh19">
+														<input class="prompt srch_explore" type="text" value="<?php echo $stnumber; ?>" required readonly>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-8">
 												<label class="col-form-label">Full Name</label>
 												<div class="ui search focus mt-30">
 													<div class="ui left icon input swdh11 swdh19">
 														<input class="prompt srch_explore" type="text" name="fullname" value="<?php echo $fullname; ?>" required>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<label class="col-form-label">Date of Birth</label>
+												<div class="ui search focus mt-30">
+													<div class="ui left icon input swdh11 swdh19">
+														<input class="prompt srch_explore" type="date" name="dob" value="<?php echo $edit_row['dob']; ?>" required>
 													</div>
 												</div>
 											</div>
@@ -226,16 +241,24 @@ if (isset($_POST['update_picture'])) {
 													</div>
 												</div>
 											</div>
-											<?php /*
 											<div class="col-md-4">
-												<label class="col-form-label">Address</label>
+												<label class="col-form-label">Email Address</label>
 												<div class="ui search focus mt-30">
 													<div class="ui left icon input swdh11 swdh19">
-														<input class="prompt srch_explore" type="text" name="address"  value="<?php echo $address; ?>" required>															
+														<input class="prompt srch_explore" type="text" name="email" value="<?php echo $email; ?>" required>
 													</div>
 												</div>
 											</div>
-											*/ ?>
+
+											<div class="col-md-8">
+												<label class="col-form-label">Address</label>
+												<div class="ui search focus mt-30">
+													<div class="ui left icon input swdh11 swdh19">
+														<input class="prompt srch_explore" type="text" name="address" value="<?php echo $address; ?>" required>
+													</div>
+												</div>
+											</div>
+
 										</div>
 									</div>
 									<?php /*
@@ -285,12 +308,12 @@ if (isset($_POST['update_picture'])) {
 							</div> 
 							*/ ?>
 
-									<div class="basic_ptitle">
+									<div class="basic_ptitle d-none">
 										<h4>2. Class Details
 										</h4>
 
 									</div>
-									<div class="col-lg-12">
+									<div class="col-lg-12 d-none">
 										<?php
 										$edit_qury = mysqli_query($conn, "SELECT * FROM lmsregister WHERE reid=$user_id");
 										$edit_resalt = mysqli_fetch_array($edit_qury);
@@ -375,20 +398,13 @@ if (isset($_POST['update_picture'])) {
 												</div>
 											</div>
 										</div>
-
-
-
-
-										<div class="col-lg-12 subite-prof">
-											<div class="row">
-												<div class="col-md-6">
-													<input type="submit" name="update" class="btn btn-primary btn-block" value="Update Profile">
-													<br>
-												</div>
-												<!-- <div class="col-md-6 text-end">
-													<a href="edit_profile.php" class="btn btn-danger btn-block">Close</a>
-												</div> -->
+									</div>
+									<div class="col-lg-12">
+										<div class="row">
+											<div class="col-md-6">
+												<input type="submit" name="update" class="btn btn-primary btn-block" value="Update Profile">
 											</div>
+
 										</div>
 									</div>
 								</form>
