@@ -21,7 +21,7 @@ if (isset($_POST['register'])) {
 	$coupon = mysqli_real_escape_string($con, $_POST['coupon']);
 	// $district = mysqli_real_escape_string($con, $_POST['district']);
 	//$town = mysqli_real_escape_string($con, $_POST['town']);
-	// $pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['pcontactnumber']);
+	$pcontactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
 	//$pemail = mysqli_real_escape_string($con, $_POST['pemail']);
 	//$pname = mysqli_real_escape_string($con, $_POST['pname']);
 	$fullname = mysqli_real_escape_string($con, $_POST['fullname']);
@@ -29,8 +29,8 @@ if (isset($_POST['register'])) {
 	$contactnumber = (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
 	$to = "0" . (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
 	$level = mysqli_real_escape_string($conn, $_POST['level']);
-	$password = md5(mysqli_real_escape_string($con, $_POST['password']));
-	$re_password = md5(mysqli_real_escape_string($con, $_POST['re_password']));
+	$password = md5(mysqli_real_escape_string($con, $_POST['contactnumber']));
+	$re_password = md5(mysqli_real_escape_string($con, $_POST['contactnumber']));
 
 	if ($password == $re_password) {
 
@@ -241,14 +241,7 @@ if (isset($_POST['register'])) {
 				<i class="fas fa fa-phone fa-lg"></i>
 				<input name="pcontactnumber" type="text" placeholder="Enter Parent Phone Number" maxlength="10" minlength="10">
 			</div>
-			<div class="inp-1">
-				<i class="fas fa fa-key fa-lg"></i>
-				<input name="password" type="password" placeholder="Enter more than 8 characters" minlength="8">
-			</div>
-			<div class="inp-1">
-				<i class="fas fa fa-key fa-lg"></i>
-				<input name="re_password" type="password" placeholder="Enter your password again" minlength="8">
-			</div>
+			
 			<div class="inp-2">
 				<input type="checkbox" name="agree" id="agree_checkbox" value="yes" />
 				<label for="inp--checkbox">By creating an account, you agree to the Terms & Canditions and
