@@ -49,7 +49,7 @@ if (isset($_POST['register'])) {
 				}
 
 				$to = "+94" . (int)mysqli_real_escape_string($conn, $_POST['contactnumber']);
-				$message_text = "Congratulations on joining Atlas Learn! To log in please use the below details.\nUser name: $contactnumber\npassword: $_POST[password]\n";
+				$message_text = "Congratulations on joining Atlas Learn! To log in please use the below details.\nUser name: $_POST[contactnumber]\npassword: $_POST[contactnumber]\n";
 				$message = urlencode($message_text);
 				send_sms($to, $message_text);
 
