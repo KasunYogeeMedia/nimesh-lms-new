@@ -25,7 +25,7 @@
 							<a href="#" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">Results</span> </a>
 						</li>
 						<li class="menu--item">
-							<a href="student_profile.php#payments" class="menu--link"> <i class='uil uil-dollar-sign menu--icon'></i> <span class="menu--label">My Payments</span> </a>
+							<a href="my_payments.php" class="menu--link"> <i class='uil uil-dollar-sign menu--icon'></i> <span class="menu--label">My Payments</span> </a>
 						</li>
 						<li class="menu--item">
 							<a href="my_attendence.php" class="menu--link"> <i class='uil uil-file-question-alt menu--icon'></i> <span class="menu--label">My Attendance</span> </a>
