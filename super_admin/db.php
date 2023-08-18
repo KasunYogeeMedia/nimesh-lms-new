@@ -61,7 +61,10 @@ function send_sms($receiver_number, $messsage)
 		),
 	));
 
-	$response = curl_exec($curl);
+	ob_start(); // Start output buffering
+    $response = curl_exec($curl);
+    ob_end_clean(); // Clean and discard the buffered output
+
 	//$err = curl_error($curl);
 
 	curl_close($curl);
