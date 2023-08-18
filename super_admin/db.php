@@ -32,14 +32,14 @@ function send_sms($receiver_number, $messsage)
 	$sms = mysqli_query($conn, "SELECT * FROM lmssms WHERE id=1");
 	$sms_resalt = mysqli_fetch_array($sms);
 	$sender_id = $sms_resalt['sender_id'];
-	$sa_token = $sms_resalt['sa_token'];
+	
 
 	$MSISDN = $receiver_number;
 	$SRC = $sender_id;
 	$MESSAGE = (urldecode($messsage));
-	$AUTH = "716|dgD95hyXSbuxuoj5F4pG8QBdJ4wcoFzo064CAuhs ";  //Replace your Access Token
+	$AUTH = $sms_resalt['sa_token'];  //Replace your Access Token
 
-	$msgdata = array("recipient" => $MSISDN, "sender_id" => $sa_token, "message" => $MESSAGE);
+	$msgdata = array("recipient" => $MSISDN, "sender_id" => $SRC, "message" => $MESSAGE);
 
 
 
@@ -61,16 +61,16 @@ function send_sms($receiver_number, $messsage)
 		),
 	));
 
-	$response = curl_exec($curl);
-	$err = curl_error($curl);
+	//$response = curl_exec($curl);
+	//$err = curl_error($curl);
 
 	curl_close($curl);
 
-	if ($err) {
-		echo "cURL Error #:" . $err;
-	} else {
-		echo $response;
-	}
+	// if ($err) {
+	// 	echo "cURL Error #:" . $err;
+	// } else {
+	// 	echo $response;
+	// }
 }
 
 
