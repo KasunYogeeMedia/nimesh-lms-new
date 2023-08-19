@@ -187,13 +187,16 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
+                                                                 <br>
                                                                 <input type="text" class="classFeeInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                                <br>
                                                                 <button class="btn btn-primary submitClassFee" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update</button>
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
                                                             <td>
                                                                 <input type="date" class="nextPayDateInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                                 <br>
                                                                 <button class="btn btn-primary submitNextPayDate" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update</button>
                                                             <td>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
