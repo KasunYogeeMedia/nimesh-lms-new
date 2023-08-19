@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nextPayDate = $_POST["nextPayDate"];
 
     // Update the next pay date in the database
-    $updateQuery = "UPDATE lmspayment SET next_pay_date = '$nextPayDate' WHERE pid = '$paymentID'";
+    $updateQuery = "UPDATE lmspayment SET next_paydate = '$nextPayDate' WHERE pid = '$paymentID'";
     if (mysqli_query($conn, $updateQuery)) {
         echo "Success";
     } else {
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $classFee = $_POST["classFee"];
 
     // Update the class fee in the database
-    $updateQuery = "UPDATE lmspayment SET class_fee = '$classFee' WHERE pid = '$paymentID'";
+    $updateQuery = "UPDATE lmspayment SET amount = '$classFee' WHERE pid = '$paymentID'";
     if (mysqli_query($conn, $updateQuery)) {
         echo "Success";
     } else {
