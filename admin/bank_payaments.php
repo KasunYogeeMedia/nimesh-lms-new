@@ -144,7 +144,7 @@ if (isset($_GET['id'])) {
                                                 <tbody>
                                                     <?php
                                                     $count = 0;
-                                                    $payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' and status='0' ORDER BY created_at DESC");
+                                                    $payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE paymentMethod='Bank' and status='0' ORDER BY created_at ASC");
                                                     while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
                                                         $count++;
 
