@@ -187,11 +187,13 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
-                                                                <input type="text" id="classFeeInput">
+                                                                <input type="text" class="classFeeInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                                <button class="btn btn-primary submitClassFee" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update Class Fee</button>
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
-                                                            <td><input type="date" id="nextPayDateInput"></td>
+                                                            <input type="date" class="nextPayDateInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                            <button class="btn btn-primary submitNextPayDate" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update Next Pay Date</button>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
                                                         </tr>
                                                     <?php
@@ -237,27 +239,29 @@ if (isset($_GET['id'])) {
     require_once 'footerjs.php';
     ?>
 <script>
-// Update Next Pay Date using AJAX
-$("#nextPayDateInput").on("change", function() {
-    var nextPayDate = $(this).val();
-    var paymentID = 123; // Replace with the actual payment ID
+$(document).ready(function() {
+    $(".submitNextPayDate").on("click", function() {
+        var paymentID = $(this).data("payment-id");
+        var nextPayDate = $(".nextPayDateInput[data-payment-id='" + paymentID + "']").val();
 
-    $.post("update_next_pay_date.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
-        if (data === "Success") {
-            $("#nextPayDateCell_" + paymentID).text(nextPayDate);
-        }
+        $.post("update_next_pay_date.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
+            if (data === "Success") {
+                // Update the table cell with the new value
+                $("#nextPayDateCell_" + paymentID).text(nextPayDate);
+            }
+        });
     });
-});
 
-// Update Class Fee using AJAX
-$("#classFeeInput").on("blur", function() {
-    var newClassFee = $(this).val();
-    var paymentID = 123; // Replace with the actual payment ID
+    $(".submitClassFee").on("click", function() {
+        var paymentID = $(this).data("payment-id");
+        var classFee = $(".classFeeInput[data-payment-id='" + paymentID + "']").val();
 
-    $.post("update_class_fee.php", { paymentID: paymentID, classFee: newClassFee }, function(data) {
-        if (data === "Success") {
-            $("#classFeeCell_" + paymentID).text("Pay Rs." + newClassFee);
-        }
+        $.post("update_class_fee.php", { paymentID: paymentID, classFee: classFee }, function(data) {
+            if (data === "Success") {
+                // Update the table cell with the new value
+                $("#classFeeCell_" + paymentID).text("Pay Rs." + classFee);
+            }
+        });
     });
 });
 </script>
