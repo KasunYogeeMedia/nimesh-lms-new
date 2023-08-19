@@ -187,6 +187,7 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
+                                                                <input type="text" id="classFeeInput">
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
