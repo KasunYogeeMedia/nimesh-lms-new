@@ -249,7 +249,7 @@ $(document).ready(function() {
         var paymentID = $(this).data("payment-id");
         var nextPayDate = $(".nextPayDateInput[data-payment-id='" + paymentID + "']").val();
 
-        $.post("update_next_pay_date.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
+        $.post("update_payments.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
             if (data === "Success") {
                 // Update the table cell with the new value
                 $("#nextPayDateCell_" + paymentID).text(nextPayDate);
@@ -261,7 +261,7 @@ $(document).ready(function() {
         var paymentID = $(this).data("payment-id");
         var classFee = $(".classFeeInput[data-payment-id='" + paymentID + "']").val();
 
-        $.post("update_class_fee.php", { paymentID: paymentID, classFee: classFee }, function(data) {
+        $.post("update_payments.php", { paymentID: paymentID, classFee: classFee }, function(data) {
             if (data === "Success") {
                 // Update the table cell with the new value
                 $("#classFeeCell_" + paymentID).text("Pay Rs." + classFee);
