@@ -252,8 +252,8 @@ $(document).ready(function() {
 
         $.post("update_payments.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
             if (data === "Success") {
-                // Update the table cell with the new value
-                $("#nextPayDateCell_" + paymentID).text(nextPayDate);
+                // Refresh the page
+                location.reload();
             }
         });
     });
@@ -264,13 +264,14 @@ $(document).ready(function() {
 
         $.post("update_payments.php", { paymentID: paymentID, classFee: classFee }, function(data) {
             if (data === "Success") {
-                // Update the table cell with the new value
-                $("#classFeeCell_" + paymentID).text("Pay Rs." + classFee);
+                // Refresh the page
+                location.reload();
             }
         });
     });
 });
 </script>
+
 
 </body>
 
