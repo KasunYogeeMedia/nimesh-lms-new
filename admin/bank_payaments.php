@@ -137,6 +137,7 @@ if (isset($_GET['id'])) {
                                                         <th>Class Fee</th>
                                                         <th>Pay Type</th>
                                                         <th>Pay Date</th>
+                                                        <th>Next Pay Date</th>
                                                         <th>Coupen</th>
                                                     </tr>
                                                 </thead>
@@ -189,6 +190,7 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
+                                                            <td><input type="date" id="nextPayDateInput"></td>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
                                                         </tr>
                                                     <?php
@@ -233,7 +235,31 @@ if (isset($_GET['id'])) {
     <?php
     require_once 'footerjs.php';
     ?>
+<script>
+// Update Next Pay Date using AJAX
+$("#nextPayDateInput").on("change", function() {
+    var nextPayDate = $(this).val();
+    var paymentID = 123; // Replace with the actual payment ID
 
+    $.post("update_next_pay_date.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
+        if (data === "Success") {
+            $("#nextPayDateCell_" + paymentID).text(nextPayDate);
+        }
+    });
+});
+
+// Update Class Fee using AJAX
+$("#classFeeInput").on("blur", function() {
+    var newClassFee = $(this).val();
+    var paymentID = 123; // Replace with the actual payment ID
+
+    $.post("update_class_fee.php", { paymentID: paymentID, classFee: newClassFee }, function(data) {
+        if (data === "Success") {
+            $("#classFeeCell_" + paymentID).text("Pay Rs." + newClassFee);
+        }
+    });
+});
+</script>
 
 </body>
 
