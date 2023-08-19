@@ -188,7 +188,7 @@ if (isset($_GET['id'])) {
                                                             <td>
                                                                 <span>Pay Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
                                                                 
-                                                                <input type="text" class="mt-1 classFeeInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                                <input type="number" step="0.00" min="10" class="mt-1 classFeeInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
                                                               
                                                                 <button class="mt-1 btn btn-primary submitClassFee" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update</button>
                                                             </td>
