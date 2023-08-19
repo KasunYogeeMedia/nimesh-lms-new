@@ -192,8 +192,10 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
                                                             <td><?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y - h:i:s A"); ?></td>
-                                                            <input type="date" class="nextPayDateInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
-                                                            <button class="btn btn-primary submitNextPayDate" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update Next Pay Date</button>
+                                                            <td>
+                                                                <input type="date" class="nextPayDateInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
+                                                                <button class="btn btn-primary submitNextPayDate" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update Next Pay Date</button>
+                                                            <td>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
                                                         </tr>
                                                     <?php
