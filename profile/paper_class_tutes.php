@@ -48,7 +48,7 @@ if ($image_resalt['image'] == "") {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<h4 class="item_title mb-4">Paper Class Tutes</h4>
+							<h4 class="item_title mb-4">Tutes</h4>
 
 						</div>
 						<!-- <div class="col-lg-12">

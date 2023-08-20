@@ -504,76 +504,46 @@ if (isset($_POST['submit_bt'])) {
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Verbal Exams<h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-file-text fa-3x text-dark"></i>
-								</div>
-								<a href="online_verbal_exam.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Paper Class Tutes</h2>
+									<h2 class="text-dark">Course Activities</h2>
 								</div>
 								<div class="card_dash_right">
 									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
-								<a href="paper_class_tutes.php" class="btn btn-success dash_card_a">View More</a>
+								<a href="course_activities.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
+						
+						
+						<!-- new sec -->
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">MCQ Exams</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-file-text fa-3x text-dark"></i>
-								</div>
-								<a href="exam_list.php?type=1" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Paper Exams</h2>
-								</div>
-								<div class="card_dash_right">
-									<i class="fa fa-file-text fa-3x text-dark"></i>
-								</div>
-								<a href="paper_exam_list.php" class="btn btn-success dash_card_a">View More</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
-							<div class="card_dash h-100">
-								<div class="card_dash_left">
-									<h2 class="text-dark">Course Work</h2>
+									<h2 class="text-dark">Exams</h2>
 								</div>
 								<div class="card_dash_right">
 									<i class="fa fa-book fa-3x text-dark"></i>
 								</div>
-								<a href="course_work.php" class="btn btn-success dash_card_a">View More</a>
+								<a href="exam_types.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<div id="payments" class="section-border">
 					<h2 class="section-border-heading">Payments</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-xxl-12 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
-									<h2 class="text-dark">Bank Payments History</h2>
+									<h2 class="text-dark">Payments History</h2>
 								</div>
 								<div class="card_dash_right">
-									<i class="fa fa-university fa-3x text-dark"></i>
+									<i class="fa fa-money fa-3x text-dark"></i>
 								</div>
-								<a href="bank_payment.php" class="btn btn-success dash_card_a">View More</a>
+								<a href="my_payments.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+						<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Card Payments History</h2>
@@ -594,13 +564,13 @@ if (isset($_POST['submit_bt'])) {
 								</div>
 								<a href="manual_payment.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="section-border">
 					<h2 class="section-border-heading">Feedback</h2>
 					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-xxl-12 dash_card">
 							<div class="card_dash h-100">
 								<div class="card_dash_left">
 									<h2 class="text-dark">Rate Your Learning Experience</h2>
