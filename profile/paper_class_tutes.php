@@ -274,12 +274,14 @@ if ($image_resalt['image'] == "") {
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$tute_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
 
-
+																$lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$tute_resalt[subject]' AND status='1'");
+																
+																$total_payment = mysqli_fetch_assoc($lmsck_sum);
 																$userID = $_SESSION['reid'];
 
-																if (mysqli_num_rows($lmsck_payments) == 1) {
+																if (mysqli_num_rows($lmsck_payments) > 0) {
 
-																	if ($row['pay_type'] == 'full') {
+																	if ((int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] == NULL || (int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] != NULL) { 
 
 
 
@@ -293,46 +295,30 @@ if ($image_resalt['image'] == "") {
 																			<p id="showCounts"></p>
 																		</div>
 
-																		<?php
-																	} else {
-
-
-																		$start_date = $subject_data['start'];
-																		$end_date = $subject_data['end'];
-
-																		$start_timestamp = strtotime($start_date);
-																		$end_timestamp = strtotime($end_date);
-
-																		$mid_timestamp = ($start_timestamp + $end_timestamp) / 2;
-																		$mid_date = date("Y-m-d", $mid_timestamp);
-
-																		if ($lmsck_date <= $mid_date) { ?>
-
-																			<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
-																		<?php } else { ?>
-																			<a href="student_profile.php" class="save_btn btn-block">Pay here to other half payment</a>
 																	<?php
-																		}
+                                                                    //not full payment but next pay date available student  
+																	} else if((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
+																	
+																		<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
+
+
+																		<div>
+																			<p id="showCounts"></p>
+																		</div>
+
+																		<?php
+																	} else { ?>
+
+
+															
+																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+																	<?php
+																		
 																	}
 																	?>
 
 																	<?php
 
-																} else if (mysqli_num_rows($lmsck_payments) == 2) {
-																	$sum = 0;
-
-																	// Reset the pointer to the beginning of the result set
-																	mysqli_data_seek($lmsck_payments, 0);
-
-																	while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
-																		$sum += $row2['amount'];
-																	}
-
-																	if ($sum == $subject_data['price']) { ?>
-																		<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
-																	<?php } else { ?>
-																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
-																	<?php }
 																} else { ?>
 																	<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
 																<?php } ?>
