@@ -206,7 +206,10 @@ if (isset($_POST['submit_bt'])) {
 		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
 		if ($_POST['paymonth'] == 'half') {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
-		} else {
+		}else if($_POST['paymonth'] == 'custom'){ 
+		
+		
+		}else {
 			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
 		}
 
@@ -785,7 +788,7 @@ if (isset($_POST['submit_bt'])) {
 
 												?>
 														<?php
-														if ($full_pay == 0 || $full_pay == 2) {
+														if ($full_pay == 0 || $full_pay == 2 || $full_pay == 3) {
 															if (mysqli_num_rows($lmsck_payments) == 0 && $current_user_data['coupon'] != NULL) {
 																$couponCode = $current_user_data['coupon']; // Assuming $coupen_code holds the coupon code
 																$currentDate = date('Y-m-d');
@@ -869,13 +872,28 @@ if (isset($_POST['submit_bt'])) {
 															<?php } elseif ($full_pay == 3) { ?>
 															
 																<tr>
-																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
-																		<td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
-																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-																		
-																		<!--kasun 2021.12.01 change color to black from white-->
-																</tr>		
+                                                                    <td>
+                                                                        <input type="number" 
+                                                                               class="custom_pay" 
+                                                                               onchange="updateSubjectFee(this)" 
+                                                                               step="0" 
+                                                                               min="100">
+                                                                    </td>
+                                                                    <td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
+                                                                    <td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+                                                                    <td>
+                                                                        <input style="font-weight:bold;margin: 10px;color:#000000;" 
+                                                                               class="subject_select" 
+                                                                               type="checkbox" 
+                                                                               name="select_payment[]" 
+                                                                               value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" 
+                                                                               data-subject-fee="" 
+                                                                               data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" 
+                                                                               data-paytype="custom" 
+                                                                               onclick="toggleCustomPayment(this)">
+                                                                    </td>
+                                                                </tr>
+                                                                    		
 
 															<?php } else { ?>
 																<tr>
@@ -895,13 +913,27 @@ if (isset($_POST['submit_bt'])) {
 																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
 																	<!--kasun 2021.12.01 change color to black from white-->
 																	<tr>
-																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
-																		<td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
-																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
-
-																		
-																		<!--kasun 2021.12.01 change color to black from white-->
-																	</tr>
+                                                                    <td>
+                                                                        <input type="number" 
+                                                                               class="custom_pay" 
+                                                                               onchange="updateSubjectFee(this)" 
+                                                                               step="0" 
+                                                                               min="100">
+                                                                    </td>
+                                                                    <td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
+                                                                    <td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+                                                                    <td>
+                                                                        <input style="font-weight:bold;margin: 10px;color:#000000;" 
+                                                                               class="subject_select" 
+                                                                               type="checkbox" 
+                                                                               name="select_payment[]" 
+                                                                               value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid']; ?>" 
+                                                                               data-subject-fee="" 
+                                                                               data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" 
+                                                                               data-paytype="custom" 
+                                                                               onclick="toggleCustomPayment(this)">
+                                                                    </td>
+                                                                </tr>
 																</tr>
 															<?php } ?>
 														<?php } else { ?>
@@ -1018,72 +1050,55 @@ if (isset($_POST['submit_bt'])) {
 	?>
 
 	<script type="text/javascript">
-		var total = 0;
+    var total = 0;
 
-		$(".subject_select").click(function(argument) {
+    $(".subject_select").click(function(argument) {
+        var fee = $(this).data("subject-fee");
 
-			var fee = $(this).data("subject-fee");
+        if ($(this).prop("checked")) {
+            total += fee;
+        } else {
+            total -= fee;
+            $(this).data("subject-fee", ""); // Clear data-subject-fee attribute when unchecked
+        }
+        
+        $(".payment_ammount").html(total);
+        $("#payment_ammount").val(total);
+        $("#online_pay").val(total);
 
-			if ($(this).prop("checked") == true) {
+        if (total == 0) {
+            $("#pay-by-card").attr("disabled", "true");
+            $("#bank-pay-button").attr("disabled", "true");
+        } else {
+            $("#pay-by-card").removeAttr("disabled");
+            $("#bank-pay-button").removeAttr("disabled");
+        }
+    })
 
-				total += fee;
+    $("#pay-by-card").click(function(e) {
+        if ($("#select_month").val() == '') {
+            alert("Please select the payment month!");
+            return 0;
+        }
+        e.preventDefault();
+        var value = $(".subject_select:checked").serialize(); // Only serialize checked checkboxes
+        var month = $("#select_month").val();
+        var currString = "<?php echo $url ?>";
+        // window.open("https://guruniwasainstitute.lk/lms/profile/online_pay.php?" + value + "&month=" + month , '_blank');
+        window.location.href = currString + "/profile/online_pay.php?" + value + "&month=" + month;
+    })
 
-			} else {
+    window.addEventListener("pageshow", function(event) {
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Handle page restore.
+            window.location.reload();
+        }
+    });
+</script>
 
-				total -= fee;
-
-			}
-
-			$(".payment_ammount").html(total);
-
-			$("#payment_ammount").val(total);
-
-			$("#online_pay").val(total);
-
-
-			if (total == 0) {
-
-				$("#pay-by-card").attr("disabled", "true");
-
-				$("#bank-pay-button").attr("disabled", "true");
-
-			} else {
-
-				$("#pay-by-card").removeAttr("disabled");
-
-				$("#bank-pay-button").removeAttr("disabled");
-
-			}
-		})
-
-		$("#pay-by-card").click(function(e) {
-
-
-			if ($("#select_month").val() == '') {
-				alert("Please select the payment month!");
-				return 0;
-			}
-			e.preventDefault();
-			var value = $(".subject_select").serialize();
-			var month = $("#select_month").val();
-			var currString = "<?php echo $url ?>";
-			// window.open("https://guruniwasainstitute.lk/lms/profile/online_pay.php?" + value + "&month=" + month , '_blank');
-			window.location.href = currString + "/profile/online_pay.php?" + value + "&month=" + month;
-
-
-		})
-
-
-		window.addEventListener("pageshow", function(event) {
-			var historyTraversal = event.persisted ||
-				(typeof window.performance != "undefined" &&
-					window.performance.navigation.type === 2);
-			if (historyTraversal) {
-				// Handle page restore.
-				window.location.reload();
-			}
-		});
-	</script>
 	<script>
 		function updatePaymonthValue(checkbox) {
 			// Get the data-paytype from the checkbox's data attribute
@@ -1115,6 +1130,23 @@ if (isset($_POST['submit_bt'])) {
 			}
 			console.log($('#coupen').val());
 		}
+function toggleCustomPayment(checkbox) {
+    const customPaymentInput = checkbox.parentElement.parentElement.querySelector(".custom_pay");
+    const subjectFee = checkbox.getAttribute("data-subject-fee");
+
+    if (checkbox.checked) {
+        customPaymentInput.value = subjectFee;
+    } else {
+        customPaymentInput.value = "";
+    }
+}
+
+function updateSubjectFee(inputElement) {
+    const checkbox = inputElement.parentElement.parentElement.querySelector(".subject_select");
+    checkbox.setAttribute("data-subject-fee", inputElement.value);
+}
+
+
 	</script>
 
 
