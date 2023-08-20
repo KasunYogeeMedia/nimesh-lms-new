@@ -409,11 +409,7 @@ if (isset($_POST['submit_bt'])) {
 						</div>
 					</div>
 				</div>
-
-				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<strong>Hi!</strong> Payemet message.
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+				
 
 				<!-- profile section start -->
 				<div class="profile mb-3">

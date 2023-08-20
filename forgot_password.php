@@ -109,6 +109,12 @@ if (isset($_POST['change_pass'])) {
 	<link rel="stylesheet" href="assets/css/log-styles.css" />
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		.phone_val {
+	padding-left: 20px !important;
+}
+	</style>
 </head>
 
 <body>
