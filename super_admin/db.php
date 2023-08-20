@@ -119,8 +119,9 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 		$user_lastpayment = mysqli_fetch_assoc($user_lastpayments);
 		date_default_timezone_set("Asia/Colombo");
 		$current_date = date('Y-m-d');
+
 		if($user_lastpayment != NULL){
-		if($user_lastpayment['next_paydate'] > $current_date){
+		if($user_lastpayment['next_paydate'] > $current_date || (int)$total_payment['total_payment'] == (int)$current_user_level['price']){
 		    $next_due = 1;
 		    return  $next_due;
 		    
