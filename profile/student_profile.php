@@ -779,14 +779,7 @@ if (isset($_POST['submit_bt'])) {
 
 													//check paid subject
 
-													$check_paid_full = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='full'");
-													$check_paid_half = mysqli_query($conn, "SELECT * FROM lmspayment WHERE pay_sub_id='$current_user_data[level]' and userID='$_SESSION[reid]' and status='1' and pay_type='half'");
-													if ($check_paid_full) {
-														$paid_resalt_full = mysqli_fetch_array($check_paid_full);
-													}
-													if ($check_paid_half) {
-														$paid_resalt_half = mysqli_fetch_array($check_paid_half);
-													}
+													
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
 
@@ -833,7 +826,7 @@ if (isset($_POST['submit_bt'])) {
 																			<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
 																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
 
-																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] - $final_discount) / 2, 2); ?></td>
+																			<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price']) / 2, 2); ?></td>
 																			<!--kasun 2021.12.01 change color to black from white-->
 																		</tr>
 																	<?php }
@@ -856,7 +849,7 @@ if (isset($_POST['submit_bt'])) {
 																	</tr>
 																<?php }
 																?>
-															<?php } elseif (mysqli_num_rows($lmsck_payments) == 1 && $full_pay == 2) { ?>
+															<?php } elseif ($full_pay == 2) { ?>
 																<tr>
 																	<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
 																	<td style="font-weight:bold;margin: 10px;color:#000000;">Half Payment</td>
@@ -865,6 +858,14 @@ if (isset($_POST['submit_bt'])) {
 																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
 																	<!--kasun 2021.12.01 change color to black from white-->
 																</tr>
+																<tr>
+																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																		
+																		<!--kasun 2021.12.01 change color to black from white-->
+																	</tr>
 
 															<?php } else { ?>
 																<tr>
@@ -883,6 +884,14 @@ if (isset($_POST['submit_bt'])) {
 
 																	<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo number_format((float)($tec_sub_resalt['price'] / 2), 2); ?></td>
 																	<!--kasun 2021.12.01 change color to black from white-->
+																	<tr>
+																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																		
+																		<!--kasun 2021.12.01 change color to black from white-->
+																	</tr>
 																</tr>
 															<?php } ?>
 														<?php } else { ?>

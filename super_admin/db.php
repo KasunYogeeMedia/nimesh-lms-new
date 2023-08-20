@@ -141,9 +141,13 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 
 			$full_pay = 1;
 			return $full_pay;
+
+		}else if(((int)$total_payment['total_payment'] / 2)  == (int)$current_user_level['price']){	
+			$full_pay = 2;
+			return $full_pay;
 		} else {
 
-            $full_pay = 2;
+            $full_pay = 0;
 			return $full_pay;
 		}
 
