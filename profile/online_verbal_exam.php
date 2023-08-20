@@ -359,15 +359,20 @@ if ($image_resalt['image'] == "") {
                                                                     $lmsck_date = date('Y-m-d');
                                                                     $lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1'");
                                                                     $row = mysqli_fetch_assoc($lmsck_payments);
+
+                                                                    $lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$level_resalt[subject]' AND status='1'");
+																
+																    $total_payment = mysqli_fetch_assoc($lmsck_sum);
+
                                                                     $subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
                                                                     $subject_data = mysqli_fetch_assoc($subject_validate);
 
                                                                     $userID = $_SESSION['reid'];
                                                                     $subjectID =  $level_resalt['subject'];
                                                                     $lID =  $level_resalt['classid'];
-                                                                    if (mysqli_num_rows($lmsck_payments) == 1) {
+                                                                    if (mysqli_num_rows($lmsck_payments) > 0) {
 
-                                                                        if ($row['pay_type'] == 'full') {
+                                                                        if ((int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] == NULL || (int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] != NULL) {
 
 
 
@@ -388,66 +393,35 @@ if ($image_resalt['image'] == "") {
                                                                             <div>
                                                                                 <p id="showCounts"></p>
                                                                             </div>
+                                                                    <?php
+                                                                    //not full payment but next pay date available student  
+																	} else if((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
+																	    
+																	    <input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
+																		<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
+																		<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
 
-                                                                            <?php
-                                                                        } else {
-
-
-                                                                            $start_date = $subject_data['start'];
-                                                                            $end_date = $subject_data['end'];
-
-                                                                            $start_timestamp = strtotime($start_date);
-                                                                            $end_timestamp = strtotime($end_date);
-
-                                                                            $mid_timestamp = ($start_timestamp + $end_timestamp) / 2;
-                                                                            $mid_date = date("Y-m-d", $mid_timestamp);
-
-                                                                            if ($lmsck_date <= $mid_date) { ?>
-                                                                                <input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
-                                                                                <input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
-                                                                                <input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
-
-                                                                                <?php
-                                                                                if ($lmsck_date == $level_resalt['classdate']) { ?>
-                                                                                    <a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
-                                                                                <?php } else { ?>
-                                                                                    <a href="javascript:void(0);" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">It Available for <?php echo $level_resalt['classdate']; ?></a>
-                                                                                <?php } ?>
-                                                                            <?php } else { ?>
-                                                                                <a href="student_profile.php" class="save_btn btn-block">Pay here to other half payment</a>
-                                                                        <?php
-                                                                            }
-                                                                        }
-                                                                        ?>
-
-                                                                        <?php
-
-                                                                    } else if (mysqli_num_rows($lmsck_payments) == 2) {
-                                                                        $sum = 0;
-
-                                                                        while ($row2 = mysqli_fetch_assoc($lmsck_payments)) {
-                                                                            $sum += $row2['amount'];
-                                                                        }
-
-
-
-                                                                        if ($sum == $subject_data['price']) { ?>
-                                                                            <input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
-                                                                            <input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
-                                                                            <input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
-                                                                            <?php
+	                                                                    <?php
                                                                             if ($lmsck_date == $level_resalt['classdate']) { ?>
                                                                                 <a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
                                                                             <?php } else { ?>
                                                                                 <a href="javascript:void(0);" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">It Available for <?php echo $level_resalt['classdate']; ?></a>
-                                                                            <?php } ?>
-                                                                        <?php } else { ?>
-                                                                            <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
-                                                                        <?php     }
+                                                                        <?php } ?>
 
 
+																		<div>
+																			<p id="showCounts"></p>
+																		</div>
+                                                                            <?php
+                                                                        } else {
+                                                                        ?>            
+
+                                                                           
+                                                                                <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+                                                                        <?php
+                                                                            
+                                                                        }
                                                                         ?>
-
                                                                     <?php
                                                                     } else { ?>
                                                                         <a href="student_profile.php" class="save_btn btn-block">Payment Here</a>

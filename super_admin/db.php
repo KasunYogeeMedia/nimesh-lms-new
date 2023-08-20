@@ -109,11 +109,12 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	}
 	
 	$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$reid' and pay_sub_id='$current_user_level[sid]' and status='1'");
+	$lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$reid' AND pay_sub_id='$current_user_level[sid]' AND status='1'");															
+	$total_payment = mysqli_fetch_assoc($lmsck_sum);
 
 
-
-	if (mysqli_num_rows($lmsck_payments) == 1) {
-		if (mysqli_fetch_assoc($lmsck_payments)['pay_type'] == 'full') {
+	if (mysqli_num_rows($lmsck_payments) > 0) {
+		if ((int)$total_payment['total_payment'] == (int)$current_user_level['price']) {
 
 			$full_pay = 1;
 			return $full_pay;
@@ -123,19 +124,6 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 			return $full_pay;
 		}
 
-	} else if (mysqli_num_rows($lmsck_payments) == 2) {
-		$sum=0;
-		while ($row = mysqli_fetch_assoc($lmsck_payments)) {
-			$sum += $row['amount'];
-		}
-
-		if ($sum == $current_user_level['price']) {
-			$full_pay = 1;
-			return $full_pay;
-		} else {
-			$full_pay = 2;
-			return $full_pay;
-		}
 	}else{
 		$full_pay = 0;
 		return $full_pay;
