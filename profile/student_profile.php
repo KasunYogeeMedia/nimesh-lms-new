@@ -758,9 +758,9 @@ if (isset($_POST['submit_bt'])) {
 										}
 
 										$tea_qury = mysqli_query($conn, "SELECT tid,systemid,fullname FROM lmstealmsr ORDER BY fullname");
-
+                                        $executeLoop = true;
 										while ($tea_resalt = mysqli_fetch_assoc($tea_qury)) {
-
+                                        if ($executeLoop) {
 										?>
 
 											<thead>
@@ -773,12 +773,12 @@ if (isset($_POST['submit_bt'])) {
 											<tbody>
 												<?php
 
-												$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid");
-
+												$tec_sub_qury = mysqli_query($conn, "SELECT * FROM lmssubject  WHERE class_id = $current_user_data[level]  ORDER BY sid ");
+                                                
 												while ($tec_sub_resalt = mysqli_fetch_assoc($tec_sub_qury)) {
 
 													//check paid subject
-
+                                                
 													
 
 													if (in_array($tec_sub_resalt['sid'], $selected_subjects)) {
@@ -866,6 +866,16 @@ if (isset($_POST['submit_bt'])) {
 																		
 																		<!--kasun 2021.12.01 change color to black from white-->
 																	</tr>
+															<?php } elseif ($full_pay == 3) { ?>
+															
+																<tr>
+																		<td><input style="font-weight:bold;margin: 10px;color:#000000;" class="subject_select" type="checkbox" name="select_payment[]" value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" data-subject-fee="<?php echo $tec_sub_resalt['price'] / 2; ?>" data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" data-paytype="half" onclick="updatePaymonthValue(this)"></td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;">Custom Payment</td>
+																		<td style="font-weight:bold;margin: 10px;color:#000000;"><?php echo $tec_sub_resalt['name']; ?></td>
+
+																		
+																		<!--kasun 2021.12.01 change color to black from white-->
+																</tr>		
 
 															<?php } else { ?>
 																<tr>
@@ -902,7 +912,10 @@ if (isset($_POST['submit_bt'])) {
 											<?php
 
 													}
+													
 												}
+											$executeLoop = false;
+												}	
 											}
 
 											?>

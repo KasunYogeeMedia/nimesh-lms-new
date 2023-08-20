@@ -147,7 +147,7 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 			return $full_pay;
 		} else {
 
-            $full_pay = 0;
+            $full_pay = 3;
 			return $full_pay;
 		}
 
