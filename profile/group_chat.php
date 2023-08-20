@@ -99,6 +99,9 @@ if (isset($_POST['submit'])) {
                 <button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
+                <?php
+	require_once 'pay_alert.php';
+	?>
                 <div class="chat_sec">
                     <div class="bg-primary text-light">
                         <h4 class="text-light ps-3 py-3">Group chat</h4>

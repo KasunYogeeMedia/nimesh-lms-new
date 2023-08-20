@@ -44,84 +44,91 @@ if (isset($_GET['remove'])) {
         ***********************************-->
     <div class="wrapper custom-theme bg-light">
         <div class="row m-0">
-            <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9 pt-4">
+            <div class="col py-4">
+                <button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <?php
+                require_once 'pay_alert.php';
+                ?>
                 <!-- row -->
-
-                <div class="row page-titles mx-0">
-                    <div class="col-sm-6 p-md-0">
-                        <div class="welcome-text">
-                            <h4>Students Attendance</h4>
+                <div class="container-fluid">
+                    <div class="row page-titles mx-0">
+                        <div class="col-sm-6 p-md-0">
+                            <div class="welcome-text">
+                                <h4>Students Attendance</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:void(0);">Students Attendance</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students Attendance</a></li>
+                            </ol>
                         </div>
                     </div>
-                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students Attendance</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students Attendance</a></li>
-                        </ol>
-                    </div>
-                </div>
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-lg-12">
-                        <div class="row tab-content">
-                            <div id="list-view" class="tab-pane fade active show col-lg-12">
-                                <div class="card border-0 bg-light">
+                        <div class="col-lg-12">
+                            <div class="row tab-content">
+                                <div id="list-view" class="tab-pane fade active show col-lg-12">
+                                    <div class="card border-0 bg-light">
 
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table id="dataTable" class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Lesson</th>
-                                                        <th>Start</th>
-                                                        <th>End</th>
-                                                        <th>Student Presant Date</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $count = 0;
-                                                    $list_qury = mysqli_query($conn, "SELECT lmsregister.*, user_attandance.*,lmsclass_schlmsle.*
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="dataTable" class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Lesson</th>
+                                                            <th>Start</th>
+                                                            <th>End</th>
+                                                            <th>Student Presant Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $count = 0;
+                                                        $list_qury = mysqli_query($conn, "SELECT lmsregister.*, user_attandance.*,lmsclass_schlmsle.*
                                                     FROM lmsregister
                                                     INNER JOIN user_attandance ON lmsregister.reid = user_attandance.userid
                                                     INNER JOIN lmsclass_schlmsle ON lmsclass_schlmsle.classid = user_attandance.lid
                                                     WHERE lmsregister.reid = $current_user_data[reid]
                                                     ORDER BY classid DESC");
 
-                                                    while ($list_resalt = mysqli_fetch_array($list_qury)) {
-                                                        $count++;
+                                                        while ($list_resalt = mysqli_fetch_array($list_qury)) {
+                                                            $count++;
 
 
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo number_format($count, 0); ?></td>
+                                                        ?>
+                                                            <tr>
+                                                                <td><?php echo number_format($count, 0); ?></td>
 
-                                                            <td style="text-transform: capitalize;"><?php echo $list_resalt['lesson']; ?></td>
+                                                                <td style="text-transform: capitalize;"><?php echo $list_resalt['lesson']; ?></td>
 
 
-                                                            <td><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></td>
-                                                            <td><?php echo date_format(date_create($list_resalt['class_end_time']), "h:i:s A"); ?></td>
-                                                            <td><?php echo date_format(date_create($list_resalt['date']), " h:i:s A"); ?></td>
+                                                                <td><?php echo date_format(date_create($list_resalt['class_start_time']), "h:i:s A"); ?></td>
+                                                                <td><?php echo date_format(date_create($list_resalt['class_end_time']), "h:i:s A"); ?></td>
+                                                                <td><?php echo date_format(date_create($list_resalt['date']), " h:i:s A"); ?></td>
 
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                            </tr>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
+            <div id="rgsb" class="rg-sb col-sm-6 col-md-5 col-lg-3 col-xl-3 col-xxl-3 bg-light rounded-left pt-4">
                 <?php
                 require_once 'right-sidebar.php';
                 ?>

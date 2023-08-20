@@ -45,6 +45,9 @@ if ($image_resalt['image'] == "") {
 				<button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
+				<?php
+				require_once 'pay_alert.php';
+				?>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
@@ -274,14 +277,14 @@ if ($image_resalt['image'] == "") {
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$tute_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
 
-																$lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$tute_resalt[subject]' AND status='1'");
-																
+																$lmsck_sum = mysqli_query($conn, "SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$tute_resalt[subject]' AND status='1'");
+
 																$total_payment = mysqli_fetch_assoc($lmsck_sum);
 																$userID = $_SESSION['reid'];
 
 																if (mysqli_num_rows($lmsck_payments) > 0) {
 
-																	if ((int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] == NULL || (int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] != NULL) { 
+																	if ((int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] == NULL || (int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] != NULL) {
 
 
 
@@ -296,9 +299,9 @@ if ($image_resalt['image'] == "") {
 																		</div>
 
 																	<?php
-                                                                    //not full payment but next pay date available student  
-																	} else if((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
-																	
+																		//not full payment but next pay date available student  
+																	} else if ((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
+
 																		<a href="../admin/images/classtute/<?php echo $tute_resalt['tdocument']; ?>" class="save_btn btn-block" target="_blank" download>Download Tute</a>
 
 
@@ -306,18 +309,18 @@ if ($image_resalt['image'] == "") {
 																			<p id="showCounts"></p>
 																		</div>
 
-																		<?php
+																	<?php
 																	} else { ?>
 
 
-															
+
 																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
 																	<?php
-																		
+
 																	}
 																	?>
 
-																	<?php
+																<?php
 
 																} else { ?>
 																	<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>

@@ -67,6 +67,9 @@ if ($image_resalt['image'] == "") {
 				<button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
+				<?php
+				require_once 'pay_alert.php';
+				?>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">

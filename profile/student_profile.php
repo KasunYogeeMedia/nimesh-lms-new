@@ -326,6 +326,9 @@ if (isset($_POST['submit_bt'])) {
 				<button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
+				<?php
+				require_once 'pay_alert.php';
+				?>
 
 				<!-- content start -->
 				<div class="alert-sec">
@@ -368,6 +371,7 @@ if (isset($_POST['submit_bt'])) {
 
 				</div>
 
+
 				<div class="wel_sec bg-primary mb-3">
 					<div class="row">
 						<div class="col-sm-6 col-md-6 col-lg-6 col-xl-5 my-auto">
@@ -409,7 +413,7 @@ if (isset($_POST['submit_bt'])) {
 						</div>
 					</div>
 				</div>
-				
+
 
 				<!-- profile section start -->
 				<div class="profile mb-3">
@@ -704,7 +708,7 @@ if (isset($_POST['submit_bt'])) {
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="pay_sec">
 						<div class="col-lg-6 new-sce-1">
 							<div class="value_props">
 								<h3 class="text-dark">පන්ති සඳහා ගෙවීම් කටයුතු සිදුකල යුතු ආකාරය
