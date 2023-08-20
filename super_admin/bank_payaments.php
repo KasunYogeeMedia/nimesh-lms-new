@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pending Bank Payments | Online Learning Platforms | Dashboard</title>
+    <title>Bank Payments | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Pending Bank Payments</h4>
+                            <h4>Bank Payments</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -100,6 +100,10 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <a href="paid_bank_payaments.php" class="btn btn-success">Paid Payments</a>
+                    <a href="reject_bank_payaments.php" class="btn btn-danger">Reject Payments</a>
+                </div>
                 <div class="row">
 
                     <div class="col-lg-12">
