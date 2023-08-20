@@ -22,7 +22,7 @@
 							<a href="group_chat.php" class="menu--link"> <i class='uil uil-comments menu--icon'></i> <span class="menu--label">Group Chat</span> </a>
 						</li>
 						<li class="menu--item">
-							<a href="#" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">Results</span> </a>
+							<a href="my_results.php" class="menu--link"> <i class='uil uil-award menu--icon'></i> <span class="menu--label">Results</span> </a>
 						</li>
 						<li class="menu--item">
 							<a href="my_payments.php" class="menu--link"> <i class='uil uil-dollar-sign menu--icon'></i> <span class="menu--label">My Payments</span> </a>

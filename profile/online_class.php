@@ -355,6 +355,8 @@ if ($image_resalt['image'] == "") {
 																date_default_timezone_set("Asia/Colombo");
 																$lmsck_date = date('Y-m-d');
 																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1'");
+																$lmsck_sum = mysqli_query($conn,"SELECT SUM(payment_amount) AS total_payment FROM lmspayment WHERE userID='$userId' AND pay_sub_id='$subject' AND status='1'");
+																var_dump($lmsck_sum);
 																$row = mysqli_fetch_assoc($lmsck_payments);
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
