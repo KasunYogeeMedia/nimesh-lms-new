@@ -410,6 +410,11 @@ if (isset($_POST['submit_bt'])) {
 					</div>
 				</div>
 
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>Hi!</strong> Payemet message.
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
 				<!-- profile section start -->
 				<div class="profile mb-3">
 					<div class="card border-0 bg-light py-3">
@@ -512,8 +517,8 @@ if (isset($_POST['submit_bt'])) {
 								<a href="course_activities.php" class="btn btn-success dash_card_a">View More</a>
 							</div>
 						</div>
-						
-						
+
+
 						<!-- new sec -->
 						<div class="col-xl-6 col-lg-6 col-md-6 col-xxl-4 dash_card">
 							<div class="card_dash h-100">
