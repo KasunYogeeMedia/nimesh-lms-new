@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pending Bank Payments | Online Learning Platforms | Dashboard</title>
+    <title>Bank Payments | Online Learning Platforms | Dashboard</title>
     <?php
     require_once 'headercss.php';
     ?>
@@ -92,7 +92,7 @@ if (isset($_GET['id'])) {
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Pending Bank Payments</h4>
+                            <h4>Bank Payments</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -102,6 +102,11 @@ if (isset($_GET['id'])) {
                             <li class="breadcrumb-item active"><a href="javascript:void(0);">Pending Bank Payments</a></li>
                         </ol>
                     </div>
+                </div>
+
+                <div class="mb-3">
+                    <a href="paid_bank_payaments.php" class="btn btn-success">Paid Payments</a>
+                    <a href="reject_bank_payaments.php" class="btn btn-danger">Reject Payments</a>
                 </div>
 
                 <div class="row">
@@ -187,9 +192,9 @@ if (isset($_GET['id'])) {
                                                             </td>
                                                             <td>
                                                                 <span>Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
-                                                                
+
                                                                 <input type="number" step="0.00" min="10" class="mt-1 classFeeInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
-                                                              
+
                                                                 <button class="mt-1 btn btn-primary submitClassFee" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update</button>
                                                             </td>
                                                             <td><?php echo $payment_resalt['pay_type']; ?></td>
@@ -197,7 +202,7 @@ if (isset($_GET['id'])) {
                                                             <td>
                                                                 <span><?php echo ($payment_resalt['next_paydate']); ?></span>
                                                                 <input type="date" class="mt-1 nextPayDateInput" data-payment-id="<?php echo $payment_resalt['pid']; ?>">
-                                                                 
+
                                                                 <button class="mt-1 btn btn-primary submitNextPayDate" data-payment-id="<?php echo $payment_resalt['pid']; ?>">Update</button>
                                                             </td>
                                                             <td><?php echo $payment_resalt['coupen'] ?></td>
@@ -244,33 +249,39 @@ if (isset($_GET['id'])) {
     <?php
     require_once 'footerjs.php';
     ?>
-<script>
-$(document).ready(function() {
-    $(".submitNextPayDate").on("click", function() {
-        var paymentID = $(this).data("payment-id");
-        var nextPayDate = $(".nextPayDateInput[data-payment-id='" + paymentID + "']").val();
+    <script>
+        $(document).ready(function() {
+            $(".submitNextPayDate").on("click", function() {
+                var paymentID = $(this).data("payment-id");
+                var nextPayDate = $(".nextPayDateInput[data-payment-id='" + paymentID + "']").val();
 
-        $.post("update_payments.php", { paymentID: paymentID, nextPayDate: nextPayDate }, function(data) {
-            if (data === "Success") {
-                // Refresh the page
-                location.reload();
-            }
+                $.post("update_payments.php", {
+                    paymentID: paymentID,
+                    nextPayDate: nextPayDate
+                }, function(data) {
+                    if (data === "Success") {
+                        // Refresh the page
+                        location.reload();
+                    }
+                });
+            });
+
+            $(".submitClassFee").on("click", function() {
+                var paymentID = $(this).data("payment-id");
+                var classFee = $(".classFeeInput[data-payment-id='" + paymentID + "']").val();
+
+                $.post("update_payments.php", {
+                    paymentID: paymentID,
+                    classFee: classFee
+                }, function(data) {
+                    if (data === "Success") {
+                        // Refresh the page
+                        location.reload();
+                    }
+                });
+            });
         });
-    });
-
-    $(".submitClassFee").on("click", function() {
-        var paymentID = $(this).data("payment-id");
-        var classFee = $(".classFeeInput[data-payment-id='" + paymentID + "']").val();
-
-        $.post("update_payments.php", { paymentID: paymentID, classFee: classFee }, function(data) {
-            if (data === "Success") {
-                // Refresh the page
-                location.reload();
-            }
-        });
-    });
-});
-</script>
+    </script>
 
 
 </body>

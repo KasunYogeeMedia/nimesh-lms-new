@@ -47,6 +47,9 @@ if ($image_resalt['image'] == "") {
 				<button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
+				<?php
+				require_once 'pay_alert.php';
+				?>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
@@ -283,7 +286,7 @@ if ($image_resalt['image'] == "") {
 															<span style="font-size:14px;">Start : <?php echo date_format(date_create($level_resalt['class_start_time']), "h:i:s A"); ?></span>
 															<span style="font-size:14px;">End : <?php echo date_format(date_create($level_resalt['class_end_time']), "h:i:s A"); ?></span>
 														</div>
-													
+
 
 
 														<div class="auth1lnkprce">
@@ -304,23 +307,23 @@ if ($image_resalt['image'] == "") {
 																date_default_timezone_set("Asia/Colombo");
 																$lmsck_date = date('Y-m-d');
 																$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$_SESSION[reid]' and pay_sub_id='$level_resalt[subject]' and status='1'");
-																$lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$level_resalt[subject]' AND status='1'");
-																
+																$lmsck_sum = mysqli_query($conn, "SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$_SESSION[reid]' AND pay_sub_id='$level_resalt[subject]' AND status='1'");
+
 																$total_payment = mysqli_fetch_assoc($lmsck_sum);
-																
+
 																$row = mysqli_fetch_assoc($lmsck_payments);
 																$subject_validate = mysqli_query($conn, "SELECT * FROM lmssubject WHERE sid='$level_resalt[subject]'");
 																$subject_data = mysqli_fetch_assoc($subject_validate);
-                                                               
+
 																$userID = $_SESSION['reid'];
 																$subjectID =  $level_resalt['subject'];
 																$lID =  $level_resalt['classid'];
-																
-																if (mysqli_num_rows($lmsck_payments) > 0 ) {
-																    
-                                                                    //full payment student            
+
+																if (mysqli_num_rows($lmsck_payments) > 0) {
+
+																	//full payment student            
 																	if ((int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] == NULL || (int)$total_payment['total_payment'] == (int)$subject_data['price'] && $row['next_paydate'] != NULL) {
-																	    
+
 
 
 
@@ -329,7 +332,7 @@ if ($image_resalt['image'] == "") {
 																		<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
 																		<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
 
-	                                                                    <h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
+																		<h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
 																		<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
 
 
@@ -338,32 +341,32 @@ if ($image_resalt['image'] == "") {
 																		</div>
 
 
-                                                                    <?php
-                                                                    //not full payment but next pay date available student  
-																	} else if((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
-																	    
-																	    <input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
+																	<?php
+																		//not full payment but next pay date available student  
+																	} else if ((int)$total_payment['total_payment'] < (int)$subject_data['price'] && $lmsck_date < $row['next_paydate']) { ?>
+
+																		<input type="hidden" id="userID" name="userID" value="<?php echo $userID; ?>">
 																		<input type="hidden" id="subjectID" name="subjectID" value="<?php echo $subjectID; ?>">
 																		<input type="hidden" id="lID" name="lID" value="<?php echo $lID; ?>">
 
-	                                                                    <h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
+																		<h5>Zoom Password: <?php echo $level_resalt['cpassword']; ?></h5>
 																		<a href="<?php echo $level_resalt['classlink']; ?>" target="_blank" class="save_btn btn-block" style="background-color:#151fc1;" id="btnSubmit">Go Live</a>
 
 
 																		<div>
 																			<p id="showCounts"></p>
 																		</div>
-																	    
 
-																		<?php
-																	} else { ?>
-																			<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+
 																	<?php
-																		}
-																	
+																	} else { ?>
+																		<a href="student_profile.php" class="save_btn btn-block">Payment Here</a>
+																	<?php
+																	}
+
 																	?>
 
-																	
+
 
 																<?php
 																} else { ?>

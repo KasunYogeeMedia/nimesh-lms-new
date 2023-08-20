@@ -191,6 +191,9 @@ function display_answer($lms_answer_user, $lms_answer_paper, $lms_answer_q)
 				<button class="btn btn-light" id="rsbtnon" type="button" onclick="rightsbon()">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
+				<?php
+				require_once 'pay_alert.php';
+				?>
 				<div class="container-fluid">
 					<div class="row text-center">
 
