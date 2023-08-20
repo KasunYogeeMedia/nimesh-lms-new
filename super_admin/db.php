@@ -115,8 +115,23 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 
 	if (mysqli_num_rows($lmsck_payments) > 0) {
 		$user_lastpayments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE status = 1 AND userID='$reid' AND pay_sub_id='$current_user_level[sid]' AND next_paydate > CURDATE() ORDER BY created_at DESC LIMIT 1"); 
+		
 		$user_lastpayment = mysqli_fetch_assoc($user_lastpayments);
-		var_dump($user_lastpayment);
+		date_default_timezone_set("Asia/Colombo");
+		$current_date = date('Y-m-d');
+		
+		if($user_lastpayment['next_paydate'] > $current_date){
+		    $next_due = 1;
+		    return  $next_due;
+		    
+		}else{
+		    
+		    $next_due = 0;
+		    return $next_due;
+		}
+		
+		
+		
 		if ((int)$total_payment['total_payment'] == (int)$current_user_level['price']) {
 
 			$full_pay = 1;
@@ -132,6 +147,8 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 			return $full_pay;
 		}
 
+
+        
 	
 
 }
