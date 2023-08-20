@@ -58,7 +58,7 @@
 
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-users"></i>
-			<span class="nav-text">Students</span>
+			<span class="nav-text">Students <span class="badge badge-dark">0</span></span>
 		</a>
 		<ul aria-expanded="false">
 			<li>
@@ -175,13 +175,13 @@
 			<span class="nav-text">Payments</span>
 		</a>
 		<ul aria-expanded="false">
-			<li><a href="manual_payments.php">Manual Payments</a></li>
-			<li><a href="bank_payaments.php">Pending - Bank Payments</a></li>
-			<li><a href="paid_bank_payaments.php">Paid - Bank Payments</a></li>
-			<li><a href="reject_bank_payaments.php">Reject - Bank Payments</a></li>
-			<li><a href="online_payments.php">Online Payments</a></li>
-			<li><a href="teacher_payment.php">Teacher Payment</a></li>
-			<li><a href="payment_report.php">Payment Report</a></li>
+			<!-- <li><a href="manual_payments.php">Manual Payments</a></li> -->
+			<li><a href="bank_payaments.php">Pending Bank Payments <span class="badge badge-warning">0</span></a> </li>
+			<li><a href="paid_bank_payaments.php">Paid Bank Payments <span class="badge badge-secondary">0</span></a></li>
+			<li><a href="reject_bank_payaments.php">Reject Bank Payments <span class="badge badge-danger">0</span></a></li>
+			<li><a href="online_payments.php">Online Payments <span class="badge badge-dark">0</span></a></li>
+			<li><a href="teacher_payment.php">Teacher Payment <span class="badge badge-dark">0</span></a></li>
+			<!-- <li><a href="payment_report.php">Payment Report</a></li> -->
 		</ul>
 	</li>
 	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
