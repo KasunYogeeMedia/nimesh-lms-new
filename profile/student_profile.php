@@ -203,40 +203,24 @@ if (isset($_POST['submit_bt'])) {
 		//echo $select_payment;
 		$pay_type = $_POST['paymonth'];
 		$coupen = $_POST['coupen'];
-		$select_payment = explode(",", $select_payment); //teacher id,subject id, amount
-		if ($_POST['paymonth'] == 'half') {
-			$sql = "SELECT * FROM lmspayment WHERE pay_type ='half' AND userID=" . $_SESSION['reid'] . " ";
-		}else if($_POST['paymonth'] == 'custom'){ 
+		$upload_payment = $_POST['amount']; //teacher id,subject id, amount
 		
-		
-		}else {
-			$sql = "SELECT * FROM lmspayment WHERE pay_type ='full' AND userID=" . $_SESSION['reid'] . " ";
-		}
-
+		$sql = "SELECT * FROM lmspayment WHERE pay_sub_id = $current_user_data[level] AND userID=" . $_SESSION['reid'] . " ";
+		$sql2 = "SELECT * FROM lmspayment WHERE pay_sub_id = $current_user_level AND userID = $userID ORDER BY pid DESC LIMIT 1";
 
 		$query = mysqli_query($conn, $sql);
-
+		$query2 = mysqli_query($conn, $sql2);
 		if (mysqli_num_rows($query) > 0) {
-
-			$R = mysqli_fetch_array($query);
-
-			if ($R['status'] == 1 && $R['pay_type'] == 'full') {
-
+			$R = mysqli_fetch_array($query2);
+			if($full_pay == 1){
 				$error = "ඔබ දැනටමත් full පන්ති ගාස්තු ගෙවා ඇත!!";
-			} else if ($R['status'] == 0 && $R['pay_type'] == 'full' && mysqli_num_rows($query) == 1) {
-
+			}else if( $R['status'] == 0 && $full_pay == 0 || $R['status'] == 0 && $full_pay == 2 || $R['status'] == 0 && $full_pay == 3){
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
-			} else if ($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
-
-				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
-			} else if ($R['status'] == 1 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
-			} else if ($R['status'] == 0 && $R['pay_type'] == 'half' && mysqli_num_rows($query) == 1) {
-
-				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
-			} else {
+			}else {
 
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
+
 		}
 
 		if (!isset($error)) {
@@ -244,7 +228,7 @@ if (isset($_POST['submit_bt'])) {
 
 			$sql = "INSERT INTO lmspayment (`fileName`, `userID`, `feeID`, `pay_sub_id`, `amount`, `accountnumber`, `bank`, `branch`, `paymentMethod`, `created_at`, `session_id`, `status`, `order_status`,`pay_type`,`coupen`)
 
-				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$select_payment[2]', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "', '" . $coupen . "')";
+				VALUES ('$database_name', '$_SESSION[reid]', '$select_payment[0]', '$select_payment[1]', '$upload_payment', '0', 'Pay Bank', 'Online Class', 'Bank', '$created_at', '0', '0', '0' , '" . $pay_type . "', '" . $coupen . "')";
 
 			//echo $sql;exit;
 
