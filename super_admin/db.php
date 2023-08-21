@@ -127,13 +127,16 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 		}else if($user_lastpayment['next_paydate'] > $current_date) {   
 		    $next_due = 1;
 		    return  $next_due;
+		}else if($user_lastpayment['next_paydate'] < $current_date) {   
+		    $next_due = 0;
+		    return  $next_due;
 		}else{
 		    
-		    $next_due = 0;
+		    $next_due = 2;
 		    return $next_due;
 		}
 	    }else{
-	        $next_due = 0;
+	        $next_due = 2;
 	    }
 		
 		
@@ -153,7 +156,7 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 
 		}else{
 			$full_pay = 0;
-			$next_due = 0;
+			$next_due = 2;
 			return $full_pay;
 		}
 
