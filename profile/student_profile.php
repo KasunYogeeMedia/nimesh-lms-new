@@ -874,7 +874,7 @@ if (isset($_POST['submit_bt'])) {
                                                                                value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid'] . "," . $tec_sub_resalt['price'] / 2; ?>" 
                                                                                data-subject-fee="" 
                                                                                data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" 
-                                                                               data-paytype="custom" 
+                                                                               data-paytype="customize" 
                                                                                onclick="toggleCustomPayment(this)">
                                                                     </td>
                                                                 </tr>
@@ -915,7 +915,7 @@ if (isset($_POST['submit_bt'])) {
                                                                                value="<?php echo $tea_resalt['tid'] . "," . $tec_sub_resalt['sid']; ?>" 
                                                                                data-subject-fee="" 
                                                                                data-subject-id="<?php echo $tec_sub_resalt['sid']; ?>" 
-                                                                               data-paytype="custom" 
+                                                                               data-paytype="customize" 
                                                                                onclick="toggleCustomPayment(this)">
                                                                     </td>
                                                                 </tr>
@@ -1094,6 +1094,8 @@ if (isset($_POST['submit_bt'])) {
 				$('#paytype').val('full');
 			} else if (paytype === 'half') {
 				$('#paytype').val('half');
+			} else if (paytype === 'customize') {
+				$('#paytype').val('customize');	
 			} else {
 				// Add other payment types if needed
 				$('#paytype').val('');
