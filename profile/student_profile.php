@@ -203,6 +203,7 @@ if (isset($_POST['submit_bt'])) {
 		//echo $select_payment;
 		$pay_type = $_POST['paymonth'];
 		$coupen = $_POST['coupen'];
+		$select_payment = explode(",", $select_payment); 
 		$upload_payment = $_POST['amount']; //teacher id,subject id, amount
 		
 		$sql = "SELECT * FROM lmspayment WHERE pay_sub_id = $current_user_data[level] AND userID=" . $_SESSION['reid'] . " ";
