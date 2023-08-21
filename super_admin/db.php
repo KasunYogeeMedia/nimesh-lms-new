@@ -153,6 +153,7 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 
 		}else{
 			$full_pay = 0;
+			$next_due = 0;
 			return $full_pay;
 		}
 
