@@ -83,74 +83,42 @@ if ($image_resalt['image'] == "") {
 						</div>
 						<div class="col-lg-12 col-md-12">
 							<div class="table-responsive mt-30">
-								<table width="100%" class="table ucp-table earning__table" id="content-table">
-									<thead class="thead-s">
-										<tr>
-											<th scope="col">Status</th>
-											<th scope="col">Batch/Course</th>
-											<th scope="col">Slip</th>
-											<th scope="col">Amount</th>
-											<th scope="col">Pay Date</th>
-											<th scope="col">Coupen</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-										$today_time = date("Y-m-d");
+								<?php 
+						$sql = "SELECT *
+						FROM verbal_exam ve
+						LEFT JOIN lms_exam_report ler ON ve.userId = ler.exam_report_user
+						LEFT JOIN exam_submissions es ON ve.userId = es.user_id
+						LEFT JOIN course_work_submissions cws ON ve.userId = cws.user_id
+						LEFT JOIN course_work_marks cwm ON ve.userId = cwm.user_id
+						WHERE ve.userId = $_SESSION[reid]";
 
-										$payment_qury = mysqli_query($conn, "SELECT * FROM lmspayment WHERE  userID='$_SESSION[reid]' ORDER BY pid DESC");
-										while ($payment_resalt = mysqli_fetch_array($payment_qury)) {
-										?>
-											<tr>
-												<td>
-													<?php
-													if ($payment_resalt['status'] == 0) {
-													?>
-														<span>Pending</span>
-													<?php
-													} elseif ($payment_resalt['status'] == 1) {
-													?>
-														<span>Active</span>
-													<?php
-													} elseif ($payment_resalt['status'] == 2) {
-													?>
-														<span>Reject</span>
-													<?php
-													}
-													?>
-												</td>
-												<td>
-													<span>
-														<?php
-														// Assuming $payment_result['pay_sub_id'] is already sanitized or prepared safely.
-														$sub_qury = mysqli_query($conn, "SELECT s.name AS subject_name, c.name AS class_name FROM lmssubject s INNER JOIN lmsclass c ON s.class_id = c.cid WHERE s.sid = '$payment_resalt[pay_sub_id]'");
+				$result = $conn->query($sql);
 
-														while ($sub_resalt = mysqli_fetch_array($sub_qury)) {
-															echo $sub_resalt['subject_name'] . ' - ' . $sub_resalt['class_name'] . ' ';
-														}
-														?>
-													</span>
-
-												</td>
-												<td>
-													<a href="<?php echo "$url/profile/uploadslip/" . $payment_resalt['fileName']; ?>" target="_blank" class="btn btn-primary">View Slip</a>
-												</td>
-												<td>
-													<span>Rs.<?php echo number_format($payment_resalt['amount'], 2); ?></span>
-												</td>
-
-												<td>
-													<?php echo date_format(date_create($payment_resalt['created_at']), "M d, Y | h:i:s A"); ?>
-												</td>
-												<td>
-													<?php echo $payment_resalt['coupen']; ?>
-												</td>
-											</tr>
-										<?php
-										}
-										?>
-									</tbody>
-								</table>
+				// Check if there are results
+				if ($result->num_rows > 0) {
+					echo "<table border='1'><tr>";
+					// Output column headers
+					while ($row = $result->fetch_assoc()) {
+						foreach ($row as $key => $value) {
+							echo "<th>$key</th>";
+						}
+						break; // Only need to output column headers once
+					}
+					echo "</tr>";
+					
+					// Output data rows
+					while ($row = $result->fetch_assoc()) {
+						echo "<tr>";
+						foreach ($row as $value) {
+							echo "<td>$value</td>";
+						}
+						echo "</tr>";
+					}
+					echo "</table>";
+				} else {
+					echo "No results found.";
+				}
+				?>
 							</div>
 
 						</div>
