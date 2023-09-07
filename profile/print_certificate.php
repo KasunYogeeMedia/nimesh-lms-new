@@ -36,15 +36,15 @@
         .logo {
             position: absolute;
             top: 20%;
-            left: 10%;
-            max-width: 10%;
+            left: 7%;
+            max-width: 12%;
         }
 
         .icon {
             position: absolute;
             top: 60%;
-            right: 10%;
-            max-width: 10%;
+            right: 8%;
+            max-width: 14%;
         }
 
         .title {
@@ -117,8 +117,8 @@
 <body>
     <div class="container">
 
-        <img class="logo" src="https://ipdedulk.com/admin/settings/logo/logo.png" alt="">
-        <img class="icon" src="https://ipdedulk.com/admin/settings/logo/logo.png" alt="">
+        <img class="logo" src="images/logo.png" alt="">
+        <img class="icon" src="images/icon.png" alt="">
 
         <div class="title">
             INSTITUTE FOR PROFESSIONAL
