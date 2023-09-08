@@ -110,43 +110,50 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 	}
 	
 	$lmsck_payments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE userID='$reid' and pay_sub_id='$current_user_level[sid]' and status='1'");
+	
 	$lmsck_sum = mysqli_query($conn,"SELECT SUM(amount) AS total_payment FROM lmspayment WHERE userID='$reid' AND pay_sub_id='$current_user_level[sid]' AND status='1'");															
 	$total_payment = mysqli_fetch_assoc($lmsck_sum);
 
 
 	if (mysqli_num_rows($lmsck_payments) > 0) {
-		$user_lastpayments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE status = 1 AND userID='$reid' AND pay_sub_id='$current_user_level[sid]' AND next_paydate > CURDATE() ORDER BY created_at DESC LIMIT 1"); 
-		
-		$user_lastpayment = mysqli_fetch_assoc($user_lastpayments);
-		date_default_timezone_set("Asia/Colombo");
+	    date_default_timezone_set("Asia/Colombo");
 		$current_date = date('Y-m-d');
+	    
+		$user_lastpayments = mysqli_query($conn, "SELECT * FROM lmspayment WHERE status = 1 AND userID='$reid' AND pay_sub_id='$current_user_level[sid]' AND next_paydate > $current_date ORDER BY created_at DESC LIMIT 1"); 
+		$user_lastpayment = mysqli_fetch_assoc($user_lastpayments);
+
 
 		if($user_lastpayment != NULL){
 		if((int)$total_payment['total_payment'] == (int)$current_user_level['price']){
+		  
 		    $next_due = 1;
 		    return  $next_due;
-		}else if($user_lastpayment['next_paydate'] > $current_date) {   
+		}else if($user_lastpayment['next_paydate'] > $current_date) { 
+		    
 		    $next_due = 1;
 		    return  $next_due;
-		}else if($user_lastpayment['next_paydate'] < $current_date) {   
+		}else if($user_lastpayment['next_paydate'] <= $current_date) {  
+		    
 		    $next_due = 0;
 		    return  $next_due;
 		}else{
-		    
-		    $next_due = 2;
+		   
+		    $next_due = 4;
 		    return $next_due;
 		}
 	    }else{
-	        $next_due = 2;
+	        
+	        $next_due = 0;
 	    }
 		
 		
 		if ((int)$total_payment['total_payment'] == (int)$current_user_level['price']) {
-
+		   
 			$full_pay = 1;
 			return $full_pay;
 
 		}else if(((int)$total_payment['total_payment'] / 2)  == (int)$current_user_level['price']){	
+		    
 			$full_pay = 2;
 			return $full_pay;
 		} else {
@@ -156,6 +163,7 @@ if (isset($_SESSION['reid']) && !empty($_SESSION['reid'])) {
 		}
 
 		}else{
+		   
 			$full_pay = 0;
 			$next_due = 2;
 			return $full_pay;
