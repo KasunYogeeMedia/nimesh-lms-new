@@ -17,14 +17,14 @@ if (isset($_GET['id'])) {
 
     if ($status == 1) {
         $to = "+94" . (int)$_GET['mobile'];
-        $message_text = "We have approved your payment.Your classes and learning materials are unlocked now.";
+        $message_text = "Dear Student,Welcome to IPD.You have successfully registered with the Institute for professional development.Your IPD LMS online account has being activated";
         $message = urlencode($message_text);
         send_sms($to, $message_text);
 
         echo "<img src=''>";
     } else if ($status == 2) {
         $to = "+94" . (int)$_GET['mobile'];
-        $message_text = "We regret to inform you that your payment is got rejected. Please contact 0773851246 for more details.";
+        $message_text = "We regret to inform you that your payment is got rejected. Please contact 0772597766/0772795279 for more details.";
         $message = urlencode($message_text);
         send_sms($to, $message_text);
 

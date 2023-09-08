@@ -52,6 +52,7 @@ function send_sms($receiver_number, $messsage)
 	curl_setopt_array($curl, array(
 		CURLOPT_URL => "https://sms.send.lk/api/v3/sms/send",
 		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_POSTFIELDS => json_encode($msgdata),
 		CURLOPT_HTTPHEADER => array(
 			"accept: application/json",
