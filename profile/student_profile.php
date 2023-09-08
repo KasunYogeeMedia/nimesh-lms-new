@@ -206,20 +206,18 @@ if (isset($_POST['submit_bt'])) {
 		$select_payment = explode(",", $select_payment); 
 		$upload_payment = $_POST['amount']; //teacher id,subject id, amount
 		
-		$sql = "SELECT * FROM lmspayment WHERE pay_sub_id = $select_payment[1] AND userID=" . $_SESSION['reid'] . " ";
-		$sql2 = "SELECT * FROM lmspayment WHERE pay_sub_id = $select_payment[1] AND userID =" . $_SESSION['reid'] . " ORDER BY pid DESC LIMIT 1";
-	
+		$sql = "SELECT * FROM lmspayment WHERE pay_sub_id = $current_user_data[level] AND userID=" . $_SESSION['reid'] . " ";
+		$sql2 = "SELECT * FROM lmspayment WHERE pay_sub_id = $current_user_level AND userID = $userID ORDER BY pid DESC LIMIT 1";
+
 		$query = mysqli_query($conn, $sql);
 		$query2 = mysqli_query($conn, $sql2);
 		if (mysqli_num_rows($query) > 0) {
 			$R = mysqli_fetch_array($query2);
-		
 			if($full_pay == 1){
-				$error = "ඔබ දැනටමත් සම්පුර්ණ පන්ති ගාස්තු ගෙවා ඇත!!";
+				$error = "ඔබ දැනටමත් full පන්ති ගාස්තු ගෙවා ඇත!!";
 			}else if( $R['status'] == 0 && $full_pay == 0 || $R['status'] == 0 && $full_pay == 2 || $R['status'] == 0 && $full_pay == 3){
-			    
-               $error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබගේ පෙර පන්ති ගාස්තු ගෙවීම තවමත් තහවුරු කර නොමැත.එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත.";       
-            }else {
+				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
+			}else {
 
 				$error = "අපගේ පද්ධතියේ දත්ත අනුව ඔබ දැනටමත් පන්ති ගාස්තු ගෙවා ඇත. එය තහවුරු කල සැනින් ඔබට දැනුම් දෙනු ඇත";
 			}
@@ -238,7 +236,6 @@ if (isset($_POST['submit_bt'])) {
 			echo "<script>window.location='student_profile.php?payed';</script>";
 
 			mysqli_query($conn, $sql);
-			
 		} else {
 
 			header("location:student_profile.php?error='" . $error);
