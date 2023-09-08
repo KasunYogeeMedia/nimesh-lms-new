@@ -1,14 +1,43 @@
-<html>
+<?php
+ob_start();
+session_start();
+
+$a = time() + 60 * 60 * 24 * 30;
+
+$exp_date = date("Y-m-d", $a);
+
+require_once("../super_admin/config.php");
+
+require_once '../super_admin/dbconfig4.php';
+
+include '../super_admin/conn.php';
+
+if (!isset($_SESSION['reid'])) {
+
+    header('location:../login.php');
+
+    die();
+}
+
+$user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]'");
+$user_resalt = mysqli_fetch_array($user_qury);
+
+if ($user_resalt > 0) {
+
+    echo '
+    
+    <html>
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Marck+Script&family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <style type='text/css'>
+    <style type="text/css">
         body,
         html {
             margin: 0;
             padding: 0;
+            
         }
 
         body {
@@ -23,7 +52,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            font-family: 'Roboto', sans-serif;
+            font-family: "Roboto", sans-serif;
+            opacity:0;
         }
 
         .container {
@@ -42,7 +72,7 @@
 
         .icon {
             position: absolute;
-            top: 60%;
+            top: 55%;
             right: 8%;
             max-width: 14%;
         }
@@ -51,7 +81,9 @@
             color: 870CA5;
             font-size: 46px;
             font-weight: bold;
-            font-family: 'Crimson Text', serif;
+            font-family: "Crimson Text", serif;
+            width: 80%;
+            margin: auto;
         }
 
         .subtitle {
@@ -61,7 +93,7 @@
         .course {
             font-size: 52px;
             margin: 16px;
-            font-family: 'Marck Script', cursive;
+            font-family: "Marck Script", cursive;
         }
 
         .assignment {
@@ -111,7 +143,19 @@
 	color: #870CA5;
 	font-weight: bold;
 }
+@media print {
+   body{
+    opacity:1;
+   }
+}
     </style>
+    <style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+</style>
+
 </head>
 
 <body>
@@ -187,6 +231,81 @@
             </tr>
         </table>
     </div>
+<script>
+    window.print();
+    window.history.back();
+</script>
+
 </body>
 
 </html>
+
+    ';
+} else {
+    echo '
+    
+    <html>
+
+<head>
+    <title>Certificate Not Found</title>
+    <style>
+        * {
+            transition: all 0.6s;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            color: #888;
+            margin: 0;
+        }
+
+        #main {
+            display: table;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .fof {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .fof h1 {
+            font-size: 50px;
+            display: inline-block;
+            padding-right: 12px;
+            animation: type .2s alternate infinite;
+        }
+
+        @keyframes type {
+            from {
+                box-shadow: inset -3px 0px 0px #888;
+            }
+
+            to {
+                box-shadow: inset -3px 0px 0px transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="fof">
+            <h1>Certificate Not Found</h1>
+        </div>
+    </div>
+    <script>
+    setTimeout("history.go(-1)", 1000);
+</script>
+</body>
+
+</html>
+    
+    ';
+}

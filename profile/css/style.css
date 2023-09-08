@@ -8682,3 +8682,7 @@ a.nav-icon-list:hover {
     margin-left: 10px;
     margin-top: 10px !important;
 }
+
+.profile .about .btn:hover {
+    color: #fff !important;
+}
