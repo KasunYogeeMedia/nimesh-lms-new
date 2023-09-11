@@ -22,7 +22,8 @@ if (!isset($_SESSION['reid'])) {
 $user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
-if ($user_resalt) {
+// if ($user_resalt) {
+    if (1>0) {
 
     echo '
     
@@ -54,7 +55,7 @@ if ($user_resalt) {
             background-repeat: no-repeat;
             background-position: center;
             font-family: "Roboto", sans-serif;
-            opacity:1;
+            opacity:0;
         }
 
         .container {
@@ -73,7 +74,7 @@ if ($user_resalt) {
 
         .icon {
             position: absolute;
-            top: 55%;
+            top: 52%;
             right: 10%;
             max-width: 14%;
         }
@@ -136,7 +137,7 @@ if ($user_resalt) {
         .foot-table {
             margin: auto;
             text-align: center;
-            margin-top: 8%;
+            margin-top: 3%;
             width: 100%;
         }
 
@@ -156,6 +157,9 @@ div.dotted {
 	width: 50%;
 	margin: auto;
     line-height: 2;
+}
+.sign {
+	max-width: 100px;
 }
 @media print {
    body{
@@ -211,7 +215,9 @@ div.dotted {
         <table class="foot-table">
             <tr>
                 <td>
-                    <div class="dotted"></div>
+                    <div class="dotted">
+                    <img class="sign" src="images/signs/sign1.png" alt="">
+                    </div>
 
                     <div class="sign-preson">
                         Lal Sarath Kumara
@@ -220,8 +226,10 @@ div.dotted {
                     <br>
                     Television and Radio/Senior Lecturer
                 </td>
-                <td style="margin: 0 2%">
-                    <div class="dotted"></div>
+                <td>
+                    <div class="dotted">
+                    <img class="sign" src="images/signs/sign2.png" alt="">
+                    </div>
 
                     <div class="sign-preson">
                         K. A. Priyanka Perera
@@ -233,7 +241,9 @@ div.dotted {
                     IPD Institute
                 </td>
                 <td>
-                    <div class="dotted"></div>
+                    <div class="dotted">
+                    <img class="sign" src="images/signs/sign3.png" alt="">
+                    </div>
 
                     <div class="sign-preson">
                         Chanaka Inoj
@@ -247,7 +257,7 @@ div.dotted {
     </div>
 <script>
     window.print();
-    // window.history.back();
+    window.history.back();
 </script>
 
 </body>
