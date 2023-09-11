@@ -19,19 +19,21 @@ if (!isset($_SESSION['reid'])) {
     die();
 }
 
-$user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]'");
-$user_resalt = mysqli_fetch_array($user_qury);
+$user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]' LIMIT 1");
 
-if ($user_resalt) {
+if ($user_qury) {
+    $user_resalt = mysqli_fetch_array($user_qury);
+    $name_query = mysqli_query($conn, "SELECT fullname FROM lmsregister WHERE reid='{$_SESSION['reid']}' LIMIT 1");
+   
 
-    $name_query = mysqli_query($conn, "SELECT fullname FROM lmsregister WHERE reid='{$_SESSION['reid']}'");
-    $name_result = mysqli_fetch_assoc($name_query);
-
-    if ($name_result) {
-        $name = $name_result['fullname'];
+    if ($name_query) {
+	 $name_result = mysqli_fetch_assoc($name_query);
+         $name = $name_result['fullname'];
+	 $issue_date = $user_result['issue_date'];
     } else {
         // Handle the case where the name couldn't be found
         $name = "Name Not Found";
+	$issue_date = "Issue Date Not Found"
     }
 
     echo '
@@ -217,7 +219,7 @@ div.dotted {
             <br>
             the Presentation & Announcing Course.
             <br>
-            Awarded <span class="dotted">dotted text here</span>
+            Awarded <span class="dotted">'.$issue_date.'</span>
             <br>
             The approved programme at IPD
         </div>
