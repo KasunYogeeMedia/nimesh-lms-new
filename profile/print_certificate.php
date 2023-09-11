@@ -24,6 +24,16 @@ $user_resalt = mysqli_fetch_array($user_qury);
 
 if ($user_resalt) {
 
+    $name_query = mysqli_query($conn, "SELECT fullname FROM lmsregister WHERE reid='{$_SESSION['reid']}'");
+    $name_result = mysqli_fetch_assoc($name_query);
+
+    if ($name_result) {
+        $name = $name_result['fullname'];
+    } else {
+        // Handle the case where the name couldn't be found
+        $name = "Name Not Found";
+    }
+
     echo '
     
     <html>
@@ -199,7 +209,7 @@ div.dotted {
         </div>
 
         <div class="person dotted">
-            Name
+            ' . $name . '
         </div>
 
         <div class="reason">
