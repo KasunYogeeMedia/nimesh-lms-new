@@ -22,7 +22,7 @@ if (!isset($_SESSION['reid'])) {
 $user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
-if (1 > 0) {
+if ($user_resalt) {
 
     echo '
     
