@@ -463,6 +463,10 @@ if (isset($_POST['submit_bt'])) {
 													<div class="col-2 about-title pt-3 fw-bold">Location:</div>
 													<div class="col-10 pt-3"><?php echo $row['district']; ?></div>
 												</div>
+												<div class="row">
+													<div class="col-2 about-title pt-3 fw-bold">Certificate:</div>
+													<div class="col-10 pt-3"><a class="btn btn-primary text-light" href="print_certificate.php"> <i class="fa fa-print me-2" aria-hidden="true"></i> Print</a></div>
+												</div>
 											</div>
 										</div>
 									</div>

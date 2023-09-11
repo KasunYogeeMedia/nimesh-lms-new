@@ -56,9 +56,6 @@ if ($image_resalt['image'] == "") {
 ?>
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
