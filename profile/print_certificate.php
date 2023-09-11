@@ -22,30 +22,31 @@ if (!isset($_SESSION['reid'])) {
 $user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]'");
 $user_resalt = mysqli_fetch_array($user_qury);
 
-if ($user_resalt > 0) {
+if (1 > 0) {
 
     echo '
     
     <html>
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Marck+Script&family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&family=Lato:ital,wght@0,300;0,400;1,300;1,400&family=Marck+Script&display=swap" rel="stylesheet">
     <style type="text/css">
+      
         body,
         html {
             margin: 0;
-            padding: 0;
+            padding: 0; 
             
         }
 
         body {
-            background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v546batch3-mynt-34-badgewatercolor_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=89288ef4b47127f7f34a5998b50e4470);
+            background-image: url("images/print_background.jpg");
             color: black;
             display: table;
             font-family: Georgia, serif;
-            font-size: 18px;
+            font-size: 20px;
             text-align: center;
             width: 100%;
             height: 100%;
@@ -53,7 +54,7 @@ if ($user_resalt > 0) {
             background-repeat: no-repeat;
             background-position: center;
             font-family: "Roboto", sans-serif;
-            opacity:0;
+            opacity:1;
         }
 
         .container {
@@ -73,56 +74,63 @@ if ($user_resalt > 0) {
         .icon {
             position: absolute;
             top: 55%;
-            right: 8%;
+            right: 10%;
             max-width: 14%;
         }
 
         .title {
             color: 870CA5;
-            font-size: 46px;
+            font-size: 56px;
             font-weight: bold;
-            font-family: "Crimson Text", serif;
+            font-family: "Gupter", serif;
             width: 80%;
             margin: auto;
         }
 
         .subtitle {
-            font-size: 20px;
+            font-size: 22px;
+            font-family: "Lato", sans-serif;
+            color:#2c2e35;
         }
 
         .course {
-            font-size: 52px;
+            font-size: 56px;
             margin: 16px;
             font-family: "Marck Script", cursive;
+            font-weight: bold;
         }
 
         .assignment {
+            font-family: "Lato", sans-serif;
             margin: 10px;
             font-style: italic;
-            font-weight: 300;
+            font-weight: 400;
+            color:#2c2e35;
         }
 
         .person {
             border-bottom: 2px solid black;
             font-size: 32px;
-            font-style: italic;
             margin: 20px auto;
             width: 400px;
-
+            color:#2c2e35;
+            line-height: 2;
         }
-
+        
         .dotted {
             border-bottom: 2px dotted #000;
             text-decoration: none;
         }
-
+        
         .reason {
+            font-family: "Lato", sans-serif;
             margin: 20px;
             max-width: 60%;
             margin: auto;
-            line-height: 1.5;
+            line-height: 1.8;
             font-style: italic;
-            font-weight: 300;
+            font-weight: 400;
+            color:#2c2e35;
         }
 
         .foot-table {
@@ -135,6 +143,7 @@ if ($user_resalt > 0) {
         .foot-table td {
             vertical-align: baseline;
             font-size: 12px;
+            width: 33.33%;
         }
 
         .sign-preson {
@@ -142,6 +151,11 @@ if ($user_resalt > 0) {
 	margin: 5px;
 	color: #870CA5;
 	font-weight: bold;
+}
+div.dotted {
+	width: 50%;
+	margin: auto;
+    line-height: 2;
 }
 @media print {
    body{
@@ -197,7 +211,7 @@ if ($user_resalt > 0) {
         <table class="foot-table">
             <tr>
                 <td>
-                    <span class="dotted">dotted text here</span>
+                    <div class="dotted"></div>
 
                     <div class="sign-preson">
                         Lal Sarath Kumara
@@ -207,7 +221,7 @@ if ($user_resalt > 0) {
                     Television and Radio/Senior Lecturer
                 </td>
                 <td style="margin: 0 2%">
-                    <span class="dotted">dotted text here</span>
+                    <div class="dotted"></div>
 
                     <div class="sign-preson">
                         K. A. Priyanka Perera
@@ -219,7 +233,7 @@ if ($user_resalt > 0) {
                     IPD Institute
                 </td>
                 <td>
-                    <span class="dotted">dotted text here</span>
+                    <div class="dotted"></div>
 
                     <div class="sign-preson">
                         Chanaka Inoj
@@ -233,7 +247,7 @@ if ($user_resalt > 0) {
     </div>
 <script>
     window.print();
-    window.history.back();
+    // window.history.back();
 </script>
 
 </body>
