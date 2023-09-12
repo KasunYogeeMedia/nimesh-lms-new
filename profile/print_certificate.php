@@ -21,7 +21,7 @@ if (!isset($_SESSION['reid'])) {
 
 $user_qury = mysqli_query($conn, "SELECT * FROM certificate WHERE certificate_status =1 AND userId='$_SESSION[reid]' LIMIT 1");
 
-if ($user_qury) {
+if ($user_qury && mysqli_num_rows($user_qury) > 0) {
     $user_resalt = mysqli_fetch_array($user_qury);
     $name_query = mysqli_query($conn, "SELECT fullname FROM lmsregister WHERE reid='{$_SESSION['reid']}' LIMIT 1");
    
