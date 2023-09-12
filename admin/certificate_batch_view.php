@@ -60,14 +60,14 @@ require_once '../super_admin/dbconfig4.php';
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Students</h4>
+                            <h4>All Certificates</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
                             <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Certificates</a></li>
                         </ol>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ require_once '../super_admin/dbconfig4.php';
                             <div id="list-view" class="tab-pane fade active show col-lg-12">
                                 <div class="card border-0 bg-light">
                                     <div class="card-header">
-                                        <h4 class="card-title">All Students </h4>
+                                        <h4 class="card-title">All Certificates </h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">

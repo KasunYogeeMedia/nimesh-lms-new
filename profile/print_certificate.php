@@ -240,7 +240,7 @@ div.dotted {
                 </td>
                 <td>
                     <div class="dotted">
-                    <img class="sign" src="images/signs/sign2.png" alt="">
+                    <img class="sign" src="images/signs/sign3.png" alt="">
                     </div>
 
                     <div class="sign-preson">
@@ -254,7 +254,7 @@ div.dotted {
                 </td>
                 <td>
                     <div class="dotted">
-                    <img class="sign" src="images/signs/sign3.png" alt="">
+                    <img class="sign" src="images/signs/sign2.png" alt="">
                     </div>
 
                     <div class="sign-preson">
