@@ -29,11 +29,12 @@ if ($user_qury) {
     if ($name_query) {
 	 $name_result = mysqli_fetch_assoc($name_query);
          $name = $name_result['fullname'];
-	 $issue_date = $user_result['issue_date'];
+	//  $issue_date = $user_resalt['issue_date'];
+     $issue_date = date('Y-m-d', strtotime($user_resalt['issue_date']));
     } else {
         // Handle the case where the name couldn't be found
         $name = "Name Not Found";
-	$issue_date = "Issue Date Not Found"
+	$issue_date = "Issue Date Not Found";
     }
 
     echo '
