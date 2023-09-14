@@ -127,6 +127,15 @@
 		}
 		?>
 	</li>
+	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Course Works</span>
+		</a>
+		<ul aria-expanded="false">
+			<li><a href="course_work.php">Add Course Work</a></li>
+			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
+		</ul>
+	</li>
 	<li>
 		<?php
 		if ($class_schedule == 'True') {
@@ -184,7 +193,12 @@
 			<li><a href="payment_report.php">Payment Report</a></li>
 		</ul>
 	</li>
-	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+	<li><a href="exam_page.php" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Exams</span>
+		</a>
+	</li>
+	<!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-leanpub"></i>
 			<span class="nav-text">Mcq Exams</span>
 		</a>
@@ -210,16 +224,7 @@
 			<li><a href="online_verbal.php">Verbal Exams</a></li>
 
 		</ul>
-	</li>
-	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-			<i class="la la-leanpub"></i>
-			<span class="nav-text">Course Works</span>
-		</a>
-		<ul aria-expanded="false">
-			<li><a href="course_work.php">Add Course Work</a></li>
-			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
-		</ul>
-	</li>
+	</li> -->
 	<li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
