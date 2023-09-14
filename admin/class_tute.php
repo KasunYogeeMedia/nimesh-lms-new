@@ -94,7 +94,6 @@ require_once '../super_admin/dbconfig4.php';
 														<th>Teacher</th>
 														<th>Batch</th>
 														<th>Course</th>
-														<th>Month</th>
 														<th>Class Type</th>
 														<th>Title</th>
 														<th>Document</th>
@@ -193,7 +192,6 @@ require_once '../super_admin/dbconfig4.php';
 																	echo $result['name'];
 																	?>
 																</td>
-																<td><?php echo $row['month']; ?></td>
 																<td><?php echo $row['ctype']; ?></td>
 																<td><?php echo $row['title']; ?></td>
 																<td><a href="images/classtute/<?php echo $row['tdocument']; ?>" target="_blank">View Tute</a></td>

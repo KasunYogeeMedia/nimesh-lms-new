@@ -210,7 +210,7 @@ if (isset($_POST['update'])) {
 								?>
 								<form method="POST" enctype="multipart/form-data">
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Teacher</label>
 												<select class="form-control" name="tid" required>
@@ -260,7 +260,7 @@ if (isset($_POST['update'])) {
 												</select>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
 												<select class="form-control" name="class" required>
@@ -311,7 +311,7 @@ if (isset($_POST['update'])) {
 												xhttp.send();
 											}
 										</script>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Class Course</label>
 												<span id="subject_dis">
@@ -333,10 +333,10 @@ if (isset($_POST['update'])) {
 										</div>
 
 
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-3 col-md-3 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Month</label>
-												<select class="form-control" name="month" required>
+												<select class="form-control" name="month">
 													<option><?php echo $month; ?></option>
 													<option style="display:none;">Select Month</option>
 													<option>January</option>

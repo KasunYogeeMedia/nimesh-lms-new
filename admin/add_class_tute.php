@@ -196,7 +196,7 @@ if (isset($_POST['add_classtute'])) {
 								?>
 								<form method="POST" enctype="multipart/form-data">
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Teacher</label>
 												<select class="form-control" name="tid" required>
@@ -221,7 +221,7 @@ if (isset($_POST['add_classtute'])) {
 												</select>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Batch</label>
 												<select class="form-control" name="class" onChange="JavaScript:send_level(this.value);" required>
@@ -254,7 +254,7 @@ if (isset($_POST['add_classtute'])) {
 												xhttp.send();
 											}
 										</script>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Class Course</label>
 												<span id="subject_dis">
@@ -268,10 +268,10 @@ if (isset($_POST['add_classtute'])) {
 												</span>
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-3 col-sm-12">
+										<div class="col-lg-3 col-md-3 col-sm-12 d-none">
 											<div class="form-group">
 												<label class="form-label">Month</label>
-												<select class="form-control" name="month" required>
+												<select class="form-control" name="month">
 													<option style="display:none;">Select Month</option>
 													<option>January</option>
 													<option>February</option>
