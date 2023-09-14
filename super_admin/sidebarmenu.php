@@ -127,6 +127,15 @@
 		}
 		?>
 	</li>
+	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Course Works</span>
+		</a>
+		<ul aria-expanded="false">
+			<li><a href="course_work.php">Add Course Work</a></li>
+			<li><a href="course_work_submissions.php">Student Submitted Course Work</a></li>
+		</ul>
+	</li>
 	<li>
 		<?php
 		if ($class_schedule == 'True') {
@@ -184,7 +193,12 @@
 			<li><a href="payment_report.php">Payment Report</a></li>
 		</ul>
 	</li>
-	<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+	<li><a href="exam_page.php" aria-expanded="false">
+			<i class="la la-leanpub"></i>
+			<span class="nav-text">Exams</span>
+		</a>
+	</li>
+	<!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
 			<i class="la la-leanpub"></i>
 			<span class="nav-text">Mcq Exams</span>
 		</a>
@@ -210,18 +224,18 @@
 			<li><a href="online_verbal.php">Verbal Exams</a></li>
 
 		</ul>
-	</li>
+	</li> -->
 	<li><a href="reviews.php" aria-expanded="false">
 			<i class="la la-comments-o"></i>
 			<span class="nav-text">Reviews</span>
 		</a>
 	</li>
-	<!-- <li><a href="gallery.php" aria-expanded="false">
+	<li><a href="gallery.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Gallery</span>
 		</a>
 	</li>
-	<li>-->
+	<li>
 	<li><a href="expense.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Expenses</span>
@@ -230,6 +244,11 @@
 	<li><a href="certificate.php" aria-expanded="false">
 			<i class="la la-camera-retro"></i>
 			<span class="nav-text">Certificate</span>
+		</a>
+	</li>
+	<li><a href="coupon.php" aria-expanded="false">
+			<i class="la la-camera-retro"></i>
+			<span class="nav-text">Coupon</span>
 		</a>
 	</li>
 	<!--
@@ -277,9 +296,12 @@
 		?>
 	</li>
 	<li>
-		<a href="#" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
+		<a href="" data-bs-toggle="modal" data-bs-target="#confirmationModal" aria-expanded="false">
 			<i class="la la-sign-out"></i>
 			<span class="nav-text">Logout</span>
 		</a>
 	</li>
+
+
+
 </ul>
